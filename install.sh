@@ -200,6 +200,18 @@ cat << EOF >> ~/.config/chromium/"External Extensions/ddkjiahejlhfcafbddmgiahcph
 }
 EOF
 
+display "tte rain" "Configuring KeePassXC"
+KEEPASS="/usr/local/bin/$PROJECTLOWER-keepass"
+cat << EOF | sudo tee -a $KEEPASS
+#!/bin/bash
+if ! pgrep keepassxc; then
+	/usr/bin/keepassxc &
+else
+	/usr/bin/xdotool search ".*- KeePassXC" windowactivate
+fi
+EOF
+chmod +x $KEEPASS
+
 display "tte rain" "Removing unnecessary packages"
 sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
 sudo apt -y autoremove
