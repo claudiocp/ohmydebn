@@ -167,9 +167,9 @@ BTOPTHEMES=~/.config/btop/themes
 mkdir -p $BTOPTHEMES
 cd $BTOPTHEMES
 if [ ! -f themes.tar.gz ]; then
-	curl https://github.com/catppuccin/btop/releases/download/1.0.0/themes.tar.gz -O
+	curl -LO https://github.com/catppuccin/btop/releases/download/1.0.0/themes.tar.gz
 	tar zxvf themes.tar.gz
-	echo "color_theme = \"$BTOPTHEMES/catpuccin_mocha.theme\"" >> btop.conf
+	echo "color_theme = \"$BTOPTHEMES/catpuccin_mocha.theme\"" > ../btop.conf
 fi
 cd - > /dev/null
 
