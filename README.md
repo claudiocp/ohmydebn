@@ -23,9 +23,9 @@ Inspired by [DHH](https://dhh.dk/) and his [Omarchy](https://omarchy.org/) setup
 - Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/)
 - Web browser: [Chromium](https://www.chromium.org/Home/) with uBlock Origin Lite content blocker
 - Password management: [KeePassXC](https://keepassxc.org/)
-- Terminal emulator: [alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts
+- Terminal emulator: [alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and Catpuccin Mocha theme
 - Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/)
-- Performance monitoring: [btop](https://github.com/aristocratos/btop)
+- Performance monitoring: [btop](https://github.com/aristocratos/btop) with Catpuccin Mocha theme
 - System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Window automation: [xdotool](https://github.com/jordansissel/xdotool)
 - Eye candy: dazzling terminal effects via [tte](https://github.com/ChrisBuilds/terminaltexteffects) for demo scene nostalgia
