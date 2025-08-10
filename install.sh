@@ -44,7 +44,7 @@ fi
 clear
 display "cat" "Welcome to $PROJECT!
 
-$PROJECT is a debonair desktop experience for Debian Linux.
+$PROJECT is a debonair Debian + Cinnamon setup inspired by Omarchy.
 
 Debonair strides bold,
 Elegance in every step,
@@ -138,8 +138,11 @@ if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
 	rm -f CascadiaMono.zip
 	fc-cache -fv
 fi
+mkdir -p ~/.config/alacritty/
+if [ ! -f ~/.config/alacritty/catpuccin-mocha.toml ]; then
+	curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
+fi
 if [ ! -f ~/.config/alacritty/alacritty.toml ]; then
-	mkdir -p ~/.config/alacritty/
 	cat << EOF >> ~/.config/alacritty/alacritty.toml
 [env]
 TERM = "xterm-256color"
@@ -152,6 +155,10 @@ decorations = "Full"
 normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
 bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
 italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
+[general]
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
 EOF
 fi
 
