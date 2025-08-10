@@ -21,12 +21,13 @@ Inspired by [DHH](https://dhh.dk/) and his [Omarchy](https://omarchy.org/) setup
 - Base OS: [Debian](https://www.debian.org/) 13 for stability and compatibility
 - Desktop environment: [Cinnamon](https://github.com/linuxmint/Cinnamon) for a premium desktop experience
 - Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/)
+- Wallpaper: beautiful [Catppuccin mountain landscape](https://github.com/zhichaoh/catppuccin-wallpapers/blob/main/landscapes/salty_mountains.png)
+- Terminal emulator: [alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
+- Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/)
+- Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
+- System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Web browser: [Chromium](https://www.chromium.org/Home/) with uBlock Origin Lite content blocker
 - Password management: [KeePassXC](https://keepassxc.org/)
-- Terminal emulator: [alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and Catpuccin Mocha theme
-- Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/)
-- Performance monitoring: [btop](https://github.com/aristocratos/btop) with Catpuccin Mocha theme
-- System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Window automation: [xdotool](https://github.com/jordansissel/xdotool)
 - Eye candy: dazzling terminal effects via [tte](https://github.com/ChrisBuilds/terminaltexteffects) for demo scene nostalgia
 
