@@ -92,7 +92,7 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
 fi
 
 if [ ! -f /usr/share/wallpapers/$PROJECTLOWER.jpg ]; then
-	display "tte rain" "Downloading new wallpapers"
+	display "tte rain" "Downloading catppuccin mountain landscape wallpaper"
 	sudo curl https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/salty_mountains.png -o /usr/share/wallpapers/$PROJECTLOWER.png
 	
 	display "tte rain" "Changing wallpaper"
@@ -131,13 +131,15 @@ sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chrom
 display "tte rain" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
 
-display "tte rain" "Configuring alacritty"
+display "tte rain" "Configuring alacritty with Caskyadia Nerd Font"
 if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
 	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaMono.zip
 	unzip CascadiaMono.zip -d ~/.local/share/fonts
 	rm -f CascadiaMono.zip
 	fc-cache -fv
 fi
+
+display "tte rain" "Configuring alacritty terminal editor with catppuccin theme"
 mkdir -p ~/.config/alacritty/
 if [ ! -f ~/.config/alacritty/catpuccin-mocha.toml ]; then
 	curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
@@ -162,7 +164,7 @@ import = [
 EOF
 fi
 
-display "tte rain" "Configuring btop"
+display "tte rain" "Configuring btop with catppuccin theme"
 BTOPCONFIG=~/.config/btop
 mkdir -p $BTOPCONFIG
 cd $BTOPCONFIG
@@ -173,13 +175,21 @@ if [ ! -f themes.tar.gz ]; then
 fi
 cd - > /dev/null
 
-display "tte rain" "Setting neovim as default vi"
-sudo update-alternatives --set vi /usr/bin/nvim
-
-display "tte rain" "Configuring lazyvim"
+display "tte rain" "Configuring neovim with lazyvim"
 if [ ! -d ~/.config/nvim ]; then
 	git clone https://github.com/LazyVim/starter ~/.config/nvim
 	rm -rf ~/.config/nvim/.git
+fi
+
+display "tte rain" "Configuring neovim with catppuccin theme"
+NVIMPLUGINS=~/.config/nvim/lua/plugins
+mkdir -p $NVIMPLUGINS
+if [ ! -f $NVIMPLUGINS/core.lua ]; then
+	cat << EOF >> ~/.config/nvim/lua/plugins/core.lua
+return {
+  { "LazyVim/LazyVim", opts = { colorscheme = "catppuccin" } }
+}
+EOF
 fi
 
 display "tte rain" "Configuring chromium"
@@ -189,6 +199,24 @@ cat << EOF >> ~/.config/chromium/"External Extensions/ddkjiahejlhfcafbddmgiahcph
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }
 EOF
+
+display "tte rain" "Configuring KeePassXC"
+KEEPASS="/usr/local/bin/$PROJECTLOWER-keepass"
+if [ ! -f $KEEPASS ]; then
+	cat << EOF | sudo tee -a $KEEPASS
+#!/bin/bash
+if ! pgrep keepassxc; then
+	/usr/bin/keepassxc &
+else
+	/usr/bin/xdotool search --name ".*- KeePassXC" windowactivate
+fi
+EOF
+	sudo chmod +x $KEEPASS
+	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
+	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/ohmydebn-keepass"
+	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
+	gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0']"
+fi
 
 display "tte rain" "Removing unnecessary packages"
 sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
