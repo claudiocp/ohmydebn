@@ -44,7 +44,7 @@ fi
 clear
 display "cat" "Welcome to $PROJECT!
 
-$PROJECT is a debonair desktop experience for Debian Linux.
+$PROJECT is a debonair Debian + Cinnamon setup inspired by Omarchy.
 
 Debonair strides bold,
 Elegance in every step,
