@@ -202,7 +202,8 @@ EOF
 
 display "tte rain" "Configuring KeePassXC"
 KEEPASS="/usr/local/bin/$PROJECTLOWER-keepass"
-cat << EOF | sudo tee -a $KEEPASS
+if [ ! -f $KEEPASS ]; then
+	cat << EOF | sudo tee -a $KEEPASS
 #!/bin/bash
 if ! pgrep keepassxc; then
 	/usr/bin/keepassxc &
@@ -210,7 +211,12 @@ else
 	/usr/bin/xdotool search --name ".*- KeePassXC" windowactivate
 fi
 EOF
-chmod +x $KEEPASS
+	chmod +x $KEEPASS
+	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
+	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/ohmydebn-keepass"
+	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
+	gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0']"
+fi
 
 display "tte rain" "Removing unnecessary packages"
 sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
