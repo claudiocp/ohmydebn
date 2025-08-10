@@ -173,9 +173,6 @@ if [ ! -f themes.tar.gz ]; then
 fi
 cd - > /dev/null
 
-display "tte rain" "Setting neovim as default vi"
-sudo update-alternatives --set vi /usr/bin/nvim
-
 display "tte rain" "Configuring lazyvim"
 if [ ! -d ~/.config/nvim ]; then
 	git clone https://github.com/LazyVim/starter ~/.config/nvim
