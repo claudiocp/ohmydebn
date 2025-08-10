@@ -96,7 +96,7 @@ if [ ! -f /usr/share/wallpapers/$PROJECTLOWER.jpg ]; then
 	sudo curl https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/salty_mountains.png -o /usr/share/wallpapers/$PROJECTLOWER.png
 	
 	display "tte rain" "Changing wallpaper"
-	gsettings set org.cinnamon.desktop.background picture-uri "'file:///usr/share/wallpapers/$PROJECTLOWER.jpg'"
+	gsettings set org.cinnamon.desktop.background picture-uri "'file:///usr/share/wallpapers/$PROJECTLOWER.png'"
 fi
 
 display "tte rain" "Setting Cinnamon theme"
