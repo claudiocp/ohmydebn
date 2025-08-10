@@ -91,9 +91,9 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
 	sudo apt -y purge linuxmint-keyring
 fi
 
-if [ ! -f /usr/share/wallpapers/mandelbrot-seahorse-tail.jpg ]; then
+if [ ! -f /usr/share/wallpapers/$PROJECTLOWER.jpg ]; then
 	display "tte rain" "Downloading new wallpapers"
-	sudo curl https://github.com/zhichaoh/catppuccin-wallpapers/blob/1023077979591cdeca76aae94e0359da1707a60e/landscapes/salty_mountains.png -o /usr/share/wallpapers/$PROJECTLOWER.png
+	sudo curl https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/salty_mountains.png -o /usr/share/wallpapers/$PROJECTLOWER.png
 	
 	display "tte rain" "Changing wallpaper"
 	gsettings set org.cinnamon.desktop.background picture-uri "'file:///usr/share/wallpapers/$PROJECTLOWER.jpg'"
