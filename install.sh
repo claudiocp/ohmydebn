@@ -163,7 +163,7 @@ EOF
 fi
 
 display "tte rain" "Configuring btop"
-BTOPTHEMES="~/.config/btop/themes"
+BTOPTHEMES=~/.config/btop/themes
 mkdir -p $BTOPTHEMES
 cd $BTOPTHEMES
 if [ ! -f themes.tar.gz ]; then
@@ -171,7 +171,7 @@ if [ ! -f themes.tar.gz ]; then
 	tar zxvf themes.tar.gz
 	echo "color_theme = \"$BTOPTHEMES/catpuccin_mocha.theme\"" >> btop.conf
 fi
-cd -
+cd - > /dev/null
 
 display "tte rain" "Setting neovim as default vi"
 sudo update-alternatives --set vi /usr/bin/nvim
