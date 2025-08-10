@@ -43,6 +43,7 @@ fi
 
 clear
 display "cat" "Welcome to $PROJECT!
+
 $PROJECT is a debonair desktop experience for Debian Linux.
 
 Debonair strides bold,
