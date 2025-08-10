@@ -2,7 +2,6 @@
 
 PROJECT="OhMyDebn"
 PROJECTLOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
-URL="https://raw.githubusercontent.com/dougburks/$PROJECTLOWER/refs/heads/main"
 
 function logo {
 	toilet -f mono12 "$PROJECT" | tte rain
