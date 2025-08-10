@@ -211,7 +211,7 @@ else
 	/usr/bin/xdotool search --name ".*- KeePassXC" windowactivate
 fi
 EOF
-	chmod +x $KEEPASS
+	sudo chmod +x $KEEPASS
 	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
 	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/ohmydebn-keepass"
 	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
