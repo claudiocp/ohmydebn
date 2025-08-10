@@ -207,7 +207,7 @@ cat << EOF | sudo tee -a $KEEPASS
 if ! pgrep keepassxc; then
 	/usr/bin/keepassxc &
 else
-	/usr/bin/xdotool search ".*- KeePassXC" windowactivate
+	/usr/bin/xdotool search --name ".*- KeePassXC" windowactivate
 fi
 EOF
 chmod +x $KEEPASS
