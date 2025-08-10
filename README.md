@@ -12,7 +12,11 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
   -- AI, probably
 
 # Motivation
-Every year or so, I review my technology stack to make sure I'm using the best tools for the job. Starting from first principles, I consider needs, desires, and workflows. What is the best operating system for those needs, desires, and workflows? Is it Windows, macOS, Linux, or a combination thereof? Since discovering Linux in 1997, it has been my primary desktop environment for most of those years and it continues to be the environment where I'm most productive. What about apps? What are the best of breed productivity apps that help me get my job done with a minimum amount of fuss? What is the Linux desktop environment that allows me to work with all of those applications at the same time most efficiently? Finally, which Linux distro provides that desktop environment and those apps and runs on the hardware that I need it to?
+Every year or so, I review my technology stack to make sure I'm using the best tools for the job. Starting from first principles, I consider needs, desires, and workflows and ask myself a few questions: 
+- What is the best operating system for those needs, desires, and workflows? Is it Windows, macOS, Linux, or a combination thereof? Since discovering Linux in 1997, it has been my primary desktop environment for most of those years and it continues to be the environment where I'm most productive. 
+- What about apps? What are the best of breed productivity apps that help me get my job done with a minimum amount of fuss? 
+- What is the Linux desktop environment that allows me to work with all of those applications at the same time most efficiently?
+- Finally, which Linux distro provides that desktop environment and those apps and runs on the hardware that I need it to?
 
 # Inspiration
 Inspired by [DHH](https://dhh.dk/) and his [Omarchy](https://omarchy.org/) setup, this is my own personal recipe for my ideal desktop environment. It is a curated collection of comprehensive components that balances the ideals of productivity, flexibiliity, and beauty.
