@@ -6,9 +6,9 @@ OhMyDebn is a debonair desktop experience for Debian Linux.
 
 # Obligatory Haiku
 
-*Debonair strides bold,*
-*Elegance in every step,*
-*Stars bow to its charm.*
+*Debonair strides bold,*  
+*Elegance in every step,*  
+*Stars bow to its charm.*  
   -- AI, probably
 
 # Motivation
