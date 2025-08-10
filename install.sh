@@ -162,6 +162,17 @@ import = [
 EOF
 fi
 
+display "tte rain" "Configuring btop"
+BTOPCONFIG=~/.config/btop
+mkdir -p $BTOPCONFIG
+cd $BTOPCONFIG
+if [ ! -f themes.tar.gz ]; then
+	curl -LO https://github.com/catppuccin/btop/releases/download/1.0.0/themes.tar.gz
+	tar zxvf themes.tar.gz
+	echo "color_theme = \"$BTOPCONFIG/themes/catppuccin_mocha.theme\"" > btop.conf
+fi
+cd - > /dev/null
+
 display "tte rain" "Setting neovim as default vi"
 sudo update-alternatives --set vi /usr/bin/nvim
 
