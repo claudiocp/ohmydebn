@@ -19,7 +19,7 @@ Every year or so, I review my technology stack to make sure I'm using the best t
 - Finally, which Linux distro provides that desktop environment and those apps and runs on the hardware that I need it to?
 
 # Inspiration
-Inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Omarchy](https://omarchy.org/) setups, this is my own personal [omakase](https://en.wikipedia.org/wiki/Omakase) menu for my ideal desktop environment. It is a curated collection of comprehensive components that balances the ideals of productivity, flexibiliity, and beauty.
+Inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Omarchy](https://omarchy.org/) setups, this is my own personal [omakase](https://en.wikipedia.org/wiki/Omakase) menu for my ideal desktop environment. It is a curated collection of comprehensive components that balances the ideals of productivity, flexibility, and beauty.
 
 # Ingredients
 - Base OS: [Debian](https://www.debian.org/) 13 for stability and compatibility
