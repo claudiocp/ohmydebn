@@ -213,10 +213,19 @@ fi
 EOF
 	sudo chmod +x $KEEPASS
 	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
-	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/ohmydebn-keepass"
+	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/$PROJECTLOWER-keepass"
 	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
 	gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0']"
 fi
+KEEPASSCONFIG=~/.config/keepassxc/keepassxc.ini
+if [ ! -f $KEEPASSCONFIG ]; then
+cat << EOF >> $KEEPASSCONFIG
+[General]
+AutoTypeStartDelay=100
+ConfigVersion=2
+GlobalAutoTypeKey=80
+GlobalAutoTypeModifiers=100663296
+EOF
 
 display "tte rain" "Removing unnecessary packages"
 sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
