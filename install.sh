@@ -54,10 +54,14 @@ Elegance in every step,
 Stars bow to its charm.
  -- AI, probably
 
-WARNING! This script is intended for a clean new installation!
-It will remove apps like FireFox, Thunderbird, and others!
+WARNING!
 
-WARNING! This script is totally unsupported!
+This script:
+- is intended for a clean new installation.
+- will remove apps like FireFox, Thunderbird, and others.
+- may make changes to your APT configuration.
+
+This script is totally unsupported. 
 If it breaks your system, you get to keep both pieces!
 
 Press Enter to continue or Ctrl-c to cancel."
@@ -67,12 +71,12 @@ clear
 
 if ! grep -q "debian.org" /etc/apt/sources.list; then
   display "cat" "/etc/apt/sources.list does not have any debian.org references."
+  if [ -f /etc/apt/sources.list ]; then
+	  echo "Renaming /etc/apt/sources.list to /etc/apt/sources.list.orig"
+	  mv /etc/apt/sources.list /etc/apt/sources.list.orig
+  fi
   DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
   if [ ! -f $DEBIANSOURCES ]; then
-	  if [ -f /etc/apt/sources.list ]; then
-		  echo "Renaming /etc/apt/sources.list to /etc/apt/sources.list.orig"
-		  mv /etc/apt/sources.list /etc/apt/sources.list.orig
-	  fi
 	  echo "$DEBIANSOURCES does not exist."
 	  echo "Creating $DEBIANSOURCES and adding the following:"
 	  cat << EOF | sudo tee -a $DEBIANSOURCES
