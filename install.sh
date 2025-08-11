@@ -226,6 +226,7 @@ ConfigVersion=2
 GlobalAutoTypeKey=80
 GlobalAutoTypeModifiers=100663296
 EOF
+fi
 
 display "tte rain" "Removing unnecessary packages"
 sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
