@@ -96,14 +96,12 @@ bash install.sh
 | Shift+Ctrl+Alt+Right | Move window to right workspace |
 | Ctrl+Alt+Left | Switch to left workspace |
 | Ctrl+Alt+Right | Switch to right workspace |
+| Ctrl+Alt+L | Lock screen |
 | Ctrl+Alt+Del | Logout |
 | Ctrl+Alt+End | Shut down |
-| Ctrl+Alt+L | Lock screen |
 | Ctrl+Alt+Escape | Restart Cinnamon desktop |
-| Shift+Super+N | Network Manager |
-| Shift+Super+S | Sound menu |
 
-## Launching apps
+## Apps
 
 | Hotkey | Function |
 |--------|----------|
@@ -111,6 +109,8 @@ bash install.sh
 | Super+E | Home folder |
 | Ctrl+Alt+K | Password manager (KeePassXC) |
 | Ctrl+Alt+P | Password auto-type |
+| Shift+Super+N | Network Manager |
+| Shift+Super+S | Sound menu |
 
 ## Capture
 
@@ -132,9 +132,31 @@ bash install.sh
 
 ## Neovim (with LazyVim)
 
+### Navigation
+
 | Hotkey | Function |
 |--------|----------|
 | Space | Show command options |
+| Space Space | Open file via fuzzy search |
+| Space E |	Toggle sidebar |
+| Space G G | Show git controls |
+| Space S G | Search file content |
+| Ctrl + W W | Jump between sidebar and editor |
+| Ctrl + Left/right arrow | Change size of sidebar |
+| Shift + H | Go to left file tab |
+| Shift + L | Go to right file tab |
+| Space B D | Close file tab |
+
+### While in sidebar
+
+| Hotkey | Function |
+|--------|----------|
+| A | Add new file in parent dir |
+| Shift + A | Add new subdir in parent dir |
+| D | Delete highlighted file/dir |
+| M | Move highlighted file/dir |
+| R | Rename highlighted file/dir |
+| ? | Show help for all commands |
 
 For the full list of all Neovim hotkeys configured by LazyVim, please see https://www.lazyvim.org/keymaps.
 
