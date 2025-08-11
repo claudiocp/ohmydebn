@@ -56,7 +56,9 @@ OhMyDebn requires the following:
 - user account with sudo privileges
 - ability to connect to Github, package repos, and other Internet sites
   
-# Warning
+# Warnings
+This script is intended for a clean new installation! It will remove apps like FireFox, Thunderbird, and others!
+
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
 
 # Installation
