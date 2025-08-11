@@ -87,6 +87,7 @@ bash install.sh
 | Alt+F2 | Run dialog |
 | Alt+Space | Activate window menu |
 | Alt+F7 | Move window |
+| Alt+F10 | Toggle maximization state |
 | Super+D | Show desktop |
 | Super+Left | Push window left |
 | Super+Right | Push window right |
