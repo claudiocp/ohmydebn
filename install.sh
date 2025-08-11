@@ -32,8 +32,25 @@ if ! grep -q "13 (trixie)" /etc/os-release; then
 fi
 
 if ! grep -q "debian.org" /etc/apt/sources.list; then
-  display "cat" "/etc/apt/sources.list does not have any debian.org references. Exiting!"
-  exit 1
+  display "cat" "/etc/apt/sources.list does not have any debian.org references."
+  DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
+  if [ ! -f $DEBIANSOURCES ]; then
+	  echo "$DEBIANSOURCES does not exist."
+	  echo "Creating $DEBIANSOURCES and adding the following:"
+	  cat << EOF | sudo tee -a $DEBIANSOURCES
+Types: deb
+URIs: https://deb.debian.org/debian
+Suites: trixie trixie-updates
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: https://security.debian.org/debian-security
+Suites: trixie-security
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF
+  fi
 fi
 
 if [ "$UID" -eq 0 ]; then
