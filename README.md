@@ -60,7 +60,7 @@ OhMyDebn requires the following:
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
 
 # Installation
-1. Install Debian 13 Cinnamon. It should start off looking like this:
+1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![screenshot](screenshots/debian-cinnamon.png)
 2. In your Debian 13 Cinnamon desktop, download and review the script (don't just blindly pipe it into bash):
 ```
@@ -73,6 +73,103 @@ bash install.sh
 4. Enjoy your new OhMyDebn desktop!
 
 ![screenshot](screenshots/screenshot.png)
+
+# Hotkeys
+
+## Navigating
+
+| Hotkey | Function |
+|--------|----------|
+| Ctrl+Alt+Up | Workspace selection |
+| Ctrl+Alt+Down | Window selection |
+| Super+D | Show desktop |
+| Alt+Tab | Cycle through open windows |
+| Shift+Alt+Tab | Cycle backwards through open windows |
+| Alt+F2 | Run dialog |
+| Alt+Space | Activate window menu |
+| Alt+F7 | Move window |
+| Super+Left | Push window left |
+| Super+Right | Push window right |
+| Super+Up | Push window up |
+| Super+Down | Push window down |
+| Shift+Ctrl+Alt+Left | Move window to left workspace |
+| Shift+Ctrl+Alt+Right | Move window to right workspace |
+| Ctrl+Alt+Left | Switch to left workspace |
+| Ctrl+Alt+Right | Switch to right workspace |
+| Ctrl+Alt+L | Lock screen |
+| Ctrl+Alt+Del | Logout |
+| Ctrl+Alt+End | Shut down |
+| Ctrl+Alt+Escape | Restart Cinnamon desktop |
+
+## Apps
+
+| Hotkey | Function |
+|--------|----------|
+| Super+B | Browser (Chromium) |
+| Super+Return | Terminal |
+| Super+F | File Manager |
+
+## Password Manager (KeePassXC)
+
+| Hotkey | Function |
+|--------|----------|
+| Ctrl+Shift+K | KeePassXC password manager |
+| Ctrl+Shift+P | Password auto-type |
+
+## Configuration
+
+| Hotkey | Function |
+|--------|----------|
+| Shift+Super+N | Network Manager |
+| Shift+Super+S | Sound menu |
+
+## Capture
+
+| Hotkey | Function |
+|--------|----------|
+| Shift+Print | Take a screenshot of an area |
+| Shift+Ctrl+Print | Copy a screenshot of an area to clipboard |
+| Print | Take a screenshot |
+| Ctrl+Print | Copy a screenshot to clipboard |
+| Alt+Print | Take a screenshot of a window |
+| Ctrl+Alt+Print | Copy a screenshot of a window to clipboard |
+
+## Notifications
+
+| Hotkey | Function |
+|--------|----------|
+| Super+N | Show notifications |
+| Shift+Super+C | Clear notifications |
+
+## Neovim (with LazyVim)
+
+### Navigation
+
+| Hotkey | Function |
+|--------|----------|
+| Space | Show command options |
+| Space Space | Open file via fuzzy search |
+| Space E |	Toggle sidebar |
+| Space G G | Show git controls |
+| Space S G | Search file content |
+| Ctrl + W W | Jump between sidebar and editor |
+| Ctrl + Left/right arrow | Change size of sidebar |
+| Shift + H | Go to left file tab |
+| Shift + L | Go to right file tab |
+| Space B D | Close file tab |
+
+### While in sidebar
+
+| Hotkey | Function |
+|--------|----------|
+| A | Add new file in parent dir |
+| Shift + A | Add new subdir in parent dir |
+| D | Delete highlighted file/dir |
+| M | Move highlighted file/dir |
+| R | Rename highlighted file/dir |
+| ? | Show help for all commands |
+
+For the full list of all Neovim hotkeys configured by LazyVim, please see https://www.lazyvim.org/keymaps.
 
 # FAQ
 

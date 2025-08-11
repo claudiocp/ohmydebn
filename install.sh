@@ -212,11 +212,38 @@ else
 fi
 EOF
 	sudo chmod +x $KEEPASS
-	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
-	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/ohmydebn-keepass"
-	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
-	gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0']"
 fi
+KEEPASSCONFIGDIR=~/.config/keepassxc
+mkdir -p $KEEPASSCONFIGDIR
+KEEPASSCONFIG=$KEEPASSCONFIGDIR/keepassxc.ini
+if [ ! -f $KEEPASSCONFIG ]; then
+cat << EOF >> $KEEPASSCONFIG
+[General]
+AutoTypeStartDelay=100
+ConfigVersion=2
+GlobalAutoTypeKey=80
+GlobalAutoTypeModifiers=100663296
+EOF
+fi
+
+display "tte rain" "Adding keyboard shortcuts"
+gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3']"
+echo "Ctrl+Shift+K for KeePassXC password manager"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/$PROJECTLOWER-keepass"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
+echo "Super+B for browser"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ name "Chromium"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ command "/usr/bin/chromium"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ binding "['<Super>B']"
+echo "Super+Return for terminal (alacritty)"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ name "Alacritty"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ command "/usr/bin/alacritty"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ binding "['<Super>Return']"
+echo "Super+F for file manager (nemo)"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ name "Nemo"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ command "/usr/bin/nemo"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ binding "['<Super>F']"
 
 display "tte rain" "Removing unnecessary packages"
 sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
