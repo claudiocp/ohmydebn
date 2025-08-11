@@ -69,11 +69,12 @@ read input
 
 clear
 
-if ! grep -q "debian.org" /etc/apt/sources.list; then
-  display "cat" "/etc/apt/sources.list does not have any debian.org references."
-  if [ -f /etc/apt/sources.list ]; then
-	  echo "Renaming /etc/apt/sources.list to /etc/apt/sources.list.orig"
-	  mv /etc/apt/sources.list /etc/apt/sources.list.orig
+SOURCESLIST=/etc/apt/sources.list
+if ! grep -q "debian.org" $SOURCESLIST; then
+  display "cat" "$SOURCESLIST does not have any debian.org references."
+  if [ -f $SOURCESLIST ]; then
+	  echo "Renaming $SOURCESLIST to $SOURCESLIST.orig"
+	  mv $SOURCESLIST $SOURCESLIST.orig
   fi
   DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
   if [ ! -f $DEBIANSOURCES ]; then
