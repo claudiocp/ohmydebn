@@ -241,9 +241,9 @@ EOF
 fi
 
 display "tte rain" "Adding keyboard shortcuts"
-echo "Super+PgUp to maximize a window"
+echo "Super+PageUp to maximize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm maximize "['<Super>Page_Up']"
-echo "Super+PgDown to minimize a window"
+echo "Super+PageDown to minimize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm minimize "['<Super>Page_Down']"
 # To add a new custom keybinding, update the following line and then add a group of 3 custom-xyz lines below
 gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3']"
