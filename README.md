@@ -60,7 +60,7 @@ OhMyDebn requires the following:
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
 
 # Installation
-1. Install Debian 13 Cinnamon. It should start off looking like this:
+1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![screenshot](screenshots/debian-cinnamon.png)
 2. In your Debian 13 Cinnamon desktop, download and review the script (don't just blindly pipe it into bash):
 ```
