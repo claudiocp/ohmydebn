@@ -57,7 +57,10 @@ OhMyDebn requires the following:
 - ability to connect to Github, package repos, and other Internet sites
   
 # Warnings
-This script is intended for a clean new installation! It will remove apps like FireFox, Thunderbird, and others!
+This script:
+- is intended for a clean new installation
+- will remove apps like FireFox, Thunderbird, and others
+- may make changes to your APT configuration
 
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
 
@@ -87,7 +90,6 @@ bash install.sh
 | Alt+F2 | Run dialog |
 | Alt+Space | Activate window menu |
 | Alt+F7 | Move window |
-| Alt+F10 | Toggle maximization state |
 | Super+D | Show desktop |
 | Super+Left | Push window left |
 | Super+Right | Push window right |
