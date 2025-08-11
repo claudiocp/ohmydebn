@@ -74,7 +74,7 @@ if ! grep -q "debian.org" $SOURCESLIST; then
   display "cat" "$SOURCESLIST does not have any debian.org references."
   if [ -f $SOURCESLIST ]; then
 	  echo "Renaming $SOURCESLIST to $SOURCESLIST.orig"
-	  mv $SOURCESLIST $SOURCESLIST.orig
+	  sudo mv $SOURCESLIST $SOURCESLIST.orig
   fi
   DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
   if [ ! -f $DEBIANSOURCES ]; then
