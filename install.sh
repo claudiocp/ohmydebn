@@ -4,33 +4,33 @@ PROJECT="OhMyDebn"
 PROJECTLOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
 
 function logo {
-	toilet -f mono12 "$PROJECT" | tte rain
+  toilet -f mono12 "$PROJECT" | tte rain
 }
 
 function welcome {
-	toilet -f mono12 "Welcome" | tte rain
-	toilet -f mono12 "   to" | tte rain
-	logo
+  toilet -f mono12 "Welcome" | tte rain
+  toilet -f mono12 "   to" | tte rain
+  logo
 }
 
 function display {
-echo
-cat << EOF | $1
+  echo
+  cat <<EOF | $1
 ###############################################################################
 $2
 ###############################################################################
 EOF
-echo
+  echo
 }
 
 if ! grep -q "13 (trixie)" /etc/os-release; then
-	display "cat" "This script is designed for Debian 13 Cinnamon. Exiting!"
-	exit 1
+  display "cat" "This script is designed for Debian 13 Cinnamon. Exiting!"
+  exit 1
 fi
 
 if [ "$UID" -eq 0 ]; then
 
-	display "cat" "Looks like you're running as root.
+  display "cat" "Looks like you're running as root.
  
 Instead of running as root, you most likely want to 
 run this script as a normal user that has sudo privileges.
@@ -38,7 +38,7 @@ run this script as a normal user that has sudo privileges.
 Press Enter if you are sure you want to continue as root
 or Ctrl-c to cancel."
 
-	read input
+  read input
 fi
 
 clear
@@ -50,6 +50,9 @@ Debonair strides bold,
 Elegance in every step,
 Stars bow to its charm.
  -- AI, probably
+
+WARNING! This script is intended for a clean new installation!
+It will remove apps like FireFox, Thunderbird, and others!
 
 WARNING! This script is totally unsupported!
 If it breaks your system, you get to keep both pieces!
@@ -70,33 +73,33 @@ gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profi
 logo
 echo
 if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
-	display "tte waves" "Installing themes"
-	MINTLIST="/etc/apt/sources.list.d/mint.list"
-	MINTKEY="linuxmint-keyring_2022.06.21_all.deb"
-	MINTURL="http://packages.linuxmint.com/pool/main/l/linuxmint-keyring/$MINTKEY"
-	echo
-	echo "Temporarily adding the following repo:"
-	echo
-	echo "deb http://packages.linuxmint.com virginia main" | sudo tee -a $MINTLIST
-	curl -O $MINTURL
-	echo
-	sudo dpkg -i $MINTKEY
-	echo
-	sudo rm -f $MINTKEY
-	sudo apt update && sudo apt -y install mint-themes
-	echo
-	sudo rm -f $MINTLIST
-	sudo apt update
-	echo
-	sudo apt -y purge linuxmint-keyring
+  display "tte waves" "Installing themes"
+  MINTLIST="/etc/apt/sources.list.d/mint.list"
+  MINTKEY="linuxmint-keyring_2022.06.21_all.deb"
+  MINTURL="http://packages.linuxmint.com/pool/main/l/linuxmint-keyring/$MINTKEY"
+  echo
+  echo "Temporarily adding the following repo:"
+  echo
+  echo "deb http://packages.linuxmint.com virginia main" | sudo tee -a $MINTLIST
+  curl -O $MINTURL
+  echo
+  sudo dpkg -i $MINTKEY
+  echo
+  sudo rm -f $MINTKEY
+  sudo apt update && sudo apt -y install mint-themes
+  echo
+  sudo rm -f $MINTLIST
+  sudo apt update
+  echo
+  sudo apt -y purge linuxmint-keyring
 fi
 
 if [ ! -f /usr/share/wallpapers/$PROJECTLOWER.jpg ]; then
-	display "tte rain" "Downloading catppuccin mountain landscape wallpaper"
-	sudo curl https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/salty_mountains.png -o /usr/share/wallpapers/$PROJECTLOWER.png
-	
-	display "tte rain" "Changing wallpaper"
-	gsettings set org.cinnamon.desktop.background picture-uri "'file:///usr/share/wallpapers/$PROJECTLOWER.png'"
+  display "tte rain" "Downloading catppuccin mountain landscape wallpaper"
+  sudo curl https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/salty_mountains.png -o /usr/share/wallpapers/$PROJECTLOWER.png
+
+  display "tte rain" "Changing wallpaper"
+  gsettings set org.cinnamon.desktop.background picture-uri "'file:///usr/share/wallpapers/$PROJECTLOWER.png'"
 fi
 
 display "tte rain" "Setting Cinnamon theme"
@@ -133,19 +136,19 @@ gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritt
 
 display "tte rain" "Configuring alacritty with Caskyadia Nerd Font"
 if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
-	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaMono.zip
-	unzip CascadiaMono.zip -d ~/.local/share/fonts
-	rm -f CascadiaMono.zip
-	fc-cache -fv
+  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaMono.zip
+  unzip CascadiaMono.zip -d ~/.local/share/fonts
+  rm -f CascadiaMono.zip
+  fc-cache -fv
 fi
 
 display "tte rain" "Configuring alacritty terminal editor with catppuccin theme"
 mkdir -p ~/.config/alacritty/
 if [ ! -f ~/.config/alacritty/catpuccin-mocha.toml ]; then
-	curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
+  curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 fi
 if [ ! -f ~/.config/alacritty/alacritty.toml ]; then
-	cat << EOF >> ~/.config/alacritty/alacritty.toml
+  cat <<EOF >>~/.config/alacritty/alacritty.toml
 [env]
 TERM = "xterm-256color"
 [window]
@@ -169,23 +172,23 @@ BTOPCONFIG=~/.config/btop
 mkdir -p $BTOPCONFIG
 cd $BTOPCONFIG
 if [ ! -f themes.tar.gz ]; then
-	curl -LO https://github.com/catppuccin/btop/releases/download/1.0.0/themes.tar.gz
-	tar zxvf themes.tar.gz
-	echo "color_theme = \"$BTOPCONFIG/themes/catppuccin_mocha.theme\"" > btop.conf
+  curl -LO https://github.com/catppuccin/btop/releases/download/1.0.0/themes.tar.gz
+  tar zxvf themes.tar.gz
+  echo "color_theme = \"$BTOPCONFIG/themes/catppuccin_mocha.theme\"" >btop.conf
 fi
-cd - > /dev/null
+cd - >/dev/null
 
 display "tte rain" "Configuring neovim with lazyvim"
 if [ ! -d ~/.config/nvim ]; then
-	git clone https://github.com/LazyVim/starter ~/.config/nvim
-	rm -rf ~/.config/nvim/.git
+  git clone https://github.com/LazyVim/starter ~/.config/nvim
+  rm -rf ~/.config/nvim/.git
 fi
 
 display "tte rain" "Configuring neovim with catppuccin theme"
 NVIMPLUGINS=~/.config/nvim/lua/plugins
 mkdir -p $NVIMPLUGINS
 if [ ! -f $NVIMPLUGINS/core.lua ]; then
-	cat << EOF >> ~/.config/nvim/lua/plugins/core.lua
+  cat <<EOF >>~/.config/nvim/lua/plugins/core.lua
 return {
   { "LazyVim/LazyVim", opts = { colorscheme = "catppuccin" } }
 }
@@ -194,7 +197,7 @@ fi
 
 display "tte rain" "Configuring chromium"
 mkdir -p ~/.config/chromium/"External Extensions"
-cat << EOF >> ~/.config/chromium/"External Extensions/ddkjiahejlhfcafbddmgiahcphecmpfh.json"
+cat <<EOF >>~/.config/chromium/"External Extensions/ddkjiahejlhfcafbddmgiahcphecmpfh.json"
 {
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }
@@ -203,7 +206,7 @@ EOF
 display "tte rain" "Configuring KeePassXC"
 KEEPASS="/usr/local/bin/$PROJECTLOWER-keepass"
 if [ ! -f $KEEPASS ]; then
-	cat << EOF | sudo tee -a $KEEPASS
+  cat <<EOF | sudo tee -a $KEEPASS
 #!/bin/bash
 if ! pgrep keepassxc; then
 	/usr/bin/keepassxc &
@@ -211,18 +214,21 @@ else
 	/usr/bin/xdotool search --name ".*- KeePassXC" windowactivate
 fi
 EOF
-	sudo chmod +x $KEEPASS
+  sudo chmod +x $KEEPASS
 fi
 KEEPASSCONFIGDIR=~/.config/keepassxc
 mkdir -p $KEEPASSCONFIGDIR
 KEEPASSCONFIG=$KEEPASSCONFIGDIR/keepassxc.ini
 if [ ! -f $KEEPASSCONFIG ]; then
-cat << EOF >> $KEEPASSCONFIG
+  cat <<EOF >>$KEEPASSCONFIG
 [General]
 AutoTypeStartDelay=100
 ConfigVersion=2
 GlobalAutoTypeKey=80
 GlobalAutoTypeModifiers=100663296
+
+[GUI]
+ApplicationTheme=dark
 EOF
 fi
 
