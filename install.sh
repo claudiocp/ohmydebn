@@ -31,11 +31,6 @@ if ! grep -q "13 (trixie)" /etc/os-release; then
   exit 1
 fi
 
-if ! grep -q "debian.org" /etc/apt/sources.list; then
-  display "cat" "/etc/apt/sources.list does not have any debian.org references. Exiting!"
-  exit 1
-fi
-
 if [ "$UID" -eq 0 ]; then
 
   display "cat" "Looks like you're running as root.
@@ -59,16 +54,47 @@ Elegance in every step,
 Stars bow to its charm.
  -- AI, probably
 
-WARNING! This script is intended for a clean new installation!
-It will remove apps like FireFox, Thunderbird, and others!
+WARNING!
 
-WARNING! This script is totally unsupported!
+This script:
+- is intended for a clean new installation.
+- will remove apps like FireFox, Thunderbird, and others.
+- may make changes to your APT configuration.
+
+This script is totally unsupported. 
 If it breaks your system, you get to keep both pieces!
 
 Press Enter to continue or Ctrl-c to cancel."
 read input
 
 clear
+
+SOURCESLIST=/etc/apt/sources.list
+if ! grep -q "debian.org" $SOURCESLIST; then
+  display "cat" "$SOURCESLIST does not have any debian.org references."
+  if [ -f $SOURCESLIST ]; then
+	  echo "Renaming $SOURCESLIST to $SOURCESLIST.orig"
+	  sudo mv $SOURCESLIST $SOURCESLIST.orig
+  fi
+  DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
+  if [ ! -f $DEBIANSOURCES ]; then
+	  echo "$DEBIANSOURCES does not exist."
+	  echo "Creating $DEBIANSOURCES and adding the following:"
+	  cat << EOF | sudo tee -a $DEBIANSOURCES
+Types: deb
+URIs: https://deb.debian.org/debian
+Suites: trixie trixie-updates
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: https://security.debian.org/debian-security
+Suites: trixie-security
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF
+  fi
+fi
 
 display "cat" "First, this terminal needs more color!"
 sudo apt update
