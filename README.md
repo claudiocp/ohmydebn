@@ -82,22 +82,24 @@ bash install.sh
 
 | Hotkey | Function |
 |--------|----------|
-| Ctrl+Alt+Up | Workspace selection |
-| Ctrl+Alt+Down | Window selection |
-| Super+D | Show desktop |
 | Alt+Tab | Cycle through open windows |
 | Shift+Alt+Tab | Cycle backwards through open windows |
 | Alt+F2 | Run dialog |
 | Alt+Space | Activate window menu |
 | Alt+F7 | Move window |
+| Super+D | Show desktop |
 | Super+Left | Push window left |
 | Super+Right | Push window right |
 | Super+Up | Push window up |
 | Super+Down | Push window down |
-| Shift+Ctrl+Alt+Left | Move window to left workspace |
-| Shift+Ctrl+Alt+Right | Move window to right workspace |
+| Super+PageUp | Maximize window |
+| Super+PageDown | Minimize window |
+| Ctrl+Alt+Up | Workspace selection |
+| Ctrl+Alt+Down | Window selection |
 | Ctrl+Alt+Left | Switch to left workspace |
 | Ctrl+Alt+Right | Switch to right workspace |
+| Shift+Ctrl+Alt+Left | Move window to left workspace |
+| Shift+Ctrl+Alt+Right | Move window to right workspace |
 | Ctrl+Alt+L | Lock screen |
 | Ctrl+Alt+Del | Logout |
 | Ctrl+Alt+End | Shut down |
