@@ -105,10 +105,21 @@ bash install.sh
 
 | Hotkey | Function |
 |--------|----------|
-| Ctrl+Alt+T | Terminal |
-| Super+E | Home folder |
-| Ctrl+Alt+K | Password manager (KeePassXC) |
-| Ctrl+Alt+P | Password auto-type |
+| Super+B | Browser (Chromium) |
+| Super+Return | Terminal |
+| Super+F | File Manager |
+
+## Password Manager (KeePassXC)
+
+| Hotkey | Function |
+|--------|----------|
+| Ctrl+Shift+K | KeePassXC password manager |
+| Ctrl+Shift+P | Password auto-type |
+
+## Configuration
+
+| Hotkey | Function |
+|--------|----------|
 | Shift+Super+N | Network Manager |
 | Shift+Super+S | Sound menu |
 
