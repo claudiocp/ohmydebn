@@ -113,9 +113,9 @@ bash install.sh
 
 | Hotkey | Function |
 |--------|----------|
-| Ctrl+Shift+K | KeePassXC password manager |
+| Ctrl+Shift+K | Open or activate KeePassXC |
 | Ctrl+Shift+U | Open browser tab to selected URL |
-| Ctrl+Shift+P | Username and password auto-type |
+| Ctrl+Shift+P | Auto-type username and password for selected site |
 
 ## Configuration
 
