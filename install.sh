@@ -31,28 +31,6 @@ if ! grep -q "13 (trixie)" /etc/os-release; then
   exit 1
 fi
 
-if ! grep -q "debian.org" /etc/apt/sources.list; then
-  display "cat" "/etc/apt/sources.list does not have any debian.org references."
-  DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
-  if [ ! -f $DEBIANSOURCES ]; then
-	  echo "$DEBIANSOURCES does not exist."
-	  echo "Creating $DEBIANSOURCES and adding the following:"
-	  cat << EOF | sudo tee -a $DEBIANSOURCES
-Types: deb
-URIs: https://deb.debian.org/debian
-Suites: trixie trixie-updates
-Components: main non-free-firmware
-Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
-
-Types: deb
-URIs: https://security.debian.org/debian-security
-Suites: trixie-security
-Components: main non-free-firmware
-Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
-EOF
-  fi
-fi
-
 if [ "$UID" -eq 0 ]; then
 
   display "cat" "Looks like you're running as root.
@@ -86,6 +64,32 @@ Press Enter to continue or Ctrl-c to cancel."
 read input
 
 clear
+
+if ! grep -q "debian.org" /etc/apt/sources.list; then
+  display "cat" "/etc/apt/sources.list does not have any debian.org references."
+  DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
+  if [ ! -f $DEBIANSOURCES ]; then
+	  if [ -f /etc/apt/sources.list ]; then
+		  echo "Renaming /etc/apt/sources.list to /etc/apt/sources.list.orig"
+		  mv /etc/apt/sources.list /etc/apt/sources.list.orig
+	  fi
+	  echo "$DEBIANSOURCES does not exist."
+	  echo "Creating $DEBIANSOURCES and adding the following:"
+	  cat << EOF | sudo tee -a $DEBIANSOURCES
+Types: deb
+URIs: https://deb.debian.org/debian
+Suites: trixie trixie-updates
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: https://security.debian.org/debian-security
+Suites: trixie-security
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF
+  fi
+fi
 
 display "cat" "First, this terminal needs more color!"
 sudo apt update
