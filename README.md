@@ -109,12 +109,13 @@ bash install.sh
 | Super+Return | Terminal |
 | Super+F | File Manager |
 
-## Password Manager (KeePassXC)
+## Password and Bookmark Management (KeePassXC)
 
 | Hotkey | Function |
 |--------|----------|
 | Ctrl+Shift+K | KeePassXC password manager |
-| Ctrl+Shift+P | Password auto-type |
+| Ctrl+Shift+U | Open browser tab to selected URL |
+| Ctrl+Shift+P | Username and password auto-type |
 
 ## Configuration
 
