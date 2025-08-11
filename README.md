@@ -74,6 +74,70 @@ bash install.sh
 
 ![screenshot](screenshots/screenshot.png)
 
+# Hotkeys
+
+## Navigating
+
+| Hotkey | Function |
+|--------|----------|
+| Ctrl+Alt+Up | Workspace selection |
+| Ctrl+Alt+Down | Window selection |
+| Super+D | Show desktop |
+| Alt+Tab | Cycle through open windows |
+| Shift+Alt+Tab | Cycle backwards through open windows |
+| Alt+F2 | Run dialog |
+| Alt+Space | Activate window menu |
+| Alt+F7 | Move window |
+| Super+Left | Push window left |
+| Super+Right | Push window right |
+| Super+Up | Push window up |
+| Super+Down | Push window down |
+| Shift+Ctrl+Alt+Left | Move window to left workspace |
+| Shift+Ctrl+Alt+Right | Move window to right workspace |
+| Ctrl+Alt+Left | Switch to left workspace |
+| Ctrl+Alt+Right | Switch to right workspace |
+| Ctrl+Alt+Del | Logout |
+| Ctrl+Alt+End | Shut down |
+| Ctrl+Alt+L | Lock screen |
+| Ctrl+Alt+Escape | Restart Cinnamon desktop |
+| Shift+Super+N | Network Manager |
+| Shift+Super+S | Sound menu |
+
+## Launching apps
+
+| Hotkey | Function |
+|--------|----------|
+| Ctrl+Alt+T | Terminal |
+| Super+E | Home folder |
+| Ctrl+Alt+K | Password manager (KeePassXC) |
+| Ctrl+Alt+P | Password auto-type |
+
+## Capture
+
+| Hotkey | Function |
+|--------|----------|
+| Shift+Print | Take a screenshot of an area |
+| Shift+Ctrl+Print | Copy a screenshot of an area to clipboard |
+| Print | Take a screenshot |
+| Ctrl+Print | Copy a screenshot to clipboard |
+| Alt+Print | Take a screenshot of a window |
+| Ctrl+Alt+Print | Copy a screenshot of a window to clipboard |
+
+## Notifications
+
+| Hotkey | Function |
+|--------|----------|
+| Super+N | Show notifications |
+| Shift+Super+C | Clear notifications |
+
+## Neovim (with LazyVim)
+
+| Hotkey | Function |
+|--------|----------|
+| Space | Show command options |
+
+For the full list of all Neovim hotkeys configured by LazyVim, please see https://www.lazyvim.org/keymaps.
+
 # FAQ
 
 ## Is this related to Security Onion?
