@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit immediately if a command exits with a non-zero status
+set -e
+
 PROJECT="OhMyDebn"
 PROJECTLOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
 
@@ -25,6 +28,11 @@ EOF
 
 if ! grep -q "13 (trixie)" /etc/os-release; then
   display "cat" "This script is designed for Debian 13 Cinnamon. Exiting!"
+  exit 1
+fi
+
+if ! grep -q "debian.org" /etc/apt/sources.list; then
+  display "cat" "/etc/apt/sources.list does not have any debian.org references. Exiting!"
   exit 1
 fi
 
@@ -233,6 +241,11 @@ EOF
 fi
 
 display "tte rain" "Adding keyboard shortcuts"
+echo "Super+PgUp to maximize a window"
+gsettings set org.cinnamon.desktop.keybindings.wm maximize "['<Super>Page_Up']"
+echo "Super+PgDown to minimize a window"
+gsettings set org.cinnamon.desktop.keybindings.wm minimize "['<Super>Page_Down']"
+# To add a new custom keybinding, update the following line and then add a group of 3 custom-xyz lines below
 gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3']"
 echo "Ctrl+Shift+K for KeePassXC password manager"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
