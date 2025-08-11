@@ -217,7 +217,9 @@ EOF
 	gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
 	gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0']"
 fi
-KEEPASSCONFIG=~/.config/keepassxc/keepassxc.ini
+KEEPASSCONFIGDIR=~/.config/keepassxc
+mkdir -p $KEEPASSCONFIGDIR
+KEEPASSCONFIG=$KEEPASSCONFIGDIR/keepassxc.ini
 if [ ! -f $KEEPASSCONFIG ]; then
 cat << EOF >> $KEEPASSCONFIG
 [General]
