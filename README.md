@@ -11,12 +11,6 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
 *Stars bow to its charm.*  
   -- AI, probably
 
-# Examples
-
-Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallels with 3 VMs: one VM is my daily driver where I do most of my work and the other two are test VMs.
-
-![OhMyDebn Battle Station](images/ohmydebn-battle-station.png)
-
 # Motivation
 Every year or so, I review my technology stack to make sure I'm using the best tools for the job. Starting from first principles, I consider needs, desires, and workflows and ask myself a few questions: 
 - What is the best operating system for those needs, desires, and workflows? Is it Windows, macOS, Linux, or a combination thereof? Since discovering Linux in 1997, it has been my primary desktop environment for most of those years and it continues to be the environment where I'm most productive. 
@@ -40,6 +34,12 @@ Inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Om
 - Password management: [KeePassXC](https://keepassxc.org/)
 - Window automation: [xdotool](https://github.com/jordansissel/xdotool)
 - Eye candy: dazzling terminal effects via [tte](https://github.com/ChrisBuilds/terminaltexteffects) for demo scene nostalgia
+
+# Examples
+
+Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallels with 3 VMs: one VM is my daily driver where I do most of my work and the other two are test VMs.
+
+![OhMyDebn Battle Station](images/ohmydebn-battle-station.png)
 
 # Why Debian?
 I want to use the same base OS in a few different environments:
