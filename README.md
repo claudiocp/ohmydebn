@@ -2,7 +2,7 @@
 
 OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
 
-![screenshot](screenshots/screenshot.png)
+![OhMyDebn screenshot](images/screenshot.png)
 
 # Debonair Haiku
 
@@ -66,7 +66,7 @@ This script is totally unsupported. If it breaks your system, you get to keep bo
 
 # Installation
 1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/, choose the Live System boot option, double-click the Install icon on the desktop, and follow the prompts. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
-![screenshot](screenshots/debian-cinnamon.png)
+![debian-cinnamon screenshot](images/debian-cinnamon.png)
 2. In your Debian 13 Cinnamon desktop, download and review the script (don't just blindly pipe it into bash):
 ```
 curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/install.sh
@@ -77,7 +77,7 @@ bash install.sh
 ```
 4. Enjoy your new OhMyDebn desktop!
 
-![screenshot](screenshots/screenshot.png)
+![OhMyDebn screenshot](images/screenshot.png)
 
 # Hotkeys
 
