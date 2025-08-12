@@ -12,6 +12,7 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
   -- AI, probably
 
 # Motivation
+
 Every year or so, I review my technology stack to make sure I'm using the best tools for the job. Starting from first principles, I consider needs, desires, and workflows and ask myself a few questions: 
 - What is the best operating system for those needs, desires, and workflows? Is it Windows, macOS, Linux, or a combination thereof? Since discovering Linux in 1997, it has been my primary desktop environment for most of those years and it continues to be the environment where I'm most productive. 
 - What about apps? What are the best of breed productivity apps that help me get my job done with a minimum amount of fuss? 
@@ -19,9 +20,11 @@ Every year or so, I review my technology stack to make sure I'm using the best t
 - Finally, which Linux distro provides that desktop environment and those apps and runs on the hardware that I need it to?
 
 # Inspiration
+
 Inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Omarchy](https://omarchy.org/) setups, this is my own personal [omakase](https://en.wikipedia.org/wiki/Omakase) menu for my ideal desktop environment. It is a curated collection of comprehensive components that balances the ideals of productivity, flexibility, and beauty.
 
 # Ingredients
+
 - Base OS: [Debian](https://www.debian.org/) 13 for stability and compatibility
 - Desktop environment: [Cinnamon](https://github.com/linuxmint/Cinnamon) for a premium desktop experience
 - Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/)
@@ -36,6 +39,7 @@ Inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Om
 - Eye candy: dazzling terminal effects via [tte](https://github.com/ChrisBuilds/terminaltexteffects) for demo scene nostalgia
 
 # Why Debian?
+
 I want to use the same base OS in a few different environments:
 - bare metal and virtualized
 - virtualized via Proxmox, Parallels, and other hypervisors
@@ -43,12 +47,13 @@ I want to use the same base OS in a few different environments:
 - x86 and eventually ARM (this script has not yet been tested on ARM but it should be easy to make it work)
 
 # Why Debian Cinnamon?
+
 Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE)? Linux Mint and LMDE are great, but there are a few reasons why you might want to use Debian 13 Cinnamon instead:
 - Linux Mint is only available for x86 architecture. If you're on ARM, you need a distro compiled for ARM that can run Cinnamon (like Debian). Please note that this script has not yet been tested on ARM but it should be easy to make it work.
 - Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this script to turn it into OhMyDebn!
 - For fun and for science!
   
-# Examples
+# Gallery
 
 Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallels with 3 VMs: one VM is my daily driver where I do most of my work and the other two are test VMs.
 
@@ -59,6 +64,7 @@ Here's an old MacBook from 2014. Apple says it's EOL but OhMyDebn breathes new l
 ![OhMyDebn MacBook 2014](images/ohmydebn-macbook-2014.png)
 
 # Requirements
+
 OhMyDebn requires the following:
 - 2GB RAM minimum
 - 2 CPU cores minimum
@@ -67,6 +73,7 @@ OhMyDebn requires the following:
 - ability to connect to Github, package repos, and other Internet sites
   
 # Warnings
+
 This script:
 - is intended for a clean new installation
 - will remove apps like FireFox, Thunderbird, and others
@@ -75,6 +82,7 @@ This script:
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
 
 # Installation
+
 1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![debian-cinnamon screenshot](images/debian-cinnamon.png)
 2. In your Debian 13 Cinnamon desktop, download and review the script (don't just blindly pipe it into bash):
