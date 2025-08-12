@@ -71,7 +71,7 @@ This script:
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
 
 # Installation
-1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/, choose the Live System boot option, double-click the Install icon on the desktop, and follow the prompts. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
+1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![debian-cinnamon screenshot](images/debian-cinnamon.png)
 2. In your Debian 13 Cinnamon desktop, download and review the script (don't just blindly pipe it into bash):
 ```
@@ -129,6 +129,11 @@ bash install.sh
 | Ctrl+Shift+K | Open or activate KeePassXC |
 | Ctrl+Shift+U | Open browser tab to selected URL |
 | Ctrl+Shift+P | Auto-type username and password for selected site |
+| Ctrl+N | Create a new entry in KeePassXC |
+| Ctrl+E | Edit entry |
+| Ctrl+B | Copy username |
+| Ctrl+C | Copy password |
+| Ctrl+U | Copy URL |
 
 ## Configuration
 
