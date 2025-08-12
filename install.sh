@@ -128,12 +128,13 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
   sudo apt -y purge linuxmint-keyring
 fi
 
-if [ ! -f /usr/share/wallpapers/$PROJECTLOWER.jpg ]; then
+WALLPAPER=/usr/share/wallpapers/$PROJECTLOWER.png
+if [ ! -f $WALLPAPER ]; then
   display "tte rain" "Downloading catppuccin mountain landscape wallpaper"
-  sudo curl https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/salty_mountains.png -o /usr/share/wallpapers/$PROJECTLOWER.png
+  sudo curl https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/salty_mountains.png -o $WALLPAPER
 
   display "tte rain" "Changing wallpaper"
-  gsettings set org.cinnamon.desktop.background picture-uri "'file:///usr/share/wallpapers/$PROJECTLOWER.png'"
+  gsettings set org.cinnamon.desktop.background picture-uri "'file://$WALLPAPER'"
 fi
 
 display "tte rain" "Setting Cinnamon theme"
@@ -155,11 +156,15 @@ gsettings set org.cinnamon alttab-switcher-style "'coverflow'"
 display "tte rain" "Configuring alttab switcher for all workspaces"
 gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
 
-display "tte rain" "Changing grouped window list to window list"
-gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed "s/panel1:left:[0-9]*:grouped-window-list@cinnamon.org:[0-9]*/panel1:left:1:window-list@cinnamon.org:12/")"
+if gsettings get org.cinnamon enabled-applets | grep -q grouped-window-list; then
+	display "tte rain" "Changing grouped window list to window list"
+	gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed "s/panel1:left:[0-9]*:grouped-window-list@cinnamon.org:[0-9]*/panel1:left:1:window-list@cinnamon.org:12/")"
+fi
 
-display "tte rain" "Enabling workspace switcher"
-gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
+if ! gsettings get org.cinnamon enabled-applets |grep -q workspace-switcher; then
+	display "tte rain" "Enabling workspace switcher"
+	gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
+fi
 
 display "tte rain" "Installing some new apps"
 sudo apt update
