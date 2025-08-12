@@ -54,6 +54,10 @@ Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallel
 
 ![OhMyDebn Battle Station](images/ohmydebn-battle-station.png)
 
+Here's an old MacBook from 2014. Apple says it's EOL but OhMyDebn breathes new life into it!
+
+![OhMyDebn MacBook 2014](images/ohmydebn-macbook-2014.png)
+
 # Requirements
 OhMyDebn requires the following:
 - 2GB RAM minimum
