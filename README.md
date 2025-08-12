@@ -194,4 +194,4 @@ For the full list of all Neovim hotkeys configured by LazyVim, please see https:
 
 ## Is this related to Security Onion?
 
-No, this script is not related to [Security Onion](https://github.com/Security-Onion-Solutions/securityonion) and is not supported by [Security Onion Solutions](https://securityonion.com). OhMyDebn is intended to provide a general purpose desktop environment. Of course, you could use the included Chromium web browser to connect to your [Security Onion Console](https://docs.securityonion.net/en/2.4/soc.html)!
+OhMyDebn is not directly related to the [Security Onion](https://github.com/Security-Onion-Solutions/securityonion) project. OhMyDebn is sponsored by [Security Onion Solutions](https://securityonion.com); however, [Security Onion Solutions](https://securityonion.com) does not provide any technical support for it. OhMyDebn is intended to provide a general purpose desktop environment so, of course, you could use the included Chromium web browser to connect to your [Security Onion Console](https://docs.securityonion.net/en/2.4/soc.html)!
