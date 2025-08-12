@@ -96,7 +96,7 @@ EOF
   fi
 fi
 
-display "cat" "First, this terminal needs more color!"
+display "cat" "First, let's make sure some prerequisites are installed"
 sudo apt update
 sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ foreground-color "'#D3D7CF'"
@@ -294,6 +294,10 @@ echo "Super+F for file manager (nemo)"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ name "Nemo"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ command "/usr/bin/nemo"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ binding "['<Super>F']"
+if pgrep -x cinnamon; then
+	echo "Restarting desktop to make changes take effect"
+	/usr/bin/cinnamon --replace >/dev/null 2>&1 &
+fi
 
 display "tte rain" "Removing unnecessary packages"
 sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
