@@ -2,7 +2,7 @@
 
 OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
 
-![screenshot](screenshots/screenshot.png)
+![OhMyDebn screenshot](images/ohmydebn.png)
 
 # Debonair Haiku
 
@@ -48,6 +48,12 @@ Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE
 - Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this script to turn it into OhMyDebn!
 - For fun and for science!
   
+# Examples
+
+Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallels with 3 VMs: one VM is my daily driver where I do most of my work and the other two are test VMs.
+
+![OhMyDebn Battle Station](images/ohmydebn-battle-station.png)
+
 # Requirements
 OhMyDebn requires the following:
 - 2GB RAM minimum
@@ -65,8 +71,8 @@ This script:
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
 
 # Installation
-1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/, choose the Live System boot option, double-click the Install icon on the desktop, and follow the prompts. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
-![screenshot](screenshots/debian-cinnamon.png)
+1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
+![debian-cinnamon screenshot](images/debian-cinnamon.png)
 2. In your Debian 13 Cinnamon desktop, download and review the script (don't just blindly pipe it into bash):
 ```
 curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/install.sh
@@ -77,7 +83,7 @@ bash install.sh
 ```
 4. Enjoy your new OhMyDebn desktop!
 
-![screenshot](screenshots/screenshot.png)
+![OhMyDebn screenshot](images/ohmydebn.png)
 
 # Hotkeys
 
@@ -123,6 +129,11 @@ bash install.sh
 | Ctrl+Shift+K | Open or activate KeePassXC |
 | Ctrl+Shift+U | Open browser tab to selected URL |
 | Ctrl+Shift+P | Auto-type username and password for selected site |
+| Ctrl+N | Create a new entry in KeePassXC |
+| Ctrl+E | Edit entry |
+| Ctrl+B | Copy username |
+| Ctrl+C | Copy password |
+| Ctrl+U | Copy URL |
 
 ## Configuration
 
@@ -179,8 +190,6 @@ bash install.sh
 
 For the full list of all Neovim hotkeys configured by LazyVim, please see https://www.lazyvim.org/keymaps.
 
-# FAQ
+# Relationship to Security Onion project and Security Onion Solutions
 
-## Is this related to Security Onion?
-
-No, this script is not related to [Security Onion](https://github.com/Security-Onion-Solutions/securityonion) and is not supported by [Security Onion Solutions](https://securityonion.com). OhMyDebn is intended to provide a general purpose desktop environment. Of course, you could use the included Chromium web browser to connect to your [Security Onion Console](https://docs.securityonion.net/en/2.4/soc.html)!
+OhMyDebn is not directly related to the [Security Onion](https://github.com/Security-Onion-Solutions/securityonion) project. OhMyDebn is sponsored by [Security Onion Solutions](https://securityonion.com) (SOS); however, SOS does not provide any technical support for it. OhMyDebn is intended to provide a general purpose desktop environment so, of course, you could use the included Chromium web browser to connect to your [Security Onion Console](https://docs.securityonion.net/en/2.4/soc.html)!
