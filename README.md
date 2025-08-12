@@ -35,12 +35,6 @@ Inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Om
 - Window automation: [xdotool](https://github.com/jordansissel/xdotool)
 - Eye candy: dazzling terminal effects via [tte](https://github.com/ChrisBuilds/terminaltexteffects) for demo scene nostalgia
 
-# Examples
-
-Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallels with 3 VMs: one VM is my daily driver where I do most of my work and the other two are test VMs.
-
-![OhMyDebn Battle Station](images/ohmydebn-battle-station.png)
-
 # Why Debian?
 I want to use the same base OS in a few different environments:
 - bare metal and virtualized
@@ -54,6 +48,12 @@ Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE
 - Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this script to turn it into OhMyDebn!
 - For fun and for science!
   
+# Examples
+
+Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallels with 3 VMs: one VM is my daily driver where I do most of my work and the other two are test VMs.
+
+![OhMyDebn Battle Station](images/ohmydebn-battle-station.png)
+
 # Requirements
 OhMyDebn requires the following:
 - 2GB RAM minimum
