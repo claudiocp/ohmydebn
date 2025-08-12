@@ -2,7 +2,7 @@
 
 OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
 
-![OhMyDebn screenshot](images/screenshot.png)
+![OhMyDebn screenshot](images/ohmydebn.png)
 
 # Debonair Haiku
 
@@ -10,6 +10,12 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
 *Elegance in every step,*  
 *Stars bow to its charm.*  
   -- AI, probably
+
+# Examples
+
+Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallels with 3 VMs: one VM is my daily driver where I do most of my work and the other two are test VMs.
+
+![OhMyDebn Battle Station](images/ohmydebn-battle-station.png)
 
 # Motivation
 Every year or so, I review my technology stack to make sure I'm using the best tools for the job. Starting from first principles, I consider needs, desires, and workflows and ask myself a few questions: 
@@ -77,7 +83,7 @@ bash install.sh
 ```
 4. Enjoy your new OhMyDebn desktop!
 
-![OhMyDebn screenshot](images/screenshot.png)
+![OhMyDebn screenshot](images/ohmydebn.png)
 
 # Hotkeys
 
