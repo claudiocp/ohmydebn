@@ -3,7 +3,7 @@
 clear
 echo "OhMyDebn"
 
-sudo apt install git
+sudo apt -y install git
 
 # Use custom repo if specified, otherwise default to dougburks/ohmydebn
 OHMYDEBN_REPO="${OHMYDEBN_REPO:-dougburks/ohmydebn}"
