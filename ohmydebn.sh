@@ -219,6 +219,13 @@ shell = "/usr/bin/zsh"
 EOF
 fi
 
+OHMYZSH_DIR=~/.oh-my-zsh
+if [ ! -d $OHMYZSH_DIR ]; then
+  display "tte rain" "Installing Oh My Zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  mv ~/.zshrc ~/.zshrc.oh-my-zsh
+fi
+
 ZSH_CONFIG=~/.zshrc
 if [ ! -f $ZSH_CONFIG ]; then
   display "tte rain" "Configuring zsh"
@@ -229,12 +236,6 @@ STARSHIP_CONFIG=~/config/starship.toml
 if [ ! -f $STARSHIP_CONFIG ]; then
   display "tte rain" "Configuring starship prompt"
   cp ~/.local/share/$PROJECT_LOWER/config/starship.toml ~/.config/
-fi
-
-OHMYZSH_DIR=~/.oh-my-zsh
-if [ ! -d $OHMYZSH_DIR ]; then
-  display "tte rain" "Installing Oh My Zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 fi
 
 BTOP_CONFIG=~/.config/btop
