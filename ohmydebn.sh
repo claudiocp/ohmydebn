@@ -166,7 +166,7 @@ if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; th
   gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
 fi
 
-display "tte rain" "Installing some new apps"
+display "tte rain" "Installing new apps if unnecessary"
 sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep screenfetch starship vim wget xdotool zsh
 
@@ -277,7 +277,7 @@ sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
 sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
 
 KEEPASS_CONFIG_DIR=~/.config/keepassxc
-mkdir -p $KEEPASS_CONFI_GDIR
+mkdir -p $KEEPASS_CONFIG_DIR
 KEEPASS_CONFIG=$KEEPASS_CONFIG_DIR/keepassxc.ini
 if [ ! -f $KEEPASS_CONFIG ]; then
   display "tte rain" "Configuring KeePassXC"
@@ -321,7 +321,7 @@ if pgrep -x cinnamon; then
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
 fi
 
-display "tte rain" "Removing unnecessary packages"
+display "tte rain" "Removing any unnecessary packages"
 sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
 sudo apt -y autoremove
 
