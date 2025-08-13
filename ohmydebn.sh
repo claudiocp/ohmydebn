@@ -231,6 +231,12 @@ if [ ! -f $STARSHIP_CONFIG ]; then
   cp ~/.local/share/$PROJECT_LOWER/config/starship.toml ~/.config/
 fi
 
+OHMYZSH_DIR=~/.oh-my-zsh
+if [ ! -d $OHMYZSH_DIR ]; then
+  display "tte rain" "Installing Oh My Zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+fi
+
 BTOP_CONFIG=~/.config/btop
 mkdir -p $BTOP_CONFIG
 cd $BTOP_CONFIG
