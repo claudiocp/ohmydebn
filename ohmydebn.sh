@@ -128,14 +128,8 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
   sudo apt -y purge linuxmint-keyring
 fi
 
-WALLPAPER=/usr/share/wallpapers/$PROJECTLOWER.png
-if [ ! -f $WALLPAPER ]; then
-  display "tte rain" "Downloading catppuccin mountain landscape wallpaper"
-  sudo curl https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/main/landscapes/salty_mountains.png -o $WALLPAPER
-
-  display "tte rain" "Changing wallpaper"
-  gsettings set org.cinnamon.desktop.background picture-uri "'file://$WALLPAPER'"
-fi
+display "tte rain" "Changing wallpaper"
+gsettings set org.cinnamon.desktop.background picture-uri "'file://~/.local/share/ohmydebn/themes/ohmydebn/salty_mountains.png'"
 
 display "tte rain" "Setting Cinnamon theme"
 gsettings set org.cinnamon.theme name "'Mint-Y-Dark-Aqua'"
