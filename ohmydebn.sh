@@ -145,6 +145,9 @@ gsettings set org.cinnamon alttab-switcher-style "'coverflow'"
 display "tte rain" "Configuring alttab switcher for all workspaces"
 gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
 
+display "tte rain" "Configuring gedit"
+gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
+
 if gsettings get org.cinnamon enabled-applets | grep -q grouped-window-list; then
   display "tte rain" "Changing grouped window list to window list"
   gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed "s/panel1:left:[0-9]*:grouped-window-list@cinnamon.org:[0-9]*/panel1:left:1:window-list@cinnamon.org:12/")"
@@ -284,7 +287,7 @@ gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Pag
 echo "Super+PageDown to minimize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm minimize "['<Super>Page_Down']"
 # To add a new custom keybinding, update the following line and then add a group of 3 custom-xyz lines below
-gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3']"
+gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4']"
 echo "Ctrl+Shift+K for KeePassXC password manager"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/$PROJECT_LOWER-keepass"
@@ -301,6 +304,10 @@ echo "Super+F for file manager (nemo)"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ name "Nemo"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ command "/usr/bin/nemo"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ binding "['<Super>F']"
+echo "Super+R to run the application launcher (rofi)"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ name "Rofi"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ command "/usr/bin/rofi -show drun"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ binding "['<Super>R']"
 if pgrep -x cinnamon; then
   echo "Restarting desktop to make changes take effect"
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &

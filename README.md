@@ -133,8 +133,9 @@ bash install.sh
 | Hotkey | Function |
 |--------|----------|
 | Super+B | Browser (Chromium) |
-| Super+Return | Terminal |
-| Super+F | File Manager |
+| Super+Return | Terminal (Alacritty) |
+| Super+F | File Manager (Nemo) |
+| Super+R | Application Launcher (Rofi) |
 
 ## Password and Bookmark Management (KeePassXC)
 
