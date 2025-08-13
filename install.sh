@@ -3,7 +3,10 @@
 clear
 echo "OhMyDebn"
 
-sudo apt -y install git
+if ! dpkg -s "git" >/dev/null 2>&1; then
+  echo "Please wait while installing git..."
+  sudo apt -y install git
+fi
 
 # Use custom repo if specified, otherwise default to dougburks/ohmydebn
 OHMYDEBN_REPO="${OHMYDEBN_REPO:-dougburks/ohmydebn}"
