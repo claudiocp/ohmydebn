@@ -106,5 +106,8 @@ source $ZSH/oh-my-zsh.sh
 # Enable zsh-autosuggestions from debian package
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# Enable zsh-syntax-highlighting from debian package
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Enable starship prompt
 eval "$(starship init zsh)"
