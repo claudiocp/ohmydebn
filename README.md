@@ -55,6 +55,14 @@ Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE
 - Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this script to turn it into OhMyDebn!
 - For fun and for science!
   
+# Why "OhMyDebn"?
+
+There are several meanings for the name:
+- It is my "omakase" for Debian
+- Oh my! It's debonair!
+- Oh my Debian never looked this good!
+- Obligatory recursive acronym: OhMyDebn Heals My Yearning for a Desktop Environment Base Now!
+
 # Gallery
 
 Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallels with 3 VMs: one VM is my daily driver where I do most of my work and the other two are test VMs.
