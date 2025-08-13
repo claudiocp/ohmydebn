@@ -58,8 +58,6 @@ If it breaks your system, you get to keep both pieces!
 Press Enter to continue or Ctrl-c to cancel."
 read input
 
-clear
-
 SOURCESLIST=/etc/apt/sources.list
 if ! grep -q "debian.org" $SOURCESLIST; then
   display "cat" "$SOURCESLIST does not have any debian.org references."
