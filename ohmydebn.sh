@@ -44,7 +44,6 @@ or Ctrl-c to cancel."
   read input
 fi
 
-clear
 display "cat" "WARNING!
 
 This script:
