@@ -45,9 +45,7 @@ or Ctrl-c to cancel."
 fi
 
 clear
-display "cat" "
-
-WARNING!
+display "cat" "WARNING!
 
 This script:
 - is intended for a clean new installation.
@@ -89,7 +87,7 @@ EOF
   fi
 fi
 
-display "cat" "First, let's make sure some prerequisites are installed"
+display "cat" "Installing text effects"
 sudo apt update
 sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ foreground-color "'#D3D7CF'"
@@ -205,7 +203,7 @@ EOF
 fi
 
 if ! grep -q "\[terminal\]" $ALACRITTY_CONFIG; then
-  display "tte rain" "Configuring alacritty to use zsh"
+  display "tte rain" "Configuring alacritty terminal to use Zsh"
   cat <<EOF >>$ALACRITTY_CONFIG
 [terminal]
 shell = "/usr/bin/zsh"
@@ -214,14 +212,14 @@ fi
 
 OHMYZSH_DIR=~/.oh-my-zsh
 if [ ! -d $OHMYZSH_DIR ]; then
-  display "tte rain" "Installing Oh My Zsh"
+  display "tte rain" "Installing Oh My Zsh framework for Zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   mv ~/.zshrc ~/.zshrc.oh-my-zsh
 fi
 
 ZSH_CONFIG=~/.zshrc
 if [ ! -f $ZSH_CONFIG ]; then
-  display "tte rain" "Configuring zsh"
+  display "tte rain" "Configuring Zsh"
   cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
 fi
 

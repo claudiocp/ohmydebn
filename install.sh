@@ -17,7 +17,7 @@ Stars bow to its charm.
 EOF
 
 if ! dpkg -s "git" >/dev/null 2>&1; then
-  echo "We need to install git so that we can clone the repo."
+  echo "We need to install git so that we can clone the repo and continue the installation."
   echo
   sudo apt -y install git
 fi
