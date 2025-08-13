@@ -30,13 +30,15 @@ Inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Om
 - Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/)
 - Wallpaper: beautiful [Catppuccin mountain landscape](https://github.com/zhichaoh/catppuccin-wallpapers/blob/main/landscapes/salty_mountains.png)
 - Terminal emulator: [alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
+- Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
+- Prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
 - Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/) and [Catppuccin theme](https://github.com/catppuccin/nvim)
 - Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
 - System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Web browser: [Chromium](https://www.chromium.org/Home/) with uBlock Origin Lite content blocker
 - Password management: [KeePassXC](https://keepassxc.org/)
 - Window automation: [xdotool](https://github.com/jordansissel/xdotool)
-- Eye candy: dazzling terminal effects via [tte](https://github.com/ChrisBuilds/terminaltexteffects) for demo scene nostalgia
+- Eye candy: dazzling terminal effects via [tte](https://github.com/ChrisBuilds/terminaltexteffects) for demoscene nostalgia
 
 # Why Debian?
 
@@ -53,6 +55,14 @@ Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE
 - Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this script to turn it into OhMyDebn!
 - For fun and for science!
   
+# Why "OhMyDebn"?
+
+There are several meanings for the name:
+- It is my "omakase" for Debian
+- Oh my! It's debonair!
+- Oh my Debian never looked this good!
+- Obligatory recursive acronym: OhMyDebn Heals My Yearning for a Desktop Environment Base Now!
+
 # Gallery
 
 Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallels with 3 VMs: one VM is my daily driver where I do most of my work and the other two are test VMs.
@@ -99,28 +109,40 @@ bash install.sh
 
 # Hotkeys
 
-## Navigating
+## Windows
 
 | Hotkey | Function |
 |--------|----------|
 | Alt+Tab | Cycle through open windows |
 | Shift+Alt+Tab | Cycle backwards through open windows |
-| Alt+F2 | Run dialog |
 | Alt+Space | Activate window menu |
 | Alt+F7 | Move window |
-| Super+D | Show desktop |
+| Super+D | Show desktop (minimize all windows) |
 | Super+Left | Push window left |
 | Super+Right | Push window right |
 | Super+Up | Push window up |
 | Super+Down | Push window down |
 | Super+PageUp | Maximize window |
 | Super+PageDown | Minimize window |
-| Ctrl+Alt+Up | Workspace selection |
 | Ctrl+Alt+Down | Window selection |
+
+## Workspaces
+
+| Hotkey | Function |
+|--------|----------|
+| Super+1 | Switch to workspace 1 |
+| Super+2 | Switch to workspace 2 |
+| Super+3 | Switch to workspace 3 |
+| Super+4 | Switch to workspace 4 |
+| Ctrl+Alt+Up | Workspace selection |
 | Ctrl+Alt+Left | Switch to left workspace |
 | Ctrl+Alt+Right | Switch to right workspace |
 | Shift+Ctrl+Alt+Left | Move window to left workspace |
 | Shift+Ctrl+Alt+Right | Move window to right workspace |
+
+## System
+
+| Hotkey | Function |
 | Ctrl+Alt+L | Lock screen |
 | Ctrl+Alt+Del | Logout |
 | Ctrl+Alt+End | Shut down |
@@ -131,8 +153,10 @@ bash install.sh
 | Hotkey | Function |
 |--------|----------|
 | Super+B | Browser (Chromium) |
-| Super+Return | Terminal |
-| Super+F | File Manager |
+| Super+Return | Terminal (Alacritty) |
+| Super+F | File Manager (Nemo) |
+| Super+R | Application Launcher (Rofi) |
+| Alt+F2 | Run dialog |
 
 ## Password and Bookmark Management (KeePassXC)
 
