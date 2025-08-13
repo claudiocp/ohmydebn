@@ -1,10 +1,13 @@
 #!/bin/bash
 
 clear
+echo
 echo "OhMyDebn"
+echo
 
 if ! dpkg -s "git" >/dev/null 2>&1; then
   echo "Please wait while installing git..."
+  echo
   sudo apt -y install git
 fi
 
