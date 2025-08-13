@@ -4,7 +4,7 @@
 set -e
 
 PROJECT="OhMyDebn"
-PROJECTLOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
+PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
 
 function logo {
   toilet -f mono12 "$PROJECT" | tte rain
@@ -129,7 +129,12 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
 fi
 
 display "tte rain" "Changing wallpaper"
-gsettings set org.cinnamon.desktop.background picture-uri "'file://~/.local/share/ohmydebn/themes/ohmydebn/salty_mountains.png'"
+mkdir -p ~/.config/$PROJECT_LOWER/themes/
+ln -sf ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER
+ln -sf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/themes/current
+ln -sf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountains.png ~/.config/$PROJECT_LOWER/current/background
+BACKGROUND=~/.config/$PROJECT_LOWER/current/background
+gsettings set org.cinnamon.desktop.background picture-uri "'file://$BACKGROUND'"
 
 display "tte rain" "Setting Cinnamon theme"
 gsettings set org.cinnamon.theme name "'Mint-Y-Dark-Aqua'"
@@ -216,13 +221,13 @@ fi
 ZSH_CONFIG=~/.zshrc
 if [ ! -f $ZSH_CONFIG ]; then
   display "tte rain" "Configuring zsh"
-  cp ~/.local/share/ohmydebn/config/.zshrc ~/
+  cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
 fi
 
 STARSHIP_CONFIG=~/config/starship.toml
 if [ ! -f $STARSHIP_CONFIG ]; then
   display "tte rain" "Configuring starship"
-  cp ~/.local/share/ohmydebn/config/starship.toml ~/.config/
+  cp ~/.local/share/$PROJECT_LOWER/config/starship.toml ~/.config/
 fi
 
 BTOP_CONFIG=~/.config/btop
@@ -266,7 +271,7 @@ if [ ! -f "$UBLOCK_EXTENSION" ]; then
 EOF
 fi
 
-KEEPASS="/usr/local/bin/$PROJECTLOWER-keepass"
+KEEPASS="/usr/local/bin/$PROJECT_LOWER-keepass"
 if [ ! -f $KEEPASS ]; then
   display "tte rain" "Configuring KeePassXC"
   cat <<EOF | sudo tee -a $KEEPASS
@@ -305,7 +310,7 @@ gsettings set org.cinnamon.desktop.keybindings.wm minimize "['<Super>Page_Down']
 gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3']"
 echo "Ctrl+Shift+K for KeePassXC password manager"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/$PROJECTLOWER-keepass"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/$PROJECT_LOWER-keepass"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
 echo "Super+B for browser"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ name "Chromium"
