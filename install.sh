@@ -212,10 +212,23 @@ EOF
 fi
 
 if ! grep -q "[terminal]" $ALACRITTY_CONFIG; then
-	cat <<EOF >> $ALACRITTY_CONFIG
+  display "tte rain" "Configuring alacritty to use zsh"
+  cat <<EOF >> $ALACRITTY_CONFIG
 [terminal]
 shell = "/usr/bin/zsh"
 EOF
+fi
+
+ZSH_CONFIG=~/.zshrc
+if [ ! -f $ZSH_CONFIG]; then
+  display "tte rain" "Configuring zsh"
+	curl -LO --output-dir ~/ https://github.com/dougburks/ohmydebn/raw/main/config/.zshrc
+fi
+
+STARSHIP_CONFIG=~/config/starship.toml
+if [ ! -f $STARSHIP_CONFIG]; then
+  display "tte rain" "Configuring starship"
+	curl -LO --output-dir ~/.config https://github.com/dougburks/ohmydebn/raw/main/config/starship.toml
 fi
 
 BTOPCONFIG=~/.config/btop
