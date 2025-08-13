@@ -12,4 +12,5 @@ function set_win_title {
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd set_win_title
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(starship init zsh)"
