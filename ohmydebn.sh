@@ -85,7 +85,7 @@ EOF
   fi
 fi
 
-display "cat" "Installing text effects"
+display "cat" "Installing text effects for demoscene nostalgia"
 sudo apt update
 sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ foreground-color "'#D3D7CF'"
