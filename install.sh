@@ -168,26 +168,31 @@ fi
 
 display "tte rain" "Installing some new apps"
 sudo apt update
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep screenfetch vim wget xdotool
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep screenfetch starship vim wget xdotool zsh
 
 display "tte rain" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
 
-display "tte rain" "Configuring alacritty with Caskyadia Nerd Font"
 if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
-  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaMono.zip
-  unzip CascadiaMono.zip -d ~/.local/share/fonts
-  rm -f CascadiaMono.zip
-  fc-cache -fv
+	display "tte rain" "Configuring alacritty with Caskyadia Nerd Font"
+	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaMono.zip
+	unzip CascadiaMono.zip -d ~/.local/share/fonts
+	rm -f CascadiaMono.zip
+	fc-cache -fv
 fi
 
-display "tte rain" "Configuring alacritty terminal editor with catppuccin theme"
-mkdir -p ~/.config/alacritty/
-if [ ! -f ~/.config/alacritty/catpuccin-mocha.toml ]; then
-  curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
+ALACRITTY_DIR=~/.config/alacritty
+mkdir -p $ALACRITTY_DIR
+ALACRITTY_THEME=$ALACRITTY_DIR/catppuccin-mocha.toml
+if [ ! -f $ALACRITTY_THEME ]; then
+	display "tte rain" "Downloading catppuccin theme for alacritty terminal"
+	curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 fi
-if [ ! -f ~/.config/alacritty/alacritty.toml ]; then
-  cat <<EOF >>~/.config/alacritty/alacritty.toml
+
+ALACRITTY_CONFIG=$ALACRITTY_DIR/alacritty.toml
+if [ ! -f $ALACRITTY_CONFIG ]; then
+	display "tte rain" "Configuring alacritty terminal to use catppuccin theme"
+	cat <<EOF >> $ALACRITTY_CONFIG
 [env]
 TERM = "xterm-256color"
 [window]
@@ -206,27 +211,35 @@ import = [
 EOF
 fi
 
-display "tte rain" "Configuring btop with catppuccin theme"
+if ! grep -q "[terminal]" $ALACRITTY_CONFIG; then
+	cat <<EOF >> $ALACRITTY_CONFIG
+[terminal]
+shell = "/usr/bin/zsh"
+EOF
+fi
+
 BTOPCONFIG=~/.config/btop
 mkdir -p $BTOPCONFIG
 cd $BTOPCONFIG
 if [ ! -f themes.tar.gz ]; then
+  display "tte rain" "Configuring btop with catppuccin theme"
   curl -LO https://github.com/catppuccin/btop/releases/download/1.0.0/themes.tar.gz
   tar zxvf themes.tar.gz
   echo "color_theme = \"$BTOPCONFIG/themes/catppuccin_mocha.theme\"" >btop.conf
 fi
 cd - >/dev/null
 
-display "tte rain" "Configuring neovim with lazyvim"
-if [ ! -d ~/.config/nvim ]; then
-  git clone https://github.com/LazyVim/starter ~/.config/nvim
-  rm -rf ~/.config/nvim/.git
+NVIM_CONFIG=~/.config/nvim
+if [ ! -d $NVIM_CONFIG ]; then
+  display "tte rain" "Configuring neovim with lazyvim"
+  git clone https://github.com/LazyVim/starter $NVIM_CONFIG
+  rm -rf $NVIM_CONFIG/.git
 fi
 
-display "tte rain" "Configuring neovim with catppuccin theme"
 NVIMPLUGINS=~/.config/nvim/lua/plugins
 mkdir -p $NVIMPLUGINS
 if [ ! -f $NVIMPLUGINS/core.lua ]; then
+  display "tte rain" "Configuring neovim with catppuccin theme"
   cat <<EOF >>~/.config/nvim/lua/plugins/core.lua
 return {
   { "LazyVim/LazyVim", opts = { colorscheme = "catppuccin" } }
@@ -234,17 +247,20 @@ return {
 EOF
 fi
 
-display "tte rain" "Configuring chromium"
-mkdir -p ~/.config/chromium/"External Extensions"
-cat <<EOF >>~/.config/chromium/"External Extensions/ddkjiahejlhfcafbddmgiahcphecmpfh.json"
+CHROMIUM_EXTENSIONS=~/.config/chromium/"External Extensions"
+mkdir -p $CHROMIUM_EXTENSIONS
+UBLOCK_EXTENSION=$CHROMIUM_EXTENSIONS/ddkjiahejlhfcafbddmgiahcphecmpfh.json
+if [ ! -f $UBLOCK_EXTENSION ]; then
+	display "tte rain" "Configuring chromium"
+	cat <<EOF >> $UBLOCK_EXTENSION
 {
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }
 EOF
 
-display "tte rain" "Configuring KeePassXC"
 KEEPASS="/usr/local/bin/$PROJECTLOWER-keepass"
 if [ ! -f $KEEPASS ]; then
+  display "tte rain" "Configuring KeePassXC"
   cat <<EOF | sudo tee -a $KEEPASS
 #!/bin/bash
 if ! pgrep keepassxc; then
@@ -255,6 +271,7 @@ fi
 EOF
   sudo chmod +x $KEEPASS
 fi
+
 KEEPASSCONFIGDIR=~/.config/keepassxc
 mkdir -p $KEEPASSCONFIGDIR
 KEEPASSCONFIG=$KEEPASSCONFIGDIR/keepassxc.ini
