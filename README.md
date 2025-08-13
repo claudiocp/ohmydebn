@@ -109,28 +109,40 @@ bash install.sh
 
 # Hotkeys
 
-## Navigating
+## Windows
 
 | Hotkey | Function |
 |--------|----------|
 | Alt+Tab | Cycle through open windows |
 | Shift+Alt+Tab | Cycle backwards through open windows |
-| Alt+F2 | Run dialog |
 | Alt+Space | Activate window menu |
 | Alt+F7 | Move window |
-| Super+D | Show desktop |
+| Super+D | Show desktop (minimize all windows) |
 | Super+Left | Push window left |
 | Super+Right | Push window right |
 | Super+Up | Push window up |
 | Super+Down | Push window down |
 | Super+PageUp | Maximize window |
 | Super+PageDown | Minimize window |
-| Ctrl+Alt+Up | Workspace selection |
 | Ctrl+Alt+Down | Window selection |
+
+## Workspaces
+
+| Hotkey | Function |
+|--------|----------|
+| Super+1 | Switch to workspace 1 |
+| Super+2 | Switch to workspace 2 |
+| Super+3 | Switch to workspace 3 |
+| Super+4 | Switch to workspace 4 |
+| Ctrl+Alt+Up | Workspace selection |
 | Ctrl+Alt+Left | Switch to left workspace |
 | Ctrl+Alt+Right | Switch to right workspace |
 | Shift+Ctrl+Alt+Left | Move window to left workspace |
 | Shift+Ctrl+Alt+Right | Move window to right workspace |
+
+## System
+
+| Hotkey | Function |
 | Ctrl+Alt+L | Lock screen |
 | Ctrl+Alt+Del | Logout |
 | Ctrl+Alt+End | Shut down |
@@ -144,6 +156,7 @@ bash install.sh
 | Super+Return | Terminal (Alacritty) |
 | Super+F | File Manager (Nemo) |
 | Super+R | Application Launcher (Rofi) |
+| Alt+F2 | Run dialog |
 
 ## Password and Bookmark Management (KeePassXC)
 
