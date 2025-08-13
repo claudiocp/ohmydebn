@@ -143,6 +143,7 @@ bash install.sh
 ## System
 
 | Hotkey | Function |
+|--------|----------|
 | Ctrl+Alt+L | Lock screen |
 | Ctrl+Alt+Del | Logout |
 | Ctrl+Alt+End | Shut down |
