@@ -277,20 +277,9 @@ sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
 sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
 
 KEEPASS_CONFIG_DIR=~/.config/keepassxc
-mkdir -p $KEEPASS_CONFIG_DIR
-KEEPASS_CONFIG=$KEEPASS_CONFIG_DIR/keepassxc.ini
-if [ ! -f $KEEPASS_CONFIG ]; then
+if [ ! -d $KEEPASS_CONFIG_DIR ]; then
   display "tte rain" "Configuring KeePassXC"
-  cat <<EOF >>$KEEPASS_CONFIG
-[General]
-AutoTypeStartDelay=100
-ConfigVersion=2
-GlobalAutoTypeKey=80
-GlobalAutoTypeModifiers=100663296
-
-[GUI]
-ApplicationTheme=dark
-EOF
+  cp -av ~/.local/share/$PROJECT_LOWER/config/keepassxc ~/.config/
 fi
 
 display "tte rain" "Adding keyboard shortcuts"
@@ -325,7 +314,7 @@ display "tte rain" "Removing any unnecessary packages"
 sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
 sudo apt -y autoremove
 
-display "tte rain" "Installing all updates"
+display "tte rain" "Installing any available updates"
 sudo apt -y dist-upgrade
 
 display "tte rain" "Installation complete!"
