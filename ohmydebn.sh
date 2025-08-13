@@ -211,7 +211,7 @@ import = [
 EOF
 fi
 
-if ! grep -q "[terminal]" $ALACRITTY_CONFIG; then
+if ! grep -q "\[terminal\]" $ALACRITTY_CONFIG; then
   display "tte rain" "Configuring alacritty to use zsh"
   cat <<EOF >>$ALACRITTY_CONFIG
 [terminal]
@@ -222,23 +222,23 @@ fi
 ZSH_CONFIG=~/.zshrc
 if [ ! -f $ZSH_CONFIG ]; then
   display "tte rain" "Configuring zsh"
-  curl -LO --output-dir ~/ https://github.com/dougburks/ohmydebn/raw/main/config/.zshrc
+  cp ~/.local/share/ohmydebn/config/.zshrc ~/
 fi
 
 STARSHIP_CONFIG=~/config/starship.toml
 if [ ! -f $STARSHIP_CONFIG ]; then
   display "tte rain" "Configuring starship"
-  curl -LO --output-dir ~/.config https://github.com/dougburks/ohmydebn/raw/main/config/starship.toml
+  cp ~/.local/share/ohmydebn/config/starship.toml ~/.config/
 fi
 
-BTOPCONFIG=~/.config/btop
-mkdir -p $BTOPCONFIG
-cd $BTOPCONFIG
+BTOP_CONFIG=~/.config/btop
+mkdir -p $BTOP_CONFIG
+cd $BTOP_CONFIG
 if [ ! -f themes.tar.gz ]; then
   display "tte rain" "Configuring btop with catppuccin theme"
   curl -LO https://github.com/catppuccin/btop/releases/download/1.0.0/themes.tar.gz
   tar zxvf themes.tar.gz
-  echo "color_theme = \"$BTOPCONFIG/themes/catppuccin_mocha.theme\"" >btop.conf
+  echo "color_theme = \"$BTOP_CONFIG/themes/catppuccin_mocha.theme\"" >btop.conf
 fi
 cd - >/dev/null
 
@@ -265,7 +265,7 @@ mkdir -p "$CHROMIUM_EXTENSIONS"
 UBLOCK_EXTENSION="$CHROMIUM_EXTENSIONS/ddkjiahejlhfcafbddmgiahcphecmpfh.json"
 if [ ! -f "$UBLOCK_EXTENSION" ]; then
   display "tte rain" "Configuring chromium"
-  cat <<EOF >> "$UBLOCK_EXTENSION"
+  cat <<EOF >>"$UBLOCK_EXTENSION"
 {
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }
