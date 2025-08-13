@@ -1,0 +1,6 @@
+#!/bin/bash
+if ! pgrep keepassxc; then
+	/usr/bin/keepassxc &
+else
+	/usr/bin/xdotool search --name ".*- KeePassXC" windowactivate
+fi

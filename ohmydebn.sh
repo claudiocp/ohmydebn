@@ -272,25 +272,16 @@ if [ ! -f "$UBLOCK_EXTENSION" ]; then
 EOF
 fi
 
-KEEPASS="/usr/local/bin/$PROJECT_LOWER-keepass"
-if [ ! -f $KEEPASS ]; then
-  display "tte rain" "Configuring KeePassXC"
-  cat <<EOF | sudo tee -a $KEEPASS
-#!/bin/bash
-if ! pgrep keepassxc; then
-	/usr/bin/keepassxc &
-else
-	/usr/bin/xdotool search --name ".*- KeePassXC" windowactivate
-fi
-EOF
-  sudo chmod +x $KEEPASS
-fi
+display "tte rain" "Copying binaries to /usr/local/bin/"
+sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
+sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
 
-KEEPASSCONFIGDIR=~/.config/keepassxc
-mkdir -p $KEEPASSCONFIGDIR
-KEEPASSCONFIG=$KEEPASSCONFIGDIR/keepassxc.ini
-if [ ! -f $KEEPASSCONFIG ]; then
-  cat <<EOF >>$KEEPASSCONFIG
+KEEPASS_CONFIG_DIR=~/.config/keepassxc
+mkdir -p $KEEPASS_CONFI_GDIR
+KEEPASS_CONFIG=$KEEPASS_CONFIG_DIR/keepassxc.ini
+if [ ! -f $KEEPASS_CONFIG ]; then
+  display "tte rain" "Configuring KeePassXC"
+  cat <<EOF >>$KEEPASS_CONFIG
 [General]
 AutoTypeStartDelay=100
 ConfigVersion=2
