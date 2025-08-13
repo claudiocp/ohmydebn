@@ -129,6 +129,7 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
 fi
 
 display "tte rain" "Changing wallpaper"
+mkdir -p ~/.config/$PROJECT_LOWER/current/
 mkdir -p ~/.config/$PROJECT_LOWER/themes/
 ln -sf ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER
 ln -sf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/themes/current
@@ -226,7 +227,7 @@ fi
 
 STARSHIP_CONFIG=~/config/starship.toml
 if [ ! -f $STARSHIP_CONFIG ]; then
-  display "tte rain" "Configuring starship"
+  display "tte rain" "Configuring starship prompt"
   cp ~/.local/share/$PROJECT_LOWER/config/starship.toml ~/.config/
 fi
 
