@@ -45,14 +45,7 @@ or Ctrl-c to cancel."
 fi
 
 clear
-display "cat" "Welcome to $PROJECT!
-
-$PROJECT is a debonair Debian + Cinnamon setup inspired by Omarchy.
-
-Debonair strides bold,
-Elegance in every step,
-Stars bow to its charm.
- -- AI, probably
+display "cat" "
 
 WARNING!
 

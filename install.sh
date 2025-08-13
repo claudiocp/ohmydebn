@@ -1,12 +1,23 @@
 #!/bin/bash
 
+PROJECT="OhMyDebn"
+
 clear
-echo
-echo "OhMyDebn"
-echo
+
+cat <<EOF
+Welcome to $PROJECT!
+
+$PROJECT is a debonair Debian + Cinnamon setup inspired by Omarchy.
+
+Debonair strides bold,
+Elegance in every step,
+Stars bow to its charm.
+ -- AI, probably
+
+EOF
 
 if ! dpkg -s "git" >/dev/null 2>&1; then
-  echo "Please wait while installing git..."
+  echo "We need to install git so that we can clone the repo."
   echo
   sudo apt -y install git
 fi
