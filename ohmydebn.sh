@@ -261,11 +261,11 @@ EOF
 fi
 
 CHROMIUM_EXTENSIONS=~/.config/chromium/"External Extensions"
-mkdir -p $CHROMIUM_EXTENSIONS
-UBLOCK_EXTENSION=$CHROMIUM_EXTENSIONS/ddkjiahejlhfcafbddmgiahcphecmpfh.json
-if [ ! -f $UBLOCK_EXTENSION ]; then
+mkdir -p "$CHROMIUM_EXTENSIONS"
+UBLOCK_EXTENSION="$CHROMIUM_EXTENSIONS/ddkjiahejlhfcafbddmgiahcphecmpfh.json"
+if [ ! -f "$UBLOCK_EXTENSION" ]; then
   display "tte rain" "Configuring chromium"
-  cat <<EOF >>$UBLOCK_EXTENSION
+  cat <<EOF >> "$UBLOCK_EXTENSION"
 {
   "external_update_url": "https://clients2.google.com/service/update2/crx"
 }
