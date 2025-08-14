@@ -123,6 +123,7 @@ Pressing Super + K will open Chromium and navigate to this list of keyboard bind
 | Shift+Alt+Tab | Cycle backwards through open windows |
 | Alt+Space | Activate window menu |
 | Alt+F7 | Move window |
+| Super+W | Close window |
 | Super+D | Show desktop (minimize all windows) |
 | Super+Left | Push window left |
 | Super+Right | Push window right |
