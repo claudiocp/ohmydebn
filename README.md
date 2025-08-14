@@ -23,9 +23,7 @@ Since then, I've used just about every Linux distro out there. Every year or so,
 - What is the Linux desktop environment that allows me to work with all of those applications at the same time most efficiently?
 - Finally, which Linux distro provides that desktop environment and those apps and runs on the hardware that I need it to?
 
-# Inspiration
-
-Inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Omarchy](https://omarchy.org/) setups, this is my own personal [omakase](https://en.wikipedia.org/wiki/Omakase) menu for my ideal desktop environment. It is a curated collection of comprehensive components that balances the ideals of productivity, flexibility, and beauty.
+I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Omarchy](https://omarchy.org/) setups to not only build my ideal desktop environment but publish it here so that others can benefit as well. This is my own personal [omakase](https://en.wikipedia.org/wiki/Omakase) menu, a curated collection of comprehensive components that balances the ideals of productivity, flexibility, and beauty while offering a modern command line experience and some fun 8-bit nostalgia as well.
 
 # Ingredients
 
