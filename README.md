@@ -159,7 +159,7 @@ bash install.sh
 | Super+B | Browser (Chromium) |
 | Super+Return | Terminal (Alacritty) |
 | Super+F | File Manager (Nemo) |
-| Super+R | Application Launcher (Rofi) |
+| Super+Space | Application Launcher (Rofi) |
 | Alt+F2 | Run dialog |
 
 ## Password and Bookmark Management (KeePassXC)
