@@ -13,15 +13,17 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
 
 # Motivation
 
-Every year or so, I review my technology stack to make sure I'm using the best tools for the job. Starting from first principles, I consider needs, desires, and workflows and ask myself a few questions: 
-- What is the best operating system for those needs, desires, and workflows? Is it Windows, macOS, Linux, or a combination thereof? Since discovering Linux in 1997, it has been my primary desktop environment for most of those years and it continues to be the environment where I'm most productive. 
+Growing up, my dad introduced me to computers through his [Timex Sinclair](https://en.wikipedia.org/wiki/Timex_Sinclair) and a [Magnavox Odyssey 2](https://en.wikipedia.org/wiki/Magnavox_Odyssey_2). In 1984, I got a [Commodore 16](https://en.wikipedia.org/wiki/Commodore_16) for Christmas and, of course, the very first thing I typed was `PRINT "DOUG IS COOL"`. The first real program I wrote mapped the F1 key to do the same thing. So I've been using the command line and hotkeys for the past 40 years!
+
+Over the years, I transitioned from the Commodore 16 to the Commodore 128 and then into the PC world starting with an [Epson Apex](https://en.wikipedia.org/wiki/Epson_Equity). I had several different PC systems running [MS-DOS](https://en.wikipedia.org/wiki/MS-DOS) and [Windows 3.1](https://en.wikipedia.org/wiki/Windows_3.1). In December of 1997, I discovered Linux and my entire career changed!
+
+Since then, I've used just about every Linux distro out there. Every year or so, I review my technology stack to make sure I'm using the best tools for the job. Starting from [first principles](https://en.wikipedia.org/wiki/First_principle), I consider needs, desires, and workflows and ask myself a few questions: 
+- What is the best operating system for those needs, desires, and workflows? Is it Windows, macOS, Linux, or a combination thereof?
 - What about apps? What are the best of breed productivity apps that help me get my job done with a minimum amount of fuss? 
 - What is the Linux desktop environment that allows me to work with all of those applications at the same time most efficiently?
 - Finally, which Linux distro provides that desktop environment and those apps and runs on the hardware that I need it to?
 
-# Inspiration
-
-Inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Omarchy](https://omarchy.org/) setups, this is my own personal [omakase](https://en.wikipedia.org/wiki/Omakase) menu for my ideal desktop environment. It is a curated collection of comprehensive components that balances the ideals of productivity, flexibility, and beauty.
+I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Omarchy](https://omarchy.org/) setups to not only build my ideal desktop environment but publish it here so that others can benefit as well. This is my own personal [omakase](https://en.wikipedia.org/wiki/Omakase) menu, a curated collection of comprehensive components that balances the ideals of productivity, flexibility, and beauty while offering a modern command line experience and some fun 8-bit nostalgia as well.
 
 # Ingredients
 
@@ -29,20 +31,22 @@ Inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Om
 - Desktop environment: [Cinnamon](https://github.com/linuxmint/Cinnamon) for a premium desktop experience
 - Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/)
 - Wallpaper: beautiful [Catppuccin mountain landscape](https://github.com/zhichaoh/catppuccin-wallpapers/blob/main/landscapes/salty_mountains.png)
-- Terminal emulator: [alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
+- Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
 - Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
-- Prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
+- Shell prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
 - Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/) and [Catppuccin theme](https://github.com/catppuccin/nvim)
 - Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
 - System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Web browser: [Chromium](https://www.chromium.org/Home/) with uBlock Origin Lite content blocker
 - Password management: [KeePassXC](https://keepassxc.org/)
 - Window automation: [xdotool](https://github.com/jordansissel/xdotool)
+- Office Suite: [LibreOffice](https://www.libreoffice.org/)
+- App launcher: [Rofi](https://davatorium.github.io/rofi/current/rofi.1/)
 - Eye candy: dazzling terminal effects via [tte](https://github.com/ChrisBuilds/terminaltexteffects) for demoscene nostalgia
 
 # Why Debian?
 
-I want to use the same base OS in a few different environments:
+Debian has a long track record and is well known for stability, simplicity, and versatility. I want to use the same base OS in a few different environments:
 - bare metal and virtualized
 - virtualized via Proxmox, Parallels, and other hypervisors
 - when running under Parallels, I need a distro that is supported by Parallels Tools
@@ -99,11 +103,11 @@ This script is totally unsupported. If it breaks your system, you get to keep bo
 ```
 curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/install.sh
 ```
-3. Run the script:
+3. Once you have reviewed install.sh and the rest of the code in this repo, you can run the script:
 ```
 bash install.sh
 ```
-4. Enjoy your new OhMyDebn desktop!
+4. Follow the prompts and enjoy your new OhMyDebn desktop!
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
