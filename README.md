@@ -63,8 +63,8 @@ Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE
 There are several meanings for the name:
 - It is my "omakase" for Debian
 - Oh my! It's debonair!
-- Oh my Debian never looked this good!
-- Obligatory recursive acronym: OhMyDebn Heals My Yearning for a Desktop Environment Base Now!
+- Oh! My Debian installations never looked this good!
+- Obligatory [recursive acronym](https://en.wikipedia.org/wiki/Recursive_acronym) OHMYDEBN: OhMyDebn Heals My Yearning for a Desktop Environment Base Now!
 
 # Gallery
 
