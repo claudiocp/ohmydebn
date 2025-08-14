@@ -98,7 +98,7 @@ This script is totally unsupported. If it breaks your system, you get to keep bo
 
 1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![debian-cinnamon screenshot](images/debian-cinnamon.png)
-2. In your Debian 13 Cinnamon desktop, download and review the script (don't just blindly pipe it into bash):
+2. In your Debian 13 Cinnamon desktop, download the script:
 ```
 curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/install.sh
 ```
