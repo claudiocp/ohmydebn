@@ -159,10 +159,11 @@ Pressing Super + K will open Chromium and navigate to this list of keyboard bind
 
 | Hotkey | Function |
 |--------|----------|
-| Super+B | Browser (Chromium) |
-| Super+Return | Terminal (Alacritty) |
-| Super+F | File Manager (Nemo) |
 | Super+Space | Application Launcher (Rofi) |
+| Super+Return | Terminal (Alacritty) |
+| Super+B | Browser (Chromium) |
+| Super+F | File Manager (Nemo) |
+| Super+T | btop |
 | Alt+F2 | Run dialog |
 
 ## Password and Bookmark Management (KeePassXC)
