@@ -319,8 +319,9 @@ echo "Super+K to show all keyboard bindings"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ name "Keyboard bindings"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ command "/usr/bin/chromium https://github.com/dougburks/ohmydebn?tab=readme-ov-file#hotkeys"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ binding "['<Super>K']"
+
 if pgrep -x cinnamon; then
-  echo "Restarting desktop to make changes take effect"
+  display "tte rain" "Restarting desktop to apply keybindings"
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
 fi
 
