@@ -283,6 +283,7 @@ fi
 display "tte rain" "Adding keyboard shortcuts"
 echo "Ctrl+Shift+Super+, to show notifications"
 yq '.keyOpen.value = "<Primary><Shift><Super>less"' ~/.config/cinnamon/spices/notifications\@cinnamon.org/notifications\@cinnamon.org.json >/dev/null
+sed -i.bak 's|"value": "<Super>n"|"value": "<Primary><Shift><Super>less"|g' ~/.config/cinnamon/spices/notifications\@cinnamon.org/notifications\@cinnamon.org.json >/dev/null
 echo "Super+PageUp to maximize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
 echo "Super+PageDown to minimize a window"
