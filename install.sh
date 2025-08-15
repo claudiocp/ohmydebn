@@ -13,10 +13,10 @@ Debonair strides bold,
 Elegance in every step,
 Stars bow to its charm.
  -- AI, probably
-
 EOF
 
 if ! dpkg -s "git" >/dev/null 2>&1; then
+  echo
   echo "We need to install git so that we can clone the repo and continue the install."
   echo
   sudo apt -y install git
@@ -34,8 +34,7 @@ if [[ -n "$OHMYDEBN_REF" ]]; then
   echo -e "\eUsing branch: $OHMYDEBN_REF"
   cd ~/.local/share/ohmydebn
   git fetch origin "${OHMYDEBN_REF}" && git checkout "${OHMYDEBN_REF}"
-  cd -
+  cd - > /dev/null
 fi
 
-echo -e "\nInstallation starting..."
 source ~/.local/share/ohmydebn/ohmydebn.sh
