@@ -113,6 +113,16 @@ bash install.sh
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
+# Terminal
+
+To start a terminal session, press Super + Enter. This launches a beautiful and powerful Alacritty terminal window:
+- Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
+- Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
+- Shell prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
+- Shell improvements: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command and [eza](https://github.com/eza-community/eza) for beautiful directory listings via `ls` and `lt`
+
+![OhMyDebn terminal screenshot](images/ohmydebn-terminal.png)
+
 # Hotkeys
 
 Pressing Super + K will open Chromium and navigate to this list of keyboard bindings.
