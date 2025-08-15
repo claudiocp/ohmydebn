@@ -345,11 +345,11 @@ echo "Ctrl+Shift+O to show OhMyDebn logo"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ name "OhMyDebn Logo"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ command "/usr/local/bin/ohmydebn-logo-gui"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ binding "['<Ctrl><Shift>O']"
-# custom-8
+# custom-9
 echo "Ctrl+Shift+S to show screenfetch"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ name "screenfetch"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ command "/usr/local/bin/ohmydebn-screenfetch-gui"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ binding "['<Ctrl><Shift>S']"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ name "screenfetch"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ command "/usr/local/bin/ohmydebn-screenfetch-gui"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ binding "['<Ctrl><Shift>S']"
 
 if pgrep -x cinnamon >/dev/null; then
   display "tte rain" "Restarting desktop to apply keybindings"
