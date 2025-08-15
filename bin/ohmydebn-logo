@@ -1,0 +1,4 @@
+#!/bin/bash
+
+toilet -f mono12 "OhMyDebn" | tte rain
+read input

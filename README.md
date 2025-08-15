@@ -135,6 +135,13 @@ To start a text editor, press Super + N. This launches the beautiful and powerfu
 
 Pressing Super + K will open Chromium and navigate to this list of keyboard bindings.
 
+## OhMyDebn
+
+| Hotkey | Function |
+|--------|----------|
+| Ctrl+Shift+O | OhMyDebn logo |
+| Ctrl+Shift+S | screenfetch system summary |
+
 ## Windows
 
 | Hotkey | Function |

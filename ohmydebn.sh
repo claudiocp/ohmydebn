@@ -299,7 +299,7 @@ gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-3 "['<Supe
 echo "Super+4 to switch to workspace 4"
 gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-4 "['<Super>4']"
 # To add a new custom keybinding, update the following line and then add a group of custom-xyz lines below
-gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7']"
+gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9']"
 # custom-0
 echo "Ctrl+Shift+K for KeePassXC password manager"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
@@ -340,6 +340,16 @@ echo "Super+N to launch Neovim"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ name "Neovim"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ command "/usr/bin/alacritty -e nvim"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ binding "['<Super>N']"
+# custom-8
+echo "Ctrl+Shift+O to show OhMyDebn logo"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ name "OhMyDebn Logo"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ command "/usr/local/bin/ohmydebn-logo-gui"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ binding "['<Ctrl><Shift>O']"
+# custom-8
+echo "Ctrl+Shift+S to show screenfetch"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ name "screenfetch"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ command "/usr/local/bin/ohmydebn-screenfetch-gui"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ binding "['<Ctrl><Shift>S']"
 
 if pgrep -x cinnamon >/dev/null; then
   display "tte rain" "Restarting desktop to apply keybindings"
