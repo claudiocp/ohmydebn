@@ -159,7 +159,7 @@ fi
 
 display "tte rain" "Installing new apps if unnecessary"
 sudo apt update
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep rofi screenfetch starship vim wget xdotool zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "tte rain" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
@@ -281,6 +281,8 @@ if [ ! -d $KEEPASS_CONFIG_DIR ]; then
 fi
 
 display "tte rain" "Adding keyboard shortcuts"
+echo "Ctrl+Shift+Super+, to show notifications"
+yq '.keyOpen.value = "<Primary><Shift><Super>less"' ~/.config/cinnamon/spices/notifications/@cinnamon.org/notifications\@cinnamon.org.json >/dev/null
 echo "Super+PageUp to maximize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
 echo "Super+PageDown to minimize a window"
