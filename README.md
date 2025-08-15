@@ -115,7 +115,7 @@ bash install.sh
 
 # Terminal
 
-To start a terminal session, press Super + Enter. This launches a beautiful and powerful Alacritty terminal window that includes:
+To start a terminal session, press Super + Enter. This launches a beautiful and powerful [Alacritty](https://alacritty.org) terminal window that includes:
 - Caskaydia Nerd Fonts
 - [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
 - [Zsh](https://en.wikipedia.org/wiki/Z_shell) shell with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
