@@ -159,7 +159,7 @@ fi
 
 display "tte rain" "Installing new apps if unnecessary"
 sudo apt update
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep rofi screenfetch starship vim wget xdotool zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep rofi screenfetch starship vim wget xdotool zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "tte rain" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"

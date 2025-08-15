@@ -114,3 +114,7 @@ eval "$(zoxide init zsh)"
 
 # Enable starship prompt
 eval "$(starship init zsh)"
+
+# Use eza as default ls
+alias ls='eza -lh --group-directories-first --icons=auto'
+alias lt='eza --tree --level=2 --long --icons --git'

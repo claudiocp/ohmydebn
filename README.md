@@ -19,8 +19,10 @@ Over the years, I transitioned from the Commodore 16 to the [Commodore 128](http
 
 Every year or so, I review my desktop environment to make sure I'm using the best tools for the job. Starting from [first principles](https://en.wikipedia.org/wiki/First_principle), I consider needs, desires, and workflows and ask myself a few questions: 
 - What are the best of breed productivity apps that help me get my job done with a minimum amount of fuss? 
+- What is the best terminal and command line environment?
 - What is the Linux desktop environment that allows me to work with all of those applications at the same time most efficiently?
-- Which Linux distro provides that desktop environment and those apps and runs on the hardware that I need it to?
+- How can I use hotkeys to keep hands on keys for better ergonomics and more speed?
+- Which Linux distro provides all of the above and runs on the hardware that I need it to?
 
 I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Omarchy](https://omarchy.org/) setups to not only build my ideal desktop environment but publish it here so that others can benefit as well. This is my own personal [omakase](https://en.wikipedia.org/wiki/Omakase) menu, a curated collection of comprehensive components that balances the ideals of productivity, flexibility, and beauty while offering a modern command line experience and some fun 8-bit nostalgia as well.
 
@@ -33,7 +35,7 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 - Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
 - Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
 - Shell prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
-- Shell improvements: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command
+- Shell improvements: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command and [eza](https://github.com/eza-community/eza) for beautiful directory listings
 - Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/) and [Catppuccin theme](https://github.com/catppuccin/nvim)
 - Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
 - System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
