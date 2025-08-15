@@ -6,6 +6,20 @@ set -e
 PROJECT="OhMyDebn"
 PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
 
+# Parse command line arguments
+NO_UNINSTALL=false
+for arg in "$@"; do
+  case $arg in
+    --no-uninstall)
+      NO_UNINSTALL=true
+      shift
+      ;;
+    *)
+      # Unknown option
+      ;;
+  esac
+done
+
 function logo {
   toilet -f mono12 "$PROJECT" | tte rain
 }
@@ -48,7 +62,7 @@ display "cat" "WARNING!
 
 This script:
 - is intended for a clean new installation.
-- will remove apps like FireFox, Thunderbird, and others.
+$(if [ "$NO_UNINSTALL" = false ]; then echo "- will remove apps like FireFox, Thunderbird, and others."; else echo "- will NOT remove any existing packages (--no-uninstall mode)."; fi)
 - may make changes to your APT configuration.
 
 This script is totally unsupported. 
@@ -343,9 +357,13 @@ if pgrep -x cinnamon >/dev/null; then
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
 fi
 
-display "tte rain" "Removing any unnecessary packages"
-sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
-sudo apt -y autoremove
+if [ "$NO_UNINSTALL" = false ]; then
+  display "tte rain" "Removing any unnecessary packages"
+  sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
+  sudo apt -y autoremove
+else
+  display "tte rain" "Skipping package removal (--no-uninstall mode)"
+fi
 
 display "tte rain" "Installing any available updates"
 sudo apt -y dist-upgrade
