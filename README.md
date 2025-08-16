@@ -126,7 +126,7 @@ bash install.sh --no-uninstall
 
 # Updating
 
-If you've already installed OhMyDebn and want to update to the latest version, you can use the update script:
+If you've already installed OhMyDebn and want to update to the latest version, you can use the experimental update script. However, please note that this process will most likely change in the future.
 
 1. Navigate to your OhMyDebn directory or download the update script:
 ```

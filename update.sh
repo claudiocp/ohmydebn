@@ -80,6 +80,9 @@ What will be updated:
 - Keyboard shortcuts
 - Binaries in /usr/local/bin/
 - Wallpapers and backgrounds
+
+WARNING! This is an experimental script.
+This process will most likely change in the future.
 EOF
 
 if [ "$UID" -eq 0 ]; then
