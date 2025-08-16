@@ -6,6 +6,20 @@ set -e
 PROJECT="OhMyDebn"
 PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
 
+# Parse command line arguments
+NO_UNINSTALL=false
+for arg in "$@"; do
+  case $arg in
+  --no-uninstall)
+    NO_UNINSTALL=true
+    shift
+    ;;
+  *)
+    # Unknown option
+    ;;
+  esac
+done
+
 function logo {
   toilet -f mono12 "$PROJECT" | tte rain
 }
@@ -48,7 +62,7 @@ display "cat" "WARNING!
 
 This script:
 - is intended for a clean new installation.
-- will remove apps like FireFox, Thunderbird, and others.
+$(if [ "$NO_UNINSTALL" = false ]; then echo "- will remove apps like FireFox, Thunderbird, and others."; else echo "- will NOT remove any existing packages (--no-uninstall mode)."; fi)
 - may make changes to your APT configuration.
 
 This script is totally unsupported. 
@@ -159,7 +173,7 @@ fi
 
 display "tte rain" "Installing new apps if unnecessary"
 sudo apt update
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep rofi screenfetch starship vim wget xdotool zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "tte rain" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
@@ -280,7 +294,13 @@ if [ ! -d $KEEPASS_CONFIG_DIR ]; then
   cp -av ~/.local/share/$PROJECT_LOWER/config/keepassxc ~/.config/
 fi
 
+display "tte rain" "Configuring ristretto as default image viewer"
+xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
+
 display "tte rain" "Adding keyboard shortcuts"
+echo "Ctrl+Shift+Super+, to show notifications"
+yq '.keyOpen.value = "<Primary><Shift><Super>less"' ~/.config/cinnamon/spices/notifications\@cinnamon.org/notifications\@cinnamon.org.json >/dev/null
+sed -i.bak 's|"value": "<Super>n"|"value": "<Primary><Shift><Super>less"|g' ~/.config/cinnamon/spices/notifications\@cinnamon.org/notifications\@cinnamon.org.json >/dev/null
 echo "Super+PageUp to maximize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
 echo "Super+PageDown to minimize a window"
@@ -296,7 +316,7 @@ gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-3 "['<Supe
 echo "Super+4 to switch to workspace 4"
 gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-4 "['<Super>4']"
 # To add a new custom keybinding, update the following line and then add a group of custom-xyz lines below
-gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7']"
+gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9']"
 # custom-0
 echo "Ctrl+Shift+K for KeePassXC password manager"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
@@ -337,15 +357,29 @@ echo "Super+N to launch Neovim"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ name "Neovim"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ command "/usr/bin/alacritty -e nvim"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ binding "['<Super>N']"
+# custom-8
+echo "Ctrl+Shift+O to show OhMyDebn logo"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ name "OhMyDebn Logo"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ command "/usr/local/bin/ohmydebn-logo-gui"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ binding "['<Ctrl><Shift>O']"
+# custom-9
+echo "Ctrl+Shift+S to show screenfetch"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ name "screenfetch"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ command "/usr/local/bin/ohmydebn-screenfetch-gui"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ binding "['<Ctrl><Shift>S']"
 
 if pgrep -x cinnamon >/dev/null; then
   display "tte rain" "Restarting desktop to apply keybindings"
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
 fi
 
-display "tte rain" "Removing any unnecessary packages"
-sudo apt -y purge brasero firefox* thunderbird firefox* gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina thunderbird transmission* x11vnc
-sudo apt -y autoremove
+if [ "$NO_UNINSTALL" = false ]; then
+  display "tte rain" "Removing any unnecessary packages"
+  sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
+  sudo apt -y autoremove
+else
+  display "tte rain" "Skipping package removal (--no-uninstall mode)"
+fi
 
 display "tte rain" "Installing any available updates"
 sudo apt -y dist-upgrade

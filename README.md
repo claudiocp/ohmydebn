@@ -13,7 +13,7 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
 
 # Motivation
 
-Growing up, my dad introduced me to computers through his [Timex Sinclair](https://en.wikipedia.org/wiki/Timex_Sinclair) and a [Magnavox Odyssey 2](https://en.wikipedia.org/wiki/Magnavox_Odyssey_2). In 1984, I got a [Commodore 16](https://en.wikipedia.org/wiki/Commodore_16) for Christmas and, of course, the very first thing I typed was `PRINT "DOUG IS COOL"`. The first real program I wrote mapped the F1 key to do the same thing. So I've been using the command line and hotkeys for the past 40 years!
+Growing up, my dad introduced me to computers through a [Timex Sinclair](https://en.wikipedia.org/wiki/Timex_Sinclair) and a [Magnavox Odyssey 2](https://en.wikipedia.org/wiki/Magnavox_Odyssey_2). In 1984, I got a [Commodore 16](https://en.wikipedia.org/wiki/Commodore_16) and, of course, the very first thing I typed was `PRINT "DOUG IS COOL"`. The first real program I wrote mapped the F1 key to do the same thing. So apparently I've been using the command line and hotkeys for (checks notes) over 40 years now!
 
 Over the years, I transitioned from the Commodore 16 to the [Commodore 128](https://en.wikipedia.org/wiki/Commodore_128) and then into the PC world starting with an [Epson Apex](https://en.wikipedia.org/wiki/Epson_Equity). I had several different PC systems running [MS-DOS](https://en.wikipedia.org/wiki/MS-DOS) and [Windows 3.1](https://en.wikipedia.org/wiki/Windows_3.1). In December of 1997, I discovered [Linux](https://en.wikipedia.org/wiki/Linux) and my entire career changed. In 2008, I started the [Security Onion](https://github.com/Security-Onion-Solutions/securityonion) project to build a specialized Linux platform for cybersecurity. Security Onion is great for cybersecurity, but it's not designed to be a general purpose desktop environment.
 
@@ -37,10 +37,12 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 - Shell prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
 - Shell improvements: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command and [eza](https://github.com/eza-community/eza) for beautiful directory listings
 - Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/) and [Catppuccin theme](https://github.com/catppuccin/nvim)
-- Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
-- System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Web browser: [Chromium](https://www.chromium.org/Home/) with uBlock Origin Lite content blocker
 - Password management: [KeePassXC](https://keepassxc.org/)
+- Default image viewer: [Ristretto](https://docs.xfce.org/apps/ristretto/start)
+- Image editor: [GIMP](https://www.gimp.org/)
+- Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
+- System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Window automation: [xdotool](https://github.com/jordansissel/xdotool)
 - Office Suite: [LibreOffice](https://www.libreoffice.org/)
 - App launcher: [Rofi](https://davatorium.github.io/rofi/current/rofi.1/)
@@ -48,11 +50,26 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 
 # Why Debian?
 
-Debian has a long track record and is well known for stability, simplicity, and versatility. I want to use the same base OS in a few different environments:
-- bare metal and virtualized
-- virtualized via Proxmox, Parallels, and other hypervisors
-- when running under Parallels, I need a distro that is supported by Parallels Tools
-- x86 and eventually ARM (this script has not yet been tested on ARM but it should be easy to make it work)
+Here are my requirements for a base OS:
+- can run on bare metal and virtualized
+- can be virtualized via Proxmox, Parallels, and other hypervisors
+- must be supported by Parallels Tools
+- must support x86 and ARM architectures
+
+Debian satisfies these requirements and is well known for stability, simplicity, and versatility.
+
+# Why Cinnamon?
+
+Here are my requirements for a desktop environment:
+- must be available on Debian
+- able to support a traditional program menu
+- able to support a traditional taskbar with the ability to re-arrange the order in which running programs are listed
+- support hotkeys
+- stable and reliable
+- relatively light on resources
+- must be responsive and not slow me down
+
+Cinnamon satisfies these requirements and has some nice eye candy!
 
 # Why Debian Cinnamon?
 
@@ -61,12 +78,11 @@ Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE
 - Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this script to turn it into OhMyDebn!
 - For fun and for science!
   
-# Why "OhMyDebn"?
+# Why is it called "OhMyDebn"?
 
 There are several meanings for the name:
-- It is my "omakase" for Debian
-- Oh my! It's debonair!
-- Oh! My Debian installations never looked this good!
+- It is my [omakase](https://en.wikipedia.org/wiki/Omakase) menu for Debian
+- It's so debonair, it will make your friends say "Oh my!" or "Oh! My Debian installations never looked this good!"
 - Obligatory [recursive acronym](https://en.wikipedia.org/wiki/Recursive_acronym) OHMYDEBN: OhMyDebn Heals My Yearning for a Desktop Environment Base Now!
 
 # Gallery
@@ -92,8 +108,8 @@ OhMyDebn requires the following:
 
 This script:
 - is intended for a clean new installation
-- will remove apps like FireFox, Thunderbird, and others
 - may make changes to your APT configuration
+- will remove apps like FireFox, Thunderbird, and others (unless you use the `--no-uninstall` option)
 
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
 
@@ -105,33 +121,80 @@ This script is totally unsupported. If it breaks your system, you get to keep bo
 ```
 curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/install.sh
 ```
-3. Once you have reviewed install.sh and the rest of the code in this repo, you can run the script:
+3. Once you have reviewed install.sh and the rest of the code in this repo, you can run the install script:
 ```
 bash install.sh
 ```
-4. Follow the prompts and enjoy your new OhMyDebn desktop!
+## Installation Options
+
+The install script supports the following option:
+
+- `--no-uninstall` - installs OhMyDebn without removing existing packages like Firefox, Thunderbird, etc.
+
+Example:
+```
+bash install.sh --no-uninstall
+```
+# After Installation
+
+Once installation completes, you can enjoy your new OhMyDebn desktop!
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
+# Web browser
+
+To start a web browser, you can open it from the traditional program menu or just press Super + B. This launches [Chromium](https://www.chromium.org/Home/) with the uBlock Origin Lite content blocker already installed for you.
+
+![OhMyDebn chromium web browser with uBlock Origin Lite content blocker](images/ohmydebn-chromium-ublock.png)
+
+# Logo
+
+To show the OhMyDebn logo in all of its glory, press Shift + Ctrl + O.
+
+![OhMyDebn logo gui](images/ohmydebn-logo-gui.png)
+
+# System summary via screenfetch
+
+To see a system summary, press Shift + Ctrl + S to launch screenfetch.
+
+![OhMyDebn system summary via screenfetch](images/ohmydebn-screenfetch-gui.png)
+
+# System monitoring via btop
+
+To monitor your system performance, press Super + T to launch btop.
+
+![OhMyDebn btop](images/ohmydebn-btop.png)
+
 # Terminal
 
-To start a terminal session, press Super + Enter. This launches a beautiful and powerful Alacritty terminal window:
-- Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
-- Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
-- Shell prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
-- Shell improvements: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command and [eza](https://github.com/eza-community/eza) for beautiful directory listings via `ls` and `lt`
+To start a terminal session, press Super + Enter. This launches a beautiful and powerful [Alacritty](https://alacritty.org) terminal window that includes:
+- Caskaydia Nerd Fonts
+- [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
+- [Zsh](https://en.wikipedia.org/wiki/Z_shell) shell with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
+- [Starship](https://starship.rs/) shell prompt with modified [Catppuccin theme](https://github.com/catppuccin/starship)
+- [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command
+- [eza](https://github.com/eza-community/eza) for beautiful directory listings via `ls` and `lt`
 
 ![OhMyDebn terminal screenshot](images/ohmydebn-terminal.png)
 
 # Text editor
 
-To start a text editor while in the terminal, type `nvim`. This launches the beautiful and powerful combination of Neovim with LazyVim. The first time it loads, it will install several plugins. Once that is done, you can press the Q key until you get to the main menu. You can then press the space bar and then the E key to open Explorer.
+To start a text editor, press Super + N. This launches the beautiful and powerful combination of Neovim with LazyVim. The first time it loads, it will install several plugins. Once that is done, you can press the Q key until you get to the main menu. You can then press the space bar and then the E key to open Explorer.
 
 ![OhMyDebn Neovim screenshot](images/ohmydebn-neovim.png)
+
+The hotkeys section below includes more hotkeys for Neovim and a link to additional information.
 
 # Hotkeys
 
 Pressing Super + K will open Chromium and navigate to this list of keyboard bindings.
+
+## OhMyDebn
+
+| Hotkey | Function |
+|--------|----------|
+| Ctrl+Shift+O | OhMyDebn logo |
+| Ctrl+Shift+S | screenfetch system summary |
 
 ## Windows
 
@@ -183,6 +246,7 @@ Pressing Super + K will open Chromium and navigate to this list of keyboard bind
 | Super+B | Browser (Chromium) |
 | Super+F | File Manager (Nemo) |
 | Super+T | btop |
+| Super+N | Neovim |
 | Alt+F2 | Run dialog |
 
 ## Password and Bookmark Management (KeePassXC)

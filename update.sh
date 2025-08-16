@@ -1,0 +1,326 @@
+#!/bin/bash
+
+PROJECT="OhMyDebn"
+PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
+
+clear
+
+# Parse command line arguments
+SHOW_HELP=false
+SKIP_GIT_PULL=false
+UPDATE_CONFIGS=true
+UPDATE_THEMES=true
+UPDATE_BINARIES=true
+UPDATE_KEYBINDINGS=true
+
+for arg in "$@"; do
+  case $arg in
+    --help|-h)
+      SHOW_HELP=true
+      shift
+      ;;
+    --skip-git-pull)
+      SKIP_GIT_PULL=true
+      shift
+      ;;
+    --configs-only)
+      UPDATE_THEMES=false
+      UPDATE_BINARIES=false
+      UPDATE_KEYBINDINGS=false
+      shift
+      ;;
+    --themes-only)
+      UPDATE_CONFIGS=false
+      UPDATE_BINARIES=false
+      UPDATE_KEYBINDINGS=false
+      shift
+      ;;
+    *)
+      # Unknown option
+      ;;
+  esac
+done
+
+if [ "$SHOW_HELP" = true ]; then
+  cat <<EOF
+$PROJECT Update Script
+
+Usage: ./update.sh [OPTIONS]
+
+This script updates an existing $PROJECT installation to the latest version.
+
+OPTIONS:
+  --help, -h          Show this help message
+  --skip-git-pull     Skip pulling latest changes from git
+  --configs-only      Only update configuration files
+  --themes-only       Only update themes and appearance settings
+
+The script will:
+- Pull the latest changes from the git repository
+- Update configuration files (.zshrc, alacritty.toml, etc.)
+- Update themes and wallpapers
+- Update keyboard shortcuts
+- Update binaries in /usr/local/bin/
+
+Note: This script does NOT install or remove packages.
+      Use install.sh for initial installation.
+EOF
+  exit 0
+fi
+
+cat <<EOF
+Welcome to $PROJECT Update!
+
+This script will update your existing $PROJECT installation
+to the latest version without modifying installed packages.
+
+What will be updated:
+- Configuration files (if changed)
+- Themes and appearance settings
+- Keyboard shortcuts
+- Binaries in /usr/local/bin/
+- Wallpapers and backgrounds
+
+WARNING! This is an experimental script.
+This process will most likely change in the future.
+EOF
+
+if [ "$UID" -eq 0 ]; then
+  echo
+  echo "WARNING: Running as root."
+  echo "It's recommended to run this script as a normal user with sudo privileges."
+  echo
+  echo "Press Enter to continue as root or Ctrl-c to cancel."
+  read input
+fi
+
+echo
+echo "Press Enter to continue or Ctrl-c to cancel."
+read input
+
+# Check if we're in the ohmydebn directory or if it exists in ~/.local/share
+if [ -f "./ohmydebn.sh" ]; then
+  OHMYDEBN_DIR="."
+elif [ -d "$HOME/.local/share/ohmydebn" ]; then
+  OHMYDEBN_DIR="$HOME/.local/share/ohmydebn"
+else
+  echo "Error: Cannot find ohmydebn installation!"
+  echo "Please run install.sh first or run this script from the ohmydebn directory."
+  exit 1
+fi
+
+# Update from git if not skipped
+if [ "$SKIP_GIT_PULL" = false ] && [ -d "$OHMYDEBN_DIR/.git" ]; then
+  echo
+  echo "==> Pulling latest changes from git..."
+  cd "$OHMYDEBN_DIR"
+  git pull
+  cd - > /dev/null
+else
+  echo
+  echo "==> Skipping git pull..."
+fi
+
+# Update themes and wallpapers
+if [ "$UPDATE_THEMES" = true ]; then
+  echo
+  echo "==> Updating themes and wallpapers..."
+  
+  # Ensure directories exist
+  mkdir -p ~/.config/$PROJECT_LOWER/current/
+  mkdir -p ~/.config/$PROJECT_LOWER/themes/
+  
+  # Update symlinks
+  ln -sf ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER
+  ln -sf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/current/theme
+  ln -sf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountains.png ~/.config/$PROJECT_LOWER/current/background
+  
+  # Check if user wants to reapply wallpaper
+  echo
+  echo "Do you want to reapply the default wallpaper? (y/N)"
+  read -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    BACKGROUND=~/.config/$PROJECT_LOWER/current/background
+    gsettings set org.cinnamon.desktop.background picture-uri "'file://$BACKGROUND'"
+    echo "Wallpaper updated."
+  fi
+fi
+
+# Update configuration files
+if [ "$UPDATE_CONFIGS" = true ]; then
+  echo
+  echo "==> Updating configuration files..."
+  
+  # Update .zshrc if it exists and user confirms
+  if [ -f "$HOME/.zshrc" ]; then
+    echo
+    echo "Do you want to update .zshrc? (y/N)"
+    echo "Warning: This will overwrite your current .zshrc"
+    read -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      cp "$HOME/.zshrc" "$HOME/.zshrc.backup-$(date +%Y%m%d-%H%M%S)"
+      cp "$OHMYDEBN_DIR/config/.zshrc" "$HOME/"
+      echo ".zshrc updated (backup created)."
+    fi
+  fi
+  
+  # Update starship.toml if it exists
+  if [ -f "$HOME/.config/starship.toml" ]; then
+    if ! diff -q "$OHMYDEBN_DIR/config/starship.toml" "$HOME/.config/starship.toml" >/dev/null 2>&1; then
+      echo
+      echo "Do you want to update starship.toml? (y/N)"
+      read -n 1 -r
+      echo
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+        cp "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.backup-$(date +%Y%m%d-%H%M%S)"
+        cp "$OHMYDEBN_DIR/config/starship.toml" "$HOME/.config/"
+        echo "starship.toml updated (backup created)."
+      fi
+    fi
+  fi
+  
+  # Update alacritty config if directory exists
+  ALACRITTY_DIR="$HOME/.config/alacritty"
+  if [ -d "$ALACRITTY_DIR" ]; then
+    echo
+    echo "Checking alacritty configuration..."
+    
+    # Download latest catppuccin theme if not present
+    ALACRITTY_THEME="$ALACRITTY_DIR/catppuccin-mocha.toml"
+    if [ ! -f "$ALACRITTY_THEME" ]; then
+      echo "Downloading catppuccin theme for alacritty..."
+      curl -LO --output-dir "$ALACRITTY_DIR" https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
+    fi
+  fi
+  
+  # Update KeePassXC config if directory exists
+  if [ -d "$HOME/.config/keepassxc" ]; then
+    if ! diff -q "$OHMYDEBN_DIR/config/keepassxc/keepassxc.ini" "$HOME/.config/keepassxc/keepassxc.ini" >/dev/null 2>&1; then
+      echo
+      echo "Do you want to update KeePassXC configuration? (y/N)"
+      read -n 1 -r
+      echo
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+        cp "$HOME/.config/keepassxc/keepassxc.ini" "$HOME/.config/keepassxc/keepassxc.ini.backup-$(date +%Y%m%d-%H%M%S)"
+        cp "$OHMYDEBN_DIR/config/keepassxc/keepassxc.ini" "$HOME/.config/keepassxc/"
+        echo "KeePassXC configuration updated (backup created)."
+      fi
+    fi
+  fi
+fi
+
+# Update binaries
+if [ "$UPDATE_BINARIES" = true ]; then
+  echo
+  echo "==> Updating binaries in /usr/local/bin/..."
+  
+  if [ -d "$OHMYDEBN_DIR/bin" ]; then
+    for binary in "$OHMYDEBN_DIR/bin"/*; do
+      if [ -f "$binary" ]; then
+        binary_name=$(basename "$binary")
+        if [ -f "/usr/local/bin/$binary_name" ]; then
+          if ! diff -q "$binary" "/usr/local/bin/$binary_name" >/dev/null 2>&1; then
+            echo "Updating $binary_name..."
+            sudo cp -av "$binary" /usr/local/bin/
+            sudo chmod +x "/usr/local/bin/$binary_name"
+          fi
+        else
+          echo "Installing $binary_name..."
+          sudo cp -av "$binary" /usr/local/bin/
+          sudo chmod +x "/usr/local/bin/$binary_name"
+        fi
+      fi
+    done
+  fi
+fi
+
+# Update keyboard shortcuts
+if [ "$UPDATE_KEYBINDINGS" = true ]; then
+  echo
+  echo "==> Checking keyboard shortcuts..."
+  echo
+  echo "Do you want to reapply all keyboard shortcuts? (y/N)"
+  echo "This will overwrite any custom shortcuts you've made."
+  read -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Applying keyboard shortcuts..."
+    
+    # Window management
+    gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
+    gsettings set org.cinnamon.desktop.keybindings.wm minimize "['<Super>Page_Down']"
+    gsettings set org.cinnamon.desktop.keybindings.wm close "['<Alt>F4', '<Super>w']"
+    
+    # Workspace switching
+    gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-1 "['<Super>1']"
+    gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-2 "['<Super>2']"
+    gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-3 "['<Super>3']"
+    gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-4 "['<Super>4']"
+    
+    # Custom keybindings
+    gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7']"
+    
+    # KeePassXC
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/$PROJECT_LOWER-keepass"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
+    
+    # Chromium
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ name "Chromium"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ command "/usr/bin/chromium"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ binding "['<Super>B']"
+    
+    # Alacritty
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ name "Alacritty"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ command "/usr/bin/alacritty"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ binding "['<Super>Return']"
+    
+    # Nemo
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ name "Nemo"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ command "/usr/bin/nemo"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ binding "['<Super>F']"
+    
+    # Rofi
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ name "Rofi"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ command "/usr/bin/rofi -show drun"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ binding "['<Super>R', '<Super>space']"
+    
+    # Keyboard bindings help
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ name "Keyboard bindings"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ command "/usr/bin/chromium https://github.com/dougburks/ohmydebn?tab=readme-ov-file#hotkeys"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ binding "['<Super>K']"
+    
+    # btop
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ name "btop"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ command "/usr/bin/alacritty -e btop"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ binding "['<Super>T']"
+    
+    # Neovim
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ name "Neovim"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ command "/usr/bin/alacritty -e nvim"
+    gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ binding "['<Super>N']"
+    
+    echo "Keyboard shortcuts updated."
+    
+    if pgrep -x cinnamon >/dev/null; then
+      echo "Restarting Cinnamon to apply changes..."
+      /usr/bin/cinnamon --replace >/dev/null 2>&1 &
+    fi
+  fi
+fi
+
+echo
+echo "==> Update complete!"
+echo
+echo "Summary of changes:"
+echo "- Git repository: $(if [ "$SKIP_GIT_PULL" = false ]; then echo "Updated"; else echo "Skipped"; fi)"
+echo "- Themes: $(if [ "$UPDATE_THEMES" = true ]; then echo "Checked/Updated"; else echo "Skipped"; fi)"
+echo "- Configurations: $(if [ "$UPDATE_CONFIGS" = true ]; then echo "Checked/Updated"; else echo "Skipped"; fi)"
+echo "- Binaries: $(if [ "$UPDATE_BINARIES" = true ]; then echo "Checked/Updated"; else echo "Skipped"; fi)"
+echo "- Keybindings: $(if [ "$UPDATE_KEYBINDINGS" = true ]; then echo "Checked/Updated"; else echo "Skipped"; fi)"
+echo
+echo "Note: Configuration file backups were created with timestamps where applicable."
+echo
+echo "Enjoy your updated $PROJECT!"
