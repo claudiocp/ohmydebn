@@ -129,7 +129,7 @@ bash install.sh
 
 The install script supports the following option:
 
-- `--no-uninstall` - installs OhMyDebn without removing any existing packages like Firefox, Thunderbird, etc.
+- `--no-uninstall` - installs OhMyDebn without removing existing packages like Firefox, Thunderbird, etc.
 
 Example:
 ```
