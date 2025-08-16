@@ -129,7 +129,7 @@ bash install.sh
 
 The install script supports the following option:
 
-- `--no-uninstall` - Installs OhMyDebn without removing any existing packages (keeps Firefox, Thunderbird, etc.)
+- `--no-uninstall` - installs OhMyDebn without removing any existing packages (keeps Firefox, Thunderbird, etc.)
 
 Example:
 ```
@@ -140,6 +140,28 @@ bash install.sh --no-uninstall
 Once installation completes, you can enjoy your new OhMyDebn desktop!
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
+
+# Web browser
+
+To start a web browser, you can open it from the traditional program menu or just press Super + B. This launches [Chromium](https://www.chromium.org/Home/) with the uBlock Origin Lite content blocker already installed for you.
+
+# Logo
+
+To show the OhMyDebn logo in all of its glory, press Shift + Ctrl + O.
+
+![OhMyDebn logo gui](images/ohmydebn-logo-gui.png)
+
+# System summary via screenfetch
+
+To see a system summary, press Shift + Ctrl + S to launch screenfetch.
+
+![OhMyDebn logo gui](images/ohmydebn-logo-gui.png)
+
+# System monitoring via btop
+
+To monitor your system performanc, press Super + T to launch btop.
+
+![OhMyDebn btop](images/ohmydebn-btop.png)
 
 # Terminal
 
