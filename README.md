@@ -145,6 +145,8 @@ Once installation completes, you can enjoy your new OhMyDebn desktop!
 
 To start a web browser, you can open it from the traditional program menu or just press Super + B. This launches [Chromium](https://www.chromium.org/Home/) with the uBlock Origin Lite content blocker already installed for you.
 
+![OhMyDebn chromium web browser with uBlock Origin Lite content blocker](images/ohmydebn-chromium-ublock.png)
+
 # Logo
 
 To show the OhMyDebn logo in all of its glory, press Shift + Ctrl + O.
@@ -155,11 +157,11 @@ To show the OhMyDebn logo in all of its glory, press Shift + Ctrl + O.
 
 To see a system summary, press Shift + Ctrl + S to launch screenfetch.
 
-![OhMyDebn logo gui](images/ohmydebn-logo-gui.png)
+![OhMyDebn system summary via screenfetch](images/ohmydebn-screenfetch-gui.png)
 
 # System monitoring via btop
 
-To monitor your system performanc, press Super + T to launch btop.
+To monitor your system performance, press Super + T to launch btop.
 
 ![OhMyDebn btop](images/ohmydebn-btop.png)
 
