@@ -37,10 +37,12 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 - Shell prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
 - Shell improvements: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command and [eza](https://github.com/eza-community/eza) for beautiful directory listings
 - Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/) and [Catppuccin theme](https://github.com/catppuccin/nvim)
-- Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
-- System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Web browser: [Chromium](https://www.chromium.org/Home/) with uBlock Origin Lite content blocker
 - Password management: [KeePassXC](https://keepassxc.org/)
+- Default image viewer: [Ristretto](https://docs.xfce.org/apps/ristretto/start)
+- Image editor: [GIMP](https://www.gimp.org/)
+- Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
+- System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Window automation: [xdotool](https://github.com/jordansissel/xdotool)
 - Office Suite: [LibreOffice](https://www.libreoffice.org/)
 - App launcher: [Rofi](https://davatorium.github.io/rofi/current/rofi.1/)
