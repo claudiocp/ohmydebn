@@ -108,8 +108,8 @@ OhMyDebn requires the following:
 
 This script:
 - is intended for a clean new installation
-- will remove apps like FireFox, Thunderbird, and others (unless you use the --no-uninstall option)
 - may make changes to your APT configuration
+- will remove apps like FireFox, Thunderbird, and others (unless you use the `--no-uninstall` option)
 
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
 
