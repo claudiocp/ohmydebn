@@ -298,7 +298,7 @@ display "tte rain" "Configuring ristretto as default image viewer"
 xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
 
 display "tte rain" "Enabling gTile to manage window tiling"
-xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
+gsettings set org.cinnamon enabled-extensions "['gTile@shuairan']"
 
 display "tte rain" "Adding keyboard shortcuts"
 echo "Ctrl+Shift+Super+, to show notifications"
