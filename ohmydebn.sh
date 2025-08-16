@@ -10,13 +10,13 @@ PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
 NO_UNINSTALL=false
 for arg in "$@"; do
   case $arg in
-    --no-uninstall)
-      NO_UNINSTALL=true
-      shift
-      ;;
-    *)
-      # Unknown option
-      ;;
+  --no-uninstall)
+    NO_UNINSTALL=true
+    shift
+    ;;
+  *)
+    # Unknown option
+    ;;
   esac
 done
 
@@ -173,7 +173,7 @@ fi
 
 display "tte rain" "Installing new apps if unnecessary"
 sudo apt update
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "tte rain" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
@@ -293,6 +293,9 @@ if [ ! -d $KEEPASS_CONFIG_DIR ]; then
   display "tte rain" "Configuring KeePassXC"
   cp -av ~/.local/share/$PROJECT_LOWER/config/keepassxc ~/.config/
 fi
+
+display "tte rain" "Configuring ristretto as default image viewer"
+xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
 
 display "tte rain" "Adding keyboard shortcuts"
 echo "Ctrl+Shift+Super+, to show notifications"
