@@ -113,6 +113,54 @@ bash install.sh
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
+## Installation Options
+
+The install script supports the following option:
+
+- `--no-uninstall` - Installs OhMyDebn without removing any existing packages (keeps Firefox, Thunderbird, etc.)
+
+Example:
+```
+bash install.sh --no-uninstall
+```
+
+# Updating
+
+If you've already installed OhMyDebn and want to update to the latest version, you can use the update script:
+
+1. Navigate to your OhMyDebn directory or download the update script:
+```
+curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/update.sh
+```
+
+2. Run the update script:
+```
+bash update.sh
+```
+
+The update script will:
+- Pull the latest changes from the git repository
+- Update configuration files (with backups)
+- Update themes and wallpapers
+- Update keyboard shortcuts
+- Update binaries in /usr/local/bin/
+
+## Update Options
+
+The update script supports several options:
+
+- `--help` - Show help message
+- `--skip-git-pull` - Skip pulling latest changes from git (useful if you have local modifications)
+- `--configs-only` - Only update configuration files
+- `--themes-only` - Only update themes and appearance settings
+
+Example:
+```
+bash update.sh --skip-git-pull
+```
+
+Note: The update script does NOT install or remove packages. It only updates configurations and settings.
+
 # Terminal
 
 To start a terminal session, press Super + Enter. This launches a beautiful and powerful [Alacritty](https://alacritty.org) terminal window that includes:

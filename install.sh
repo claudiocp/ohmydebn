@@ -37,4 +37,4 @@ if [[ -n "$OHMYDEBN_REF" ]]; then
   cd - > /dev/null
 fi
 
-source ~/.local/share/ohmydebn/ohmydebn.sh
+source ~/.local/share/ohmydebn/ohmydebn.sh "$@"
