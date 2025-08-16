@@ -121,7 +121,7 @@ This script is totally unsupported. If it breaks your system, you get to keep bo
 ```
 curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/install.sh
 ```
-3. Once you have reviewed install.sh and the rest of the code in this repo, you can run the script:
+3. Once you have reviewed install.sh and the rest of the code in this repo, you can run the install script:
 ```
 bash install.sh
 ```
