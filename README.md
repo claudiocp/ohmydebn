@@ -13,7 +13,7 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
 
 # Motivation
 
-Growing up, my dad introduced me to computers through his [Timex Sinclair](https://en.wikipedia.org/wiki/Timex_Sinclair) and a [Magnavox Odyssey 2](https://en.wikipedia.org/wiki/Magnavox_Odyssey_2). In 1984, I got a [Commodore 16](https://en.wikipedia.org/wiki/Commodore_16) for Christmas and, of course, the very first thing I typed was `PRINT "DOUG IS COOL"`. The first real program I wrote mapped the F1 key to do the same thing. So apparently I've been using the command line and hotkeys for over 40 years!
+Growing up, my dad introduced me to computers through a [Timex Sinclair](https://en.wikipedia.org/wiki/Timex_Sinclair) and a [Magnavox Odyssey 2](https://en.wikipedia.org/wiki/Magnavox_Odyssey_2). In 1984, I got a [Commodore 16](https://en.wikipedia.org/wiki/Commodore_16) and, of course, the very first thing I typed was `PRINT "DOUG IS COOL"`. The first real program I wrote mapped the F1 key to do the same thing. So apparently I've been using the command line and hotkeys for over (checks notes) 40 years!
 
 Over the years, I transitioned from the Commodore 16 to the [Commodore 128](https://en.wikipedia.org/wiki/Commodore_128) and then into the PC world starting with an [Epson Apex](https://en.wikipedia.org/wiki/Epson_Equity). I had several different PC systems running [MS-DOS](https://en.wikipedia.org/wiki/MS-DOS) and [Windows 3.1](https://en.wikipedia.org/wiki/Windows_3.1). In December of 1997, I discovered [Linux](https://en.wikipedia.org/wiki/Linux) and my entire career changed. In 2008, I started the [Security Onion](https://github.com/Security-Onion-Solutions/securityonion) project to build a specialized Linux platform for cybersecurity. Security Onion is great for cybersecurity, but it's not designed to be a general purpose desktop environment.
 
@@ -48,11 +48,26 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 
 # Why Debian?
 
-Debian has a long track record and is well known for stability, simplicity, and versatility. I want to use the same base OS in a few different environments:
-- bare metal and virtualized
-- virtualized via Proxmox, Parallels, and other hypervisors
-- when running under Parallels, I need a distro that is supported by Parallels Tools
-- x86 and eventually ARM (this script has not yet been tested on ARM but it should be easy to make it work)
+Here are my requirements for a base OS:
+- can run on bare metal and virtualized
+- can be virtualized via Proxmox, Parallels, and other hypervisors
+- must be supported by Parallels Tools
+- must support x86 and ARM architectures
+
+Debian satisfies these requirements and is well known for stability, simplicity, and versatility.
+
+# Why Cinnamon?
+
+Here are my requirements for a desktop environment:
+- must be available on Debian
+- able to support a traditional program menu
+- able to support a traditional taskbar with the ability to re-arrange the order in which running programs are listed
+- support hotkeys
+- stable and reliable
+- relatively light on resources
+- must be responsive and not slow me down
+
+Cinnamon satisfies these requirements and has some nice eye candy!
 
 # Why Debian Cinnamon?
 
@@ -65,8 +80,7 @@ Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE
 
 There are several meanings for the name:
 - It is my [omakase](https://en.wikipedia.org/wiki/Omakase) menu for Debian
-- Oh my! It's debonair!
-- Oh! My Debian installations never looked this good!
+- It's so debonair, it will make your friends say "Oh my!" or "Oh! My Debian installations never looked this good!"
 - Obligatory [recursive acronym](https://en.wikipedia.org/wiki/Recursive_acronym) OHMYDEBN: OhMyDebn Heals My Yearning for a Desktop Environment Base Now!
 
 # Gallery
