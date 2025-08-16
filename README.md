@@ -108,7 +108,7 @@ OhMyDebn requires the following:
 
 This script:
 - is intended for a clean new installation
-- will remove apps like FireFox, Thunderbird, and others
+- will remove apps like FireFox, Thunderbird, and others (unless you use the --no-uninstall option)
 - may make changes to your APT configuration
 
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
@@ -125,10 +125,6 @@ curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/ins
 ```
 bash install.sh
 ```
-4. Follow the prompts and enjoy your new OhMyDebn desktop!
-
-![OhMyDebn screenshot](images/ohmydebn.png)
-
 ## Installation Options
 
 The install script supports the following option:
@@ -139,43 +135,11 @@ Example:
 ```
 bash install.sh --no-uninstall
 ```
+# After Installation
 
-# Updating
+Once installation completes, you can enjoy your new OhMyDebn desktop!
 
-If you've already installed OhMyDebn and want to update to the latest version, you can use the experimental update script. However, please note that this process will most likely change in the future.
-
-1. Navigate to your OhMyDebn directory or download the update script:
-```
-curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/update.sh
-```
-
-2. Run the update script:
-```
-bash update.sh
-```
-
-The update script will:
-- Pull the latest changes from the git repository
-- Update configuration files (with backups)
-- Update themes and wallpapers
-- Update keyboard shortcuts
-- Update binaries in /usr/local/bin/
-
-## Update Options
-
-The update script supports several options:
-
-- `--help` - Show help message
-- `--skip-git-pull` - Skip pulling latest changes from git (useful if you have local modifications)
-- `--configs-only` - Only update configuration files
-- `--themes-only` - Only update themes and appearance settings
-
-Example:
-```
-bash update.sh --skip-git-pull
-```
-
-Note: The update script does NOT install or remove packages. It only updates configurations and settings.
+![OhMyDebn screenshot](images/ohmydebn.png)
 
 # Terminal
 
@@ -194,6 +158,8 @@ To start a terminal session, press Super + Enter. This launches a beautiful and 
 To start a text editor, press Super + N. This launches the beautiful and powerful combination of Neovim with LazyVim. The first time it loads, it will install several plugins. Once that is done, you can press the Q key until you get to the main menu. You can then press the space bar and then the E key to open Explorer.
 
 ![OhMyDebn Neovim screenshot](images/ohmydebn-neovim.png)
+
+The hotkeys section below includes more hotkeys for Neovim and a link to additional information.
 
 # Hotkeys
 
