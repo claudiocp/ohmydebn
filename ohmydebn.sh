@@ -111,7 +111,7 @@ fi
 logo
 echo
 
-if ! dpkg -s "cinnamon-desktop-environment" >/dev/null; then
+if ! dpkg -s "cinnamon-desktop-environment" >/dev/null 2>&1; then
   display "tte waves" "Installing Cinnamon desktop"
   sudo apt update && sudo apt -y install cinnamon-desktop-environment
 fi
