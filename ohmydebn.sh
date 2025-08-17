@@ -108,8 +108,14 @@ gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profi
 
 logo
 echo
+
+if ! dpkg -s "cinnamon-desktop-environment" >/dev/null; then
+  display "tte waves" "Installing Cinnamon desktop"
+  sudo apt update && sudo apt -y install cinnamon-desktop-environment
+fi
+
 if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
-  display "tte waves" "Installing themes"
+  display "tte waves" "Downloading Cinnamon themes"
   MINTLIST="/etc/apt/sources.list.d/mint.list"
   MINTKEY="linuxmint-keyring_2022.06.21_all.deb"
   MINTURL="http://packages.linuxmint.com/pool/main/l/linuxmint-keyring/$MINTKEY"
@@ -130,7 +136,7 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
   sudo apt -y purge linuxmint-keyring
 fi
 
-display "tte rain" "Changing wallpaper"
+display "tte rain" "Changing desktop wallpaper"
 mkdir -p ~/.config/$PROJECT_LOWER/current/
 mkdir -p ~/.config/$PROJECT_LOWER/themes/
 ln -sf ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER
