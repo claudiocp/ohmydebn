@@ -305,10 +305,15 @@ fi
 display "tte rain" "Configuring ristretto as default image viewer"
 xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
 
+NOTIFICATIONS_DIR=~/.config/cinnamon/spices/notifications@cinnamon.org
+mkdir -p $NOTIFICATIONS_DIR
+NOTIFICATIONS_FILE=$NOTIFICATIONS_DIR/notifications@cinnamon.org.json
+if [ ! -f $NOTIFICATIONS_FILE ]; then
+  display "tte rain" "Configuring notifications"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/notifications@cinnamon.org/notifications@cinnamon.org.json $NOTIFICATIONS_FILE
+fi
+
 display "tte rain" "Adding keyboard shortcuts"
-echo "Ctrl+Shift+Super+, to show notifications"
-yq '.keyOpen.value = "<Primary><Shift><Super>less"' ~/.config/cinnamon/spices/notifications\@cinnamon.org/notifications\@cinnamon.org.json >/dev/null
-sed -i.bak 's|"value": "<Super>n"|"value": "<Primary><Shift><Super>less"|g' ~/.config/cinnamon/spices/notifications\@cinnamon.org/notifications\@cinnamon.org.json >/dev/null
 echo "Super+PageUp to maximize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
 echo "Super+PageDown to minimize a window"
