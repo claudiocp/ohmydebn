@@ -100,8 +100,9 @@ Here's an old MacBook from 2014. Apple says it's EOL but OhMyDebn breathes new l
 OhMyDebn requires the following:
 - 2GB RAM minimum
 - 2 CPU cores minimum
-- Debian 13 with Cinnamon desktop
-- user account with sudo privileges
+- Debian 13
+- non-root user account with sudo privileges
+- curl
 - ability to connect to Github, package repos, and other Internet sites
   
 # Warnings
