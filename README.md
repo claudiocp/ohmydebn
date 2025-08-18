@@ -146,7 +146,7 @@ Once installation completes, you can enjoy your new OhMyDebn desktop!
 
 # Launch applications via Rofi
 
-To run applications, you can open the traditional program menu or just press Super + Space to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run.
+To run applications, you can open the traditional program menu or just press Super + Space to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
 
 ![OhMyDebn Rofi](images/ohmydebn-rofi.png)
 
