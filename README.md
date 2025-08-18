@@ -156,13 +156,13 @@ To start a web browser, you can open it from the traditional program menu, from 
 
 # OhMyDebn Logo
 
-To show the OhMyDebn logo in all of its glory, press Shift + Ctrl + O.
+To show the OhMyDebn logo in all of its glory, press Ctrl + Shift + O.
 
 ![OhMyDebn logo gui](images/ohmydebn-logo-gui.png)
 
 # System summary via screenfetch
 
-To see a system summary, press Shift + Ctrl + S to launch screenfetch.
+To see a system summary, press Ctrl + Shift + S to launch screenfetch.
 
 ![OhMyDebn system summary via screenfetch](images/ohmydebn-screenfetch-gui.png)
 
