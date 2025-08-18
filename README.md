@@ -150,7 +150,7 @@ To run applications, you can open the traditional program menu or just press Sup
 
 # Web browser
 
-To start a web browser, you can open it from the traditional program menu or just press Super + B. This launches [Chromium](https://www.chromium.org/Home/) with the uBlock Origin Lite content blocker already installed for you.
+To start a web browser, you can open it from the traditional program menu, from the Rofi application launcher, or just press Super + B. This launches [Chromium](https://www.chromium.org/Home/) with the uBlock Origin Lite content blocker already installed for you.
 
 ![OhMyDebn chromium web browser with uBlock Origin Lite content blocker](images/ohmydebn-chromium-ublock.png)
 
