@@ -105,6 +105,8 @@ fi
 display "cat" "Installing text effects for demoscene nostalgia"
 sudo apt update
 sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet
+# Most users are running a normal Debian 13 Cinnamon desktop and are running this script via gnome-terminal
+# In that case, let's change some terminal settings to make the output of this script look nicer
 if dpkg -s "gnome-terminal" >/dev/null 2>&1; then
   gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ foreground-color "'#D3D7CF'"
   gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ background-color "'#2E3436'"
