@@ -2,7 +2,7 @@
 
 OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. 
 
-Hotkeys and terminals and beauty, oh my!
+Command lines and hotkeys and beauty, oh my!
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
@@ -84,7 +84,8 @@ Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE
 
 There are several meanings for the name:
 - It is my [omakase](https://en.wikipedia.org/wiki/Omakase) menu for Debian
-- It's so debonair, it will make your friends say "Oh my!" or "Oh! My Debian installations never looked this good!"
+- Command lines and hotkeys and beauty, oh my!
+- It's so debonair, it will make your friends say "Oh! My Debian installations never looked this good!"
 - Obligatory [recursive acronym](https://en.wikipedia.org/wiki/Recursive_acronym) OHMYDEBN: OhMyDebn Heals My Yearning for a Desktop Environment Base Now!
 
 # Gallery
