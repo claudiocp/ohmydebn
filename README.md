@@ -142,13 +142,19 @@ Once installation completes, you can enjoy your new OhMyDebn desktop!
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
+# Launch applications via Rofi
+
+To run applications, you can open the traditional program menu or just press Super + Space to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run.
+
+![OhMyDebn Rofi](images/ohmydebn-rofi.png)
+
 # Web browser
 
 To start a web browser, you can open it from the traditional program menu or just press Super + B. This launches [Chromium](https://www.chromium.org/Home/) with the uBlock Origin Lite content blocker already installed for you.
 
 ![OhMyDebn chromium web browser with uBlock Origin Lite content blocker](images/ohmydebn-chromium-ublock.png)
 
-# Logo
+# OhMyDebn Logo
 
 To show the OhMyDebn logo in all of its glory, press Shift + Ctrl + O.
 

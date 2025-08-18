@@ -322,6 +322,12 @@ if [ ! -d $KEEPASS_CONFIG_DIR ]; then
   cp -av ~/.local/share/$PROJECT_LOWER/config/keepassxc ~/.config/
 fi
 
+ROFI_CONFIG_DIR=~/.config/rofi
+if [ ! -d $ROFI_CONFIG_DIR ]; then
+  display "tte rain" "Configuring Rofi"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/rofi ~/.config/
+fi
+
 display "tte rain" "Configuring ristretto as default image viewer"
 xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
 
