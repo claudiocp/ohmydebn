@@ -71,18 +71,21 @@ If it breaks your system, you get to keep both pieces!
 Press Enter to continue or Ctrl-c to cancel."
 read input
 
-SOURCESLIST=/etc/apt/sources.list
-if ! grep -q "debian.org" $SOURCESLIST; then
-  display "cat" "$SOURCESLIST does not have any debian.org references."
-  if [ -f $SOURCESLIST ]; then
-    echo "Renaming $SOURCESLIST to $SOURCESLIST.orig"
-    sudo mv $SOURCESLIST $SOURCESLIST.orig
-  fi
-  DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
-  if [ ! -f $DEBIANSOURCES ]; then
-    echo "$DEBIANSOURCES does not exist."
-    echo "Creating $DEBIANSOURCES and adding the following:"
-    cat <<EOF | sudo tee -a $DEBIANSOURCES
+if [ -f /etc/apt/sources.list.d/debian.sources ] || [ -f /etc/apt/sources.list.d/proxmox.sources ]; then
+  echo "Found an APT sources file in /etc/apt/sources.list.d/"
+else
+  SOURCESLIST=/etc/apt/sources.list
+  if ! grep -q "debian.org" $SOURCESLIST >/dev/null 2>&1; then
+    display "cat" "$SOURCESLIST does not have any debian.org references."
+    if [ -f $SOURCESLIST ]; then
+      echo "Renaming $SOURCESLIST to $SOURCESLIST.orig"
+      sudo mv $SOURCESLIST $SOURCESLIST.orig
+    fi
+    DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
+    if [ ! -f $DEBIANSOURCES ]; then
+      echo "$DEBIANSOURCES does not exist."
+      echo "Creating $DEBIANSOURCES and adding the following:"
+      cat <<EOF | sudo tee -a $DEBIANSOURCES
 Types: deb
 URIs: https://deb.debian.org/debian
 Suites: trixie trixie-updates
@@ -95,21 +98,32 @@ Suites: trixie-security
 Components: main non-free-firmware
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 EOF
+    fi
   fi
 fi
 
 display "cat" "Installing text effects for demoscene nostalgia"
 sudo apt update
 sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ foreground-color "'#D3D7CF'"
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ background-color "'#2E3436'"
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ use-theme-colors false
-gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ palette "['#2e3436', '#cc0000', '#4e9a06', '#c4a000', '#3465a4', '#75507b', '#06989a', '#d3d7cf', '#555753', '#ef2929', '#8ae234', '#fce94f', '#729fcf', '#ad7fa8', '#34e2e2', '#eeeeec']"
+# Most users are running a normal Debian 13 Cinnamon desktop and are running this script via gnome-terminal
+# In that case, let's change some terminal settings to make the output of this script look nicer
+if dpkg -s "gnome-terminal" >/dev/null 2>&1; then
+  gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ foreground-color "'#D3D7CF'"
+  gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ background-color "'#2E3436'"
+  gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ use-theme-colors false
+  gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ palette "['#2e3436', '#cc0000', '#4e9a06', '#c4a000', '#3465a4', '#75507b', '#06989a', '#d3d7cf', '#555753', '#ef2929', '#8ae234', '#fce94f', '#729fcf', '#ad7fa8', '#34e2e2', '#eeeeec']"
+fi
 
 logo
 echo
+
+if ! dpkg -s "cinnamon-desktop-environment" >/dev/null 2>&1; then
+  display "tte waves" "Installing Cinnamon desktop"
+  sudo apt update && sudo apt -y install cinnamon-desktop-environment
+fi
+
 if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
-  display "tte waves" "Installing themes"
+  display "tte waves" "Downloading Cinnamon themes"
   MINTLIST="/etc/apt/sources.list.d/mint.list"
   MINTKEY="linuxmint-keyring_2022.06.21_all.deb"
   MINTURL="http://packages.linuxmint.com/pool/main/l/linuxmint-keyring/$MINTKEY"
@@ -130,7 +144,13 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
   sudo apt -y purge linuxmint-keyring
 fi
 
-display "tte rain" "Changing wallpaper"
+if [ -f /usr/bin/pveversion ]; then
+  display "tte rain" "Installing dbus-x11"
+  sudo apt -y install dbus-x11
+  export $(dbus-launch)
+fi
+
+display "tte rain" "Changing desktop wallpaper"
 mkdir -p ~/.config/$PROJECT_LOWER/current/
 mkdir -p ~/.config/$PROJECT_LOWER/themes/
 ln -sf ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER
@@ -169,6 +189,14 @@ fi
 if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; then
   display "tte rain" "Enabling workspace switcher"
   gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
+fi
+
+WORKSPACE_SWITCHER_DIR=~/.config/cinnamon/spices/workspace-switcher@cinnamon.org
+mkdir -p $WORKSPACE_SWITCHER_DIR
+WORKSPACE_SWITCHER_FILE=$WORKSPACE_SWITCHER_DIR/10.json
+if [ ! -f $WORKSPACE_SWITCHER_FILE ]; then
+  display "tte rain" "Configuring workspace switcher"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/workspace-switcher@cinnamon.org/10.json $WORKSPACE_SWITCHER_FILE
 fi
 
 display "tte rain" "Installing new apps if unnecessary"
@@ -294,13 +322,24 @@ if [ ! -d $KEEPASS_CONFIG_DIR ]; then
   cp -av ~/.local/share/$PROJECT_LOWER/config/keepassxc ~/.config/
 fi
 
+ROFI_CONFIG_DIR=~/.config/rofi
+if [ ! -d $ROFI_CONFIG_DIR ]; then
+  display "tte rain" "Configuring Rofi"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/rofi ~/.config/
+fi
+
 display "tte rain" "Configuring ristretto as default image viewer"
 xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
 
+NOTIFICATIONS_DIR=~/.config/cinnamon/spices/notifications@cinnamon.org
+mkdir -p $NOTIFICATIONS_DIR
+NOTIFICATIONS_FILE=$NOTIFICATIONS_DIR/notifications@cinnamon.org.json
+if [ ! -f $NOTIFICATIONS_FILE ]; then
+  display "tte rain" "Configuring notifications"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/notifications@cinnamon.org/notifications@cinnamon.org.json $NOTIFICATIONS_FILE
+fi
+
 display "tte rain" "Adding keyboard shortcuts"
-echo "Ctrl+Shift+Super+, to show notifications"
-yq '.keyOpen.value = "<Primary><Shift><Super>less"' ~/.config/cinnamon/spices/notifications\@cinnamon.org/notifications\@cinnamon.org.json >/dev/null
-sed -i.bak 's|"value": "<Super>n"|"value": "<Primary><Shift><Super>less"|g' ~/.config/cinnamon/spices/notifications\@cinnamon.org/notifications\@cinnamon.org.json >/dev/null
 echo "Super+PageUp to maximize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
 echo "Super+PageDown to minimize a window"
