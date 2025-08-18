@@ -189,6 +189,14 @@ if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; th
   gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
 fi
 
+WORKSPACE_SWITCHER_DIR=~/.config/cinnamon/spices/workspace-switcher@cinnamon.org
+mkdir -p $WORKSPACE_SWITCHER_DIR
+WORKSPACE_SWITCHER_FILE=$WORKSPACE_SWITCHER_DIR/10.json
+if [ ! -f $WORKSPACE_SWITCHER_FILE ]; then
+  display "tte rain" "Configuring workspace switcher"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/workspace-switcher@cinnamon.org/10.json $WORKSPACE_SWITCHER_FILE
+fi
+
 display "tte rain" "Installing new apps if unnecessary"
 sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
