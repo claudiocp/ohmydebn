@@ -144,6 +144,10 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
   sudo apt -y purge linuxmint-keyring
 fi
 
+display "tte rain" "Installing dbus-x11"
+sudo apt -y install dbus-x11
+export $(dbus-launch)
+
 display "tte rain" "Changing desktop wallpaper"
 mkdir -p ~/.config/$PROJECT_LOWER/current/
 mkdir -p ~/.config/$PROJECT_LOWER/themes/
