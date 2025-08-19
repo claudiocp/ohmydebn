@@ -139,9 +139,31 @@ Example:
 ```
 bash install.sh --no-uninstall
 ```
+# Alternative installations
+
+## Debian 13 Minimal
+
+Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 minimal installation. Our installer will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation.
+
+## Proxmox 9
+
+Proxmox 9 is based on Debian 13 and will work with our installer as well.
+
+WARNING! We do not recommend installing OhMyDebn on a production Proxmox server! However, Proxmox + OhMyDebn makes for an amazing personal virtualization lab.
+
+In order to install on Proxmox 9, you will need to take care of a few prerequisites:
+
+1. Make sure that Proxmox has full access to APT repos. By default, Proxmox is configured to use Proxmox subscription repos. If you don't have a subscription, then you will need to change to the no-subscription repo.
+2. Make sure that sudo is installed (`sudo apt -y install sudo`).
+3. Make sure that you have a non-root user account (for example: `sudo adduser yourusername`).
+4. Make sure that your non-root user account has sudo privileges (for example: `sudo usermod -aG sudo yourusername`.
+5. Login as your non-root user account.
+6. Start the installation as shown above.
+7. Once the installation completes, reboot and login as your non-root user.
+
 # After Installation
 
-Once installation completes, you can enjoy your new OhMyDebn desktop!
+Once installation completes, you can enjoy your new OhMyDebn desktop!                                                         f
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
