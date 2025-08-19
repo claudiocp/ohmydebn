@@ -119,6 +119,8 @@ This script is totally unsupported. If it breaks your system, you get to keep bo
 
 # Installation
 
+For the quickest and easiest installation, I highly recommend starting with the Debian Live 13 Cinnamon ISO image. If for some reason that doesn't work for your use case, see the alternative installation options below.
+
 1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![debian-cinnamon screenshot](images/debian-cinnamon.png)
 2. In your Debian 13 Cinnamon desktop, download the script:
