@@ -60,10 +60,10 @@ Here are my requirements for a base OS:
 
 Debian satisfies these requirements and is well known for stability, simplicity, and versatility.
 
-# Why Cinnamon?
+# Why Cinnamon desktop?
 
 Here are my requirements for a desktop environment:
-- must be available on Debian
+- must be available on my preferred base OS (Debian)
 - able to support a traditional program menu
 - able to support a traditional taskbar with the ability to re-arrange the order in which running programs are listed
 - support hotkeys
