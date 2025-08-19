@@ -141,11 +141,17 @@ Example:
 ```
 bash install.sh --no-uninstall
 ```
+# After Installation
+
+Once installation completes, you can enjoy your new OhMyDebn desktop!                                                         f
+
+![OhMyDebn screenshot](images/ohmydebn.png)
+
 # Alternative installations
 
 ## Debian 13 Minimal
 
-Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 minimal installation. Our installer will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot.
+Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 minimal installation. Our installer will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot and enjoy your new OhMyDebn desktop!
 
 ## Proxmox 9
 
@@ -161,13 +167,7 @@ In order to install on Proxmox 9, you will need to take care of a few prerequisi
 4. Make sure that your non-root user account has sudo privileges (for example: `sudo usermod -aG sudo yourusername`.
 5. Login as your non-root user account.
 6. Start the installation as shown above.
-7. Once the installation completes, reboot (`sudo reboot`) and login as your non-root user.
-
-# After Installation
-
-Once installation completes, you can enjoy your new OhMyDebn desktop!                                                         f
-
-![OhMyDebn screenshot](images/ohmydebn.png)
+7. Once the installation completes, reboot (`sudo reboot`), login as your non-root user, and enjoy your new OhMyDebn desktop!
 
 # Launch applications via Rofi
 
