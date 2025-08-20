@@ -147,7 +147,7 @@ bash install.sh --no-uninstall
 ```
 # After Installation
 
-Once installation completes, you can enjoy your new OhMyDebn desktop!                                                         f
+Once installation completes, you can enjoy your new OhMyDebn desktop!
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
