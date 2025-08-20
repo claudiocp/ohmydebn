@@ -233,6 +233,7 @@ Pressing Super + K will open Chromium and navigate to this list of keyboard bind
 |--------|----------|
 | Ctrl+Shift+O | OhMyDebn logo |
 | Ctrl+Shift+S | screenfetch system summary |
+| Ctrl+Shift+A | audio visualizer (Cava) |
 
 ## Windows
 

@@ -200,7 +200,7 @@ if [ ! -f $WORKSPACE_SWITCHER_FILE ]; then
 fi
 
 display "tte rain" "Installing new apps if unnecessary"
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "tte rain" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
@@ -251,25 +251,6 @@ shell = "/usr/bin/zsh"
 EOF
 fi
 
-OHMYZSH_DIR=~/.oh-my-zsh
-if [ ! -d $OHMYZSH_DIR ]; then
-  display "tte rain" "Installing Oh My Zsh framework for Zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  mv ~/.zshrc ~/.zshrc.oh-my-zsh
-fi
-
-ZSH_CONFIG=~/.zshrc
-if [ ! -f $ZSH_CONFIG ]; then
-  display "tte rain" "Configuring Zsh"
-  cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
-fi
-
-STARSHIP_CONFIG=~/config/starship.toml
-if [ ! -f $STARSHIP_CONFIG ]; then
-  display "tte rain" "Configuring starship prompt"
-  cp ~/.local/share/$PROJECT_LOWER/config/starship.toml ~/.config/
-fi
-
 BTOP_CONFIG=~/.config/btop
 mkdir -p $BTOP_CONFIG
 cd $BTOP_CONFIG
@@ -280,6 +261,38 @@ if [ ! -f themes.tar.gz ]; then
   echo "color_theme = \"$BTOP_CONFIG/themes/catppuccin_mocha.theme\"" >btop.conf
 fi
 cd - >/dev/null
+
+CAVA_CONFIG_DIR=~/.config/cava
+if [ ! -f $CAVA_CONFIG_DIR ]; then
+  display "tte rain" "Configuring cava with catppuccin theme"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/cava ~/.config/
+fi
+
+CHROMIUM_EXTENSIONS=~/.config/chromium/"External Extensions"
+mkdir -p "$CHROMIUM_EXTENSIONS"
+UBLOCK_EXTENSION="$CHROMIUM_EXTENSIONS/ddkjiahejlhfcafbddmgiahcphecmpfh.json"
+if [ ! -f "$UBLOCK_EXTENSION" ]; then
+  display "tte rain" "Configuring chromium"
+  cat <<EOF >>"$UBLOCK_EXTENSION"
+{
+  "external_update_url": "https://clients2.google.com/service/update2/crx"
+}
+EOF
+fi
+
+KEEPASS_CONFIG_DIR=~/.config/keepassxc
+if [ ! -d $KEEPASS_CONFIG_DIR ]; then
+  display "tte rain" "Configuring KeePassXC"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/keepassxc ~/.config/
+fi
+
+NOTIFICATIONS_DIR=~/.config/cinnamon/spices/notifications@cinnamon.org
+mkdir -p $NOTIFICATIONS_DIR
+NOTIFICATIONS_FILE=$NOTIFICATIONS_DIR/notifications@cinnamon.org.json
+if [ ! -f $NOTIFICATIONS_FILE ]; then
+  display "tte rain" "Configuring notifications"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/notifications@cinnamon.org/notifications@cinnamon.org.json $NOTIFICATIONS_FILE
+fi
 
 NVIM_CONFIG=~/.config/nvim
 if [ ! -d $NVIM_CONFIG ]; then
@@ -299,26 +312,11 @@ return {
 EOF
 fi
 
-CHROMIUM_EXTENSIONS=~/.config/chromium/"External Extensions"
-mkdir -p "$CHROMIUM_EXTENSIONS"
-UBLOCK_EXTENSION="$CHROMIUM_EXTENSIONS/ddkjiahejlhfcafbddmgiahcphecmpfh.json"
-if [ ! -f "$UBLOCK_EXTENSION" ]; then
-  display "tte rain" "Configuring chromium"
-  cat <<EOF >>"$UBLOCK_EXTENSION"
-{
-  "external_update_url": "https://clients2.google.com/service/update2/crx"
-}
-EOF
-fi
-
-display "tte rain" "Copying binaries to /usr/local/bin/"
-sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
-sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
-
-KEEPASS_CONFIG_DIR=~/.config/keepassxc
-if [ ! -d $KEEPASS_CONFIG_DIR ]; then
-  display "tte rain" "Configuring KeePassXC"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/keepassxc ~/.config/
+OHMYZSH_DIR=~/.oh-my-zsh
+if [ ! -d $OHMYZSH_DIR ]; then
+  display "tte rain" "Installing Oh My Zsh framework for Zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  mv ~/.zshrc ~/.zshrc.oh-my-zsh
 fi
 
 ROFI_CONFIG_DIR=~/.config/rofi
@@ -327,16 +325,24 @@ if [ ! -d $ROFI_CONFIG_DIR ]; then
   cp -av ~/.local/share/$PROJECT_LOWER/config/rofi ~/.config/
 fi
 
+STARSHIP_CONFIG=~/config/starship.toml
+if [ ! -f $STARSHIP_CONFIG ]; then
+  display "tte rain" "Configuring starship prompt"
+  cp ~/.local/share/$PROJECT_LOWER/config/starship.toml ~/.config/
+fi
+
+ZSH_CONFIG=~/.zshrc
+if [ ! -f $ZSH_CONFIG ]; then
+  display "tte rain" "Configuring Zsh"
+  cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
+fi
+
+display "tte rain" "Copying binaries to /usr/local/bin/"
+sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
+sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
+
 display "tte rain" "Configuring ristretto as default image viewer"
 xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
-
-NOTIFICATIONS_DIR=~/.config/cinnamon/spices/notifications@cinnamon.org
-mkdir -p $NOTIFICATIONS_DIR
-NOTIFICATIONS_FILE=$NOTIFICATIONS_DIR/notifications@cinnamon.org.json
-if [ ! -f $NOTIFICATIONS_FILE ]; then
-  display "tte rain" "Configuring notifications"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/notifications@cinnamon.org/notifications@cinnamon.org.json $NOTIFICATIONS_FILE
-fi
 
 display "tte rain" "Adding keyboard shortcuts"
 echo "Super+PageUp to maximize a window"
@@ -354,7 +360,7 @@ gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-3 "['<Supe
 echo "Super+4 to switch to workspace 4"
 gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-4 "['<Super>4']"
 # To add a new custom keybinding, update the following line and then add a group of custom-xyz lines below
-gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9']"
+gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9', 'custom-10']"
 # custom-0
 echo "Ctrl+Shift+K for KeePassXC password manager"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
@@ -405,6 +411,11 @@ echo "Ctrl+Shift+S to show screenfetch"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ name "screenfetch"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ command "/usr/local/bin/ohmydebn-screenfetch-gui"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ binding "['<Ctrl><Shift>S']"
+# custom-10
+echo "Ctrl+Shift+A to show audio visualizer"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ name "cava audio visualizer"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ command "/usr/bin/alacritty -e cava"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ binding "['<Ctrl><Shift>A']"
 
 if pgrep -x cinnamon >/dev/null; then
   display "tte rain" "Restarting desktop to apply keybindings"
