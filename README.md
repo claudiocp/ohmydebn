@@ -203,6 +203,12 @@ To monitor your system performance, press Super + T to launch btop.
 
 ![OhMyDebn btop](images/ohmydebn-btop.png)
 
+# Audio visualizer via Cava
+
+To visualize your system audio, press Ctrl + Shift + A to launch Cava.
+
+![OhMyDebn Cava audio visualizer](images/ohmydebn-cava-audio.png)
+
 # Terminal
 
 To start a terminal session, press Super + Enter. This launches a beautiful and powerful [Alacritty](https://alacritty.org) terminal window that includes:
