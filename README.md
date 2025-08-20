@@ -124,7 +124,7 @@ This script is totally unsupported. If it breaks your system, you get to keep bo
 
 # Installation
 
-For the quickest and easiest installation, I highly recommend starting with the Debian Live 13 Cinnamon ISO image. If for some reason that doesn't work for your use case, see the alternative installation options below.
+For the quickest and easiest installation, the best option is to start with the Debian Live 13 Cinnamon ISO image. If for some reason that doesn't work for your use case, see the alternative installation options below.
 
 1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![debian-cinnamon screenshot](images/debian-cinnamon.png)
@@ -176,43 +176,43 @@ In order to install on Proxmox 9, you will need to take care of a few prerequisi
 
 # Launch applications via Rofi
 
-To run applications, you can open the traditional program menu or just press Super + Space to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
+To run applications, you can open the traditional program menu or just press `Super + Space`` to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
 
 ![OhMyDebn Rofi](images/ohmydebn-rofi.png)
 
 # Web browser
 
-To start a web browser, you can open it from the traditional program menu, from the Rofi application launcher, or just press Super + B. This launches [Chromium](https://www.chromium.org/Home/) with the uBlock Origin Lite content blocker already installed for you.
+To start a web browser, you can open it from the traditional program menu, from the Rofi application launcher, or just press `Super + B`. This launches [Chromium](https://www.chromium.org/Home/) with the uBlock Origin Lite content blocker already installed for you.
 
 ![OhMyDebn chromium web browser with uBlock Origin Lite content blocker](images/ohmydebn-chromium-ublock.png)
 
 # OhMyDebn Logo
 
-To show the OhMyDebn logo in all of its glory, press Ctrl + Shift + O.
+To show the OhMyDebn logo in all of its glory, press `Ctrl + Shift + O`.
 
 ![OhMyDebn logo gui](images/ohmydebn-logo-gui.png)
 
 # System summary via screenfetch
 
-To see a system summary, press Ctrl + Shift + S to launch screenfetch.
+To see a system summary, press `Ctrl + Shift + S` to launch screenfetch.
 
 ![OhMyDebn system summary via screenfetch](images/ohmydebn-screenfetch-gui.png)
 
 # System monitoring via btop
 
-To monitor your system performance, press Super + T to launch btop.
+To monitor your system performance, press `Super + T` to launch btop.
 
 ![OhMyDebn btop](images/ohmydebn-btop.png)
 
 # Audio visualizer via Cava
 
-To visualize your system audio, press Ctrl + Shift + A to launch Cava.
+To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 ![OhMyDebn Cava audio visualizer](images/ohmydebn-cava-audio.png)
 
 # Terminal
 
-To start a terminal session, press Super + Enter. This launches a beautiful and powerful [Alacritty](https://alacritty.org) terminal window that includes:
+To start a terminal session, press `Super + Enter`. This launches a beautiful and powerful [Alacritty](https://alacritty.org) terminal window that includes:
 - Caskaydia Nerd Fonts
 - [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
 - [Zsh](https://en.wikipedia.org/wiki/Z_shell) shell with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
@@ -224,7 +224,7 @@ To start a terminal session, press Super + Enter. This launches a beautiful and 
 
 # Text editor
 
-To start a text editor, press Super + N. This launches the beautiful and powerful combination of Neovim with LazyVim. The first time it loads, it will install several plugins. Once that is done, you can press the Q key until you get to the main menu. You can then press the space bar and then the E key to open Explorer.
+To start a text editor, press `Super + N`. This launches the beautiful and powerful combination of Neovim with LazyVim. The first time it loads, it will install several plugins. Once that is done, you can press the `Q` key until you get to the main menu. You can then press the space bar and then the `E` key to open Explorer.
 
 ![OhMyDebn Neovim screenshot](images/ohmydebn-neovim.png)
 
@@ -232,7 +232,7 @@ The hotkeys section below includes more hotkeys for Neovim and a link to additio
 
 # Hotkeys
 
-Pressing Super + K will open Chromium and navigate to this list of keyboard bindings.
+Pressing `Super + K` will open Chromium and navigate to this list of keyboard bindings.
 
 ## OhMyDebn
 
