@@ -103,8 +103,7 @@ EOF
 fi
 
 display "cat" "Installing text effects for demoscene nostalgia"
-sudo apt update
-sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet
+sudo apt update && sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet toilet-fonts
 # Most users are running a normal Debian 13 Cinnamon desktop and are running this script via gnome-terminal
 # In that case, let's change some terminal settings to make the output of this script look nicer
 if dpkg -s "gnome-terminal" >/dev/null 2>&1; then
@@ -119,7 +118,7 @@ echo
 
 if ! dpkg -s "cinnamon-desktop-environment" >/dev/null 2>&1; then
   display "tte waves" "Installing Cinnamon desktop"
-  sudo apt update && sudo apt -y install cinnamon-desktop-environment
+  sudo apt -y install cinnamon-desktop-environment
 fi
 
 if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
@@ -136,7 +135,7 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
   sudo dpkg -i $MINTKEY
   echo
   sudo rm -f $MINTKEY
-  sudo apt update && sudo apt -y install mint-themes
+  sudo apt update && sudo apt -y install mint-themes mint-x-icons mint-y-icons
   echo
   sudo rm -f $MINTLIST
   sudo apt update
@@ -201,7 +200,6 @@ if [ ! -f $WORKSPACE_SWITCHER_FILE ]; then
 fi
 
 display "tte rain" "Installing new apps if unnecessary"
-sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "tte rain" "Setting alacritty as default terminal emulator"
