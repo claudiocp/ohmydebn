@@ -172,8 +172,8 @@ gsettings set org.cinnamon.desktop.interface gtk-theme "'Mint-Y-Dark-Aqua'"
 display "tte rain" "Setting icon theme"
 gsettings set org.cinnamon.desktop.interface icon-theme "'Mint-Y-Sand'"
 
-display "tte rain" "Setting alttab switcher style to coverflow"
-gsettings set org.cinnamon alttab-switcher-style "'coverflow'"
+display "tte rain" "Setting alttab switcher style to icons+preview"
+gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
 
 display "tte rain" "Configuring alttab switcher for all workspaces"
 gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
