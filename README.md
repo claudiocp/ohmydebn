@@ -176,7 +176,7 @@ In order to install on Proxmox 9, you will need to take care of a few prerequisi
 
 # Launch applications via Rofi
 
-To run applications, you can open the traditional program menu or just press `Super + Space`` to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
+To run applications, you can open the traditional program menu or just press `Super + Space` to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
 
 ![OhMyDebn Rofi](images/ohmydebn-rofi.png)
 
@@ -238,100 +238,100 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 
 | Hotkey | Function |
 |--------|----------|
-| Ctrl+Shift+O | OhMyDebn logo |
-| Ctrl+Shift+S | screenfetch system summary |
-| Ctrl+Shift+A | audio visualizer (Cava) |
+| `Ctrl+Shift+O` | OhMyDebn logo |
+| `Ctrl+Shift+S` | screenfetch system summary |
+| `Ctrl+Shift+A` | audio visualizer (Cava) |
 
 ## Windows
 
 | Hotkey | Function |
 |--------|----------|
-| Alt+Tab | Cycle through open windows |
-| Shift+Alt+Tab | Cycle backwards through open windows |
-| Alt+Space | Activate window menu |
-| Alt+F7 | Move window |
-| Super+W | Close window |
-| Super+D | Show desktop (minimize all windows) |
-| Super+Left | Push window left |
-| Super+Right | Push window right |
-| Super+Up | Push window up |
-| Super+Down | Push window down |
-| Super+PageUp | Maximize window |
-| Super+PageDown | Minimize window |
-| Ctrl+Alt+Down | Window selection |
+| `Alt+Tab` | Cycle through open windows |
+| `Shift+Alt+Tab` | Cycle backwards through open windows |
+| `Alt+Space` | Activate window menu |
+| `Alt+F7` | Move window |
+| `Super+W` | Close window |
+| `Super+D` | Show desktop (minimize all windows) |
+| `Super+Left` | Push window left |
+| `Super+Right` | Push window right |
+| `Super+Up` | Push window up |
+| `Super+Down` | Push window down |
+| `Super+PageUp` | Maximize window |
+| `Super+PageDown` | Minimize window |
+| `Ctrl+Alt+Down` | Window selection |
 
 ## Workspaces
 
 | Hotkey | Function |
 |--------|----------|
-| Super+1 | Switch to workspace 1 |
-| Super+2 | Switch to workspace 2 |
-| Super+3 | Switch to workspace 3 |
-| Super+4 | Switch to workspace 4 |
-| Ctrl+Alt+Up | Workspace selection |
-| Ctrl+Alt+Left | Switch to left workspace |
-| Ctrl+Alt+Right | Switch to right workspace |
-| Shift+Ctrl+Alt+Left | Move window to left workspace |
-| Shift+Ctrl+Alt+Right | Move window to right workspace |
+| `Super+1` | Switch to workspace 1 |
+| `Super+2` | Switch to workspace 2 |
+| `Super+3` | Switch to workspace 3 |
+| `Super+4` | Switch to workspace 4 |
+| `Ctrl+Alt+Up` | Workspace selection |
+| `Ctrl+Alt+Left` | Switch to left workspace |
+| `Ctrl+Alt+Right` | Switch to right workspace |
+| `Shift+Ctrl+Alt+Left` | Move window to left workspace |
+| `Shift+Ctrl+Alt+Right` | Move window to right workspace |
 
 ## System
 
 | Hotkey | Function |
 |--------|----------|
-| Ctrl+Alt+L | Lock screen |
-| Ctrl+Alt+Del | Logout |
-| Ctrl+Alt+End | Shut down |
-| Ctrl+Alt+Escape | Restart Cinnamon desktop |
+| `Ctrl+Alt+L` | Lock screen |
+| `Ctrl+Alt+Del` | Logout |
+| `Ctrl+Alt+End` | Shut down |
+| `Ctrl+Alt+Escape` | Restart Cinnamon desktop |
 
 ## Apps
 
 | Hotkey | Function |
 |--------|----------|
-| Super+Space | Application Launcher (Rofi) |
-| Super+Return | Terminal (Alacritty) |
-| Super+B | Browser (Chromium) |
-| Super+F | File Manager (Nemo) |
-| Super+T | btop |
-| Super+N | Neovim |
-| Alt+F2 | Run dialog |
+| `Super+Space` | Application Launcher (Rofi) |
+| `Super+Return` | Terminal (Alacritty) |
+| `Super+B` | Browser (Chromium) |
+| `Super+F` | File Manager (Nemo) |
+| `Super+T` | btop |
+| `Super+N` | Neovim |
+| `Alt+F2` | Run dialog |
 
 ## Password and Bookmark Management (KeePassXC)
 
 | Hotkey | Function |
 |--------|----------|
-| Ctrl+Shift+K | Open or activate KeePassXC |
-| Ctrl+Shift+U | Open browser tab to selected URL |
-| Ctrl+Shift+P | Auto-type username and password for selected site |
-| Ctrl+N | Create a new entry in KeePassXC |
-| Ctrl+E | Edit entry |
-| Ctrl+B | Copy username |
-| Ctrl+C | Copy password |
-| Ctrl+U | Copy URL |
+| `Ctrl+Shift+K` | Open or activate KeePassXC |
+| `Ctrl+Shift+U` | Open browser tab to selected URL |
+| `Ctrl+Shift+P` | Auto-type username and password for selected site |
+| `Ctrl+N` | Create a new entry in KeePassXC |
+| `Ctrl+E` | Edit entry |
+| `Ctrl+B` | Copy username |
+| `Ctrl+C` | Copy password |
+| `Ctrl+U` | Copy URL |
 
 ## Configuration
 
 | Hotkey | Function |
 |--------|----------|
-| Shift+Super+N | Network Manager |
-| Shift+Super+S | Sound menu |
+| `Shift+Super+N` | Network Manager |
+| `Shift+Super+S` | Sound menu |
 
 ## Capture
 
 | Hotkey | Function |
 |--------|----------|
-| Shift+Print | Take a screenshot of an area |
-| Shift+Ctrl+Print | Copy a screenshot of an area to clipboard |
-| Print | Take a screenshot |
-| Ctrl+Print | Copy a screenshot to clipboard |
-| Alt+Print | Take a screenshot of a window |
-| Ctrl+Alt+Print | Copy a screenshot of a window to clipboard |
+| `Shift+Print` | Take a screenshot of an area |
+| `Shift+Ctrl+Print` | Copy a screenshot of an area to clipboard |
+| `Print` | Take a screenshot |
+| `Ctrl+Print` | Copy a screenshot to clipboard |
+| `Alt+Print` | Take a screenshot of a window |
+| `Ctrl+Alt+Print` | Copy a screenshot of a window to clipboard |
 
 ## Notifications
 
 | Hotkey | Function |
 |--------|----------|
-| Super+N | Show notifications |
-| Shift+Super+C | Clear notifications |
+| `Super+N` | Show notifications |
+| `Shift+Super+C` | Clear notifications |
 
 ## Neovim (with LazyVim)
 
@@ -339,27 +339,27 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 
 | Hotkey | Function |
 |--------|----------|
-| Space | Show command options |
-| Space Space | Open file via fuzzy search |
-| Space E |	Toggle sidebar |
-| Space G G | Show git controls |
-| Space S G | Search file content |
-| Ctrl + W W | Jump between sidebar and editor |
-| Ctrl + Left/right arrow | Change size of sidebar |
-| Shift + H | Go to left file tab |
-| Shift + L | Go to right file tab |
-| Space B D | Close file tab |
+| `Space` | Show command options |
+| `Space Space` | Open file via fuzzy search |
+| `Space E` |	Toggle sidebar |
+| `Space G G` | Show git controls |
+| `Space S G` | Search file content |
+| `Ctrl + W W` | Jump between sidebar and editor |
+| `Ctrl + Left/right arrow` | Change size of sidebar |
+| `Shift + H` | Go to left file tab |
+| `Shift + L` | Go to right file tab |
+| `Space B D` | Close file tab |
 
 ### While in sidebar
 
 | Hotkey | Function |
 |--------|----------|
-| A | Add new file in parent dir |
-| Shift + A | Add new subdir in parent dir |
-| D | Delete highlighted file/dir |
-| M | Move highlighted file/dir |
-| R | Rename highlighted file/dir |
-| ? | Show help for all commands |
+| `A` | Add new file in parent dir |
+| `Shift + A` | Add new subdir in parent dir |
+| `D` | Delete highlighted file/dir |
+| `M` | Move highlighted file/dir |
+| `R` | Rename highlighted file/dir |
+| `?` | Show help for all commands |
 
 For the full list of all Neovim hotkeys configured by LazyVim, please see https://www.lazyvim.org/keymaps.
 
