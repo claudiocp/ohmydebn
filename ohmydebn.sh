@@ -180,6 +180,7 @@ gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
 
 display "tte rain" "Configuring gedit"
 gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
+gsettings set org.gnome.gedit.preferences.editor display-line-numbers false
 
 if gsettings get org.cinnamon enabled-applets | grep -q grouped-window-list; then
   display "tte rain" "Changing grouped window list to window list"

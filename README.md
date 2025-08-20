@@ -1,6 +1,8 @@
 # OhMyDebn
 
-OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
+OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. 
+
+Command lines and hotkeys and beauty, oh my!
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
@@ -35,17 +37,17 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 - Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
 - Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
 - Shell prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
-- Shell improvements: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command and [eza](https://github.com/eza-community/eza) for beautiful directory listings
 - Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/) and [Catppuccin theme](https://github.com/catppuccin/nvim)
+- Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
+- Application launcher: [Rofi](https://davatorium.github.io/rofi/current/rofi.1/) with [Catppuccin Mocha theme](https://github.com/catppuccin/rofi)
+- Shell improvements: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command and [eza](https://github.com/eza-community/eza) for beautiful directory listings
 - Web browser: [Chromium](https://www.chromium.org/Home/) with uBlock Origin Lite content blocker
 - Password management: [KeePassXC](https://keepassxc.org/)
 - Default image viewer: [Ristretto](https://docs.xfce.org/apps/ristretto/start)
 - Image editor: [GIMP](https://www.gimp.org/)
-- Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
 - System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Window automation: [xdotool](https://github.com/jordansissel/xdotool)
 - Office Suite: [LibreOffice](https://www.libreoffice.org/)
-- App launcher: [Rofi](https://davatorium.github.io/rofi/current/rofi.1/)
 - Eye candy: dazzling terminal effects via [tte](https://github.com/ChrisBuilds/terminaltexteffects) for demoscene nostalgia
 
 # Why Debian?
@@ -58,10 +60,10 @@ Here are my requirements for a base OS:
 
 Debian satisfies these requirements and is well known for stability, simplicity, and versatility.
 
-# Why Cinnamon?
+# Why Cinnamon desktop?
 
 Here are my requirements for a desktop environment:
-- must be available on Debian
+- must be available on my preferred base OS (Debian)
 - able to support a traditional program menu
 - able to support a traditional taskbar with the ability to re-arrange the order in which running programs are listed
 - support hotkeys
@@ -82,7 +84,8 @@ Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE
 
 There are several meanings for the name:
 - It is my [omakase](https://en.wikipedia.org/wiki/Omakase) menu for Debian
-- It's so debonair, it will make your friends say "Oh my!" or "Oh! My Debian installations never looked this good!"
+- Command lines and hotkeys and beauty, oh my!
+- It's so debonair, it will make your friends say "Oh! My Debian installations never looked this good!"
 - Obligatory [recursive acronym](https://en.wikipedia.org/wiki/Recursive_acronym) OHMYDEBN: OhMyDebn Heals My Yearning for a Desktop Environment Base Now!
 
 # Gallery
@@ -94,6 +97,10 @@ Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallel
 Here's an old MacBook from 2014. Apple says it's EOL but OhMyDebn breathes new life into it!
 
 ![OhMyDebn MacBook 2014](images/ohmydebn-macbook-2014.png)
+
+How about an OhMyDebn Proxmox cyberdeck?
+
+![OhMyDebn Proxmox cyberdeck](images/ohmydebn-proxmox-cyberdeck.png)
 
 # Requirements
 
@@ -115,6 +122,8 @@ This script:
 This script is totally unsupported. If it breaks your system, you get to keep both pieces!
 
 # Installation
+
+For the quickest and easiest installation, I highly recommend starting with the Debian Live 13 Cinnamon ISO image. If for some reason that doesn't work for your use case, see the alternative installation options below.
 
 1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![debian-cinnamon screenshot](images/debian-cinnamon.png)
@@ -138,13 +147,35 @@ bash install.sh --no-uninstall
 ```
 # After Installation
 
-Once installation completes, you can enjoy your new OhMyDebn desktop!
+Once installation completes, you can enjoy your new OhMyDebn desktop!                                                         f
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
+# Alternative installations
+
+## Debian 13 Minimal
+
+Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 minimal installation. Our installer will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot and enjoy your new OhMyDebn desktop!
+
+## Proxmox 9
+
+Proxmox 9 is based on Debian 13 and will work with our installer as well.
+
+WARNING! We do not recommend installing OhMyDebn on a production Proxmox server! However, Proxmox + OhMyDebn makes for an amazing personal virtualization workstation.
+
+In order to install on Proxmox 9, you will need to take care of a few prerequisites:
+
+1. Make sure that Proxmox has full access to APT repos. By default, Proxmox is configured to use Proxmox subscription repos. If you don't have a subscription, then you will need to change to the no-subscription repo. For more information, please see https://pve.proxmox.com/wiki/Package_Repositories.
+2. Make sure that sudo is installed (`sudo apt -y install sudo`).
+3. Make sure that you have a non-root user account (for example: `sudo adduser yourusername`).
+4. Make sure that your non-root user account has sudo privileges (for example: `sudo usermod -aG sudo yourusername`).
+5. Login as your non-root user account.
+6. Start the installation as shown above.
+7. Once the installation completes, reboot (`sudo reboot`), login as your non-root user, and enjoy your new OhMyDebn desktop!
+
 # Launch applications via Rofi
 
-To run applications, you can open the traditional program menu or just press Super + Space to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run.
+To run applications, you can open the traditional program menu or just press Super + Space to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
 
 ![OhMyDebn Rofi](images/ohmydebn-rofi.png)
 
