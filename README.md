@@ -1,8 +1,6 @@
 # OhMyDebn
 
-OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. 
-
-Command lines and hotkeys and beauty, oh my!
+OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beautiful yet powerful and productive. Command lines and hotkeys and beauty, oh my!
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
