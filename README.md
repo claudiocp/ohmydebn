@@ -41,7 +41,8 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 - Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
 - Application launcher: [Rofi](https://davatorium.github.io/rofi/current/rofi.1/) with [Catppuccin Mocha theme](https://github.com/catppuccin/rofi)
 - Audio visualizer: [Cava](https://github.com/karlstav/cava) with [Catppuccin Mocha theme](https://github.com/catppuccin/cava)
-- Shell improvements: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command and [eza](https://github.com/eza-community/eza) for beautiful directory listings
+- Shell cat command alternative: [bat](https://github.com/sharkdp/bat) with syntax highlighting and [Catppuccin Mocha theme](https://github.com/catppuccin/bat)
+- Shell commands for directories: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command and [eza](https://github.com/eza-community/eza) for beautiful directory listings
 - Web browser: [Chromium](https://www.chromium.org/Home/) with uBlock Origin Lite content blocker
 - Password management: [KeePassXC](https://keepassxc.org/)
 - Default image viewer: [Ristretto](https://docs.xfce.org/apps/ristretto/start)

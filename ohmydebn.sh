@@ -200,7 +200,7 @@ if [ ! -f $WORKSPACE_SWITCHER_FILE ]; then
 fi
 
 display "tte rain" "Installing new apps if unnecessary"
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "tte rain" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
@@ -249,6 +249,18 @@ if ! grep -q "\[terminal\]" $ALACRITTY_CONFIG; then
 [terminal]
 shell = "/usr/bin/zsh"
 EOF
+fi
+
+BAT_BIN=/usr/local/bin/bat
+if [ ! -e $BAT_BIN ]; then
+  display "tte rain" "Creating symbolic link for bat"
+  sudo ln -s /usr/bin/batcat /usr/local/bin/bat
+fi
+
+BAT_CONFIG_DIR=~/.config/bat
+if [ ! -f $BAT_CONFIG_DIR ]; then
+  display "tte rain" "Configuring bat with catppuccin theme"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/bat ~/.config/
 fi
 
 BTOP_CONFIG=~/.config/btop
