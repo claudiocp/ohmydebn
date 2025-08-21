@@ -191,13 +191,17 @@ if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; th
   gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
 fi
 
+display "tte rain" "Configuring cinnamon spices"
 WORKSPACE_SWITCHER_DIR=~/.config/cinnamon/spices/workspace-switcher@cinnamon.org
 mkdir -p $WORKSPACE_SWITCHER_DIR
 WORKSPACE_SWITCHER_FILE=$WORKSPACE_SWITCHER_DIR/10.json
-if [ ! -f $WORKSPACE_SWITCHER_FILE ]; then
-  display "tte rain" "Configuring workspace switcher"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/workspace-switcher@cinnamon.org/10.json $WORKSPACE_SWITCHER_FILE
-fi
+echo "Configuring workspace switcher"
+cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/workspace-switcher@cinnamon.org/10.json $WORKSPACE_SWITCHER_FILE
+NOTIFICATIONS_DIR=~/.config/cinnamon/spices/notifications@cinnamon.org
+mkdir -p $NOTIFICATIONS_DIR
+NOTIFICATIONS_FILE=$NOTIFICATIONS_DIR/notifications@cinnamon.org.json
+echo "Configuring notifications"
+cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/notifications@cinnamon.org/notifications@cinnamon.org.json $NOTIFICATIONS_FILE
 
 display "tte rain" "Installing new apps if unnecessary"
 sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
@@ -261,8 +265,9 @@ display "tte rain" "Configuring components"
 for COMPONENT in bat btop cava chromium keepassxc rofi; do
   COMPONENT_CONFIG_DIR=~/.config/$COMPONENT
   if [ ! -d $COMPONENT_CONFIG_DIR ]; then
-    echo "Configuring $COMPONENT"
+    echo "Configuring $COMPONENT:"
     cp -av ~/.local/share/$PROJECT_LOWER/config/$COMPONENT ~/.config/
+    echo
   fi
 done
 
@@ -270,14 +275,6 @@ BAT_CACHE_METADATA=~/.cache/bat/metadata.yaml
 if [ ! -f $BAT_CACHE_METADATA ]; then
   display "tte rain" "Building cache for bat"
   bat cache --build
-fi
-
-NOTIFICATIONS_DIR=~/.config/cinnamon/spices/notifications@cinnamon.org
-mkdir -p $NOTIFICATIONS_DIR
-NOTIFICATIONS_FILE=$NOTIFICATIONS_DIR/notifications@cinnamon.org.json
-if [ ! -f $NOTIFICATIONS_FILE ]; then
-  display "tte rain" "Configuring notifications"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/notifications@cinnamon.org/notifications@cinnamon.org.json $NOTIFICATIONS_FILE
 fi
 
 NVIM_CONFIG_DIR=~/.config/nvim
