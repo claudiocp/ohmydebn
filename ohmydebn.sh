@@ -276,16 +276,10 @@ if [ ! -d $CAVA_CONFIG_DIR ]; then
   cp -av ~/.local/share/$PROJECT_LOWER/config/cava ~/.config/
 fi
 
-CHROMIUM_EXTENSIONS=~/.config/chromium/"External Extensions"
-mkdir -p "$CHROMIUM_EXTENSIONS"
-UBLOCK_EXTENSION="$CHROMIUM_EXTENSIONS/ddkjiahejlhfcafbddmgiahcphecmpfh.json"
-if [ ! -f "$UBLOCK_EXTENSION" ]; then
-  display "tte rain" "Configuring chromium"
-  cat <<EOF >>"$UBLOCK_EXTENSION"
-{
-  "external_update_url": "https://clients2.google.com/service/update2/crx"
-}
-EOF
+CHROMIUM_CONFIG_DIR=~/.config/chromium
+if [ ! -d $CHROMIUM_CONFIG_DIR ]; then
+  display "tte rain" "Configuring chromium with content blocker"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/chromium ~/.config/
 fi
 
 KEEPASS_CONFIG_DIR=~/.config/keepassxc
