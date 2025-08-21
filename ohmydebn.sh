@@ -258,24 +258,20 @@ if [ ! -e $BAT_BIN ]; then
 fi
 
 BAT_CONFIG_DIR=~/.config/bat
-if [ ! -f $BAT_CONFIG_DIR ]; then
+if [ ! -d $BAT_CONFIG_DIR ]; then
   display "tte rain" "Configuring bat with catppuccin theme"
   cp -av ~/.local/share/$PROJECT_LOWER/config/bat ~/.config/
+  bat cache --build
 fi
 
-BTOP_CONFIG=~/.config/btop
-mkdir -p $BTOP_CONFIG
-cd $BTOP_CONFIG
-if [ ! -f themes.tar.gz ]; then
+BTOP_CONFIG_DIR=~/.config/btop
+if [ ! -d $BTOP_CONFIG_DIR ]; then
   display "tte rain" "Configuring btop with catppuccin theme"
-  curl -LO https://github.com/catppuccin/btop/releases/download/1.0.0/themes.tar.gz
-  tar zxvf themes.tar.gz
-  echo "color_theme = \"$BTOP_CONFIG/themes/catppuccin_mocha.theme\"" >btop.conf
+  cp -av ~/.local/share/$PROJECT_LOWER/config/btop ~/.config/
 fi
-cd - >/dev/null
 
 CAVA_CONFIG_DIR=~/.config/cava
-if [ ! -f $CAVA_CONFIG_DIR ]; then
+if [ ! -d $CAVA_CONFIG_DIR ]; then
   display "tte rain" "Configuring cava with catppuccin theme"
   cp -av ~/.local/share/$PROJECT_LOWER/config/cava ~/.config/
 fi
@@ -306,11 +302,11 @@ if [ ! -f $NOTIFICATIONS_FILE ]; then
   cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/notifications@cinnamon.org/notifications@cinnamon.org.json $NOTIFICATIONS_FILE
 fi
 
-NVIM_CONFIG=~/.config/nvim
-if [ ! -d $NVIM_CONFIG ]; then
+NVIM_CONFIG_DIR=~/.config/nvim
+if [ ! -d $NVIM_CONFIG_DIR ]; then
   display "tte rain" "Configuring neovim with lazyvim"
-  git clone https://github.com/LazyVim/starter $NVIM_CONFIG
-  rm -rf $NVIM_CONFIG/.git
+  git clone https://github.com/LazyVim/starter $NVIM_CONFIG_DIR
+  rm -rf $NVIM_CONFIG_DIR/.git
 fi
 
 NVIMPLUGINS=~/.config/nvim/lua/plugins
