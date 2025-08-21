@@ -223,7 +223,7 @@ To start a terminal session, press `Super + Enter`. This launches a beautiful an
 
 ![OhMyDebn terminal screenshot](images/ohmydebn-terminal.png)
 
-It also includes [bat](https://github.com/sharkdp/bat), which is a `cat` clone with syntax highlighting and git integration. It is configured with the beautiful [Catppuccin theme](https://github.com/catppuccin/bat)).
+It also includes [bat](https://github.com/sharkdp/bat), which is a `cat` clone with syntax highlighting and git integration. It is configured with the beautiful [Catppuccin theme](https://github.com/catppuccin/bat).
 
 ![OhMyDebn bat screenshot](images/ohmydebn-bat.png)
 
