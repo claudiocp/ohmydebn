@@ -103,8 +103,7 @@ EOF
 fi
 
 display "cat" "Installing text effects for demoscene nostalgia"
-sudo apt update
-sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet
+sudo apt update && sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet toilet-fonts
 # Most users are running a normal Debian 13 Cinnamon desktop and are running this script via gnome-terminal
 # In that case, let's change some terminal settings to make the output of this script look nicer
 if dpkg -s "gnome-terminal" >/dev/null 2>&1; then
@@ -119,7 +118,7 @@ echo
 
 if ! dpkg -s "cinnamon-desktop-environment" >/dev/null 2>&1; then
   display "tte waves" "Installing Cinnamon desktop"
-  sudo apt update && sudo apt -y install cinnamon-desktop-environment
+  sudo apt -y install cinnamon-desktop-environment
 fi
 
 if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
@@ -136,7 +135,7 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
   sudo dpkg -i $MINTKEY
   echo
   sudo rm -f $MINTKEY
-  sudo apt update && sudo apt -y install mint-themes
+  sudo apt update && sudo apt -y install mint-themes mint-x-icons mint-y-icons
   echo
   sudo rm -f $MINTLIST
   sudo apt update
@@ -172,8 +171,8 @@ gsettings set org.cinnamon.desktop.interface gtk-theme "'Mint-Y-Dark-Aqua'"
 display "tte rain" "Setting icon theme"
 gsettings set org.cinnamon.desktop.interface icon-theme "'Mint-Y-Sand'"
 
-display "tte rain" "Setting alttab switcher style to coverflow"
-gsettings set org.cinnamon alttab-switcher-style "'coverflow'"
+display "tte rain" "Setting alttab switcher style to icons+preview"
+gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
 
 display "tte rain" "Configuring alttab switcher for all workspaces"
 gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
@@ -192,17 +191,17 @@ if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; th
   gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
 fi
 
-WORKSPACE_SWITCHER_DIR=~/.config/cinnamon/spices/workspace-switcher@cinnamon.org
-mkdir -p $WORKSPACE_SWITCHER_DIR
-WORKSPACE_SWITCHER_FILE=$WORKSPACE_SWITCHER_DIR/10.json
-if [ ! -f $WORKSPACE_SWITCHER_FILE ]; then
-  display "tte rain" "Configuring workspace switcher"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/workspace-switcher@cinnamon.org/10.json $WORKSPACE_SWITCHER_FILE
-fi
+display "tte rain" "Configuring cinnamon spices"
+for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
+  SPICE_DIR=~/.config/cinnamon/spices/$SPICE
+  mkdir -p $SPICE_DIR
+  echo "Configuring $SPICE"
+  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/$SPICE/* $SPICE_DIR
+  echo
+done
 
 display "tte rain" "Installing new apps if unnecessary"
-sudo apt update
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty binutils btop chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "tte rain" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
@@ -253,41 +252,33 @@ shell = "/usr/bin/zsh"
 EOF
 fi
 
-OHMYZSH_DIR=~/.oh-my-zsh
-if [ ! -d $OHMYZSH_DIR ]; then
-  display "tte rain" "Installing Oh My Zsh framework for Zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  mv ~/.zshrc ~/.zshrc.oh-my-zsh
+BAT_BIN=/usr/local/bin/bat
+if [ ! -e $BAT_BIN ]; then
+  display "tte rain" "Creating symbolic link for bat"
+  sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 fi
 
-ZSH_CONFIG=~/.zshrc
-if [ ! -f $ZSH_CONFIG ]; then
-  display "tte rain" "Configuring Zsh"
-  cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
+display "tte rain" "Configuring components"
+for COMPONENT in bat btop cava chromium keepassxc rofi; do
+  COMPONENT_CONFIG_DIR=~/.config/$COMPONENT
+  if [ ! -d $COMPONENT_CONFIG_DIR ]; then
+    echo "Configuring $COMPONENT:"
+    cp -av ~/.local/share/$PROJECT_LOWER/config/$COMPONENT ~/.config/
+    echo
+  fi
+done
+
+BAT_CACHE_METADATA=~/.cache/bat/metadata.yaml
+if [ ! -f $BAT_CACHE_METADATA ]; then
+  display "tte rain" "Building cache for bat"
+  bat cache --build
 fi
 
-STARSHIP_CONFIG=~/config/starship.toml
-if [ ! -f $STARSHIP_CONFIG ]; then
-  display "tte rain" "Configuring starship prompt"
-  cp ~/.local/share/$PROJECT_LOWER/config/starship.toml ~/.config/
-fi
-
-BTOP_CONFIG=~/.config/btop
-mkdir -p $BTOP_CONFIG
-cd $BTOP_CONFIG
-if [ ! -f themes.tar.gz ]; then
-  display "tte rain" "Configuring btop with catppuccin theme"
-  curl -LO https://github.com/catppuccin/btop/releases/download/1.0.0/themes.tar.gz
-  tar zxvf themes.tar.gz
-  echo "color_theme = \"$BTOP_CONFIG/themes/catppuccin_mocha.theme\"" >btop.conf
-fi
-cd - >/dev/null
-
-NVIM_CONFIG=~/.config/nvim
-if [ ! -d $NVIM_CONFIG ]; then
+NVIM_CONFIG_DIR=~/.config/nvim
+if [ ! -d $NVIM_CONFIG_DIR ]; then
   display "tte rain" "Configuring neovim with lazyvim"
-  git clone https://github.com/LazyVim/starter $NVIM_CONFIG
-  rm -rf $NVIM_CONFIG/.git
+  git clone https://github.com/LazyVim/starter $NVIM_CONFIG_DIR
+  rm -rf $NVIM_CONFIG_DIR/.git
 fi
 
 NVIMPLUGINS=~/.config/nvim/lua/plugins
@@ -301,44 +292,31 @@ return {
 EOF
 fi
 
-CHROMIUM_EXTENSIONS=~/.config/chromium/"External Extensions"
-mkdir -p "$CHROMIUM_EXTENSIONS"
-UBLOCK_EXTENSION="$CHROMIUM_EXTENSIONS/ddkjiahejlhfcafbddmgiahcphecmpfh.json"
-if [ ! -f "$UBLOCK_EXTENSION" ]; then
-  display "tte rain" "Configuring chromium"
-  cat <<EOF >>"$UBLOCK_EXTENSION"
-{
-  "external_update_url": "https://clients2.google.com/service/update2/crx"
-}
-EOF
+OHMYZSH_DIR=~/.oh-my-zsh
+if [ ! -d $OHMYZSH_DIR ]; then
+  display "tte rain" "Installing Oh My Zsh framework for Zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  mv ~/.zshrc ~/.zshrc.oh-my-zsh
+fi
+
+STARSHIP_CONFIG=~/config/starship.toml
+if [ ! -f $STARSHIP_CONFIG ]; then
+  display "tte rain" "Configuring starship prompt"
+  cp ~/.local/share/$PROJECT_LOWER/config/starship.toml ~/.config/
+fi
+
+ZSH_CONFIG=~/.zshrc
+if [ ! -f $ZSH_CONFIG ]; then
+  display "tte rain" "Configuring Zsh"
+  cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
 fi
 
 display "tte rain" "Copying binaries to /usr/local/bin/"
 sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
 sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
 
-KEEPASS_CONFIG_DIR=~/.config/keepassxc
-if [ ! -d $KEEPASS_CONFIG_DIR ]; then
-  display "tte rain" "Configuring KeePassXC"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/keepassxc ~/.config/
-fi
-
-ROFI_CONFIG_DIR=~/.config/rofi
-if [ ! -d $ROFI_CONFIG_DIR ]; then
-  display "tte rain" "Configuring Rofi"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/rofi ~/.config/
-fi
-
 display "tte rain" "Configuring ristretto as default image viewer"
 xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
-
-NOTIFICATIONS_DIR=~/.config/cinnamon/spices/notifications@cinnamon.org
-mkdir -p $NOTIFICATIONS_DIR
-NOTIFICATIONS_FILE=$NOTIFICATIONS_DIR/notifications@cinnamon.org.json
-if [ ! -f $NOTIFICATIONS_FILE ]; then
-  display "tte rain" "Configuring notifications"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/notifications@cinnamon.org/notifications@cinnamon.org.json $NOTIFICATIONS_FILE
-fi
 
 display "tte rain" "Adding keyboard shortcuts"
 echo "Super+PageUp to maximize a window"
@@ -356,7 +334,7 @@ gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-3 "['<Supe
 echo "Super+4 to switch to workspace 4"
 gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-4 "['<Super>4']"
 # To add a new custom keybinding, update the following line and then add a group of custom-xyz lines below
-gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9']"
+gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9', 'custom-10']"
 # custom-0
 echo "Ctrl+Shift+K for KeePassXC password manager"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
@@ -407,6 +385,11 @@ echo "Ctrl+Shift+S to show screenfetch"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ name "screenfetch"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ command "/usr/local/bin/ohmydebn-screenfetch-gui"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ binding "['<Ctrl><Shift>S']"
+# custom-10
+echo "Ctrl+Shift+A to show audio visualizer"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ name "cava audio visualizer"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ command "/usr/bin/alacritty -e cava"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ binding "['<Ctrl><Shift>A']"
 
 if pgrep -x cinnamon >/dev/null; then
   display "tte rain" "Restarting desktop to apply keybindings"
