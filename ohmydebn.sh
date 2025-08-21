@@ -257,35 +257,19 @@ if [ ! -e $BAT_BIN ]; then
   sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 fi
 
-BAT_CONFIG_DIR=~/.config/bat
-if [ ! -d $BAT_CONFIG_DIR ]; then
-  display "tte rain" "Configuring bat with catppuccin theme"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/bat ~/.config/
+display "tte rain" "Configuring components"
+for COMPONENT in bat btop cava chromium keepassxc rofi; do
+  COMPONENT_CONFIG_DIR=~/.config/$COMPONENT
+  if [ ! -d $COMPONENT_CONFIG_DIR ]; then
+    echo "Configuring $COMPONENT"
+    cp -av ~/.local/share/$PROJECT_LOWER/config/$COMPONENT ~/.config/
+  fi
+done
+
+BAT_CACHE_METADATA=~/.cache/bat/metadata.yaml
+if [ ! -f $BAT_CACHE_METADATA ]; then
+  display "tte rain" "Building cache for bat"
   bat cache --build
-fi
-
-BTOP_CONFIG_DIR=~/.config/btop
-if [ ! -d $BTOP_CONFIG_DIR ]; then
-  display "tte rain" "Configuring btop with catppuccin theme"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/btop ~/.config/
-fi
-
-CAVA_CONFIG_DIR=~/.config/cava
-if [ ! -d $CAVA_CONFIG_DIR ]; then
-  display "tte rain" "Configuring cava with catppuccin theme"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/cava ~/.config/
-fi
-
-CHROMIUM_CONFIG_DIR=~/.config/chromium
-if [ ! -d $CHROMIUM_CONFIG_DIR ]; then
-  display "tte rain" "Configuring chromium with content blocker"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/chromium ~/.config/
-fi
-
-KEEPASS_CONFIG_DIR=~/.config/keepassxc
-if [ ! -d $KEEPASS_CONFIG_DIR ]; then
-  display "tte rain" "Configuring KeePassXC"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/keepassxc ~/.config/
 fi
 
 NOTIFICATIONS_DIR=~/.config/cinnamon/spices/notifications@cinnamon.org
@@ -319,12 +303,6 @@ if [ ! -d $OHMYZSH_DIR ]; then
   display "tte rain" "Installing Oh My Zsh framework for Zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   mv ~/.zshrc ~/.zshrc.oh-my-zsh
-fi
-
-ROFI_CONFIG_DIR=~/.config/rofi
-if [ ! -d $ROFI_CONFIG_DIR ]; then
-  display "tte rain" "Configuring Rofi"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/rofi ~/.config/
 fi
 
 STARSHIP_CONFIG=~/config/starship.toml
