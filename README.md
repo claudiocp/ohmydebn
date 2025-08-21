@@ -223,6 +223,10 @@ To start a terminal session, press `Super + Enter`. This launches a beautiful an
 
 ![OhMyDebn terminal screenshot](images/ohmydebn-terminal.png)
 
+It also includes [bat](https://github.com/sharkdp/bat), which is a `cat` clone with syntax highlighting and git integration. It is configured with the beautiful [Catppuccin theme](https://github.com/catppuccin/bat)).
+
+![OhMyDebn bat screenshot](images/ohmydebn-bat.png)
+
 # Text editor
 
 To start a text editor, press `Super + N`. This launches the beautiful and powerful combination of Neovim with LazyVim. The first time it loads, it will install several plugins. Once that is done, you can press the `Q` key until you get to the main menu. You can then press the space bar and then the `E` key to open Explorer.
