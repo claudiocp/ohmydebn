@@ -1,8 +1,6 @@
 # OhMyDebn
 
-OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. 
-
-Command lines and hotkeys and beauty, oh my!
+OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beautiful yet powerful and productive. Command lines and hotkeys and beauty, oh my!
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
@@ -211,6 +209,14 @@ To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 ![OhMyDebn Cava audio visualizer](images/ohmydebn-cava-audio.png)
 
+# Desktop Background
+
+You can change the desktop background by going to Settings -> Backgrounds and selecting one of the backgrounds included in Debian.
+
+If you already have your favorite background in a file, you can open the Nemo file manager (`Super + F`), browse to the file, right-click the file, and then select `Set as wallpaper...`.
+
+Since most apps include catppuccin themes, you may want to consider a background that matches that color palette. You can find a nice selection of catppuccin backgrounds at https://github.com/zhichaoh/catppuccin-wallpapers.
+
 # Terminal
 
 To start a terminal session, press `Super + Enter`. This launches a beautiful and powerful [Alacritty](https://alacritty.org) terminal window that includes:
@@ -243,100 +249,100 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 
 | Hotkey | Function |
 |--------|----------|
-| `Ctrl+Shift+O` | OhMyDebn logo |
-| `Ctrl+Shift+S` | screenfetch system summary |
-| `Ctrl+Shift+A` | audio visualizer (Cava) |
+| `Ctrl + Shift + O` | OhMyDebn logo |
+| `Ctrl + Shift + S` | screenfetch system summary |
+| `Ctrl + Shift + A` | audio visualizer (Cava) |
 
 ## Windows
 
 | Hotkey | Function |
 |--------|----------|
-| `Alt+Tab` | Cycle through open windows |
-| `Shift+Alt+Tab` | Cycle backwards through open windows |
-| `Alt+Space` | Activate window menu |
-| `Alt+F7` | Move window |
-| `Super+W` | Close window |
-| `Super+D` | Show desktop (minimize all windows) |
-| `Super+Left` | Push window left |
-| `Super+Right` | Push window right |
-| `Super+Up` | Push window up |
-| `Super+Down` | Push window down |
-| `Super+PageUp` | Maximize window |
-| `Super+PageDown` | Minimize window |
-| `Ctrl+Alt+Down` | Window selection |
+| `Alt + Tab` | Cycle through open windows |
+| `Shift + Alt + Tab` | Cycle backwards through open windows |
+| `Alt + Space` | Activate window menu |
+| `Alt + F7` | Move window |
+| `Super + W` | Close window |
+| `Super + D` | Show desktop (minimize all windows) |
+| `Super + Left` | Push window left |
+| `Super + Right` | Push window right |
+| `Super + Up` | Push window up |
+| `Super + Down` | Push window down |
+| `Super + PageUp` | Maximize window |
+| `Super + PageDown` | Minimize window |
+| `Ctrl + Alt + Down` | Window selection |
 
 ## Workspaces
 
 | Hotkey | Function |
 |--------|----------|
-| `Super+1` | Switch to workspace 1 |
-| `Super+2` | Switch to workspace 2 |
-| `Super+3` | Switch to workspace 3 |
-| `Super+4` | Switch to workspace 4 |
-| `Ctrl+Alt+Up` | Workspace selection |
-| `Ctrl+Alt+Left` | Switch to left workspace |
-| `Ctrl+Alt+Right` | Switch to right workspace |
-| `Shift+Ctrl+Alt+Left` | Move window to left workspace |
-| `Shift+Ctrl+Alt+Right` | Move window to right workspace |
+| `Super + 1` | Switch to workspace 1 |
+| `Super + 2` | Switch to workspace 2 |
+| `Super + 3` | Switch to workspace 3 |
+| `Super + 4` | Switch to workspace 4 |
+| `Ctrl + Alt + Up` | Workspace selection |
+| `Ctrl + Alt + Left` | Switch to left workspace |
+| `Ctrl + Alt + Right` | Switch to right workspace |
+| `Shift + Ctrl + Alt + Left` | Move window to left workspace |
+| `Shift + Ctrl + Alt + Right` | Move window to right workspace |
 
 ## System
 
 | Hotkey | Function |
 |--------|----------|
-| `Ctrl+Alt+L` | Lock screen |
-| `Ctrl+Alt+Del` | Logout |
-| `Ctrl+Alt+End` | Shut down |
-| `Ctrl+Alt+Escape` | Restart Cinnamon desktop |
+| `Ctrl + Alt + L` | Lock screen |
+| `Ctrl + Alt + Del` | Logout |
+| `Ctrl + Alt + End` | Shut down |
+| `Ctrl + Alt + Escape` | Restart Cinnamon desktop |
 
 ## Apps
 
 | Hotkey | Function |
 |--------|----------|
-| `Super+Space` | Application Launcher (Rofi) |
-| `Super+Return` | Terminal (Alacritty) |
-| `Super+B` | Browser (Chromium) |
-| `Super+F` | File Manager (Nemo) |
-| `Super+T` | btop |
-| `Super+N` | Neovim |
-| `Alt+F2` | Run dialog |
+| `Super + Space` | Application Launcher (Rofi) |
+| `Super + Return` | Terminal (Alacritty) |
+| `Super + B` | Browser (Chromium) |
+| `Super + F` | File Manager (Nemo) |
+| `Super + T` | btop |
+| `Super + N` | Neovim |
+| `Alt + F2` | Run dialog |
 
 ## Password and Bookmark Management (KeePassXC)
 
 | Hotkey | Function |
 |--------|----------|
-| `Ctrl+Shift+K` | Open or activate KeePassXC |
-| `Ctrl+Shift+U` | Open browser tab to selected URL |
-| `Ctrl+Shift+P` | Auto-type username and password for selected site |
-| `Ctrl+N` | Create a new entry in KeePassXC |
-| `Ctrl+E` | Edit entry |
-| `Ctrl+B` | Copy username |
-| `Ctrl+C` | Copy password |
-| `Ctrl+U` | Copy URL |
+| `Ctrl + Shift + K` | Open or activate KeePassXC |
+| `Ctrl + Shift + U` | Open browser tab to selected URL |
+| `Ctrl + Shift + P` | Auto-type username and password for selected site |
+| `Ctrl + N` | Create a new entry in KeePassXC |
+| `Ctrl + E` | Edit entry |
+| `Ctrl + B` | Copy username |
+| `Ctrl + C` | Copy password |
+| `Ctrl + U` | Copy URL |
 
 ## Configuration
 
 | Hotkey | Function |
 |--------|----------|
-| `Shift+Super+N` | Network Manager |
-| `Shift+Super+S` | Sound menu |
+| `Shift + Super + N` | Network Manager |
+| `Shift + Super + S` | Sound menu |
 
 ## Capture
 
 | Hotkey | Function |
 |--------|----------|
-| `Shift+Print` | Take a screenshot of an area |
-| `Shift+Ctrl+Print` | Copy a screenshot of an area to clipboard |
+| `Shift + Print` | Take a screenshot of an area |
+| `Ctrl + Shift + Print` | Copy a screenshot of an area to clipboard |
 | `Print` | Take a screenshot |
-| `Ctrl+Print` | Copy a screenshot to clipboard |
-| `Alt+Print` | Take a screenshot of a window |
-| `Ctrl+Alt+Print` | Copy a screenshot of a window to clipboard |
+| `Ctrl + Print` | Copy a screenshot to clipboard |
+| `Alt + Print` | Take a screenshot of a window |
+| `Ctrl + Alt + Print` | Copy a screenshot of a window to clipboard |
 
 ## Notifications
 
 | Hotkey | Function |
 |--------|----------|
-| `Super+N` | Show notifications |
-| `Shift+Super+C` | Clear notifications |
+| `Ctrl + Shift + Super + N` | Show notifications |
+| `Ctrl + Shift + Super + C` | Clear notifications |
 
 ## Neovim (with LazyVim)
 
