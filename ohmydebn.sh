@@ -165,9 +165,10 @@ fi
 
 # Previous versions were creating symlinks in wrong order
 # if the old symlink exists, then remove it
-if [ -L ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER ]; then
-  echo "Removing old symlink"
-  rm -f .local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER
+OLD_SYMLINK="~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER"
+if [ -L $OLD_SYMLINK ]; then
+  echo "Removing old symlink $OLD_SYMLINK"
+  rm -f $OLD_SYMLINK
 fi
 
 BACKGROUND=~/.config/$PROJECT_LOWER/current/background
