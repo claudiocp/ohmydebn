@@ -150,12 +150,13 @@ if [ -f /usr/bin/pveversion ]; then
 fi
 
 display "tte rain" "Changing desktop wallpaper"
-mkdir -p ~/.config/$PROJECT_LOWER/current/
-mkdir -p ~/.config/$PROJECT_LOWER/themes/
-# Create .config symlinks before symlinking to the git repo at .local/share/
-ln -sf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/current/theme
-ln -sf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountains.png ~/.config/$PROJECT_LOWER/current/background
-ln -sf ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER
+mkdir -p ~/.config/$PROJECT_LOWER/themes
+for f in ~/.local/share/$PROJECT_LOWER/themes/*; do ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/; done
+# Set initial theme
+mkdir -p ~/.config/$PROJECT_LOWER/current
+ln -snf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/current/theme
+ln -snf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountain.png ~/.config/$PROJECT_LOWER/current/background
+
 # Previous versions were creating symlinks in wrong order
 # if the old symlink exists, then remove it
 if [ -L ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER ]; then
