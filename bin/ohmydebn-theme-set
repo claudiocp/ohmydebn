@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# ohmydebn-theme-set: Set a theme, specified by its name.
+# Usage: ohmydebn-theme-set <theme-name>
+
+if [[ -z "$1" && "$1" != "CNCLD" ]]; then
+  echo "Usage: ohmydebn-theme-set <theme-name>" >&2
+  exit 1
+fi
+
+THEMES_DIR="$HOME/.config/ohmydebn/themes/"
+CURRENT_THEME_DIR="$HOME/.config/ohmydebn/current/theme"
+
+THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+THEME_PATH="$THEMES_DIR/$THEME_NAME"
+
+# Check if the theme entered exists
+if [[ ! -d "$THEME_PATH" ]]; then
+  echo "Theme '$THEME_NAME' does not exist in $THEMES_DIR" >&2
+  exit 2
+fi
+
+# Update theme symlinks
+ln -nsf "$THEME_PATH" "$CURRENT_THEME_DIR"
+
+# Trigger alacritty config reload
+touch "$HOME/.config/alacritty/alacritty.toml"
+
+# Restart components to apply new theme
+pkill -SIGUSR2 btop
+
+# Set new background
+ohmydebn-theme-bg-next

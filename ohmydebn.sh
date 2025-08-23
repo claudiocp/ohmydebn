@@ -149,11 +149,31 @@ if [ -f /usr/bin/pveversion ]; then
   export $(dbus-launch)
 fi
 
+if [ ! -d ~/.local/share/omarchy ]; then
+  display "tte rain" "Installing omarchy themes"
+  cd ~/.local/share/
+  git clone https://github.com/basecamp/omarchy.git
+else
+  display "tte rain" "Updating omarchy themes"
+  cd ~/.local/share/omarchy
+  git pull
+fi
+cd - >/dev/null
+
 display "tte rain" "Changing desktop wallpaper"
 mkdir -p ~/.config/$PROJECT_LOWER/themes
-if [ ! -L ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ]; then
-  for f in ~/.local/share/$PROJECT_LOWER/themes/*; do ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/; done
-fi
+for f in ~/.local/share/$PROJECT_LOWER/themes/*; do 
+  THEME=$(basename $f)
+  if [ ! -L ~/.config/$PROJECT_LOWER/themes/$THEME ]; then
+    ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/; done
+  fi
+done
+for f in ~/.local/share/omarchy/themes/*; do 
+  THEME=$(basename $f)
+  if [ ! -L ~/.config/omarchy/themes/$THEME ]; then
+    ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/; done
+  fi
+done
 # Set initial theme
 mkdir -p ~/.config/$PROJECT_LOWER/current
 if [ ! -L ~/.config/$PROJECT_LOWER/current/theme ]; then
