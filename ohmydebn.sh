@@ -151,7 +151,7 @@ fi
 
 display "tte rain" "Changing desktop wallpaper"
 mkdir -p ~/.config/$PROJECT_LOWER/themes
-if [ ! -L ~/.config/$PROJECT_LOWER/themes/ohmydebn ]; then
+if [ ! -L ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ]; then
   for f in ~/.local/share/$PROJECT_LOWER/themes/*; do ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/; done
 fi
 # Set initial theme
@@ -163,9 +163,11 @@ if [ ! -L ~/.config/$PROJECT_LOWER/current/background ]; then
   ln -snf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountains.png ~/.config/$PROJECT_LOWER/current/background
 fi
 
-# Previous versions were creating symlinks in wrong order
+# Some installs might have an incorrect symlink
 # if the old symlink exists, then remove it
 OLD_SYMLINK="~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER"
+echo "checking for old symlink $OLD_SYMLINK:"
+ls -alh $OLD_SYMLINK
 if [ -L $OLD_SYMLINK ]; then
   echo "Removing old symlink $OLD_SYMLINK"
   rm -f $OLD_SYMLINK
