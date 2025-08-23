@@ -155,7 +155,7 @@ for f in ~/.local/share/$PROJECT_LOWER/themes/*; do ln -nfs "$f" ~/.config/$PROJ
 # Set initial theme
 mkdir -p ~/.config/$PROJECT_LOWER/current
 ln -snf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/current/theme
-ln -snf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountain.png ~/.config/$PROJECT_LOWER/current/background
+ln -snf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountains.png ~/.config/$PROJECT_LOWER/current/background
 
 # Previous versions were creating symlinks in wrong order
 # if the old symlink exists, then remove it
