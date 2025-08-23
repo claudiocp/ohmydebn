@@ -162,16 +162,16 @@ cd - >/dev/null
 
 display "tte rain" "Changing desktop wallpaper"
 mkdir -p ~/.config/$PROJECT_LOWER/themes
-for f in ~/.local/share/$PROJECT_LOWER/themes/*; do 
+for f in ~/.local/share/$PROJECT_LOWER/themes/*; do
   THEME=$(basename $f)
   if [ ! -L ~/.config/$PROJECT_LOWER/themes/$THEME ]; then
-    ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/; done
+    ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/
   fi
 done
-for f in ~/.local/share/omarchy/themes/*; do 
+for f in ~/.local/share/omarchy/themes/*; do
   THEME=$(basename $f)
   if [ ! -L ~/.config/omarchy/themes/$THEME ]; then
-    ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/; done
+    ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/
   fi
 done
 # Set initial theme
