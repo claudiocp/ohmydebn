@@ -152,9 +152,17 @@ fi
 display "tte rain" "Changing desktop wallpaper"
 mkdir -p ~/.config/$PROJECT_LOWER/current/
 mkdir -p ~/.config/$PROJECT_LOWER/themes/
+# Create .config symlinks before symlinking to the git repo at .local/share/
 ln -sf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/current/theme
 ln -sf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountains.png ~/.config/$PROJECT_LOWER/current/background
 ln -sf ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER
+# Previous versions were creating symlinks in wrong order
+# if the old symlink exists, then remove it
+if [ -L ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER ]; then
+  echo "Removing old symlink"
+  rm -f .local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER
+fi
+
 BACKGROUND=~/.config/$PROJECT_LOWER/current/background
 gsettings set org.cinnamon.desktop.background picture-uri "'file://$BACKGROUND'"
 
@@ -406,11 +414,6 @@ fi
 
 display "tte rain" "Installing any available updates"
 sudo apt -y dist-upgrade
-
-if [ -L ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER ]; then
-  echo "Removing old symlink"
-  rm -f .local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER
-fi
 
 display "tte rain" "Installation complete!"
 echo
