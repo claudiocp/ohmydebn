@@ -165,12 +165,12 @@ fi
 
 # Some installs might have an incorrect symlink
 # if the old symlink exists, then remove it
-OLD_SYMLINK="~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER"
+OLD_SYMLINK=~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER
 echo "checking for old symlink $OLD_SYMLINK:"
-ls -alh "$OLD_SYMLINK"
-if [ -L "$OLD_SYMLINK" ]; then
+ls -alh $OLD_SYMLINK
+if [ -L $OLD_SYMLINK ]; then
   echo "Removing old symlink $OLD_SYMLINK"
-  rm -f "$OLD_SYMLINK"
+  rm -f $OLD_SYMLINK
 fi
 
 BACKGROUND=~/.config/$PROJECT_LOWER/current/background
