@@ -407,6 +407,11 @@ fi
 display "tte rain" "Installing any available updates"
 sudo apt -y dist-upgrade
 
+if [ -L ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER ]; then
+  echo "Removing old symlink"
+  rm -f .local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER
+fi
+
 display "tte rain" "Installation complete!"
 echo
 screenfetch -N | tte slide --merge
