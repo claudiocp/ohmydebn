@@ -278,6 +278,13 @@ if [ ! -f $BAT_CACHE_METADATA ]; then
   bat cache --build
 fi
 
+BTOP_THEMES_DIR=~/.config/btop/themes
+mkdir -p $BTOP_THEMES_DIR
+BTOP_CURRENT_THEME=$BTOP_THEMES_DIR/current.theme
+if [ ! -L $BTOP_CURRENT_THEME ]; then
+  ln -snf ~/.config/$PROJECT_LOWER/current/theme/btop.theme $BTOP_CURRENT_THEME
+fi
+
 NVIM_CONFIG_DIR=~/.config/nvim
 if [ ! -d $NVIM_CONFIG_DIR ]; then
   display "tte rain" "Configuring neovim with lazyvim"
