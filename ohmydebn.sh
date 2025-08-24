@@ -237,7 +237,7 @@ for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
 done
 
 display "tte rain" "Installing new apps if unnecessary"
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "tte rain" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
