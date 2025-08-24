@@ -334,7 +334,18 @@ sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
 display "cat" "Configuring ristretto as default image viewer"
 xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
 
-display "cat" "Adding keyboard shortcuts"
+if [ "$NO_UNINSTALL" = false ]; then
+  display "tte rain" "Removing any unnecessary packages"
+  sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
+  sudo apt -y autoremove
+else
+  display "tte rain" "Skipping package removal (--no-uninstall mode)"
+fi
+
+display "tte rain" "Installing any available updates"
+sudo apt -y dist-upgrade
+
+display "tte rain" "Adding keyboard shortcuts"
 echo "Super+PageUp to maximize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
 echo "Super+PageDown to minimize a window"
@@ -412,23 +423,12 @@ gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/d
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ command "/usr/local/bin/ohmydebn-theme-set-gui"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ binding "['<Ctrl><Shift><Super>space']"
 
-if [ "$NO_UNINSTALL" = false ]; then
-  display "tte rain" "Removing any unnecessary packages"
-  sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
-  sudo apt -y autoremove
-else
-  display "tte rain" "Skipping package removal (--no-uninstall mode)"
-fi
-
-display "tte rain" "Installing any available updates"
-sudo apt -y dist-upgrade
-
 if pgrep -x cinnamon >/dev/null; then
   display "tte rain" "Restarting desktop to apply keybindings"
   sleep 1s
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
   sleep 1s
-  echo
+  echo "You can see all keybindings by pressing Super + K"
 fi
 
 display "tte rain" "Installation complete!"
