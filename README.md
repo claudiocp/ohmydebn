@@ -209,13 +209,19 @@ To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 ![OhMyDebn Cava audio visualizer](images/ohmydebn-cava-audio.png)
 
+# Desktop Theme
+
+You can change the desktop theme by pressing `Ctrl + Shift + Super + space`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy.
+
+![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
+
 # Desktop Background
 
-You can change the desktop background by going to Settings -> Backgrounds and selecting one of the backgrounds included in Debian.
+If you don't want to change the entire theme but just want to change the desktop background, you can go to Settings -> Backgrounds and select one of the backgrounds included in Debian.
 
 If you already have your favorite background in a file, you can open the Nemo file manager (`Super + F`), browse to the file, right-click the file, and then select `Set as wallpaper...`.
 
-Since most apps include catppuccin themes, you may want to consider a background that matches that color palette. You can find a nice selection of catppuccin backgrounds at https://github.com/zhichaoh/catppuccin-wallpapers.
+Since our default Ohmydebn theme is based on the catppuccin color palette, you may want to consider a background that matches that. You can find a nice selection of catppuccin backgrounds at https://github.com/zhichaoh/catppuccin-wallpapers.
 
 # Terminal
 
