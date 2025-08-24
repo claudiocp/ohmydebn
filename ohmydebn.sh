@@ -250,52 +250,20 @@ if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
   fc-cache -fv
 fi
 
-ALACRITTY_DIR=~/.config/alacritty
-mkdir -p $ALACRITTY_DIR
-ALACRITTY_THEME=$ALACRITTY_DIR/catppuccin-mocha.toml
-if [ ! -f $ALACRITTY_THEME ]; then
-  display "tte rain" "Downloading catppuccin theme for alacritty terminal"
-  curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
-fi
-
-ALACRITTY_CONFIG=$ALACRITTY_DIR/alacritty.toml
-if [ ! -f $ALACRITTY_CONFIG ]; then
-  display "tte rain" "Configuring alacritty terminal to use catppuccin theme"
-  cat <<EOF >>$ALACRITTY_CONFIG
-[env]
-TERM = "xterm-256color"
-[window]
-opacity = 0.97  # Values from 0.0 (fully transparent) to 1.0 (opaque)
-padding.x = 14
-padding.y = 14
-decorations = "Full"
-[font]
-normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
-bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
-italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
-[general]
-import = [
-  "~/.config/alacritty/catppuccin-mocha.toml"
-]
-EOF
-fi
-
-if ! grep -q "\[terminal\]" $ALACRITTY_CONFIG; then
-  display "tte rain" "Configuring alacritty terminal to use Zsh"
-  cat <<EOF >>$ALACRITTY_CONFIG
-[terminal]
-shell = "/usr/bin/zsh"
-EOF
-fi
-
 BAT_BIN=/usr/local/bin/bat
 if [ ! -e $BAT_BIN ]; then
   display "tte rain" "Creating symbolic link for bat"
   sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 fi
 
+ALACRITTY_DIR=~/.config/alacritty
+ALACRITTY_CONFIG=$ALACRITTY_DIR/alacritty.toml
+if grep -q "alacritty/catppuccin-mocha.toml" $ALACRITTY_CONFIG >/dev/null; then
+  mv $ALACRITTY_DIR $ALACRITTY_DIR.before.themes
+fi
+
 display "tte rain" "Configuring components"
-for COMPONENT in bat btop cava chromium keepassxc rofi; do
+for COMPONENT in alacritty bat btop cava chromium keepassxc rofi; do
   COMPONENT_CONFIG_DIR=~/.config/$COMPONENT
   if [ ! -d $COMPONENT_CONFIG_DIR ]; then
     echo "Configuring $COMPONENT:"
