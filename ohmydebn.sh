@@ -116,7 +116,7 @@ fi
 logo
 echo
 
-display "tte waves" "Installing and configuring"
+display "tte waves" "Installing packages and configuring system"
 echo
 
 if ! dpkg -s "cinnamon-desktop-environment" >/dev/null 2>&1; then
@@ -238,7 +238,7 @@ for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
   echo
 done
 
-display "tte rain" "Installing new apps if unnecessary"
+display "tte rain" "Installing new apps if unnecessary and configuring them"
 sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "cat" "Setting alacritty as default terminal emulator"
@@ -284,6 +284,7 @@ BTOP_THEMES_DIR=~/.config/btop/themes
 mkdir -p $BTOP_THEMES_DIR
 BTOP_CURRENT_THEME=$BTOP_THEMES_DIR/current.theme
 if [ ! -L $BTOP_CURRENT_THEME ]; then
+  display "cat" "Configuring btop theme"
   ln -snf ~/.config/$PROJECT_LOWER/current/theme/btop.theme $BTOP_CURRENT_THEME
 fi
 
@@ -293,16 +294,16 @@ if [ ! -d $NVIM_CONFIG_DIR ]; then
   git clone https://github.com/LazyVim/starter $NVIM_CONFIG_DIR
   rm -rf $NVIM_CONFIG_DIR/.git
 fi
-
-NVIMPLUGINS=~/.config/nvim/lua/plugins
-mkdir -p $NVIMPLUGINS
-if [ ! -f $NVIMPLUGINS/core.lua ]; then
-  display "cat" "Configuring neovim with catppuccin theme"
-  cat <<EOF >>~/.config/nvim/lua/plugins/core.lua
-return {
-  { "LazyVim/LazyVim", opts = { colorscheme = "catppuccin" } }
-}
-EOF
+NVIM_PLUGINS=$NVIM_CONFIG_DIR/lua/plugins
+mkdir -p $NVIM_PLUGINS
+if grep -q "colorscheme = \"catppuccin\"" $NVIM_PLUGINS/core.lua >/dev/null 2>&1; then
+  display "cat" "Disabling old static neovim theme config"
+  mv $NVIM_PLUGINS/core.lua $NVIM_PLUGINS/core.lua.disabled
+fi
+NVIM_THEME=$NVIM_PLUGINS/theme.lua
+if [ ! -L $NVIM_THEME ]; then
+  display "cat" "Configuring neovim theme"
+  ln -snf ~/.config/$PROJECT_LOWER/current/theme/neovim.lua $NVIM_THEME
 fi
 
 OHMYZSH_DIR=~/.oh-my-zsh
