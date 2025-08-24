@@ -116,13 +116,16 @@ fi
 logo
 echo
 
+display "tte waves" "Installing and configuring"
+echo
+
 if ! dpkg -s "cinnamon-desktop-environment" >/dev/null 2>&1; then
-  display "tte waves" "Installing Cinnamon desktop"
+  display "cat" "Installing Cinnamon desktop"
   sudo apt -y install cinnamon-desktop-environment
 fi
 
 if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
-  display "tte waves" "Downloading Cinnamon themes"
+  display "cat" "Downloading Cinnamon themes"
   MINTLIST="/etc/apt/sources.list.d/mint.list"
   MINTKEY="linuxmint-keyring_2022.06.21_all.deb"
   MINTURL="http://packages.linuxmint.com/pool/main/l/linuxmint-keyring/$MINTKEY"
@@ -144,23 +147,22 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
 fi
 
 if [ -f /usr/bin/pveversion ]; then
-  display "tte rain" "Installing dbus-x11"
+  display "cat" "Installing dbus-x11"
   sudo apt -y install dbus-x11
   export $(dbus-launch)
 fi
 
+display "cat" "Updating themes"
 if [ ! -d ~/.local/share/omarchy ]; then
-  display "tte rain" "Installing omarchy themes"
   cd ~/.local/share/
   git clone https://github.com/basecamp/omarchy.git
 else
-  display "tte rain" "Updating omarchy themes"
   cd ~/.local/share/omarchy
   git pull
 fi
 cd - >/dev/null
 
-display "tte rain" "Changing desktop wallpaper"
+display "cat" "Changing desktop wallpaper"
 mkdir -p ~/.config/$PROJECT_LOWER/themes
 for f in ~/.local/share/$PROJECT_LOWER/themes/*; do
   THEME=$(basename $f)
@@ -194,40 +196,40 @@ fi
 BACKGROUND=~/.config/$PROJECT_LOWER/current/background
 gsettings set org.cinnamon.desktop.background picture-uri "'file://$BACKGROUND'"
 
-display "tte rain" "Setting Cinnamon theme"
+display "cat" "Setting Cinnamon theme"
 gsettings set org.cinnamon.theme name "'Mint-Y-Dark-Aqua'"
 
-display "tte rain" "Setting cursor theme"
+display "cat" "Setting cursor theme"
 sudo apt -y install bibata-cursor-theme
 gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
 
-display "tte rain" "Setting GTK theme"
+display "cat" "Setting GTK theme"
 gsettings set org.cinnamon.desktop.interface gtk-theme "'Mint-Y-Dark-Aqua'"
 
-display "tte rain" "Setting icon theme"
+display "cat" "Setting icon theme"
 gsettings set org.cinnamon.desktop.interface icon-theme "'Mint-Y-Sand'"
 
-display "tte rain" "Setting alttab switcher style to icons+preview"
+display "cat" "Setting alttab switcher style to icons+preview"
 gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
 
-display "tte rain" "Configuring alttab switcher for all workspaces"
+display "cat" "Configuring alttab switcher for all workspaces"
 gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
 
-display "tte rain" "Configuring gedit"
+display "cat" "Configuring gedit"
 gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
 gsettings set org.gnome.gedit.preferences.editor display-line-numbers false
 
 if gsettings get org.cinnamon enabled-applets | grep -q grouped-window-list; then
-  display "tte rain" "Changing grouped window list to window list"
+  display "cat" "Changing grouped window list to window list"
   gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed "s/panel1:left:[0-9]*:grouped-window-list@cinnamon.org:[0-9]*/panel1:left:1:window-list@cinnamon.org:12/")"
 fi
 
 if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; then
-  display "tte rain" "Enabling workspace switcher"
+  display "cat" "Enabling workspace switcher"
   gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
 fi
 
-display "tte rain" "Configuring cinnamon spices"
+display "cat" "Configuring cinnamon spices"
 for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
   SPICE_DIR=~/.config/cinnamon/spices/$SPICE
   mkdir -p $SPICE_DIR
@@ -239,11 +241,11 @@ done
 display "tte rain" "Installing new apps if unnecessary"
 sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
-display "tte rain" "Setting alacritty as default terminal emulator"
+display "cat" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
 
 if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
-  display "tte rain" "Configuring alacritty with Caskyadia Nerd Font"
+  display "cat" "Configuring alacritty with Caskyadia Nerd Font"
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaMono.zip
   unzip CascadiaMono.zip -d ~/.local/share/fonts
   rm -f CascadiaMono.zip
@@ -252,7 +254,7 @@ fi
 
 BAT_BIN=/usr/local/bin/bat
 if [ ! -e $BAT_BIN ]; then
-  display "tte rain" "Creating symbolic link for bat"
+  display "cat" "Creating symbolic link for bat"
   sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 fi
 
@@ -262,7 +264,7 @@ if grep -q "alacritty/catppuccin-mocha.toml" $ALACRITTY_CONFIG >/dev/null 2>&1; 
   mv $ALACRITTY_DIR $ALACRITTY_DIR.before.themes
 fi
 
-display "tte rain" "Configuring components"
+display "cat" "Configuring components"
 for COMPONENT in alacritty bat btop cava chromium keepassxc rofi; do
   COMPONENT_CONFIG_DIR=~/.config/$COMPONENT
   if [ ! -d $COMPONENT_CONFIG_DIR ]; then
@@ -274,7 +276,7 @@ done
 
 BAT_CACHE_METADATA=~/.cache/bat/metadata.yaml
 if [ ! -f $BAT_CACHE_METADATA ]; then
-  display "tte rain" "Building cache for bat"
+  display "cat" "Building cache for bat"
   bat cache --build
 fi
 
@@ -287,7 +289,7 @@ fi
 
 NVIM_CONFIG_DIR=~/.config/nvim
 if [ ! -d $NVIM_CONFIG_DIR ]; then
-  display "tte rain" "Configuring neovim with lazyvim"
+  display "cat" "Configuring neovim with lazyvim"
   git clone https://github.com/LazyVim/starter $NVIM_CONFIG_DIR
   rm -rf $NVIM_CONFIG_DIR/.git
 fi
@@ -295,7 +297,7 @@ fi
 NVIMPLUGINS=~/.config/nvim/lua/plugins
 mkdir -p $NVIMPLUGINS
 if [ ! -f $NVIMPLUGINS/core.lua ]; then
-  display "tte rain" "Configuring neovim with catppuccin theme"
+  display "cat" "Configuring neovim with catppuccin theme"
   cat <<EOF >>~/.config/nvim/lua/plugins/core.lua
 return {
   { "LazyVim/LazyVim", opts = { colorscheme = "catppuccin" } }
@@ -305,31 +307,31 @@ fi
 
 OHMYZSH_DIR=~/.oh-my-zsh
 if [ ! -d $OHMYZSH_DIR ]; then
-  display "tte rain" "Installing Oh My Zsh framework for Zsh"
+  display "cat" "Installing Oh My Zsh framework for Zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   mv ~/.zshrc ~/.zshrc.oh-my-zsh
 fi
 
 STARSHIP_CONFIG=~/config/starship.toml
 if [ ! -f $STARSHIP_CONFIG ]; then
-  display "tte rain" "Configuring starship prompt"
+  display "cat" "Configuring starship prompt"
   cp ~/.local/share/$PROJECT_LOWER/config/starship.toml ~/.config/
 fi
 
 ZSH_CONFIG=~/.zshrc
 if [ ! -f $ZSH_CONFIG ]; then
-  display "tte rain" "Configuring Zsh"
+  display "cat" "Configuring Zsh"
   cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
 fi
 
-display "tte rain" "Copying binaries to /usr/local/bin/"
+display "cat" "Copying binaries to /usr/local/bin/"
 sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
 sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
 
-display "tte rain" "Configuring ristretto as default image viewer"
+display "cat" "Configuring ristretto as default image viewer"
 xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
 
-display "tte rain" "Adding keyboard shortcuts"
+display "cat" "Adding keyboard shortcuts"
 echo "Super+PageUp to maximize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
 echo "Super+PageDown to minimize a window"
