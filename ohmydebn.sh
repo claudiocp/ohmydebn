@@ -425,7 +425,9 @@ sudo apt -y dist-upgrade
 
 if pgrep -x cinnamon >/dev/null; then
   display "tte rain" "Restarting desktop to apply keybindings"
+  sleep 1s
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
+  sleep 1s
   echo
 fi
 
