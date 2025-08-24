@@ -1,0 +1,4 @@
+#!/bin/bash
+
+NEW_THEME=$(ohmydebn-theme-list | rofi -dmenu)
+ohmydebn-theme-set "$NEW_THEME"
