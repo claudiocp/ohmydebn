@@ -264,8 +264,27 @@ if grep -q "alacritty/catppuccin-mocha.toml" $ALACRITTY_CONFIG >/dev/null 2>&1; 
   mv $ALACRITTY_DIR $ALACRITTY_DIR.before.themes
 fi
 
+# Install nvim before we configure components below
+NVIM_CONFIG_DIR=~/.config/nvim
+if [ ! -d $NVIM_CONFIG_DIR ]; then
+  display "cat" "Configuring neovim with lazyvim"
+  git clone https://github.com/LazyVim/starter $NVIM_CONFIG_DIR
+  rm -rf $NVIM_CONFIG_DIR/.git
+fi
+NVIM_PLUGINS=$NVIM_CONFIG_DIR/lua/plugins
+mkdir -p $NVIM_PLUGINS
+if grep -q "colorscheme = \"catppuccin\"" $NVIM_PLUGINS/core.lua >/dev/null 2>&1; then
+  display "cat" "Disabling old static neovim theme config"
+  mv $NVIM_PLUGINS/core.lua $NVIM_PLUGINS/core.lua.disabled
+fi
+NVIM_THEME=$NVIM_PLUGINS/theme.lua
+if [ ! -L $NVIM_THEME ]; then
+  display "cat" "Configuring neovim theme"
+  ln -snf ~/.config/$PROJECT_LOWER/current/theme/neovim.lua $NVIM_THEME
+fi
+
 display "cat" "Configuring components"
-for COMPONENT in alacritty bat btop cava chromium keepassxc rofi; do
+for COMPONENT in alacritty bat btop cava chromium keepassxc nvim rofi; do
   COMPONENT_CONFIG_DIR=~/.config/$COMPONENT
   if [ ! -d $COMPONENT_CONFIG_DIR ]; then
     echo "Configuring $COMPONENT:"
@@ -286,24 +305,6 @@ BTOP_CURRENT_THEME=$BTOP_THEMES_DIR/current.theme
 if [ ! -L $BTOP_CURRENT_THEME ]; then
   display "cat" "Configuring btop theme"
   ln -snf ~/.config/$PROJECT_LOWER/current/theme/btop.theme $BTOP_CURRENT_THEME
-fi
-
-NVIM_CONFIG_DIR=~/.config/nvim
-if [ ! -d $NVIM_CONFIG_DIR ]; then
-  display "cat" "Configuring neovim with lazyvim"
-  git clone https://github.com/LazyVim/starter $NVIM_CONFIG_DIR
-  rm -rf $NVIM_CONFIG_DIR/.git
-fi
-NVIM_PLUGINS=$NVIM_CONFIG_DIR/lua/plugins
-mkdir -p $NVIM_PLUGINS
-if grep -q "colorscheme = \"catppuccin\"" $NVIM_PLUGINS/core.lua >/dev/null 2>&1; then
-  display "cat" "Disabling old static neovim theme config"
-  mv $NVIM_PLUGINS/core.lua $NVIM_PLUGINS/core.lua.disabled
-fi
-NVIM_THEME=$NVIM_PLUGINS/theme.lua
-if [ ! -L $NVIM_THEME ]; then
-  display "cat" "Configuring neovim theme"
-  ln -snf ~/.config/$PROJECT_LOWER/current/theme/neovim.lua $NVIM_THEME
 fi
 
 OHMYZSH_DIR=~/.oh-my-zsh
