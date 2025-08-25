@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e
+
+mv "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.backup-$(date +%Y%m%d-%H%M%S)"
