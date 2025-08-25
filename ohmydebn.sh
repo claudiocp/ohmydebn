@@ -455,5 +455,6 @@ else
   echo
   welcome
   # Create a state file signifying that installation is complete
+  mkdir -p ~/.local/state
   touch ~/.local/state/ohmydebn
 fi
