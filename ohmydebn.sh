@@ -122,7 +122,7 @@ fi
 logo
 echo
 
-display "tte waves" "Installing packages and configuring system"
+display "tte waves" "Configuring base OS"
 echo
 
 if ! dpkg -s "cinnamon-desktop-environment" >/dev/null 2>&1; then
@@ -348,7 +348,7 @@ else
   display "tte rain" "Skipping package removal (--no-uninstall mode)"
 fi
 
-display "tte rain" "Installing any available updates"
+display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
 
 display "tte rain" "Adding keyboard shortcuts"

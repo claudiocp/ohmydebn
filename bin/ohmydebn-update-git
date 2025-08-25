@@ -1,0 +1,7 @@
+#!/bin/bash
+
+OHMYDEBN_PATH=~/.local/share/ohmydebn
+
+echo -e "\e[32mUpdate OhMyDebn\e[0m"
+git -C $OHMYDEBN_PATH pull --autostash
+git -C $OHMYDEBN_PATH diff --check || git -C $OHMYDEBN_PATH reset --merge
