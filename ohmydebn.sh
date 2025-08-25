@@ -352,79 +352,79 @@ display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
 
 display "tte rain" "Adding keyboard shortcuts"
-echo "Super+PageUp to maximize a window"
+echo "Press Super+PageUp to maximize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
-echo "Super+PageDown to minimize a window"
+echo "Press Super+PageDown to minimize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm minimize "['<Super>Page_Down']"
-echo "Super+W to close a window"
+echo "Press Super+W to close a window"
 gsettings set org.cinnamon.desktop.keybindings.wm close "['<Alt>F4', '<Super>w']"
-echo "Super+1 to switch to workspace 1"
+echo "Press Super+1 to switch to workspace 1"
 gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-1 "['<Super>1']"
-echo "Super+2 to switch to workspace 2"
+echo "Press Super+2 to switch to workspace 2"
 gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-2 "['<Super>2']"
-echo "Super+3 to switch to workspace 3"
+echo "Press Super+3 to switch to workspace 3"
 gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-3 "['<Super>3']"
-echo "Super+4 to switch to workspace 4"
+echo "Press Super+4 to switch to workspace 4"
 gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-4 "['<Super>4']"
 # To add a new custom keybinding, update the following line and then add a group of custom-xyz lines below
 gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9', 'custom-10', 'custom-11']"
 # custom-0
-echo "Ctrl+Shift+K for KeePassXC password manager"
+echo "Press Ctrl+Shift+K for KeePassXC password manager"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/$PROJECT_LOWER-keepass"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
 # custom-1
-echo "Super+B for browser"
+echo "Press Super+B for browser"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ name "Chromium"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ command "/usr/bin/chromium"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ binding "['<Super>B']"
 # custom-2
-echo "Super+Return for terminal (alacritty)"
+echo "Press Super+Return for terminal (alacritty)"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ name "Alacritty"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ command "/usr/bin/alacritty"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ binding "['<Super>Return']"
 # custom-3
-echo "Super+F for file manager (nemo)"
+echo "Press Super+F for file manager (nemo)"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ name "Nemo"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ command "/usr/bin/nemo"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ binding "['<Super>F']"
 # custom-4
-echo "Super+R to run the application launcher (rofi)"
+echo "Press Super+R to run the application launcher (rofi)"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ name "Rofi"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ command "/usr/bin/rofi -show drun"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ binding "['<Super>R', '<Super>space']"
 # custom-5
-echo "Super+K to show all keyboard bindings"
+echo "Press Super+K to show all keyboard bindings"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ name "Keyboard bindings"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ command "/usr/bin/chromium https://github.com/dougburks/ohmydebn?tab=readme-ov-file#hotkeys"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ binding "['<Super>K']"
 # custom-6
-echo "Super+T to launch btop"
+echo "Press Super+T to launch btop"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ name "btop"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ command "/usr/bin/alacritty -e btop"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ binding "['<Super>T']"
 # custom-7
-echo "Super+N to launch Neovim"
+echo "Press Super+N to launch Neovim"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ name "Neovim"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ command "/usr/bin/alacritty -e nvim"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ binding "['<Super>N']"
 # custom-8
-echo "Ctrl+Shift+O to show OhMyDebn logo"
+echo "Press Ctrl+Shift+O to show OhMyDebn logo"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ name "OhMyDebn Logo"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ command "/usr/local/bin/ohmydebn-logo-gui"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ binding "['<Ctrl><Shift>O']"
 # custom-9
-echo "Ctrl+Shift+S to show screenfetch"
+echo "Press Ctrl+Shift+S to show screenfetch"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ name "screenfetch"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ command "/usr/local/bin/ohmydebn-screenfetch-gui"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ binding "['<Ctrl><Shift>S']"
 # custom-10
-echo "Ctrl+Shift+A to show audio visualizer"
+echo "Press Ctrl+Shift+A to show audio visualizer"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ name "cava audio visualizer"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ command "/usr/bin/alacritty -e cava"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ binding "['<Ctrl><Shift>A']"
 # custom-11
-echo "Ctrl+Shift+Super+Space to change theme"
+echo "Press Ctrl+Shift+Super+Space to change theme"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ name "OhMyDebn theme selector"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ command "/usr/local/bin/ohmydebn-theme-set-gui"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ binding "['<Ctrl><Shift><Super>space']"
@@ -437,8 +437,15 @@ if pgrep -x cinnamon >/dev/null; then
   echo "You can see all keybindings by pressing Super + K"
 fi
 
-display "tte rain" "Installation complete!"
-echo
-screenfetch -N | tte slide --merge
-echo
-welcome
+STATE_FILE=~/.local/state/$PROJECT_LOWER
+if [ ! -f $STATE_FILE ]; then
+  display "tte rain" "Installation complete!"
+  echo
+  screenfetch -N | tte slide --merge
+  echo
+  welcome
+  # Create a state file signifying that installation is complete
+  touch ~/.local/state/ohmydebn
+else
+  echo "Update complete!"
+fi
