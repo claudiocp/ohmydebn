@@ -40,7 +40,7 @@ function display {
     # For updates, don't use text effects
     PROCESSOR=cat
   fi
-  cat <<EOF | $1
+  cat <<EOF | $PROCESSOR
 ###############################################################################
 $2
 ###############################################################################
@@ -361,7 +361,7 @@ fi
 display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
 
-display "tte rain" "Adding keyboard shortcuts"
+display "tte rain" "Updating keyboard shortcuts"
 echo "Press Super+PageUp to maximize a window"
 gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
 echo "Press Super+PageDown to minimize a window"
@@ -439,15 +439,18 @@ gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/d
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ command "/usr/local/bin/ohmydebn-theme-set-gui"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ binding "['<Ctrl><Shift><Super>space']"
 
-if pgrep -x cinnamon >/dev/null; then
-  display "tte rain" "Restarting desktop to apply keybindings"
-  sleep 1s
-  /usr/bin/cinnamon --replace >/dev/null 2>&1 &
-  sleep 1s
-  echo "You can see all keybindings by pressing Super + K"
-fi
+if [ -f $STATE_FILE ]; then
+  echo
+  echo "Update complete!"
+else
+  if pgrep -x cinnamon >/dev/null; then
+    display "tte rain" "Restarting desktop to apply keybindings"
+    sleep 1s
+    /usr/bin/cinnamon --replace >/dev/null 2>&1 &
+    sleep 1s
+    echo "You can see all keybindings by pressing Super + K"
+  fi
 
-if [ ! -f $STATE_FILE ]; then
   display "tte rain" "Installation complete!"
   echo
   screenfetch -N | tte slide --merge
@@ -455,7 +458,4 @@ if [ ! -f $STATE_FILE ]; then
   welcome
   # Create a state file signifying that installation is complete
   touch ~/.local/state/ohmydebn
-else
-  echo
-  echo "Update complete!"
 fi
