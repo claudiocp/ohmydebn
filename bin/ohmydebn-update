@@ -3,4 +3,4 @@
 set -e
 
 ohmydebn-update-git
-~/.local/share/ohmydebn/ohmydebn.sh --no-uninstall
+bash ~/.local/share/ohmydebn/ohmydebn.sh --no-uninstall
