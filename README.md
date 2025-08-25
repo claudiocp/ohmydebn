@@ -10,7 +10,7 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 - [Motivation](#motivation)
 - [Ingredients](#ingredients)
 - [Why Debian?](#why-debian)
-- [Why Cinnamon Desktop?](#why-cinnamon)
+- [Why Cinnamon Desktop?](#why-cinnamon-desktop)
 - [Why Debian Cinnamon?](#why-debian-cinnamon)
 - [Why is it called "OhMyDebn"?](#why-is-it-called-ohmydebn)
 - [Gallery](#gallery)
