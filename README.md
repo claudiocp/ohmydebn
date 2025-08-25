@@ -31,12 +31,11 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 - Base OS: [Debian](https://www.debian.org/) 13 for stability and compatibility
 - Desktop environment: [Cinnamon](https://github.com/linuxmint/Cinnamon) for a premium desktop experience
 - Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/)
-- Wallpaper: beautiful [Catppuccin mountain landscape](https://github.com/zhichaoh/catppuccin-wallpapers/blob/main/landscapes/salty_mountains.png)
-- Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
-- Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
+- Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts
+- Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/)
 - Shell prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
-- Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/) and [Catppuccin theme](https://github.com/catppuccin/nvim)
-- Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
+- Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/)
+- Performance monitoring: [btop](https://github.com/aristocratos/btop)
 - Application launcher: [Rofi](https://davatorium.github.io/rofi/current/rofi.1/) with [Catppuccin Mocha theme](https://github.com/catppuccin/rofi)
 - Audio visualizer: [Cava](https://github.com/karlstav/cava) with [Catppuccin Mocha theme](https://github.com/catppuccin/cava)
 - Shell cat command alternative: [bat](https://github.com/sharkdp/bat) with syntax highlighting and [Catppuccin Mocha theme](https://github.com/catppuccin/bat)
@@ -215,6 +214,50 @@ You can change the desktop theme by pressing `Ctrl + Shift + Super + space`. Thi
 
 ![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
 
+Catppuccin theme:
+
+![OhMyDebn with catppuccin theme](images/ohmydebn-theme-catppuccin.png)
+
+Catppuccin latte theme:
+
+![OhMyDebn with catppuccin latte theme](images/ohmydebn-theme-catppuccin-latte.png)
+
+Everforest theme:
+
+![OhMyDebn with everforest theme](images/ohmydebn-theme-everforest.png)
+
+Gruvbox theme:
+
+![OhMyDebn with gruvbox theme](images/ohmydebn-theme-gruvbox.png)
+
+Kanagawa theme:
+
+![OhMyDebn with kanagawa theme](images/ohmydebn-theme-kanagawa.png)
+
+Matte black theme:
+
+![OhMyDebn with matte black theme](images/ohmydebn-theme-matte-black.png)
+
+Nord theme:
+
+![OhMyDebn with nord theme](images/ohmydebn-theme-nord.png)
+
+Osaka jade theme:
+
+![OhMyDebn with osaka jade theme](images/ohmydebn-theme-osaka-jade.png)
+
+Ristretto theme:
+
+![OhMyDebn with ristretto theme](images/ohmydebn-theme-ristretto.png)
+
+Rose pine theme:
+
+![OhMyDebn with rose pine theme](images/ohmydebn-theme-rose-pine.png)
+
+Tokyo night theme:
+
+![OhMyDebn with tokyo night theme](images/ohmydebn-theme-tokyo-night.png)
+
 # Desktop Background
 
 If you don't want to change the entire theme but just want to change the desktop background, you can go to Settings -> Backgrounds and select one of the backgrounds included in Debian.
@@ -227,8 +270,7 @@ Since our default Ohmydebn theme is based on the catppuccin color palette, you m
 
 To start a terminal session, press `Super + Enter`. This launches a beautiful and powerful [Alacritty](https://alacritty.org) terminal window that includes:
 - Caskaydia Nerd Fonts
-- [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
-- [Zsh](https://en.wikipedia.org/wiki/Z_shell) shell with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
+- [Zsh](https://en.wikipedia.org/wiki/Z_shell) shell with [Oh My Zsh](https://ohmyz.sh/)
 - [Starship](https://starship.rs/) shell prompt with modified [Catppuccin theme](https://github.com/catppuccin/starship)
 - [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command
 - [eza](https://github.com/eza-community/eza) for beautiful directory listings via `ls` and `lt`
