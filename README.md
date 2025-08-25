@@ -218,7 +218,7 @@ Catppuccin theme:
 
 ![OhMyDebn with catppuccin theme](images/ohmydebn-theme-catppuccin.png)
 
-Catppuccin latte theme:
+Catppuccin Latte theme:
 
 ![OhMyDebn with catppuccin latte theme](images/ohmydebn-theme-catppuccin-latte.png)
 
@@ -234,7 +234,7 @@ Kanagawa theme:
 
 ![OhMyDebn with kanagawa theme](images/ohmydebn-theme-kanagawa.png)
 
-Matte black theme:
+Matte Black theme:
 
 ![OhMyDebn with matte black theme](images/ohmydebn-theme-matte-black.png)
 
@@ -242,7 +242,7 @@ Nord theme:
 
 ![OhMyDebn with nord theme](images/ohmydebn-theme-nord.png)
 
-Osaka jade theme:
+Osaka Jade theme:
 
 ![OhMyDebn with osaka jade theme](images/ohmydebn-theme-osaka-jade.png)
 
@@ -250,11 +250,11 @@ Ristretto theme:
 
 ![OhMyDebn with ristretto theme](images/ohmydebn-theme-ristretto.png)
 
-Rose pine theme:
+Rose Pine theme:
 
 ![OhMyDebn with rose pine theme](images/ohmydebn-theme-rose-pine.png)
 
-Tokyo night theme:
+Tokyo Night theme:
 
 ![OhMyDebn with tokyo night theme](images/ohmydebn-theme-tokyo-night.png)
 
