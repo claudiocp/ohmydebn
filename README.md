@@ -8,6 +8,30 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 
 - [Debonair Haiku](#debonair-haiku)
 - [Motivation](#motivation)
+- [Ingredients](#ingredients)
+- [Why Debian?](#why-debian)
+- [Why Cinnamon Desktop?](#why-cinnamon)
+- [Why Debian Cinnamon?](#why-debian-cinnamon)
+- [Why is it called "OhMyDebn"?](#why-is-it-called-ohmydebn)
+- [Gallery](#gallery)
+- [Requirements](#requirements)
+- [Warnings](#warnings)
+- [Installation](#installation)
+- [After Installation](#after-installation)
+- [Alternative Installations](#alternative-installations)
+- [Launch Applications via Rofi](#launch-applications-via-rofi)
+- [Web browser](#web-browser)
+- [OhMyDebn Logo](#ohmydebn-logo)
+- [System summary via screenfetch](#system-summary-via-screenfetch)
+- [System monitoring via btop](#system-monitoring-via-btop)
+- [Audio visualizer via Cava](#audio-visualizer-via-cava)
+- [Desktop theme](#desktop-theme)
+- [Terminal](#terminal)
+- [Updating](#updating)
+- [Resetting](#resetting)
+- [Text editor](#text-editor)
+- [Hotkeys](#hotkeys)
+- [Relationship to Security Onion](#relationship-to-security-onion)
 
 # Debonair Haiku
 
@@ -428,6 +452,6 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 
 For the full list of all Neovim hotkeys configured by LazyVim, please see https://www.lazyvim.org/keymaps.
 
-# Relationship to Security Onion project and Security Onion Solutions
+# Relationship to Security Onion
 
 OhMyDebn is not directly related to the [Security Onion](https://github.com/Security-Onion-Solutions/securityonion) project. OhMyDebn is sponsored by [Security Onion Solutions](https://securityonion.com) (SOS); however, SOS does not provide any technical support for it. OhMyDebn is intended to provide a general purpose desktop environment so, of course, you could use the included Chromium web browser to connect to your [Security Onion Console](https://docs.securityonion.net/en/2.4/soc.html)!
