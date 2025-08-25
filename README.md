@@ -4,6 +4,11 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
+# Table of Contents
+
+- [Debonair Haiku](#debonair-haiku)
+- [Motivation](#motivation)
+
 # Debonair Haiku
 
 *Debonair strides bold,*  
