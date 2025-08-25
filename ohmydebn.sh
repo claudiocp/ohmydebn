@@ -354,8 +354,6 @@ if [ "$NO_UNINSTALL" = false ]; then
   display "tte rain" "Removing any unnecessary packages"
   sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
   sudo apt -y autoremove
-else
-  display "tte rain" "Skipping package removal (--no-uninstall mode)"
 fi
 
 display "tte rain" "Installing any available OS updates"
