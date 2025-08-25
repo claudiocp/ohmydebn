@@ -273,6 +273,14 @@ It also includes [bat](https://github.com/sharkdp/bat), which is a `cat` clone w
 
 ![OhMyDebn bat screenshot](images/ohmydebn-bat.png)
 
+# Updating
+
+To update to the latest version of OhMyDebn, run `ohmydebn-update`. This will update the git repo, update config files, and update packages.
+
+# Resetting
+
+To reset your config files to OhMyDebn defaults, run `ohmydebn-reset-config`. This will automatically create backup copies of your current config files and then write new ones.
+
 # Text editor
 
 To start a text editor, press `Super + N`. This launches the beautiful and powerful combination of Neovim with LazyVim. The first time it loads, it will install several plugins. Once that is done, you can press the `Q` key until you get to the main menu. You can then press the space bar and then the `E` key to open Explorer.
