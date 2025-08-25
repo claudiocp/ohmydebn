@@ -5,6 +5,7 @@ set -e
 
 PROJECT="OhMyDebn"
 PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
+STATE_FILE=~/.local/state/$PROJECT_LOWER
 
 # Parse command line arguments
 NO_UNINSTALL=false
@@ -32,7 +33,14 @@ function welcome {
 
 function display {
   echo
-  cat <<EOF | $1
+  if [ ! -f $STATE_FILE ]; then
+    # For first installation, use text effects
+    PROCESSOR=$1
+  else
+    # For updates, don't use text effects
+    PROCESSOR=cat
+  fi
+  cat <<EOF | $PROCESSOR
 ###############################################################################
 $2
 ###############################################################################
@@ -58,7 +66,8 @@ or Ctrl-c to cancel."
   read input
 fi
 
-display "cat" "WARNING!
+if [ ! -f $STATE_FILE ]; then
+  display "cat" "WARNING!
 
 This script:
 - is intended for a clean new installation.
@@ -69,7 +78,8 @@ This script is totally unsupported.
 If it breaks your system, you get to keep both pieces!
 
 Press Enter to continue or Ctrl-c to cancel."
-read input
+  read input
+fi
 
 if [ -f /etc/apt/sources.list.d/debian.sources ] || [ -f /etc/apt/sources.list.d/proxmox.sources ]; then
   echo "Found an APT sources file in /etc/apt/sources.list.d/"
@@ -102,27 +112,36 @@ EOF
   fi
 fi
 
-display "cat" "Installing text effects for demoscene nostalgia"
-sudo apt update && sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet toilet-fonts
-# Most users are running a normal Debian 13 Cinnamon desktop and are running this script via gnome-terminal
-# In that case, let's change some terminal settings to make the output of this script look nicer
-if dpkg -s "gnome-terminal" >/dev/null 2>&1; then
-  gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ foreground-color "'#D3D7CF'"
-  gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ background-color "'#2E3436'"
-  gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ use-theme-colors false
-  gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ palette "['#2e3436', '#cc0000', '#4e9a06', '#c4a000', '#3465a4', '#75507b', '#06989a', '#d3d7cf', '#555753', '#ef2929', '#8ae234', '#fce94f', '#729fcf', '#ad7fa8', '#34e2e2', '#eeeeec']"
+if ! dpkg -s curl >/dev/null 2>&1 ||
+  ! dpkg -s libglib2.0-bin >/dev/null 2>&1 ||
+  ! dpkg -s python3-terminaltexteffects >/dev/null 2>&1 ||
+  ! dpkg -s toilet >/dev/null 2>&1 ||
+  ! dpkg -s toilet-fonts >/dev/null 2>&1; then
+  display "cat" "Installing text effects for demoscene nostalgia"
+  sudo apt update && sudo apt -y install curl libglib2.0-bin python3-terminaltexteffects toilet toilet-fonts
+  # Most users are running a normal Debian 13 Cinnamon desktop and are running this script via gnome-terminal
+  # In that case, let's change some terminal settings to make the output of this script look nicer
+  if dpkg -s "gnome-terminal" >/dev/null 2>&1; then
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ foreground-color "'#D3D7CF'"
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ background-color "'#2E3436'"
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ use-theme-colors false
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ palette "['#2e3436', '#cc0000', '#4e9a06', '#c4a000', '#3465a4', '#75507b', '#06989a', '#d3d7cf', '#555753', '#ef2929', '#8ae234', '#fce94f', '#729fcf', '#ad7fa8', '#34e2e2', '#eeeeec']"
+  fi
 fi
 
 logo
 echo
 
+display "tte waves" "Configuring base OS"
+echo
+
 if ! dpkg -s "cinnamon-desktop-environment" >/dev/null 2>&1; then
-  display "tte waves" "Installing Cinnamon desktop"
+  display "cat" "Installing Cinnamon desktop"
   sudo apt -y install cinnamon-desktop-environment
 fi
 
 if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
-  display "tte waves" "Downloading Cinnamon themes"
+  display "cat" "Downloading Cinnamon themes"
   MINTLIST="/etc/apt/sources.list.d/mint.list"
   MINTKEY="linuxmint-keyring_2022.06.21_all.deb"
   MINTURL="http://packages.linuxmint.com/pool/main/l/linuxmint-keyring/$MINTKEY"
@@ -144,54 +163,89 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
 fi
 
 if [ -f /usr/bin/pveversion ]; then
-  display "tte rain" "Installing dbus-x11"
+  display "cat" "Installing dbus-x11"
   sudo apt -y install dbus-x11
   export $(dbus-launch)
 fi
 
-display "tte rain" "Changing desktop wallpaper"
-mkdir -p ~/.config/$PROJECT_LOWER/current/
-mkdir -p ~/.config/$PROJECT_LOWER/themes/
-ln -sf ~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER
-ln -sf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/current/theme
-ln -sf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountains.png ~/.config/$PROJECT_LOWER/current/background
+display "cat" "Updating themes"
+if [ ! -d ~/.local/share/omarchy ]; then
+  cd ~/.local/share/
+  git clone https://github.com/basecamp/omarchy.git
+else
+  cd ~/.local/share/omarchy
+  git pull
+fi
+cd - >/dev/null
+
+display "cat" "Changing desktop wallpaper"
+mkdir -p ~/.config/$PROJECT_LOWER/themes
+for f in ~/.local/share/$PROJECT_LOWER/themes/*; do
+  THEME=$(basename $f)
+  if [ ! -L ~/.config/$PROJECT_LOWER/themes/$THEME ]; then
+    ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/
+  fi
+done
+for f in ~/.local/share/omarchy/themes/*; do
+  THEME=$(basename $f)
+  if [ ! -L ~/.config/omarchy/themes/$THEME ]; then
+    ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/
+  fi
+done
+# Set initial theme
+mkdir -p ~/.config/$PROJECT_LOWER/current
+if [ ! -L ~/.config/$PROJECT_LOWER/current/theme ]; then
+  ln -snf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/current/theme
+fi
+if [ ! -L ~/.config/$PROJECT_LOWER/current/background ]; then
+  ln -snf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountains.png ~/.config/$PROJECT_LOWER/current/background
+fi
+
+# Some installs might have an incorrect symlink
+# if the old symlink exists, then remove it
+OLD_SYMLINK=~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER
+if [ -L $OLD_SYMLINK ]; then
+  echo "Removing old symlink $OLD_SYMLINK"
+  rm -f $OLD_SYMLINK
+fi
+
 BACKGROUND=~/.config/$PROJECT_LOWER/current/background
 gsettings set org.cinnamon.desktop.background picture-uri "'file://$BACKGROUND'"
 
-display "tte rain" "Setting Cinnamon theme"
+display "cat" "Setting Cinnamon theme"
 gsettings set org.cinnamon.theme name "'Mint-Y-Dark-Aqua'"
 
-display "tte rain" "Setting cursor theme"
+display "cat" "Setting cursor theme"
 sudo apt -y install bibata-cursor-theme
 gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
 
-display "tte rain" "Setting GTK theme"
+display "cat" "Setting GTK theme"
 gsettings set org.cinnamon.desktop.interface gtk-theme "'Mint-Y-Dark-Aqua'"
 
-display "tte rain" "Setting icon theme"
+display "cat" "Setting icon theme"
 gsettings set org.cinnamon.desktop.interface icon-theme "'Mint-Y-Sand'"
 
-display "tte rain" "Setting alttab switcher style to icons+preview"
+display "cat" "Setting alttab switcher style to icons+preview"
 gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
 
-display "tte rain" "Configuring alttab switcher for all workspaces"
+display "cat" "Configuring alttab switcher for all workspaces"
 gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
 
-display "tte rain" "Configuring gedit"
+display "cat" "Configuring gedit"
 gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
 gsettings set org.gnome.gedit.preferences.editor display-line-numbers false
 
 if gsettings get org.cinnamon enabled-applets | grep -q grouped-window-list; then
-  display "tte rain" "Changing grouped window list to window list"
+  display "cat" "Changing grouped window list to window list"
   gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed "s/panel1:left:[0-9]*:grouped-window-list@cinnamon.org:[0-9]*/panel1:left:1:window-list@cinnamon.org:12/")"
 fi
 
 if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; then
-  display "tte rain" "Enabling workspace switcher"
+  display "cat" "Enabling workspace switcher"
   gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
 fi
 
-display "tte rain" "Configuring cinnamon spices"
+display "cat" "Configuring cinnamon spices"
 for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
   SPICE_DIR=~/.config/cinnamon/spices/$SPICE
   mkdir -p $SPICE_DIR
@@ -200,66 +254,34 @@ for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
   echo
 done
 
-display "tte rain" "Installing new apps if unnecessary"
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+display "tte rain" "Installing new apps if unnecessary and configuring them"
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
-display "tte rain" "Setting alacritty as default terminal emulator"
+display "cat" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
 
 if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
-  display "tte rain" "Configuring alacritty with Caskyadia Nerd Font"
+  display "cat" "Configuring alacritty with Caskyadia Nerd Font"
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaMono.zip
   unzip CascadiaMono.zip -d ~/.local/share/fonts
   rm -f CascadiaMono.zip
   fc-cache -fv
 fi
 
-ALACRITTY_DIR=~/.config/alacritty
-mkdir -p $ALACRITTY_DIR
-ALACRITTY_THEME=$ALACRITTY_DIR/catppuccin-mocha.toml
-if [ ! -f $ALACRITTY_THEME ]; then
-  display "tte rain" "Downloading catppuccin theme for alacritty terminal"
-  curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
-fi
-
-ALACRITTY_CONFIG=$ALACRITTY_DIR/alacritty.toml
-if [ ! -f $ALACRITTY_CONFIG ]; then
-  display "tte rain" "Configuring alacritty terminal to use catppuccin theme"
-  cat <<EOF >>$ALACRITTY_CONFIG
-[env]
-TERM = "xterm-256color"
-[window]
-opacity = 0.97  # Values from 0.0 (fully transparent) to 1.0 (opaque)
-padding.x = 14
-padding.y = 14
-decorations = "Full"
-[font]
-normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
-bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
-italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
-[general]
-import = [
-  "~/.config/alacritty/catppuccin-mocha.toml"
-]
-EOF
-fi
-
-if ! grep -q "\[terminal\]" $ALACRITTY_CONFIG; then
-  display "tte rain" "Configuring alacritty terminal to use Zsh"
-  cat <<EOF >>$ALACRITTY_CONFIG
-[terminal]
-shell = "/usr/bin/zsh"
-EOF
-fi
-
 BAT_BIN=/usr/local/bin/bat
 if [ ! -e $BAT_BIN ]; then
-  display "tte rain" "Creating symbolic link for bat"
+  display "cat" "Creating symbolic link for bat"
   sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 fi
 
-display "tte rain" "Configuring components"
-for COMPONENT in bat btop cava chromium keepassxc rofi; do
+ALACRITTY_DIR=~/.config/alacritty
+ALACRITTY_CONFIG=$ALACRITTY_DIR/alacritty.toml
+if grep -q "alacritty/catppuccin-mocha.toml" $ALACRITTY_CONFIG >/dev/null 2>&1; then
+  mv $ALACRITTY_DIR $ALACRITTY_DIR.before.themes
+fi
+
+display "cat" "Configuring components"
+for COMPONENT in alacritty bat btop cava chromium keepassxc rofi; do
   COMPONENT_CONFIG_DIR=~/.config/$COMPONENT
   if [ ! -d $COMPONENT_CONFIG_DIR ]; then
     echo "Configuring $COMPONENT:"
@@ -270,145 +292,168 @@ done
 
 BAT_CACHE_METADATA=~/.cache/bat/metadata.yaml
 if [ ! -f $BAT_CACHE_METADATA ]; then
-  display "tte rain" "Building cache for bat"
+  display "cat" "Building cache for bat"
   bat cache --build
+fi
+
+BTOP_THEMES_DIR=~/.config/btop/themes
+mkdir -p $BTOP_THEMES_DIR
+BTOP_CURRENT_THEME=$BTOP_THEMES_DIR/current.theme
+if [ ! -L $BTOP_CURRENT_THEME ]; then
+  display "cat" "Configuring btop theme"
+  ln -snf ~/.config/$PROJECT_LOWER/current/theme/btop.theme $BTOP_CURRENT_THEME
 fi
 
 NVIM_CONFIG_DIR=~/.config/nvim
 if [ ! -d $NVIM_CONFIG_DIR ]; then
-  display "tte rain" "Configuring neovim with lazyvim"
+  display "cat" "Configuring neovim with lazyvim"
   git clone https://github.com/LazyVim/starter $NVIM_CONFIG_DIR
   rm -rf $NVIM_CONFIG_DIR/.git
 fi
-
-NVIMPLUGINS=~/.config/nvim/lua/plugins
-mkdir -p $NVIMPLUGINS
-if [ ! -f $NVIMPLUGINS/core.lua ]; then
-  display "tte rain" "Configuring neovim with catppuccin theme"
-  cat <<EOF >>~/.config/nvim/lua/plugins/core.lua
-return {
-  { "LazyVim/LazyVim", opts = { colorscheme = "catppuccin" } }
-}
-EOF
+NVIM_PLUGINS=$NVIM_CONFIG_DIR/lua/plugins
+mkdir -p $NVIM_PLUGINS
+if grep -q "colorscheme = \"catppuccin\"" $NVIM_PLUGINS/core.lua >/dev/null 2>&1; then
+  display "cat" "Disabling old static neovim theme config"
+  mv $NVIM_PLUGINS/core.lua $NVIM_PLUGINS/core.lua.disabled
 fi
+NVIM_THEME=$NVIM_PLUGINS/theme.lua
+if [ ! -L $NVIM_THEME ]; then
+  display "cat" "Configuring neovim theme"
+  ln -snf ~/.config/$PROJECT_LOWER/current/theme/neovim.lua $NVIM_THEME
+fi
+display "cat" "Updating neovim config"
+cp -av ~/.local/share/$PROJECT_LOWER/config/nvim ~/.config/
 
 OHMYZSH_DIR=~/.oh-my-zsh
 if [ ! -d $OHMYZSH_DIR ]; then
-  display "tte rain" "Installing Oh My Zsh framework for Zsh"
+  display "cat" "Installing Oh My Zsh framework for Zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   mv ~/.zshrc ~/.zshrc.oh-my-zsh
 fi
 
 STARSHIP_CONFIG=~/config/starship.toml
 if [ ! -f $STARSHIP_CONFIG ]; then
-  display "tte rain" "Configuring starship prompt"
+  display "cat" "Configuring starship prompt"
   cp ~/.local/share/$PROJECT_LOWER/config/starship.toml ~/.config/
 fi
 
 ZSH_CONFIG=~/.zshrc
 if [ ! -f $ZSH_CONFIG ]; then
-  display "tte rain" "Configuring Zsh"
+  display "cat" "Configuring Zsh"
   cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
 fi
 
-display "tte rain" "Copying binaries to /usr/local/bin/"
+display "cat" "Copying binaries to /usr/local/bin/"
 sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
 sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
 
-display "tte rain" "Configuring ristretto as default image viewer"
+display "cat" "Configuring ristretto as default image viewer"
 xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
-
-display "tte rain" "Adding keyboard shortcuts"
-echo "Super+PageUp to maximize a window"
-gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
-echo "Super+PageDown to minimize a window"
-gsettings set org.cinnamon.desktop.keybindings.wm minimize "['<Super>Page_Down']"
-echo "Super+W to close a window"
-gsettings set org.cinnamon.desktop.keybindings.wm close "['<Alt>F4', '<Super>w']"
-echo "Super+1 to switch to workspace 1"
-gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-1 "['<Super>1']"
-echo "Super+2 to switch to workspace 2"
-gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-2 "['<Super>2']"
-echo "Super+3 to switch to workspace 3"
-gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-3 "['<Super>3']"
-echo "Super+4 to switch to workspace 4"
-gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-4 "['<Super>4']"
-# To add a new custom keybinding, update the following line and then add a group of custom-xyz lines below
-gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9', 'custom-10']"
-# custom-0
-echo "Ctrl+Shift+K for KeePassXC password manager"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/$PROJECT_LOWER-keepass"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
-# custom-1
-echo "Super+B for browser"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ name "Chromium"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ command "/usr/bin/chromium"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ binding "['<Super>B']"
-# custom-2
-echo "Super+Return for terminal (alacritty)"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ name "Alacritty"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ command "/usr/bin/alacritty"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ binding "['<Super>Return']"
-# custom-3
-echo "Super+F for file manager (nemo)"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ name "Nemo"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ command "/usr/bin/nemo"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ binding "['<Super>F']"
-# custom-4
-echo "Super+R to run the application launcher (rofi)"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ name "Rofi"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ command "/usr/bin/rofi -show drun"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ binding "['<Super>R', '<Super>space']"
-# custom-5
-echo "Super+K to show all keyboard bindings"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ name "Keyboard bindings"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ command "/usr/bin/chromium https://github.com/dougburks/ohmydebn?tab=readme-ov-file#hotkeys"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ binding "['<Super>K']"
-# custom-6
-echo "Super+T to launch btop"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ name "btop"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ command "/usr/bin/alacritty -e btop"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ binding "['<Super>T']"
-# custom-7
-echo "Super+N to launch Neovim"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ name "Neovim"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ command "/usr/bin/alacritty -e nvim"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ binding "['<Super>N']"
-# custom-8
-echo "Ctrl+Shift+O to show OhMyDebn logo"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ name "OhMyDebn Logo"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ command "/usr/local/bin/ohmydebn-logo-gui"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ binding "['<Ctrl><Shift>O']"
-# custom-9
-echo "Ctrl+Shift+S to show screenfetch"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ name "screenfetch"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ command "/usr/local/bin/ohmydebn-screenfetch-gui"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ binding "['<Ctrl><Shift>S']"
-# custom-10
-echo "Ctrl+Shift+A to show audio visualizer"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ name "cava audio visualizer"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ command "/usr/bin/alacritty -e cava"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ binding "['<Ctrl><Shift>A']"
-
-if pgrep -x cinnamon >/dev/null; then
-  display "tte rain" "Restarting desktop to apply keybindings"
-  /usr/bin/cinnamon --replace >/dev/null 2>&1 &
-fi
 
 if [ "$NO_UNINSTALL" = false ]; then
   display "tte rain" "Removing any unnecessary packages"
   sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
   sudo apt -y autoremove
-else
-  display "tte rain" "Skipping package removal (--no-uninstall mode)"
 fi
 
-display "tte rain" "Installing any available updates"
+display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
 
-display "tte rain" "Installation complete!"
-echo
-screenfetch -N | tte slide --merge
-echo
-welcome
+display "tte rain" "Updating keyboard shortcuts"
+echo "Press Super+PageUp to maximize a window"
+gsettings set org.cinnamon.desktop.keybindings.wm toggle-maximized "['<Super>Page_Up']"
+echo "Press Super+PageDown to minimize a window"
+gsettings set org.cinnamon.desktop.keybindings.wm minimize "['<Super>Page_Down']"
+echo "Press Super+W to close a window"
+gsettings set org.cinnamon.desktop.keybindings.wm close "['<Alt>F4', '<Super>w']"
+echo "Press Super+1 to switch to workspace 1"
+gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-1 "['<Super>1']"
+echo "Press Super+2 to switch to workspace 2"
+gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-2 "['<Super>2']"
+echo "Press Super+3 to switch to workspace 3"
+gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-3 "['<Super>3']"
+echo "Press Super+4 to switch to workspace 4"
+gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-4 "['<Super>4']"
+# To add a new custom keybinding, update the following line and then add a group of custom-xyz lines below
+gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9', 'custom-10', 'custom-11']"
+# custom-0
+echo "Press Ctrl+Shift+K for KeePassXC password manager"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ command "/usr/local/bin/$PROJECT_LOWER-keepass"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ binding "['<Ctrl><Shift>K']"
+# custom-1
+echo "Press Super+B for browser"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ name "Chromium"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ command "/usr/bin/chromium"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-1/ binding "['<Super>B']"
+# custom-2
+echo "Press Super+Return for terminal (alacritty)"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ name "Alacritty"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ command "/usr/bin/alacritty"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-2/ binding "['<Super>Return']"
+# custom-3
+echo "Press Super+F for file manager (nemo)"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ name "Nemo"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ command "/usr/bin/nemo"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-3/ binding "['<Super>F']"
+# custom-4
+echo "Press Super+R to run the application launcher (rofi)"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ name "Rofi"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ command "/usr/bin/rofi -show drun"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-4/ binding "['<Super>R', '<Super>space']"
+# custom-5
+echo "Press Super+K to show all keyboard bindings"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ name "Keyboard bindings"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ command "/usr/bin/chromium https://github.com/dougburks/ohmydebn?tab=readme-ov-file#hotkeys"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-5/ binding "['<Super>K']"
+# custom-6
+echo "Press Super+T to launch btop"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ name "btop"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ command "/usr/bin/alacritty -e btop"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-6/ binding "['<Super>T']"
+# custom-7
+echo "Press Super+N to launch Neovim"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ name "Neovim"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ command "/usr/bin/alacritty -e nvim"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-7/ binding "['<Super>N']"
+# custom-8
+echo "Press Ctrl+Shift+O to show OhMyDebn logo"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ name "OhMyDebn Logo"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ command "/usr/local/bin/ohmydebn-logo-gui"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-8/ binding "['<Ctrl><Shift>O']"
+# custom-9
+echo "Press Ctrl+Shift+S to show screenfetch"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ name "screenfetch"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ command "/usr/local/bin/ohmydebn-screenfetch-gui"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-9/ binding "['<Ctrl><Shift>S']"
+# custom-10
+echo "Press Ctrl+Shift+A to show audio visualizer"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ name "cava audio visualizer"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ command "/usr/bin/alacritty -e cava"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ binding "['<Ctrl><Shift>A']"
+# custom-11
+echo "Press Ctrl+Shift+Super+Space to change theme"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ name "OhMyDebn theme selector"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ command "/usr/local/bin/ohmydebn-theme-set-gui"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ binding "['<Ctrl><Shift><Super>space']"
+
+if [ -f $STATE_FILE ]; then
+  echo
+  echo "Update complete!"
+else
+  if pgrep -x cinnamon >/dev/null; then
+    display "tte rain" "Restarting desktop to apply keybindings"
+    sleep 1s
+    /usr/bin/cinnamon --replace >/dev/null 2>&1 &
+    sleep 1s
+    echo "You can see all keybindings by pressing Super + K"
+  fi
+
+  display "tte rain" "Installation complete!"
+  echo
+  screenfetch -N | tte slide --merge
+  echo
+  welcome
+  # Create a state file signifying that installation is complete
+  touch ~/.local/state/ohmydebn
+fi

@@ -4,6 +4,35 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 
 ![OhMyDebn screenshot](images/ohmydebn.png)
 
+# Table of Contents
+
+- [Debonair Haiku](#debonair-haiku)
+- [Motivation](#motivation)
+- [Ingredients](#ingredients)
+- [Why Debian?](#why-debian)
+- [Why Cinnamon Desktop?](#why-cinnamon-desktop)
+- [Why Debian Cinnamon?](#why-debian-cinnamon)
+- [Why is it called "OhMyDebn"?](#why-is-it-called-ohmydebn)
+- [Gallery](#gallery)
+- [Requirements](#requirements)
+- [Warnings](#warnings)
+- [Installation](#installation)
+- [After Installation](#after-installation)
+- [Alternative Installations](#alternative-installations)
+- [Launch Applications via Rofi](#launch-applications-via-rofi)
+- [Web browser](#web-browser)
+- [OhMyDebn Logo](#ohmydebn-logo)
+- [System summary via screenfetch](#system-summary-via-screenfetch)
+- [System monitoring via btop](#system-monitoring-via-btop)
+- [Audio visualizer via Cava](#audio-visualizer-via-cava)
+- [Desktop theme](#desktop-theme)
+- [Terminal](#terminal)
+- [Updating](#updating)
+- [Resetting](#resetting)
+- [Text editor](#text-editor)
+- [Hotkeys](#hotkeys)
+- [Relationship to Security Onion](#relationship-to-security-onion)
+
 # Debonair Haiku
 
 *Debonair strides bold,*  
@@ -31,12 +60,11 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 - Base OS: [Debian](https://www.debian.org/) 13 for stability and compatibility
 - Desktop environment: [Cinnamon](https://github.com/linuxmint/Cinnamon) for a premium desktop experience
 - Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/)
-- Wallpaper: beautiful [Catppuccin mountain landscape](https://github.com/zhichaoh/catppuccin-wallpapers/blob/main/landscapes/salty_mountains.png)
-- Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts and [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
-- Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
+- Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts
+- Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/)
 - Shell prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
-- Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/) and [Catppuccin theme](https://github.com/catppuccin/nvim)
-- Performance monitoring: [btop](https://github.com/aristocratos/btop) with [Catppuccin Mocha theme](https://github.com/catppuccin/btop)
+- Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/)
+- Performance monitoring: [btop](https://github.com/aristocratos/btop)
 - Application launcher: [Rofi](https://davatorium.github.io/rofi/current/rofi.1/) with [Catppuccin Mocha theme](https://github.com/catppuccin/rofi)
 - Audio visualizer: [Cava](https://github.com/karlstav/cava) with [Catppuccin Mocha theme](https://github.com/catppuccin/cava)
 - Shell cat command alternative: [bat](https://github.com/sharkdp/bat) with syntax highlighting and [Catppuccin Mocha theme](https://github.com/catppuccin/bat)
@@ -209,20 +237,61 @@ To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 ![OhMyDebn Cava audio visualizer](images/ohmydebn-cava-audio.png)
 
-# Desktop Background
+# Desktop Theme
 
-You can change the desktop background by going to Settings -> Backgrounds and selecting one of the backgrounds included in Debian.
+You can change the desktop theme by pressing `Ctrl + Shift + Super + space`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy.
 
-If you already have your favorite background in a file, you can open the Nemo file manager (`Super + F`), browse to the file, right-click the file, and then select `Set as wallpaper...`.
+![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
 
-Since most apps include catppuccin themes, you may want to consider a background that matches that color palette. You can find a nice selection of catppuccin backgrounds at https://github.com/zhichaoh/catppuccin-wallpapers.
+Catppuccin theme:
+
+![OhMyDebn with catppuccin theme](images/ohmydebn-theme-catppuccin.png)
+
+Catppuccin Latte theme:
+
+![OhMyDebn with catppuccin latte theme](images/ohmydebn-theme-catppuccin-latte.png)
+
+Everforest theme:
+
+![OhMyDebn with everforest theme](images/ohmydebn-theme-everforest.png)
+
+Gruvbox theme:
+
+![OhMyDebn with gruvbox theme](images/ohmydebn-theme-gruvbox.png)
+
+Kanagawa theme:
+
+![OhMyDebn with kanagawa theme](images/ohmydebn-theme-kanagawa.png)
+
+Matte Black theme:
+
+![OhMyDebn with matte black theme](images/ohmydebn-theme-matte-black.png)
+
+Nord theme:
+
+![OhMyDebn with nord theme](images/ohmydebn-theme-nord.png)
+
+Osaka Jade theme:
+
+![OhMyDebn with osaka jade theme](images/ohmydebn-theme-osaka-jade.png)
+
+Ristretto theme:
+
+![OhMyDebn with ristretto theme](images/ohmydebn-theme-ristretto.png)
+
+Rose Pine theme:
+
+![OhMyDebn with rose pine theme](images/ohmydebn-theme-rose-pine.png)
+
+Tokyo Night theme:
+
+![OhMyDebn with tokyo night theme](images/ohmydebn-theme-tokyo-night.png)
 
 # Terminal
 
 To start a terminal session, press `Super + Enter`. This launches a beautiful and powerful [Alacritty](https://alacritty.org) terminal window that includes:
 - Caskaydia Nerd Fonts
-- [Catppuccin Mocha theme](https://github.com/catppuccin/alacritty)
-- [Zsh](https://en.wikipedia.org/wiki/Z_shell) shell with [Oh My Zsh](https://ohmyz.sh/) and [Catppuccin theme for syntax highlighting](https://github.com/catppuccin/zsh-syntax-highlighting)
+- [Zsh](https://en.wikipedia.org/wiki/Z_shell) shell with [Oh My Zsh](https://ohmyz.sh/)
 - [Starship](https://starship.rs/) shell prompt with modified [Catppuccin theme](https://github.com/catppuccin/starship)
 - [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command
 - [eza](https://github.com/eza-community/eza) for beautiful directory listings via `ls` and `lt`
@@ -232,6 +301,14 @@ To start a terminal session, press `Super + Enter`. This launches a beautiful an
 It also includes [bat](https://github.com/sharkdp/bat), which is a `cat` clone with syntax highlighting and git integration. It is configured with the beautiful [Catppuccin theme](https://github.com/catppuccin/bat).
 
 ![OhMyDebn bat screenshot](images/ohmydebn-bat.png)
+
+# Updating
+
+To update to the latest version of OhMyDebn, run `ohmydebn-update`. This will update the git repo, update config files, and update packages.
+
+# Resetting
+
+To reset your config files to OhMyDebn defaults, run `ohmydebn-reset-config`. This will automatically create backup copies of your current config files and then write new ones.
 
 # Text editor
 
@@ -252,6 +329,7 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | `Ctrl + Shift + O` | OhMyDebn logo |
 | `Ctrl + Shift + S` | screenfetch system summary |
 | `Ctrl + Shift + A` | audio visualizer (Cava) |
+| Ctrl + Shift + Super + space | Pick a new theme |
 
 ## Windows
 
@@ -374,6 +452,6 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 
 For the full list of all Neovim hotkeys configured by LazyVim, please see https://www.lazyvim.org/keymaps.
 
-# Relationship to Security Onion project and Security Onion Solutions
+# Relationship to Security Onion
 
 OhMyDebn is not directly related to the [Security Onion](https://github.com/Security-Onion-Solutions/securityonion) project. OhMyDebn is sponsored by [Security Onion Solutions](https://securityonion.com) (SOS); however, SOS does not provide any technical support for it. OhMyDebn is intended to provide a general purpose desktop environment so, of course, you could use the included Chromium web browser to connect to your [Security Onion Console](https://docs.securityonion.net/en/2.4/soc.html)!
