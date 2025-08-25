@@ -5,6 +5,7 @@ set -e
 
 PROJECT="OhMyDebn"
 PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
+STATE_FILE=~/.local/state/$PROJECT_LOWER
 
 # Parse command line arguments
 NO_UNINSTALL=false
@@ -32,6 +33,13 @@ function welcome {
 
 function display {
   echo
+  if [ ! -f $STATE_FILE ]; then
+    # For first installation, use text effects
+    PROCESSOR=$1
+  else
+    # For updates, don't use text effects
+    PROCESSOR=cat
+  fi
   cat <<EOF | $1
 ###############################################################################
 $2
@@ -58,7 +66,8 @@ or Ctrl-c to cancel."
   read input
 fi
 
-display "cat" "WARNING!
+if [ ! -f $STATE_FILE ]; then
+  display "cat" "WARNING!
 
 This script:
 - is intended for a clean new installation.
@@ -69,7 +78,8 @@ This script is totally unsupported.
 If it breaks your system, you get to keep both pieces!
 
 Press Enter to continue or Ctrl-c to cancel."
-read input
+  read input
+fi
 
 if [ -f /etc/apt/sources.list.d/debian.sources ] || [ -f /etc/apt/sources.list.d/proxmox.sources ]; then
   echo "Found an APT sources file in /etc/apt/sources.list.d/"
@@ -437,7 +447,6 @@ if pgrep -x cinnamon >/dev/null; then
   echo "You can see all keybindings by pressing Super + K"
 fi
 
-STATE_FILE=~/.local/state/$PROJECT_LOWER
 if [ ! -f $STATE_FILE ]; then
   display "tte rain" "Installation complete!"
   echo
@@ -447,5 +456,6 @@ if [ ! -f $STATE_FILE ]; then
   # Create a state file signifying that installation is complete
   touch ~/.local/state/ohmydebn
 else
+  echo
   echo "Update complete!"
 fi
