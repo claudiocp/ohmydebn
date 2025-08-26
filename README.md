@@ -126,6 +126,10 @@ Here's an old MacBook from 2014. Apple says it's EOL but OhMyDebn breathes new l
 
 ![OhMyDebn MacBook 2014](images/ohmydebn-macbook-2014.png)
 
+Here's a Dell laptop that Microsoft says won't run Windows 11. Proxmox and OhMyDebn turned it into a portable virtualization powerhouse! 
+
+![OhMyDebn Dell laptop](images/ohmydebn-dell-laptop.png)
+
 How about an OhMyDebn Proxmox cyberdeck?
 
 ![OhMyDebn Proxmox cyberdeck](images/ohmydebn-proxmox-cyberdeck.png)
@@ -239,7 +243,7 @@ To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 # Desktop Theme
 
-You can change the desktop theme by pressing `Ctrl + Shift + Super + space`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy.
+You can change the desktop theme by pressing `Ctrl + Shift + Super + space`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy. If the theme you select has multiple backgrounds, you can switch to the next background by pressing `Ctrl + Shift + space`.
 
 ![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
 
