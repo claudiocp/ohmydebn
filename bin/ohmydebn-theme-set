@@ -23,6 +23,13 @@ fi
 # Update theme symlinks
 ln -nsf "$THEME_PATH" "$CURRENT_THEME_DIR"
 
+# Change cinnamon icon theme color
+if [[ -f ~/.config/ohmydebn/current/theme/icons.theme ]]; then
+  gsettings set org.cinnamon.desktop.interface icon-theme "$(<~/.config/ohmydebn/current/theme/icons.theme)"
+else
+  gsettings set org.cinnamon.desktop.interface icon-theme "Yaru-blue"
+fi
+
 # Trigger alacritty config reload
 touch "$HOME/.config/alacritty/alacritty.toml"
 
