@@ -223,7 +223,7 @@ display "cat" "Setting GTK theme"
 gsettings set org.cinnamon.desktop.interface gtk-theme "'Mint-Y-Dark-Aqua'"
 
 display "cat" "Setting icon theme"
-gsettings set org.cinnamon.desktop.interface icon-theme "'Mint-Y-Sand'"
+gsettings set org.cinnamon.desktop.interface icon-theme "'Mint-Y-Blue'"
 
 display "cat" "Setting alttab switcher style to icons+preview"
 gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
