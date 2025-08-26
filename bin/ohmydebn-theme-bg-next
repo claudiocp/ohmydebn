@@ -43,6 +43,5 @@ else
   # Force cinnamon to update background
   gsettings set org.cinnamon.desktop.background picture-uri "''"
   sleep 0.1s
-  BACKGROUND="~/.config/ohymydebn/current/background"
-  gsettings set org.cinnamon.desktop.background picture-uri "'file://$BACKGROUND'"
+  gsettings set org.cinnamon.desktop.background picture-uri "'file://$HOME/.config/ohmydebn/current/background'"
 fi
