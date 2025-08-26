@@ -375,7 +375,7 @@ gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-3 "['<Supe
 echo "Press Super+4 to switch to workspace 4"
 gsettings set org.cinnamon.desktop.keybindings.wm switch-to-workspace-4 "['<Super>4']"
 # To add a new custom keybinding, update the following line and then add a group of custom-xyz lines below
-gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9', 'custom-10', 'custom-11']"
+gsettings set org.cinnamon.desktop.keybindings custom-list "['custom-0', 'custom-1', 'custom-2', 'custom-3', 'custom-4', 'custom-5', 'custom-6', 'custom-7', 'custom-8', 'custom-9', 'custom-10', 'custom-11', 'custom-12']"
 # custom-0
 echo "Press Ctrl+Shift+K for KeePassXC password manager"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-0/ name "KeePassXC"
@@ -433,9 +433,14 @@ gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/d
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-10/ binding "['<Ctrl><Shift>A']"
 # custom-11
 echo "Press Ctrl+Shift+Super+Space to change theme"
-gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ name "OhMyDebn theme selector"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ name "Theme selector"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ command "/usr/local/bin/ohmydebn-theme-set-gui"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-11/ binding "['<Ctrl><Shift><Super>space']"
+# custom-12
+echo "Press Ctrl+Shift+Space to change to next theme background"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-12/ name "Next theme background"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-12/ command "/usr/local/bin/ohmydebn-theme-bg-next"
+gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-12/ binding "['<Ctrl><Shift>space']"
 
 if [ -f $STATE_FILE ]; then
   echo
