@@ -162,7 +162,7 @@ if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
   sudo apt -y purge linuxmint-keyring
 fi
 
-if [ -f /usr/bin/pveversion ]; then
+if [ -f /usr/bin/pveversion ] && ! dpkg -s dbus-x11 >/dev/null 2>&1; then
   display "cat" "Installing dbus-x11"
   sudo apt -y install dbus-x11
   export $(dbus-launch)
