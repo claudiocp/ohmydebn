@@ -243,9 +243,19 @@ To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 # Desktop Theme
 
-You can change the desktop theme by pressing `Ctrl + Shift + T`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy. If the theme you select has multiple backgrounds, you can switch to the next background by pressing `Ctrl + Shift + B`.
+You can change the desktop theme by pressing `Ctrl + Shift + T`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy. 
 
 ![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
+
+Selecting the `Install New Theme` option allows you to install new themes from the Omarchy repo.
+
+![OhMyDebn theme install](images/ohmydebn-theme-install.png)
+
+If you install an extra theme and later decide to remove it, you can do so by choosing the `Remove Theme` option.
+
+![OhMyDebn theme remove](images/ohmydebn-theme-remove.png)
+
+Some themes include multiple background options. If the theme you select has multiple backgrounds, you can switch to the next background by pressing `Ctrl + Shift + B`.
 
 Catppuccin theme:
 

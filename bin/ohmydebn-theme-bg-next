@@ -40,8 +40,7 @@ else
   # Set new background symlink
   ln -nsf "$NEW_BACKGROUND" "$CURRENT_BACKGROUND_LINK"
 
-  # Force cinnamon to update background
-  gsettings set org.cinnamon.desktop.background picture-uri "''"
-  sleep 0.1s
-  gsettings set org.cinnamon.desktop.background picture-uri "'file://$HOME/.config/ohmydebn/current/background'"
+  # cinnamon doesn't automatically update when the symlink changes
+  # so we have to force cinnamon to use the symlink destination
+  gsettings set org.cinnamon.desktop.background picture-uri "file://$(readlink -f $HOME/.config/ohmydebn/current/background)"
 fi

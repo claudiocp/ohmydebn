@@ -257,7 +257,10 @@ for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
 done
 
 display "tte rain" "Installing new apps if unnecessary and configuring them"
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf git gimp golang gvfs-backends htop iperf3 keepassxc neovim openvpn pdftk-java python-is-python3 ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yaru-theme-icon yq zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf \
+  git gimp golang gum gvfs-backends htop iperf3 keepassxc libnotify-bin neovim openvpn pdftk-java python-is-python3 \
+  ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yaru-theme-icon yq \
+  zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
 display "cat" "Setting alacritty as default terminal emulator"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
@@ -443,19 +446,18 @@ echo "Press Ctrl+Shift+B to change to next background in the current theme"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-12/ name "Next theme background"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-12/ command "/usr/local/bin/ohmydebn-theme-bg-next"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-12/ binding "['<Ctrl><Shift>B']"
+if pgrep -x cinnamon >/dev/null; then
+  display "tte rain" "Restarting desktop to apply keybindings"
+  sleep 1s
+  /usr/bin/cinnamon --replace >/dev/null 2>&1 &
+  sleep 1s
+  echo "You can see all keybindings by pressing Super + K"
+fi
 
 if [ -f $STATE_FILE ]; then
   echo
   echo "Update complete!"
 else
-  if pgrep -x cinnamon >/dev/null; then
-    display "tte rain" "Restarting desktop to apply keybindings"
-    sleep 1s
-    /usr/bin/cinnamon --replace >/dev/null 2>&1 &
-    sleep 1s
-    echo "You can see all keybindings by pressing Super + K"
-  fi
-
   display "tte rain" "Installation complete!"
   echo
   screenfetch -N | tte slide --merge

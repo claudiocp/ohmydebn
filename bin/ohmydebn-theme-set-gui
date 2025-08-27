@@ -1,4 +1,14 @@
 #!/bin/bash
 
-NEW_THEME=$(ohmydebn-theme-list | rofi -i -p "Select a theme:" -dmenu -theme-str 'window {width: 25%;}')
-ohmydebn-theme-set "$NEW_THEME"
+SELECTION=$( (
+  ohmydebn-theme-list
+  echo "Install New Theme"
+  echo "Remove Theme"
+) | rofi -i -p "Select a theme:" -dmenu -theme-str 'window {width: 20%;}')
+if [ "$SELECTION" == "Install New Theme" ]; then
+  alacritty --class OhMyDebn -e bash -c "ohmydebn-show-logo; eval \"ohmydebn-theme-install\"; ohmydebn-show-done"
+elif [ "$SELECTION" == "Remove Theme" ]; then
+  alacritty --class OhMyDebn -e bash -c "ohmydebn-show-logo; eval \"ohmydebn-theme-remove\"; ohmydebn-show-done"
+else
+  ohmydebn-theme-set "$SELECTION"
+fi
