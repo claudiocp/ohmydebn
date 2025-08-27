@@ -215,9 +215,11 @@ gsettings set org.cinnamon.desktop.background picture-uri "'file://$BACKGROUND'"
 display "cat" "Setting Cinnamon theme"
 gsettings set org.cinnamon.theme name "'Mint-Y-Dark-Aqua'"
 
-display "cat" "Setting cursor theme"
-sudo apt -y install bibata-cursor-theme
-gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
+if ! dpkg -s bibata-cursor-theme >/dev/null 2>&1; then
+  display "cat" "Setting cursor theme"
+  sudo apt -y install bibata-cursor-theme
+  gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
+fi
 
 display "cat" "Setting GTK theme"
 gsettings set org.cinnamon.desktop.interface gtk-theme "'Mint-Y-Dark-Aqua'"
