@@ -25,7 +25,9 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 - [System summary via screenfetch](#system-summary-via-screenfetch)
 - [System monitoring via btop](#system-monitoring-via-btop)
 - [Audio visualizer via Cava](#audio-visualizer-via-cava)
-- [Desktop theme](#desktop-theme)
+- [Desktop Themes](#desktop-themes)
+- [Installing and Removing Themes](#desktop-theme)
+- [Backgrounds](#backgrounds)
 - [Terminal](#terminal)
 - [Updating](#updating)
 - [Resetting](#resetting)
@@ -129,10 +131,6 @@ Here's an old MacBook from 2014. Apple says it's EOL but OhMyDebn breathes new l
 Here's a Dell laptop that Microsoft says won't run Windows 11. Proxmox and OhMyDebn turned it into a portable virtualization powerhouse! 
 
 ![OhMyDebn Dell laptop](images/ohmydebn-dell-laptop.png)
-
-How about an OhMyDebn Proxmox cyberdeck?
-
-![OhMyDebn Proxmox cyberdeck](images/ohmydebn-proxmox-cyberdeck.png)
 
 # Requirements
 
@@ -241,21 +239,11 @@ To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 ![OhMyDebn Cava audio visualizer](images/ohmydebn-cava-audio.png)
 
-# Desktop Theme
+# Desktop Themes
 
 You can change the desktop theme by pressing `Ctrl + Shift + T`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy. 
 
 ![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
-
-Selecting the `Install New Theme` option allows you to install new themes from the Omarchy repo.
-
-![OhMyDebn theme install](images/ohmydebn-theme-install.png)
-
-If you install an extra theme and later decide to remove it, you can do so by choosing the `Remove Theme` option.
-
-![OhMyDebn theme remove](images/ohmydebn-theme-remove.png)
-
-Some themes include multiple background options. If the theme you select has multiple backgrounds, you can switch to the next background by pressing `Ctrl + Shift + B`.
 
 Catppuccin theme:
 
@@ -300,6 +288,24 @@ Rose Pine theme:
 Tokyo Night theme:
 
 ![OhMyDebn with tokyo night theme](images/ohmydebn-theme-tokyo-night.png)
+
+# Installing and Removing Themes
+
+The theme selection window has two options at the end of the list titled `Install New Theme` and `Remove Theme`.
+
+![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
+
+The `Install New Theme` option allows you to install new themes from the Omarchy repo.
+
+![OhMyDebn theme install](images/ohmydebn-theme-install.png)
+
+The `Remove Theme` option allows you to remove any extra themes that you've installed.
+
+![OhMyDebn theme remove](images/ohmydebn-theme-remove.png)
+
+# Backgrounds
+
+Some themes include multiple background options. If the theme you select has multiple backgrounds, you can switch to the next background by pressing `Ctrl + Shift + B`.
 
 # Terminal
 
