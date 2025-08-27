@@ -62,5 +62,12 @@ touch "$HOME/.config/alacritty/alacritty.toml"
 # Restart components to apply new theme
 pkill -SIGUSR2 btop
 
+# Update starship prompt
+if [ "$1" == "Ohmydebn" ]; then
+  cp ~/.local/share/ohmydebn/config/starship.toml ~/.config/starship.toml
+else
+  cp ~/.local/share/omarchy/config/starship.toml ~/.config/starship.toml
+fi
+
 # Set new background
 ohmydebn-theme-bg-next
