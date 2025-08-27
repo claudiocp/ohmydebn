@@ -243,7 +243,7 @@ To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 # Desktop Theme
 
-You can change the desktop theme by pressing `Ctrl + Shift + Super + space`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy. If the theme you select has multiple backgrounds, you can switch to the next background by pressing `Ctrl + Shift + space`.
+You can change the desktop theme by pressing `Ctrl + Shift + T`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy. If the theme you select has multiple backgrounds, you can switch to the next background by pressing `Ctrl + Shift + B`.
 
 ![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
 
@@ -333,8 +333,8 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | `Ctrl + Shift + O` | OhMyDebn logo |
 | `Ctrl + Shift + S` | screenfetch system summary |
 | `Ctrl + Shift + A` | audio visualizer (Cava) |
-| `Ctrl + Shift + Super + space` | Pick a new theme |
-| `Ctrl + Shift + space` | Next background image for theme |
+| `Ctrl + Shift + T` | Pick a new theme |
+| `Ctrl + Shift + B` | Next background image for theme |
 
 ## Windows
 
