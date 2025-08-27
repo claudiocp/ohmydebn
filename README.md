@@ -26,7 +26,7 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 - [System monitoring via btop](#system-monitoring-via-btop)
 - [Audio visualizer via Cava](#audio-visualizer-via-cava)
 - [Desktop Themes](#desktop-themes)
-- [Installing and Removing Themes](#desktop-theme)
+- [Installing and Removing Themes](#installing-and-removing-themes)
 - [Backgrounds](#backgrounds)
 - [Terminal](#terminal)
 - [Updating](#updating)
