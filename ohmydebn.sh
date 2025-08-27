@@ -443,19 +443,18 @@ echo "Press Ctrl+Shift+B to change to next background in the current theme"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-12/ name "Next theme background"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-12/ command "/usr/local/bin/ohmydebn-theme-bg-next"
 gsettings set org.cinnamon.desktop.keybindings.custom-keybinding:/org/cinnamon/desktop/keybindings/custom-keybindings/custom-12/ binding "['<Ctrl><Shift>B']"
+if pgrep -x cinnamon >/dev/null; then
+  display "tte rain" "Restarting desktop to apply keybindings"
+  sleep 1s
+  /usr/bin/cinnamon --replace >/dev/null 2>&1 &
+  sleep 1s
+  echo "You can see all keybindings by pressing Super + K"
+fi
 
 if [ -f $STATE_FILE ]; then
   echo
   echo "Update complete!"
 else
-  if pgrep -x cinnamon >/dev/null; then
-    display "tte rain" "Restarting desktop to apply keybindings"
-    sleep 1s
-    /usr/bin/cinnamon --replace >/dev/null 2>&1 &
-    sleep 1s
-    echo "You can see all keybindings by pressing Super + K"
-  fi
-
   display "tte rain" "Installation complete!"
   echo
   screenfetch -N | tte slide --merge
