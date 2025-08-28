@@ -4,15 +4,18 @@ CURRENT_THEME=$(ohmydebn-theme-current)
 INDEX=$(ohmydebn-theme-list | grep -nxF "$CURRENT_THEME" | cut -d: -f1)
 let INDEX--
 SELECTION=$( (
-	ohmydebn-theme-list
-	echo "Install New Theme"
-	echo "Remove Theme"
+  ohmydebn-theme-list
+  echo "Next Background"
+  echo "Install New Theme"
+  echo "Remove Theme"
 ) | rofi -i -p "Select a theme:" -dmenu -selected-row $INDEX -theme-str 'window {width: 20%;}')
 
 if [ "$SELECTION" == "Install New Theme" ]; then
-	alacritty --class OhMyDebn -e bash -c "ohmydebn-show-logo; eval \"ohmydebn-theme-install\"; ohmydebn-show-done"
+  alacritty --class OhMyDebn -e bash -c "ohmydebn-show-logo; eval \"ohmydebn-theme-install\"; ohmydebn-show-done"
 elif [ "$SELECTION" == "Remove Theme" ]; then
-	alacritty --class OhMyDebn -e bash -c "ohmydebn-show-logo; eval \"ohmydebn-theme-remove\"; ohmydebn-show-done"
+  alacritty --class OhMyDebn -e bash -c "ohmydebn-show-logo; eval \"ohmydebn-theme-remove\"; ohmydebn-show-done"
+elif [ "$SELECTION" == "Next Background" ]; then
+  ohmydebn-theme-bg-next
 else
-	ohmydebn-theme-set "$SELECTION"
+  ohmydebn-theme-set "$SELECTION"
 fi
