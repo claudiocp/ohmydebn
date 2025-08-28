@@ -349,8 +349,8 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | `Ctrl + Shift + O` | OhMyDebn logo |
 | `Ctrl + Shift + S` | screenfetch system summary |
 | `Ctrl + Shift + A` | audio visualizer (Cava) |
-| `Ctrl + Shift + T` | Pick a new theme |
-| `Ctrl + Shift + B` | Next background image for theme |
+| `Ctrl + Super + T` | Pick a new theme |
+| `Ctrl + Super + B` | Next background image for theme |
 
 ## Windows
 
@@ -404,6 +404,14 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | `Super + T` | btop |
 | `Super + N` | Neovim |
 | `Alt + F2` | Run dialog |
+
+## Browser (Chromium)
+
+| Hotkey | Function |
+|--------|----------|
+| `Ctrl + Shift + B` | Toggle bookmark list
+| `Ctrl + T` | Close tab
+| `Ctrl + Shift + T` | Restore tab
 
 ## Password and Bookmark Management (KeePassXC)
 

@@ -9,5 +9,5 @@ keybinding-custom 7 "Neovim" "/usr/bin/alacritty -e nvim" "['<Super>N']" "Press 
 keybinding-custom 8 "OhMyDebn Logo" "/usr/local/bin/ohmydebn-logo-gui" "['<Ctrl><Shift>O']" "Press Ctrl + Shift + O to show OhMyDebn logo"
 keybinding-custom 9 "screenfetch" "/usr/local/bin/ohmydebn-screenfetch-gui" "['<Ctrl><Shift>S']" "Press Ctrl + Shift + S to show screenfetch"
 keybinding-custom 10 "cava audio visualizer" "/usr/bin/alacritty -e cava" "['<Ctrl><Shift>A']" "Press Ctrl + Shift + A to show audio visualizer"
-keybinding-custom 11 "Theme selector" "/usr/local/bin/ohmydebn-theme-set-gui" "['<Ctrl><Shift>T']" "Press Ctrl + Shift + T to change theme"
-keybinding-custom 12 "Background selector" "/usr/local/bin/ohmydebn-theme-bg-next" "['<Ctrl><Shift>B']" "Press Ctrl + Shift + B to change to next background in the current theme"
+keybinding-custom 11 "Theme selector" "/usr/local/bin/ohmydebn-theme-set-gui" "['<Ctrl><Super>T']" "Press Ctrl + Super + T to change theme"
+keybinding-custom 12 "Background selector" "/usr/local/bin/ohmydebn-theme-bg-next" "['<Ctrl><Super>B']" "Press Ctrl + Super + B to change to next background in the current theme"
