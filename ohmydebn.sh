@@ -346,7 +346,7 @@ display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
 
 display "tte rain" "Updating keyboard shortcuts"
-~/.local/share/$PROJECT_LOWER/install/keybindings.sh
+~/.local/share/$PROJECT_LOWER/install/keybinding.sh
 
 if [ -f $STATE_FILE ]; then
   echo
