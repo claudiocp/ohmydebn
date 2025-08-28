@@ -168,6 +168,10 @@ if [ -f /usr/bin/pveversion ] && ! dpkg -s dbus-x11 >/dev/null 2>&1; then
   export $(dbus-launch)
 fi
 
+display "cat" "Copying binaries to /usr/local/bin/"
+sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
+sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
+
 display "cat" "Updating themes"
 if [ ! -d ~/.local/share/omarchy ]; then
   cd ~/.local/share/
@@ -177,8 +181,7 @@ else
   git pull
 fi
 cd - >/dev/null
-
-display "cat" "Changing desktop wallpaper"
+# Create symlinks for all themes
 mkdir -p ~/.config/$PROJECT_LOWER/themes
 for f in ~/.local/share/$PROJECT_LOWER/themes/*; do
   THEME=$(basename $f)
@@ -209,23 +212,14 @@ if [ -L $OLD_SYMLINK ]; then
   rm -f $OLD_SYMLINK
 fi
 
-BACKGROUND=~/.config/$PROJECT_LOWER/current/background
-gsettings set org.cinnamon.desktop.background picture-uri "'file://$BACKGROUND'"
-
-display "cat" "Setting Cinnamon theme"
-gsettings set org.cinnamon.theme name "'Mint-Y-Dark-Blue'"
+display "cat" "Setting theme"
+ohmydebn-theme-set Ohmydebn
 
 if ! dpkg -s bibata-cursor-theme >/dev/null 2>&1; then
   display "cat" "Setting cursor theme"
   sudo apt -y install bibata-cursor-theme
   gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
 fi
-
-display "cat" "Setting GTK theme"
-gsettings set org.cinnamon.desktop.interface gtk-theme "'Mint-Y-Dark-Blue'"
-
-display "cat" "Setting icon theme"
-gsettings set org.cinnamon.desktop.interface icon-theme "'Mint-Y-Blue'"
 
 display "cat" "Setting alttab switcher style to icons+preview"
 gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
@@ -347,10 +341,6 @@ if [ ! -f $ZSH_CONFIG ]; then
   display "cat" "Configuring Zsh"
   cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
 fi
-
-display "cat" "Copying binaries to /usr/local/bin/"
-sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
-sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
 
 display "cat" "Configuring ristretto as default image viewer"
 xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
