@@ -213,7 +213,7 @@ BACKGROUND=~/.config/$PROJECT_LOWER/current/background
 gsettings set org.cinnamon.desktop.background picture-uri "'file://$BACKGROUND'"
 
 display "cat" "Setting Cinnamon theme"
-gsettings set org.cinnamon.theme name "'Mint-Y-Dark-Aqua'"
+gsettings set org.cinnamon.theme name "'Mint-Y-Dark-Blue'"
 
 if ! dpkg -s bibata-cursor-theme >/dev/null 2>&1; then
   display "cat" "Setting cursor theme"
@@ -222,7 +222,7 @@ if ! dpkg -s bibata-cursor-theme >/dev/null 2>&1; then
 fi
 
 display "cat" "Setting GTK theme"
-gsettings set org.cinnamon.desktop.interface gtk-theme "'Mint-Y-Dark-Aqua'"
+gsettings set org.cinnamon.desktop.interface gtk-theme "'Mint-Y-Dark-Blue'"
 
 display "cat" "Setting icon theme"
 gsettings set org.cinnamon.desktop.interface icon-theme "'Mint-Y-Blue'"

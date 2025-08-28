@@ -30,71 +30,67 @@ else
   gsettings set org.x.apps.portal color-scheme "prefer-dark"
 fi
 
-# Change cinnamon icon theme color
+# Start with default themes for gtk, icon, and cinnamon
+GTK_THEME="Mint-Y-Dark-Blue"
+ICON_THEME="Mint-Y-Blue"
+CINNAMON_THEME="Mint-Y-Dark-Blue"
+
+# If the Ohmydebn theme specifies an icon theme then we override those defaults
 if [[ -f ~/.config/ohmydebn/current/theme/icons.theme ]]; then
-  # if the theme specifies an icon theme, then try to automatically convert to a mint theme
+  # check to see if there is an equivalent mint theme
   THEME=$(cat ~/.config/ohmydebn/current/theme/icons.theme)
   GENERIC_THEME=$(echo $THEME | sed s'|Yaru-||g')
   GENERIC_THEME_CASED=${GENERIC_THEME^}
   MINT_THEME="Mint-Y-$GENERIC_THEME_CASED"
   if [ -d /usr/share/icons/$MINT_THEME ] && [ -d /usr/share/themes/$MINT_THEME ]; then
-	    ICON_THEME="$MINT_THEME"
-	if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
-	    GTK_THEME="$MINT_THEME"
-	    CINNAMON_THEME="$MINT_THEME"
-	else
-	    GTK_THEME="Mint-Y-Dark-$GENERIC_THEME_CASED"
-	    CINNAMON_THEME="Mint-Y-Dark-$GENERIC_THEME_CASED"
-	fi
+    ICON_THEME="$MINT_THEME"
+    if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
+      GTK_THEME="$MINT_THEME"
+      CINNAMON_THEME="$MINT_THEME"
+    else
+      GTK_THEME="Mint-Y-Dark-$GENERIC_THEME_CASED"
+      CINNAMON_THEME="Mint-Y-Dark-$GENERIC_THEME_CASED"
+    fi
   else
-    # if we can't automatically convert to a mint theme, then try a few static mappings or fall back to the theme setting
+    # if we can't automatically convert to a mint theme, then try a few static mappings
     case $THEME in
     Yaru-sage | Yaru-olive)
       ICON_THEME="Mint-Y"
       if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
-		GTK_THEME="Mint-Y"
-		CINNAMON_THEME="Mint-Y"
+        GTK_THEME="Mint-Y"
+        CINNAMON_THEME="Mint-Y"
       else
-		GTK_THEME="Mint-Y-Dark"
-		CINNAMON_THEME="Mint-Y-Dark"
+        GTK_THEME="Mint-Y-Dark"
+        CINNAMON_THEME="Mint-Y-Dark"
       fi
       ;;
     Yaru-yellow)
       ICON_THEME="Mint-Y-Sand"
-	if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
-		GTK_THEME="Mint-Y-Sand"
-		CINNAMON_THEME="Mint-Y-Sand"
-	else
-		GTK_THEME="Mint-Y-Dark-Sand"
-		CINNAMON_THEME="Mint-Y-Dark-Sand"
-	fi
+      if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
+        GTK_THEME="Mint-Y-Sand"
+        CINNAMON_THEME="Mint-Y-Sand"
+      else
+        GTK_THEME="Mint-Y-Dark-Sand"
+        CINNAMON_THEME="Mint-Y-Dark-Sand"
+      fi
       ;;
     Yaru-magenta)
       ICON_THEME="Mint-Y-Purple"
-	if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
-		GTK_THEME="Mint-Y-Purple"
-		CINNAMON_THEME="Mint-Y-Purple"
-	else
-		GTK_THEME="Mint-Y-Dark-Purple"
-		CINNAMON_THEME="Mint-Y-Dark-Purple"
-	fi
-      ;;
-    *)
-      ICON_THEME="$THEME"
-      GTK_THEME="Mint-Y-Dark-Aqua"
-      CINNAMON_THEME="Mint-Y-Dark-Aqua"
+      if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
+        GTK_THEME="Mint-Y-Purple"
+        CINNAMON_THEME="Mint-Y-Purple"
+      else
+        GTK_THEME="Mint-Y-Dark-Purple"
+        CINNAMON_THEME="Mint-Y-Dark-Purple"
+      fi
       ;;
     esac
   fi
-else
-  ICON_THEME="Mint-Y-Blue"
-  GTK_THEME="Mint-Y-Dark-Aqua"
-  CINNAMON_THEME="Mint-Y-Dark-Aqua"
 fi
 
-# use gsettings to update icon theme, gtk theme, and cinnamon theme
-gsettings set org.cinnamon.desktop.interface icon-theme "$ICON_THEME"
+# use gsettings to update gtk theme, icon theme, and cinnamon theme
 gsettings set org.cinnamon.desktop.interface gtk-theme "$GTK_THEME"
+gsettings set org.cinnamon.desktop.interface icon-theme "$ICON_THEME"
 gsettings set org.cinnamon.theme name "$CINNAMON_THEME"
 
 # Trigger alacritty config reload
