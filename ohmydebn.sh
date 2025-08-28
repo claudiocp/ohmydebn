@@ -248,6 +248,15 @@ if [ ! -f $STATE_FILE ]; then
   display "cat" "Setting alacritty as default terminal emulator"
   gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
 
+  display "cat" "Configuring ristretto as default image viewer"
+  xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
+
+  if [ "$NO_UNINSTALL" = false ]; then
+    display "tte rain" "Removing any unnecessary packages"
+    sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
+    sudo apt -y autoremove
+  fi
+
 fi
 
 if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
@@ -331,15 +340,6 @@ ZSH_CONFIG=~/.zshrc
 if [ ! -f $ZSH_CONFIG ]; then
   display "cat" "Configuring Zsh"
   cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
-fi
-
-display "cat" "Configuring ristretto as default image viewer"
-xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
-
-if [ "$NO_UNINSTALL" = false ]; then
-  display "tte rain" "Removing any unnecessary packages"
-  sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
-  sudo apt -y autoremove
 fi
 
 display "tte rain" "Installing any available OS updates"
