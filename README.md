@@ -410,7 +410,10 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | Hotkey | Function |
 |--------|----------|
 | `Ctrl + Shift + B` | Toggle bookmark list
-| `Ctrl + T` | Close tab
+| `Ctrl + T` | New tab
+| `Ctrl + N` | New window
+| `Ctrl + Shift + N` | New Incognito window
+| `Ctrl + W` | Close tab
 | `Ctrl + Shift + T` | Restore tab
 
 ## Password and Bookmark Management (KeePassXC)
