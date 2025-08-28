@@ -195,14 +195,6 @@ for f in ~/.local/share/omarchy/themes/*; do
     ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/
   fi
 done
-# Set initial theme
-mkdir -p ~/.config/$PROJECT_LOWER/current
-if [ ! -L ~/.config/$PROJECT_LOWER/current/theme ]; then
-  ln -snf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/current/theme
-fi
-if [ ! -L ~/.config/$PROJECT_LOWER/current/background ]; then
-  ln -snf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountains.png ~/.config/$PROJECT_LOWER/current/background
-fi
 
 # Some installs might have an incorrect symlink
 # if the old symlink exists, then remove it
@@ -213,6 +205,7 @@ if [ -L $OLD_SYMLINK ]; then
 fi
 
 display "cat" "Setting theme"
+mkdir -p ~/.config/$PROJECT_LOWER/current
 ohmydebn-theme-set Ohmydebn
 
 if ! dpkg -s bibata-cursor-theme >/dev/null 2>&1; then
@@ -221,10 +214,8 @@ if ! dpkg -s bibata-cursor-theme >/dev/null 2>&1; then
   gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
 fi
 
-display "cat" "Setting alttab switcher style to icons+preview"
+display "cat" "Configuring alttab switcher"
 gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
-
-display "cat" "Configuring alttab switcher for all workspaces"
 gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
 
 display "cat" "Configuring gedit"
