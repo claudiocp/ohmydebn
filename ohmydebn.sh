@@ -168,6 +168,10 @@ if [ -f /usr/bin/pveversion ] && ! dpkg -s dbus-x11 >/dev/null 2>&1; then
   export $(dbus-launch)
 fi
 
+display "cat" "Copying binaries to /usr/local/bin/"
+sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
+sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
+
 display "cat" "Updating themes"
 if [ ! -d ~/.local/share/omarchy ]; then
   cd ~/.local/share/
@@ -177,8 +181,7 @@ else
   git pull
 fi
 cd - >/dev/null
-
-display "cat" "Changing desktop wallpaper"
+# Create symlinks for all themes
 mkdir -p ~/.config/$PROJECT_LOWER/themes
 for f in ~/.local/share/$PROJECT_LOWER/themes/*; do
   THEME=$(basename $f)
@@ -192,14 +195,6 @@ for f in ~/.local/share/omarchy/themes/*; do
     ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/
   fi
 done
-# Set initial theme
-mkdir -p ~/.config/$PROJECT_LOWER/current
-if [ ! -L ~/.config/$PROJECT_LOWER/current/theme ]; then
-  ln -snf ~/.config/$PROJECT_LOWER/themes/$PROJECT_LOWER ~/.config/$PROJECT_LOWER/current/theme
-fi
-if [ ! -L ~/.config/$PROJECT_LOWER/current/background ]; then
-  ln -snf ~/.config/$PROJECT_LOWER/current/theme/backgrounds/salty_mountains.png ~/.config/$PROJECT_LOWER/current/background
-fi
 
 # Some installs might have an incorrect symlink
 # if the old symlink exists, then remove it
@@ -209,61 +204,60 @@ if [ -L $OLD_SYMLINK ]; then
   rm -f $OLD_SYMLINK
 fi
 
-BACKGROUND=~/.config/$PROJECT_LOWER/current/background
-gsettings set org.cinnamon.desktop.background picture-uri "'file://$BACKGROUND'"
+if [ ! -f $STATE_FILE ]; then
+  display "cat" "Setting theme"
+  mkdir -p ~/.config/$PROJECT_LOWER/current
+  ohmydebn-theme-set Ohmydebn
 
-display "cat" "Setting Cinnamon theme"
-gsettings set org.cinnamon.theme name "'Mint-Y-Dark-Aqua'"
+  display "cat" "Configuring alttab switcher"
+  gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
+  gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
 
-if ! dpkg -s bibata-cursor-theme >/dev/null 2>&1; then
+  display "cat" "Configuring gedit"
+  gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
+  gsettings set org.gnome.gedit.preferences.editor display-line-numbers false
+
+  if gsettings get org.cinnamon enabled-applets | grep -q grouped-window-list; then
+    display "cat" "Changing grouped window list to window list"
+    gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed "s/panel1:left:[0-9]*:grouped-window-list@cinnamon.org:[0-9]*/panel1:left:1:window-list@cinnamon.org:12/")"
+  fi
+
+  if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; then
+    display "cat" "Enabling workspace switcher"
+    gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
+  fi
+
+  display "cat" "Configuring cinnamon spices"
+  for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
+    SPICE_DIR=~/.config/cinnamon/spices/$SPICE
+    mkdir -p $SPICE_DIR
+    echo "Configuring $SPICE"
+    cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/$SPICE/* $SPICE_DIR
+    echo
+  done
+
+  display "tte rain" "Installing new apps if unnecessary and configuring them"
+  sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat bibata-cursor-theme binutils btop cava chromium curl eza fzf \
+    git gimp golang gum gvfs-backends htop iperf3 keepassxc libnotify-bin neovim openvpn pdftk-java python-is-python3 \
+    ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yaru-theme-gtk yaru-theme-icon yq \
+    zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+
   display "cat" "Setting cursor theme"
-  sudo apt -y install bibata-cursor-theme
   gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
+
+  display "cat" "Setting alacritty as default terminal emulator"
+  gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
+
+  display "cat" "Configuring ristretto as default image viewer"
+  xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
+
+  if [ "$NO_UNINSTALL" = false ]; then
+    display "tte rain" "Removing any unnecessary packages"
+    sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
+    sudo apt -y autoremove
+  fi
+
 fi
-
-display "cat" "Setting GTK theme"
-gsettings set org.cinnamon.desktop.interface gtk-theme "'Mint-Y-Dark-Aqua'"
-
-display "cat" "Setting icon theme"
-gsettings set org.cinnamon.desktop.interface icon-theme "'Mint-Y-Blue'"
-
-display "cat" "Setting alttab switcher style to icons+preview"
-gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
-
-display "cat" "Configuring alttab switcher for all workspaces"
-gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
-
-display "cat" "Configuring gedit"
-gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
-gsettings set org.gnome.gedit.preferences.editor display-line-numbers false
-
-if gsettings get org.cinnamon enabled-applets | grep -q grouped-window-list; then
-  display "cat" "Changing grouped window list to window list"
-  gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed "s/panel1:left:[0-9]*:grouped-window-list@cinnamon.org:[0-9]*/panel1:left:1:window-list@cinnamon.org:12/")"
-fi
-
-if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; then
-  display "cat" "Enabling workspace switcher"
-  gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
-fi
-
-display "cat" "Configuring cinnamon spices"
-for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
-  SPICE_DIR=~/.config/cinnamon/spices/$SPICE
-  mkdir -p $SPICE_DIR
-  echo "Configuring $SPICE"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/$SPICE/* $SPICE_DIR
-  echo
-done
-
-display "tte rain" "Installing new apps if unnecessary and configuring them"
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf \
-  git gimp golang gum gvfs-backends htop iperf3 keepassxc libnotify-bin neovim openvpn pdftk-java python-is-python3 \
-  ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yaru-theme-icon yq \
-  zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
-
-display "cat" "Setting alacritty as default terminal emulator"
-gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
 
 if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
   display "cat" "Configuring alacritty with Caskyadia Nerd Font"
@@ -346,19 +340,6 @@ ZSH_CONFIG=~/.zshrc
 if [ ! -f $ZSH_CONFIG ]; then
   display "cat" "Configuring Zsh"
   cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
-fi
-
-display "cat" "Copying binaries to /usr/local/bin/"
-sudo cp -av ~/.local/share/$PROJECT_LOWER/bin/* /usr/local/bin/
-sudo chmod +x /usr/local/bin/$PROJECT_LOWER*
-
-display "cat" "Configuring ristretto as default image viewer"
-xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
-
-if [ "$NO_UNINSTALL" = false ]; then
-  display "tte rain" "Removing any unnecessary packages"
-  sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
-  sudo apt -y autoremove
 fi
 
 display "tte rain" "Installing any available OS updates"
