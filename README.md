@@ -257,8 +257,6 @@ The `Remove Theme` option allows you to remove any extra themes that you've inst
 
 Here are some screenshots of the default Ohmydebn theme and several themes from Omarchy.
 
-![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
-
 Catppuccin theme:
 
 ![OhMyDebn with catppuccin theme](images/ohmydebn-theme-catppuccin.png)
