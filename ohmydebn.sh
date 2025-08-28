@@ -204,51 +204,51 @@ if [ -L $OLD_SYMLINK ]; then
   rm -f $OLD_SYMLINK
 fi
 
-display "cat" "Setting theme"
-mkdir -p ~/.config/$PROJECT_LOWER/current
-ohmydebn-theme-set Ohmydebn
+if [ ! -f $STATE_FILE ]; then
+  display "cat" "Setting theme"
+  mkdir -p ~/.config/$PROJECT_LOWER/current
+  ohmydebn-theme-set Ohmydebn
 
-if ! dpkg -s bibata-cursor-theme >/dev/null 2>&1; then
+  display "cat" "Configuring alttab switcher"
+  gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
+  gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
+
+  display "cat" "Configuring gedit"
+  gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
+  gsettings set org.gnome.gedit.preferences.editor display-line-numbers false
+
+  if gsettings get org.cinnamon enabled-applets | grep -q grouped-window-list; then
+    display "cat" "Changing grouped window list to window list"
+    gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed "s/panel1:left:[0-9]*:grouped-window-list@cinnamon.org:[0-9]*/panel1:left:1:window-list@cinnamon.org:12/")"
+  fi
+
+  if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; then
+    display "cat" "Enabling workspace switcher"
+    gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
+  fi
+
+  display "cat" "Configuring cinnamon spices"
+  for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
+    SPICE_DIR=~/.config/cinnamon/spices/$SPICE
+    mkdir -p $SPICE_DIR
+    echo "Configuring $SPICE"
+    cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/$SPICE/* $SPICE_DIR
+    echo
+  done
+
+  display "tte rain" "Installing new apps if unnecessary and configuring them"
+  sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat bibata-cursor-theme binutils btop cava chromium curl eza fzf \
+    git gimp golang gum gvfs-backends htop iperf3 keepassxc libnotify-bin neovim openvpn pdftk-java python-is-python3 \
+    ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yaru-theme-gtk yaru-theme-icon yq \
+    zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
+
   display "cat" "Setting cursor theme"
-  sudo apt -y install bibata-cursor-theme
   gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
+
+  display "cat" "Setting alacritty as default terminal emulator"
+  gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
+
 fi
-
-display "cat" "Configuring alttab switcher"
-gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
-gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
-
-display "cat" "Configuring gedit"
-gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
-gsettings set org.gnome.gedit.preferences.editor display-line-numbers false
-
-if gsettings get org.cinnamon enabled-applets | grep -q grouped-window-list; then
-  display "cat" "Changing grouped window list to window list"
-  gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed "s/panel1:left:[0-9]*:grouped-window-list@cinnamon.org:[0-9]*/panel1:left:1:window-list@cinnamon.org:12/")"
-fi
-
-if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; then
-  display "cat" "Enabling workspace switcher"
-  gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
-fi
-
-display "cat" "Configuring cinnamon spices"
-for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org"; do
-  SPICE_DIR=~/.config/cinnamon/spices/$SPICE
-  mkdir -p $SPICE_DIR
-  echo "Configuring $SPICE"
-  cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/$SPICE/* $SPICE_DIR
-  echo
-done
-
-display "tte rain" "Installing new apps if unnecessary and configuring them"
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat binutils btop cava chromium curl eza fzf \
-  git gimp golang gum gvfs-backends htop iperf3 keepassxc libnotify-bin neovim openvpn pdftk-java python-is-python3 \
-  ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yaru-theme-gtk yaru-theme-icon yq \
-  zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
-
-display "cat" "Setting alacritty as default terminal emulator"
-gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
 
 if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
   display "cat" "Configuring alacritty with Caskyadia Nerd Font"
