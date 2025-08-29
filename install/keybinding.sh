@@ -42,10 +42,10 @@ source $KEYBINDING_CUSTOM
 # Apply keybindings
 if pgrep -x cinnamon >/dev/null; then
   echo
-  echo "Restarting desktop to apply keybindings"
+  echo "Restarting desktop to apply hotkey configuration"
   sleep 1s
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
   sleep 1s
   echo
-  echo "You can see all keybindings by pressing Super + K"
+  echo "You can see all hotkeys by pressing Super + K"
 fi

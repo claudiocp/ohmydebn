@@ -345,7 +345,7 @@ fi
 display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
 
-display "tte rain" "Updating keyboard shortcuts"
+display "tte rain" "Updating hotkeys"
 ~/.local/share/$PROJECT_LOWER/install/keybinding.sh
 
 if [ -f $STATE_FILE ]; then
