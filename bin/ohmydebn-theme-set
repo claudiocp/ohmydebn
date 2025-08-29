@@ -23,6 +23,46 @@ fi
 # Update theme symlinks
 ln -nsf "$THEME_PATH" "$CURRENT_THEME_DIR"
 
+# Update rofi theme
+ROFI_THEME_DIR="/usr/share/rofi/themes"
+case $THEME_NAME in
+	everforest|gruvbox)
+		ROFI_THEME="$ROFI_THEME_DIR/android_notification.rasi"
+		;;
+	kanagawa)
+		ROFI_THEME="$ROFI_THEME_DIR/DarkBlue.rasi"
+		;;
+	matte-black)
+		ROFI_THEME="$ROFI_THEME_DIR/fancy.rasi"
+		;;
+	nord)
+		ROFI_THEME="$ROFI_THEME_DIR/Arc-Dark.rasi"
+		;;
+	osaka-jade)
+		ROFI_THEME="$ROFI_THEME_DIR/lb.rasi"
+		;;
+	ristretto)
+		ROFI_THEME="$ROFI_THEME_DIR/gruvbox-dark-soft.rasi"
+		;;
+	rose-pine)
+		ROFI_THEME="$ROFI_THEME_DIR/Paper.rasi"
+		;;
+	tokyo-night)
+		ROFI_THEME="$ROFI_THEME_DIR/purple.rasi"
+		;;
+	*)
+		ROFI_THEME="catppuccin-default"
+		;;
+esac
+cat << EOF > ~/.config/rofi/config.rasi
+listview {
+	lines: 30;
+	scrollbar: true;
+	fixed-height: false;
+}
+@theme "$ROFI_THEME"
+EOF
+
 # Determine light or dark mode
 if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
   gsettings set org.x.apps.portal color-scheme "prefer-light"
