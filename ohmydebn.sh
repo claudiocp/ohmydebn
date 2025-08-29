@@ -342,6 +342,8 @@ if [ ! -f $ZSH_CONFIG ]; then
   cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
 fi
 
+~/.local/share/$PROJECT_LOWER/install/config/branding.sh
+
 display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
 
