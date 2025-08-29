@@ -2,7 +2,7 @@ keybinding-custom 0 "KeePassXC" "/usr/local/bin/ohmydebn-keepass" "['<Ctrl><Shif
 keybinding-custom 1 "Chromium" "/usr/bin/chromium" "['<Super>B']" "Press Super + B for browser"
 keybinding-custom 2 "Alacritty" "/usr/bin/alacritty" "['<Super>Return']" "Press Super + Enter for terminal (alacritty)"
 keybinding-custom 3 "Nemo" "/usr/bin/nemo" "['<Super>F']" "Press Super + F for file manager (nemo)"
-keybinding-custom 4 "Rofi" "/usr/bin/rofi -show drun" "['<Super>R', '<Super>space']" "Press Super + R to run the application launcher (rofi)"
+keybinding-custom 4 "Rofi" "/usr/bin/rofi -dpi 1 -show drun" "['<Super>R', '<Super>space']" "Press Super + R to run the application launcher (rofi)"
 keybinding-custom 5 "Hotkeys" "/usr/bin/chromium https://github.com/dougburks/ohmydebn?tab=readme-ov-file#hotkeys" "['<Super>K']" "Press Super + K to show all hotkeys"
 keybinding-custom 6 "btop" "/usr/bin/alacritty --title 'btop' -e btop" "['<Super>T']" "Press Super + T to launch btop"
 keybinding-custom 7 "Neovim" "/usr/bin/alacritty --title 'nvim' -e nvim" "['<Super>N']" "Press Super + N to launch Neovim text editor"
