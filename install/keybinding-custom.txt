@@ -12,3 +12,6 @@ keybinding-custom 10 "cava audio visualizer" "/usr/bin/alacritty --title 'cava a
 keybinding-custom 11 "Theme selector" "/usr/local/bin/ohmydebn-theme-set-gui" "['<Ctrl><Super>T']" "Press Ctrl + Super + T to change theme"
 keybinding-custom 12 "Background selector" "/usr/local/bin/ohmydebn-theme-bg-next" "['<Ctrl><Super>B']" "Press Ctrl + Super + B to change to next background in the current theme"
 keybinding-custom 13 "Rofi window switcher" "/usr/local/bin/ohmydebn-rofi-window-switcher" "['<Ctrl><Alt>Tab']" "Press Ctrl + Alt + Tab for an alt-tab switcher that shows more info"
+keybinding-custom 14 "GMail" "chromium https://mail.google.com" "['<Super>G']" "Press Super + G for GMail"
+keybinding-custom 15 "Calendar" "chromium https://calendar.google.com" "['<Super>C']" "Press Super + C for Google Calendar"
+keybinding-custom 16 "X" "chromium https://x.com" "['<Super>X']" "Press Super + X for X"
