@@ -398,7 +398,11 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | `Super + F` | File Manager (Nemo) |
 | `Super + T` | btop |
 | `Super + N` | Neovim |
+| `Super + G` | GMail |
+| `Super + C` | Google Calendar |
+| `Super + X` | X |
 | `Alt + F2` | Run dialog |
+| `Shift + Super + C` | Cinnamon calendar
 
 ## Browser (Chromium)
 
