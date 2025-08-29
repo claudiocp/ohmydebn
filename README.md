@@ -241,9 +241,21 @@ To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 # Desktop Themes
 
-You can change the desktop theme by pressing `Ctrl + Shift + T`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy. 
+You can change the desktop theme by pressing `Ctrl + Super + T`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy. There are also three options at the end of the list titled `Next Background`, `Install New Theme`, and `Remove Theme`.
 
 ![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
+
+Some themes include multiple background options. If the theme you select has multiple backgrounds, you can switch to the next background by selecting the `Next Background` option from the menu. Alternatively, you can press `Ctrl + Super + B` at any time.
+
+The `Install New Theme` option allows you to install new themes from the Omarchy repo.
+
+![OhMyDebn theme install](images/ohmydebn-theme-install.png)
+
+The `Remove Theme` option allows you to remove any extra themes that you've installed.
+
+![OhMyDebn theme remove](images/ohmydebn-theme-remove.png)
+
+Here are some screenshots of the default Ohmydebn theme and several themes from Omarchy.
 
 Catppuccin theme:
 
@@ -289,24 +301,6 @@ Tokyo Night theme:
 
 ![OhMyDebn with tokyo night theme](images/ohmydebn-theme-tokyo-night.png)
 
-# Installing and Removing Themes
-
-The theme selection window has two options at the end of the list titled `Install New Theme` and `Remove Theme`.
-
-![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
-
-The `Install New Theme` option allows you to install new themes from the Omarchy repo.
-
-![OhMyDebn theme install](images/ohmydebn-theme-install.png)
-
-The `Remove Theme` option allows you to remove any extra themes that you've installed.
-
-![OhMyDebn theme remove](images/ohmydebn-theme-remove.png)
-
-# Backgrounds
-
-Some themes include multiple background options. If the theme you select has multiple backgrounds, you can switch to the next background by pressing `Ctrl + Shift + B`.
-
 # Terminal
 
 To start a terminal session, press `Super + Enter`. This launches a beautiful and powerful [Alacritty](https://alacritty.org) terminal window that includes:
@@ -349,8 +343,8 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | `Ctrl + Shift + O` | OhMyDebn logo |
 | `Ctrl + Shift + S` | screenfetch system summary |
 | `Ctrl + Shift + A` | audio visualizer (Cava) |
-| `Ctrl + Shift + T` | Pick a new theme |
-| `Ctrl + Shift + B` | Next background image for theme |
+| `Ctrl + Super + T` | Pick a new theme |
+| `Ctrl + Super + B` | Next background image for theme |
 
 ## Windows
 
@@ -358,6 +352,7 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 |--------|----------|
 | `Alt + Tab` | Cycle through open windows |
 | `Shift + Alt + Tab` | Cycle backwards through open windows |
+| `Ctrl + Alt + Tab` | Cycle through open windows with more info |
 | `Alt + Space` | Activate window menu |
 | `Alt + F7` | Move window |
 | `Super + W` | Close window |
@@ -403,7 +398,22 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | `Super + F` | File Manager (Nemo) |
 | `Super + T` | btop |
 | `Super + N` | Neovim |
+| `Super + G` | GMail |
+| `Super + C` | Google Calendar |
+| `Super + X` | X |
 | `Alt + F2` | Run dialog |
+| `Shift + Super + C` | Cinnamon calendar
+
+## Browser (Chromium)
+
+| Hotkey | Function |
+|--------|----------|
+| `Ctrl + Shift + B` | Toggle bookmark list |
+| `Ctrl + T` | New tab |
+| `Ctrl + N` | New window |
+| `Ctrl + Shift + N` | New Incognito window |
+| `Ctrl + W` | Close tab |
+| `Ctrl + Shift + T` | Restore tab |
 
 ## Password and Bookmark Management (KeePassXC)
 
