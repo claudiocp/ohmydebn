@@ -352,6 +352,7 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 |--------|----------|
 | `Alt + Tab` | Cycle through open windows |
 | `Shift + Alt + Tab` | Cycle backwards through open windows |
+| `Ctrl + Alt + Tab` | Cycle through open windows with more info |
 | `Alt + Space` | Activate window menu |
 | `Alt + F7` | Move window |
 | `Super + W` | Close window |
@@ -403,12 +404,12 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 
 | Hotkey | Function |
 |--------|----------|
-| `Ctrl + Shift + B` | Toggle bookmark list
-| `Ctrl + T` | New tab
-| `Ctrl + N` | New window
-| `Ctrl + Shift + N` | New Incognito window
-| `Ctrl + W` | Close tab
-| `Ctrl + Shift + T` | Restore tab
+| `Ctrl + Shift + B` | Toggle bookmark list |
+| `Ctrl + T` | New tab |
+| `Ctrl + N` | New window |
+| `Ctrl + Shift + N` | New Incognito window |
+| `Ctrl + W` | Close tab |
+| `Ctrl + Shift + T` | Restore tab |
 
 ## Password and Bookmark Management (KeePassXC)
 
