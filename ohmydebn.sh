@@ -1,17 +1,5 @@
 #!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status
-set -e
-
-# Define variables
-PROJECT="OhMyDebn"
-PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
-STATE_DIR=~/.local/state
-mkdir -p $STATE_DIR
-STATE_FILE=~/.local/state/$PROJECT_LOWER
-export PATH="$HOME/.local/share/$PROJECT_LOWER/bin:$PATH"
-OHMYDEBN_INSTALL=~/.local/share/$PROJECT_LOWER/install
-
 # Parse command line arguments
 NO_UNINSTALL=false
 for arg in "$@"; do
@@ -27,6 +15,8 @@ for arg in "$@"; do
 done
 
 # Preparation
+source $OHMYDEBN_INSTALL/preflight/set.sh
+source $OHMYDEBN_INSTALL/preflight/variables.sh
 source $OHMYDEBN_INSTALL/preflight/functions.sh
 source $OHMYDEBN_INSTALL/preflight/os.sh
 source $OHMYDEBN_INSTALL/preflight/user.sh
