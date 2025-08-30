@@ -9,6 +9,7 @@ source $OHMYDEBN_INSTALL/preflight/os.sh
 source $OHMYDEBN_INSTALL/preflight/user.sh
 source $OHMYDEBN_INSTALL/preflight/arguments.sh
 source $OHMYDEBN_INSTALL/preflight/warning.sh
+source $OHMYDEBN_INSTALL/preflight/variables.sh
 
 if ! dpkg -s curl >/dev/null 2>&1 ||
   ! dpkg -s libglib2.0-bin >/dev/null 2>&1 ||
