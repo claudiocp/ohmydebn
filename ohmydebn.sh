@@ -3,10 +3,14 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+# Define variables
 PROJECT="OhMyDebn"
 PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
+STATE_DIR=~/.local/state
+mkdir -p $STATE_DIR
 STATE_FILE=~/.local/state/$PROJECT_LOWER
 export PATH="$HOME/.local/share/$PROJECT_LOWER/bin:$PATH"
+OHMYDEBN_INSTALL=~/.local/share/$PROJECT_LOWER/install
 
 # Parse command line arguments
 NO_UNINSTALL=false
@@ -169,7 +173,11 @@ if [ -f /usr/bin/pveversion ] && ! dpkg -s dbus-x11 >/dev/null 2>&1; then
   export $(dbus-launch)
 fi
 
-for FILE in ohmydebn-demo ohmydebn-demo-gui ohmydebn-keepass ohmydebn-logo ohmydebn-logo-generate ohmydebn-logo-gui ohmydebn-reset-config ohmydebn-rofi-window-switcher ohmydebn-screenfetch ohmydebn-screenfetch-gui ohmydebn-show-done ohmydebn-show-logo ohmydebn-theme-bg-next ohmydebn-theme-current ohmydebn-theme-install ohmydebn-theme-list ohmydebn-theme-next ohmydebn-theme-remove ohmydebn-theme-set ohmydebn-theme-set-gui ohmydebn-update ohmydebn-update-available ohmydebn-update-components ohmydebn-update-git ohmydebn-update-system-pkgs ohmydebn-version; do
+for FILE in ohmydebn-demo ohmydebn-demo-gui ohmydebn-keepass ohmydebn-logo ohmydebn-logo-generate ohmydebn-logo-gui \
+  ohmydebn-reset-config ohmydebn-rofi-window-switcher ohmydebn-screenfetch ohmydebn-screenfetch-gui ohmydebn-show-done \
+  ohmydebn-show-logo ohmydebn-theme-bg-next ohmydebn-theme-current ohmydebn-theme-install ohmydebn-theme-list \
+  ohmydebn-theme-next ohmydebn-theme-remove ohmydebn-theme-set ohmydebn-theme-set-gui ohmydebn-update \
+  ohmydebn-update-available ohmydebn-update-components ohmydebn-update-git ohmydebn-update-system-pkgs ohmydebn-version; do
   if [ -f /usr/local/bin/$FILE ]; then
     echo "Removing old file /usr/local/bin/$FILE"
     sudo rm -f /usr/local/bin/$FILE
@@ -253,7 +261,8 @@ if [ ! -f $STATE_FILE ]; then
 
   if [ "$NO_UNINSTALL" = false ]; then
     display "tte rain" "Removing any unnecessary packages"
-    sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina transmission* x11vnc
+    sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina \
+      transmission* x11vnc
     sudo apt -y autoremove
   fi
 
@@ -343,29 +352,29 @@ if [ ! -f $ZSH_CONFIG ]; then
 fi
 
 ~/.local/share/$PROJECT_LOWER/bin/ohmydebn-logo-generate
-~/.local/share/$PROJECT_LOWER/install/path.sh
+source $OHMYDEBN_INSTALL/path.sh
+
+if [ ! -f $STATE_FILE ]; then
+  display "cat" "Setting theme"
+  mkdir -p ~/.config/$PROJECT_LOWER/current
+  ~/.local/share/ohmydebn/bin/ohmydebn-theme-set Ohmydebn
+fi
 
 display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
 
 display "tte rain" "Updating hotkeys"
-source ~/.local/share/$PROJECT_LOWER/install/keybinding.sh
+source $OHYMYDEBN_INSTALL/keybinding.sh
 
 if [ -f $STATE_FILE ]; then
   echo
   echo "Update complete!"
 else
-
-  display "cat" "Setting theme"
-  mkdir -p ~/.config/$PROJECT_LOWER/current
-  ~/.local/share/ohmydebn/bin/ohmydebn-theme-set Ohmydebn
-
   display "tte rain" "Installation complete!"
   echo
   screenfetch -N | tte slide --merge
   echo
   welcome
   # Create a state file signifying that installation is complete
-  mkdir -p ~/.local/state
-  touch ~/.local/state/ohmydebn
+  touch $STATE_FILE
 fi
