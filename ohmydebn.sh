@@ -210,7 +210,7 @@ fi
 if [ ! -f $STATE_FILE ]; then
   display "cat" "Setting theme"
   mkdir -p ~/.config/$PROJECT_LOWER/current
-  ohmydebn-theme-set Ohmydebn
+  ~/.local/share/ohmydebn/bin/ohmydebn-theme-set Ohmydebn
 
   display "cat" "Configuring alttab switcher"
   gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
