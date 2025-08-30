@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 PROJECT="OhMyDebn"
 clear
 cat <<EOF
@@ -27,7 +28,6 @@ else
     fi
     DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
     if [ ! -f $DEBIANSOURCES ]; then
-      echo "$DEBIANSOURCES does not exist."
       echo "Creating $DEBIANSOURCES and adding the following:"
       cat <<EOF | sudo tee -a $DEBIANSOURCES
 Types: deb
