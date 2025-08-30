@@ -17,95 +17,21 @@ source $OHMYDEBN_INSTALL/packaging/cinnamon-desktop.sh
 source $OHMYDEBN_INSTALL/packaging/cinnamon-themes.sh
 source $OHMYDEBN_INSTALL/packaging/dbus-x11.sh
 source $OHMYDEBN_INSTALL/packaging/components.sh
+source $OHMYDEBN_INSTALL/packaging/remove.sh
 
-for FILE in ohmydebn-demo ohmydebn-demo-gui ohmydebn-keepass ohmydebn-logo ohmydebn-logo-generate ohmydebn-logo-gui \
-  ohmydebn-reset-config ohmydebn-rofi-window-switcher ohmydebn-screenfetch ohmydebn-screenfetch-gui ohmydebn-show-done \
-  ohmydebn-show-logo ohmydebn-theme-bg-next ohmydebn-theme-current ohmydebn-theme-install ohmydebn-theme-list \
-  ohmydebn-theme-next ohmydebn-theme-remove ohmydebn-theme-set ohmydebn-theme-set-gui ohmydebn-update \
-  ohmydebn-update-available ohmydebn-update-components ohmydebn-update-git ohmydebn-update-system-pkgs ohmydebn-version; do
-  if [ -f /usr/local/bin/$FILE ]; then
-    echo "Removing old file /usr/local/bin/$FILE"
-    sudo rm -f /usr/local/bin/$FILE
-  fi
-done
+# Configuration
+source $OHMYDEBN_INSTALL/config/theme.sh
+source $OHMYDEBN_INSTALL/config/alttab.sh
+source $OHMYDEBN_INSTALL/config/gedit.sh
+source $OHMYDEBN_INSTALL/config/cinnamon-applets.sh
+source $OHMYDEBN_INSTALL/config/cinnamon-spices.sh
+source $OHMYDEBN_INSTALL/config/cursor-theme.sh
+source $OHMYDEBN_INSTALL/config/terminal-emulator.sh
+source $OHMYDEBN_INSTALL/config/image-viewer.sh
 
-display "cat" "Updating themes"
-if [ ! -d ~/.local/share/omarchy ]; then
-  cd ~/.local/share/
-  git clone https://github.com/basecamp/omarchy.git
-else
-  cd ~/.local/share/omarchy
-  git pull
-fi
-cd - >/dev/null
-# Create symlinks for all themes
-mkdir -p ~/.config/$PROJECT_LOWER/themes
-for f in ~/.local/share/$PROJECT_LOWER/themes/*; do
-  THEME=$(basename $f)
-  if [ ! -L ~/.config/$PROJECT_LOWER/themes/$THEME ]; then
-    ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/
-  fi
-done
-for f in ~/.local/share/omarchy/themes/*; do
-  THEME=$(basename $f)
-  if [ ! -L ~/.config/omarchy/themes/$THEME ]; then
-    ln -nfs "$f" ~/.config/$PROJECT_LOWER/themes/
-  fi
-done
-
-# Some installs might have an incorrect symlink
-# if the old symlink exists, then remove it
-OLD_SYMLINK=~/.local/share/$PROJECT_LOWER/themes/$PROJECT_LOWER/$PROJECT_LOWER
-if [ -L $OLD_SYMLINK ]; then
-  echo "Removing old symlink $OLD_SYMLINK"
-  rm -f $OLD_SYMLINK
-fi
-
-if [ ! -f $STATE_FILE ]; then
-  display "cat" "Configuring alttab switcher"
-  gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
-  gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
-
-  display "cat" "Configuring gedit"
-  gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
-  gsettings set org.gnome.gedit.preferences.editor display-line-numbers false
-
-  if gsettings get org.cinnamon enabled-applets | grep -q grouped-window-list; then
-    display "cat" "Changing grouped window list to window list"
-    gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed "s/panel1:left:[0-9]*:grouped-window-list@cinnamon.org:[0-9]*/panel1:left:1:window-list@cinnamon.org:12/")"
-  fi
-
-  if ! gsettings get org.cinnamon enabled-applets | grep -q workspace-switcher; then
-    display "cat" "Enabling workspace switcher"
-    gsettings set org.cinnamon enabled-applets "$(gsettings get org.cinnamon enabled-applets | sed 's/]$/, "panel1:right:0:workspace-switcher@cinnamon.org:10"]/')"
-  fi
-
-  display "cat" "Configuring cinnamon spices"
-  for SPICE in "workspace-switcher@cinnamon.org" "notifications@cinnamon.org" "calendar@cinnamon.org"; do
-    SPICE_DIR=~/.config/cinnamon/spices/$SPICE
-    mkdir -p $SPICE_DIR
-    echo "Configuring $SPICE"
-    cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/$SPICE/* $SPICE_DIR
-    echo
-  done
-
-  display "cat" "Setting cursor theme"
-  gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
-
-  display "cat" "Setting alacritty as default terminal emulator"
-  gsettings set org.cinnamon.desktop.default-applications.terminal exec "'alacritty'"
-
-  display "cat" "Configuring ristretto as default image viewer"
-  xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
-
-  if [ "$NO_UNINSTALL" = false ]; then
-    display "tte rain" "Removing any unnecessary packages"
-    sudo apt -y purge brasero firefox* thunderbird gnome-chess gnome-games goldendict-ng hexchat hoichess pidgin remmina \
-      transmission* x11vnc
-    sudo apt -y autoremove
-  fi
-
-fi
+# Cleanup
+source $OHMYDEBN_INSTALL/cleanup/usr-local-bin.sh
+source $OHMYDEBN_INSTALL/cleanup/theme-symlink.sh
 
 if [ ! -f ~/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf ]; then
   display "cat" "Configuring alacritty with Caskyadia Nerd Font"
