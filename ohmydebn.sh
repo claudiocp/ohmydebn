@@ -2,7 +2,7 @@
 
 OHMYDEBN_INSTALL=~/.local/share/ohmydebn/install
 
-# Preparation
+# Preflight
 source $OHMYDEBN_INSTALL/preflight/set.sh
 source $OHMYDEBN_INSTALL/preflight/functions.sh
 source $OHMYDEBN_INSTALL/preflight/os.sh
@@ -12,44 +12,11 @@ source $OHMYDEBN_INSTALL/preflight/warning.sh
 source $OHMYDEBN_INSTALL/preflight/variables.sh
 source $OHMYDEBN_INSTALL/preflight/effects.sh
 
-logo
-echo
-
-display "tte waves" "Configuring base OS"
-echo
-
-if ! dpkg -s "cinnamon-desktop-environment" >/dev/null 2>&1; then
-  display "cat" "Installing Cinnamon desktop"
-  sudo apt -y install cinnamon-desktop-environment
-fi
-
-if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
-  display "cat" "Downloading Cinnamon themes"
-  MINTLIST="/etc/apt/sources.list.d/mint.list"
-  MINTKEY="linuxmint-keyring_2022.06.21_all.deb"
-  MINTURL="http://packages.linuxmint.com/pool/main/l/linuxmint-keyring/$MINTKEY"
-  echo
-  echo "Temporarily adding the following repo:"
-  echo
-  echo "deb http://packages.linuxmint.com virginia main" | sudo tee -a $MINTLIST
-  curl -O $MINTURL
-  echo
-  sudo dpkg -i $MINTKEY
-  echo
-  sudo rm -f $MINTKEY
-  sudo apt update && sudo apt -y install mint-themes mint-x-icons mint-y-icons
-  echo
-  sudo rm -f $MINTLIST
-  sudo apt update
-  echo
-  sudo apt -y purge linuxmint-keyring
-fi
-
-if [ -f /usr/bin/pveversion ] && ! dpkg -s dbus-x11 >/dev/null 2>&1; then
-  display "cat" "Installing dbus-x11"
-  sudo apt -y install dbus-x11
-  export $(dbus-launch)
-fi
+# Packaging
+source $OHMYDEBN_INSTALL/packaging/cinnamon-desktop.sh
+source $OHMYDEBN_INSTALL/packaging/cinnamon-themes.sh
+source $OHMYDEBN_INSTALL/packaging/dbus-x11.sh
+source $OHMYDEBN_INSTALL/packaging/components.sh
 
 for FILE in ohmydebn-demo ohmydebn-demo-gui ohmydebn-keepass ohmydebn-logo ohmydebn-logo-generate ohmydebn-logo-gui \
   ohmydebn-reset-config ohmydebn-rofi-window-switcher ohmydebn-screenfetch ohmydebn-screenfetch-gui ohmydebn-show-done \
@@ -121,12 +88,6 @@ if [ ! -f $STATE_FILE ]; then
     cp -av ~/.local/share/$PROJECT_LOWER/config/cinnamon/spices/$SPICE/* $SPICE_DIR
     echo
   done
-
-  display "tte rain" "Installing new apps if unnecessary and configuring them"
-  sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty bat bibata-cursor-theme binutils btop cava chromium curl eza fzf \
-    git gimp golang gum gvfs-backends htop iperf3 keepassxc lazygit libnotify-bin neovim openvpn pdftk-java python-is-python3 \
-    ripgrep ristretto rofi screenfetch starship systemd-timesyncd vim wget xdotool yaru-theme-gtk yaru-theme-icon yq \
-    zoxide zsh zsh-autosuggestions zsh-syntax-highlighting
 
   display "cat" "Setting cursor theme"
   gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
