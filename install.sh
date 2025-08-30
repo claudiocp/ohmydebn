@@ -15,9 +15,11 @@ Stars bow to its charm.
  -- AI, probably
 EOF
 
+# Check to see if we have an APT configuration
 if [ -f /etc/apt/sources.list.d/debian.sources ] || [ -f /etc/apt/sources.list.d/proxmox.sources ]; then
   echo "Found an APT sources file in /etc/apt/sources.list.d/"
 else
+  # Some Debian installation methods have a broken APT configuration so try to work around that
   SOURCESLIST=/etc/apt/sources.list
   if ! grep -q "debian.org" $SOURCESLIST >/dev/null 2>&1; then
     echo "$SOURCESLIST does not have any debian.org references."
