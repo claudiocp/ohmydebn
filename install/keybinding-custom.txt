@@ -15,4 +15,4 @@ keybinding-custom 13 "Rofi window switcher" "/usr/local/bin/ohmydebn-rofi-window
 keybinding-custom 14 "GMail" "xdg-open https://mail.google.com" "['<Super>G']" "Press Super + G for GMail"
 keybinding-custom 15 "Calendar" "xdg-open https://calendar.google.com" "['<Super>C']" "Press Super + C for Google Calendar"
 keybinding-custom 16 "X" "xdg-open https://x.com" "['<Super>X']" "Press Super + X for X"
-keybinding-custom 17 "OhMyDebn Demo" "~/.local/share/ohmydebn/bin/ohmydebn-demo-gui" "['<Ctrl><Alt>D']" "Press Ctrl + Alt + D for a demo version of the OhMyDebn logo"
+keybinding-custom 17 "OhMyDebn Demo" "ohmydebn-demo-gui" "['<Ctrl><Alt>D']" "Press Ctrl + Alt + D for a demo version of the OhMyDebn logo"
