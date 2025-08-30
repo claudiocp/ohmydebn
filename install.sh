@@ -1,9 +1,7 @@
 #!/bin/bash
 
 PROJECT="OhMyDebn"
-
 clear
-
 cat <<EOF
 Welcome to $PROJECT!
 
