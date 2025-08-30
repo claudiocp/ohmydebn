@@ -19,7 +19,7 @@ source $OHMYDEBN_INSTALL/packaging/dbus-x11.sh
 source $OHMYDEBN_INSTALL/packaging/components.sh
 source $OHMYDEBN_INSTALL/packaging/remove.sh
 
-# Configuration
+# Config
 source $OHMYDEBN_INSTALL/config/theme.sh
 source $OHMYDEBN_INSTALL/config/alttab.sh
 source $OHMYDEBN_INSTALL/config/gedit.sh
