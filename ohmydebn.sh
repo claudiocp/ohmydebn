@@ -345,7 +345,7 @@ if [ ! -f $ZSH_CONFIG ]; then
   cp ~/.local/share/$PROJECT_LOWER/config/.zshrc ~/
 fi
 
-ohmydebn-logo-generate
+~/.local/share/ohmydebn/bin/ohmydebn-logo-generate
 
 display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
