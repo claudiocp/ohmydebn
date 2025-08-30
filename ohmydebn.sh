@@ -208,10 +208,6 @@ if [ -L $OLD_SYMLINK ]; then
 fi
 
 if [ ! -f $STATE_FILE ]; then
-  display "cat" "Setting theme"
-  mkdir -p ~/.config/$PROJECT_LOWER/current
-  ~/.local/share/ohmydebn/bin/ohmydebn-theme-set Ohmydebn
-
   display "cat" "Configuring alttab switcher"
   gsettings set org.cinnamon alttab-switcher-style 'icons+preview'
   gsettings set org.cinnamon alttab-switcher-show-all-workspaces true
@@ -358,6 +354,11 @@ if [ -f $STATE_FILE ]; then
   echo
   echo "Update complete!"
 else
+
+  display "cat" "Setting theme"
+  mkdir -p ~/.config/$PROJECT_LOWER/current
+  ~/.local/share/ohmydebn/bin/ohmydebn-theme-set Ohmydebn
+
   display "tte rain" "Installation complete!"
   echo
   screenfetch -N | tte slide --merge
