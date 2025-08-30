@@ -1,25 +1,20 @@
 #!/bin/bash
 
-# Parse command line arguments
-NO_UNINSTALL=false
-for arg in "$@"; do
-  case $arg in
-  --no-uninstall)
-    NO_UNINSTALL=true
-    shift
-    ;;
-  *)
-    # Unknown option
-    ;;
-  esac
-done
+# Define variables
+PROJECT="OhMyDebn"
+PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
+STATE_DIR=~/.local/state
+mkdir -p $STATE_DIR
+STATE_FILE=~/.local/state/$PROJECT_LOWER
+export PATH="$HOME/.local/share/$PROJECT_LOWER/bin:$PATH"
+OHMYDEBN_INSTALL=~/.local/share/$PROJECT_LOWER/install
 
 # Preparation
 source $OHMYDEBN_INSTALL/preflight/set.sh
-source $OHMYDEBN_INSTALL/preflight/variables.sh
 source $OHMYDEBN_INSTALL/preflight/functions.sh
 source $OHMYDEBN_INSTALL/preflight/os.sh
 source $OHMYDEBN_INSTALL/preflight/user.sh
+source $OHMYDEBN_INSTALL/preflight/arguments.sh
 
 if [ ! -f $STATE_FILE ]; then
   display "cat" "WARNING!
