@@ -26,35 +26,37 @@ ln -nsf "$THEME_PATH" "$CURRENT_THEME_DIR"
 # Update rofi theme
 ROFI_THEME_DIR="/usr/share/rofi/themes"
 case $THEME_NAME in
-	everforest|gruvbox)
-		ROFI_THEME="$ROFI_THEME_DIR/android_notification.rasi"
-		;;
-	kanagawa)
-		ROFI_THEME="$ROFI_THEME_DIR/DarkBlue.rasi"
-		;;
-	matte-black)
-		ROFI_THEME="$ROFI_THEME_DIR/fancy.rasi"
-		;;
-	nord)
-		ROFI_THEME="$ROFI_THEME_DIR/Arc-Dark.rasi"
-		;;
-	osaka-jade)
-		ROFI_THEME="$ROFI_THEME_DIR/lb.rasi"
-		;;
-	ristretto)
-		ROFI_THEME="$ROFI_THEME_DIR/gruvbox-dark-soft.rasi"
-		;;
-	rose-pine)
-		ROFI_THEME="$ROFI_THEME_DIR/Paper.rasi"
-		;;
-	tokyo-night)
-		ROFI_THEME="$ROFI_THEME_DIR/purple.rasi"
-		;;
-	*)
-		ROFI_THEME="catppuccin-default"
-		;;
+everforest | gruvbox)
+  ROFI_THEME="$ROFI_THEME_DIR/android_notification.rasi"
+  ;;
+kanagawa)
+  ROFI_THEME="$ROFI_THEME_DIR/DarkBlue.rasi"
+  ;;
+matte-black)
+  ROFI_THEME="$ROFI_THEME_DIR/fancy.rasi"
+  ;;
+nord)
+  ROFI_THEME="$ROFI_THEME_DIR/Arc-Dark.rasi"
+  ;;
+osaka-jade)
+  ROFI_THEME="$ROFI_THEME_DIR/lb.rasi"
+  ;;
+ristretto)
+  ROFI_THEME="$ROFI_THEME_DIR/gruvbox-dark-soft.rasi"
+  ;;
+rose-pine)
+  ROFI_THEME="$ROFI_THEME_DIR/Paper.rasi"
+  ;;
+tokyo-night)
+  ROFI_THEME="$ROFI_THEME_DIR/purple.rasi"
+  ;;
+*)
+  ROFI_THEME="catppuccin-default"
+  ;;
 esac
-cat << EOF > ~/.config/rofi/config.rasi
+ROFI_CONFIG_DIR=~/.config/rofi
+mkdir -p $ROFI_CONFIG_DIR
+cat <<EOF >$ROFI_CONFIG_DIR/config.rasi
 listview {
 	lines: 30;
 	scrollbar: true;
@@ -134,7 +136,9 @@ gsettings set org.cinnamon.desktop.interface icon-theme "$ICON_THEME"
 gsettings set org.cinnamon.theme name "$CINNAMON_THEME"
 
 # Trigger alacritty config reload
-touch "$HOME/.config/alacritty/alacritty.toml"
+ALACRITTY_CONFIG_DIR=~/.config/alacritty
+mkdir -p $ALACRITTY_CONFIG_DIR
+touch $ALACRITTY_CONFIG_DIR/alacritty.toml
 
 # Restart components to apply new theme
 pkill -SIGUSR2 btop
@@ -147,4 +151,4 @@ else
 fi
 
 # Set new background
-ohmydebn-theme-bg-next
+~/.local/share/ohmydebn/binohmydebn-theme-bg-next
