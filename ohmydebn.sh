@@ -26,34 +26,8 @@ for arg in "$@"; do
   esac
 done
 
-function logo {
-  toilet -f mono12 "$PROJECT" | tte rain
-}
-
-function welcome {
-  toilet -f mono12 "Welcome" | tte rain
-  toilet -f mono12 "   to" | tte rain
-  logo
-}
-
-function display {
-  echo
-  if [ ! -f $STATE_FILE ]; then
-    # For first installation, use text effects
-    PROCESSOR=$1
-  else
-    # For updates, don't use text effects
-    PROCESSOR=cat
-  fi
-  cat <<EOF | $PROCESSOR
-###############################################################################
-$2
-###############################################################################
-EOF
-  echo
-}
-
 # Preparation
+source $OHMYDEBN_INSTALL/preflight/functions.sh
 source $OHMYDEBN_INSTALL/preflight/os.sh
 source $OHMYDEBN_INSTALL/preflight/user.sh
 
@@ -326,11 +300,9 @@ if [ -f $STATE_FILE ]; then
   echo "Update complete!"
 else
   display "tte rain" "Installation complete!"
-  #echo
-  #screenfetch -N | tte slide --merge
-  #echo
-  ohmydebn-screenfetch-gui
-  ohmydebn-demo-gui
+  echo
+  screenfetch -N | tte slide --merge
+  echo
   welcome
   # Create a state file signifying that installation is complete
   touch $STATE_FILE
