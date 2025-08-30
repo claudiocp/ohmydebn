@@ -54,25 +54,8 @@ EOF
 }
 
 # Preparation
-source $OHMYDEBN_INSTALL/preflight/debian13.sh
-
-if ! grep -q "13 (trixie)" /etc/os-release; then
-  display "cat" "This script is designed for Debian 13 Cinnamon. Exiting!"
-  exit 1
-fi
-
-if [ "$UID" -eq 0 ]; then
-
-  display "cat" "Looks like you're running as root.
- 
-Instead of running as root, you most likely want to 
-run this script as a normal user that has sudo privileges.
-
-Press Enter if you are sure you want to continue as root
-or Ctrl-c to cancel."
-
-  read input
-fi
+source $OHMYDEBN_INSTALL/preflight/os.sh
+source $OHMYDEBN_INSTALL/preflight/user.sh
 
 if [ ! -f $STATE_FILE ]; then
   display "cat" "WARNING!
@@ -343,9 +326,11 @@ if [ -f $STATE_FILE ]; then
   echo "Update complete!"
 else
   display "tte rain" "Installation complete!"
-  echo
-  screenfetch -N | tte slide --merge
-  echo
+  #echo
+  #screenfetch -N | tte slide --merge
+  #echo
+  ohmydebn-screenfetch-gui
+  ohmydebn-demo-gui
   welcome
   # Create a state file signifying that installation is complete
   touch $STATE_FILE
