@@ -1,7 +1,8 @@
 #!/bin/bash
 
-KEYBINDING_CINNAMON=~/.local/share/ohmydebn/install/keybinding-cinnamon.txt
-KEYBINDING_CUSTOM=~/.local/share/ohmydebn/install/keybinding-custom.txt
+KEYBINDING_DIR=~/.local/share/ohmydebn/install/keybinding
+KEYBINDING_CINNAMON=$KEYBINDING_DIR/keybinding-cinnamon.txt
+KEYBINDING_CUSTOM=$KEYBINDING_DIR/keybinding-custom.txt
 
 function keybinding-cinnamon (
   echo $3

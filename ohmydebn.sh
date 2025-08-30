@@ -336,7 +336,7 @@ display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
 
 display "tte rain" "Updating hotkeys"
-source $OHMYDEBN_INSTALL/keybinding.sh
+source $OHMYDEBN_INSTALL/keybinding/keybinding.sh
 
 if [ -f $STATE_FILE ]; then
   echo
