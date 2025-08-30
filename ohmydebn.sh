@@ -6,6 +6,7 @@ set -e
 PROJECT="OhMyDebn"
 PROJECT_LOWER=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]')
 STATE_FILE=~/.local/state/$PROJECT_LOWER
+export PATH="$HOME/.local/share/$PROJECT_LOWER/bin:$PATH"
 
 # Parse command line arguments
 NO_UNINSTALL=false
@@ -348,7 +349,7 @@ display "tte rain" "Installing any available OS updates"
 sudo apt -y dist-upgrade
 
 display "tte rain" "Updating hotkeys"
-~/.local/share/$PROJECT_LOWER/install/keybinding.sh
+source ~/.local/share/$PROJECT_LOWER/install/keybinding.sh
 
 if [ -f $STATE_FILE ]; then
   echo

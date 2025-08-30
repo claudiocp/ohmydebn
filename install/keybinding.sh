@@ -44,8 +44,6 @@ if pgrep -x cinnamon >/dev/null; then
   echo
   echo "Restarting desktop to apply hotkey configuration"
   sleep 1s
-  # Need Cinnamon to pick up the new PATH
-  export PATH=$HOME/.local/share/ohmydebn/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
   sleep 1s
   echo
