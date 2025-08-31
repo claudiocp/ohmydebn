@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -f $STATE_FILE ]; then
+if [ -f ~/.local/state/ohmydebn ]; then
   echo
   echo "Update complete!"
 else
@@ -10,5 +10,6 @@ else
   echo
   welcome
   # Create a state file signifying that installation is complete
-  touch $STATE_FILE
+  mkdir -p ~/.local/state
+  touch ~/.local/state/ohmydebn
 fi

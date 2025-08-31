@@ -1,12 +1,11 @@
 #!/bin/bash
 
 set -e
-PROJECT="OhMyDebn"
 clear
 cat <<EOF
-Welcome to $PROJECT!
+Welcome to OhMyDebn!
 
-$PROJECT is a debonair Debian + Cinnamon setup inspired by Omarchy.
+OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
 
 Debonair strides bold,
 Elegance in every step,

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -f $STATE_FILE ]; then
+if [ ! -f ~/.local/state/ohmydebn ]; then
   display "cat" "WARNING!
 
 This script:

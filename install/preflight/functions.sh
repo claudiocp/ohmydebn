@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function logo {
-  toilet -f mono12 "$PROJECT" | tte rain
+  toilet -f mono12 "OhMyDebn" | tte rain
 }
 
 function welcome {
@@ -12,7 +12,7 @@ function welcome {
 
 function display {
   echo
-  if [ ! -f $STATE_FILE ]; then
+  if [ ! -f ~/.local/state/ohmydebn ]; then
     # For first installation, use text effects
     PROCESSOR=$1
   else

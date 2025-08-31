@@ -20,7 +20,7 @@ source $OHMYDEBN_INSTALL/packaging/components.sh
 source $OHMYDEBN_INSTALL/packaging/remove.sh
 
 # Config
-source $OHMYDEBN_INSTALL/config/theme.sh
+source $OHMYDEBN_INSTALL/config/themes-install.sh
 source $OHMYDEBN_INSTALL/config/alttab.sh
 source $OHMYDEBN_INSTALL/config/gedit.sh
 source $OHMYDEBN_INSTALL/config/cinnamon-applets.sh
@@ -37,7 +37,7 @@ source $OHMYDEBN_INSTALL/config/btop.sh
 source $OHMYDEBN_INSTALL/config/logo.sh
 source $OHMYDEBN_INSTALL/config/nvim.sh
 source $OHMYDEBN_INSTALL/config/ohmyzsh.sh
-source $OHMYDEBN_INSTALL/config/theme-current.sh
+source $OHMYDEBN_INSTALL/config/themes-set.sh
 source $OHMYDEBN_INSTALL/config/zsh-config.sh
 source $OHMYDEBN_INSTALL/config/zsh-path.sh
 

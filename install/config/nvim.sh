@@ -17,10 +17,10 @@ fi
 NVIM_THEME=$NVIM_PLUGINS/theme.lua
 if [ ! -L $NVIM_THEME ]; then
   display "cat" "Configuring neovim theme"
-  ln -snf ~/.config/$PROJECT_LOWER/current/theme/neovim.lua $NVIM_THEME
+  ln -snf ~/.config/ohmydebn/current/theme/neovim.lua $NVIM_THEME
 fi
 display "cat" "Updating neovim config"
-cp -av ~/.local/share/$PROJECT_LOWER/config/nvim ~/.config/
+cp -av ~/.local/share/ohmydebn/config/nvim ~/.config/
 
 NVIM_OPTIONS=$NVIM_CONFIG_DIR/lua/config/options.lua
 if ! grep -q "vim.opt.relativenumber = false" $NVIM_OPTIONS >/dev/null 2>&1; then
