@@ -39,6 +39,7 @@ source $OHMYDEBN_INSTALL/config/nvim.sh
 source $OHMYDEBN_INSTALL/config/ohmyzsh.sh
 source $OHMYDEBN_INSTALL/config/path.sh
 source $OHMYDEBN_INSTALL/config/starship.sh
+source $OHMYDEBN_INSTALL/config/theme-current.sh
 source $OHMYDEBN_INSTALL/config/zsh.sh
 
 # Cleanup
