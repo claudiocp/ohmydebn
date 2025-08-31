@@ -34,6 +34,7 @@ source $OHMYDEBN_INSTALL/config/components.sh
 source $OHMYDEBN_INSTALL/config/bat-link.sh
 source $OHMYDEBN_INSTALL/config/bat-metadata.sh
 source $OHMYDEBN_INSTALL/config/btop.sh
+source $OHMYDEBN_INSTALL/config/default-browser.sh
 source $OHMYDEBN_INSTALL/config/logo.sh
 source $OHMYDEBN_INSTALL/config/nvim.sh
 source $OHMYDEBN_INSTALL/config/ohmyzsh.sh
