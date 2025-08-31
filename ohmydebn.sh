@@ -31,15 +31,15 @@ source $OHMYDEBN_INSTALL/config/image-viewer.sh
 source $OHMYDEBN_INSTALL/config/caskaydia.sh
 source $OHMYDEBN_INSTALL/config/alacritty.sh
 source $OHMYDEBN_INSTALL/config/components.sh
-source $OHMYDEBN_INSTALL/config/bat-cache.sh
-source $OHMYDEBN_INSTALL/config/bat-symbolic-link.sh
+source $OHMYDEBN_INSTALL/config/bat-link.sh
+source $OHMYDEBN_INSTALL/config/bat-metadata.sh
 source $OHMYDEBN_INSTALL/config/btop.sh
+source $OHMYDEBN_INSTALL/config/logo.sh
 source $OHMYDEBN_INSTALL/config/nvim.sh
 source $OHMYDEBN_INSTALL/config/ohmyzsh.sh
+source $OHMYDEBN_INSTALL/config/path.sh
 source $OHMYDEBN_INSTALL/config/starship.sh
 source $OHMYDEBN_INSTALL/config/zsh.sh
-source $OHMYDEBN_INSTALL/config/logo.sh
-source $OHMYDEBN_INSTALL/config/path.sh
 
 # Cleanup
 source $OHMYDEBN_INSTALL/cleanup/usr-local-bin.sh
