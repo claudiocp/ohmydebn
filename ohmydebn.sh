@@ -37,10 +37,10 @@ source $OHMYDEBN_INSTALL/config/btop.sh
 source $OHMYDEBN_INSTALL/config/logo.sh
 source $OHMYDEBN_INSTALL/config/nvim.sh
 source $OHMYDEBN_INSTALL/config/ohmyzsh.sh
-source $OHMYDEBN_INSTALL/config/path.sh
 source $OHMYDEBN_INSTALL/config/starship.sh
 source $OHMYDEBN_INSTALL/config/theme-current.sh
-source $OHMYDEBN_INSTALL/config/zsh.sh
+source $OHMYDEBN_INSTALL/config/zsh-config.sh
+source $OHMYDEBN_INSTALL/config/zsh-path.sh
 
 # Cleanup
 source $OHMYDEBN_INSTALL/cleanup/usr-local-bin.sh
