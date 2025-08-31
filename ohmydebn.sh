@@ -26,15 +26,13 @@ source $OHMYDEBN_INSTALL/config/gedit.sh
 source $OHMYDEBN_INSTALL/config/cinnamon-applets.sh
 source $OHMYDEBN_INSTALL/config/cinnamon-spices.sh
 source $OHMYDEBN_INSTALL/config/cursor-theme.sh
-source $OHMYDEBN_INSTALL/config/terminal-emulator.sh
-source $OHMYDEBN_INSTALL/config/image-viewer.sh
+source $OHMYDEBN_INSTALL/config/default-applications.sh
 source $OHMYDEBN_INSTALL/config/caskaydia.sh
 source $OHMYDEBN_INSTALL/config/alacritty.sh
 source $OHMYDEBN_INSTALL/config/components.sh
 source $OHMYDEBN_INSTALL/config/bat-link.sh
 source $OHMYDEBN_INSTALL/config/bat-metadata.sh
 source $OHMYDEBN_INSTALL/config/btop.sh
-source $OHMYDEBN_INSTALL/config/default-browser.sh
 source $OHMYDEBN_INSTALL/config/logo.sh
 source $OHMYDEBN_INSTALL/config/nvim.sh
 source $OHMYDEBN_INSTALL/config/ohmyzsh.sh
