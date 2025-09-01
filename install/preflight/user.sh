@@ -2,7 +2,7 @@
 
 if [ "$UID" -eq 0 ]; then
 
-  display "cat" "Looks like you're running as root.
+  ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Looks like you're running as root.
  
 Instead of running as root, you most likely want to 
 run this script as a normal user that has sudo privileges.

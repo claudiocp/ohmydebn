@@ -4,18 +4,16 @@ OHMYDEBN_INSTALL=~/.local/share/ohmydebn/install
 
 # Preflight
 source $OHMYDEBN_INSTALL/preflight/set.sh
-source $OHMYDEBN_INSTALL/preflight/functions.sh
 source $OHMYDEBN_INSTALL/preflight/os.sh
 source $OHMYDEBN_INSTALL/preflight/user.sh
 source $OHMYDEBN_INSTALL/preflight/arguments.sh
 source $OHMYDEBN_INSTALL/preflight/warning.sh
-source $OHMYDEBN_INSTALL/preflight/variables.sh
+source $OHMYDEBN_INSTALL/preflight/path.sh
 source $OHMYDEBN_INSTALL/preflight/effects.sh
 
 # Packaging
-source $OHMYDEBN_INSTALL/packaging/cinnamon-desktop.sh
-source $OHMYDEBN_INSTALL/packaging/cinnamon-themes.sh
-source $OHMYDEBN_INSTALL/packaging/dbus-x11.sh
+source $OHMYDEBN_INSTALL/packaging/cinnamon.sh
+source $OHMYDEBN_INSTALL/packaging/dbus.sh
 source $OHMYDEBN_INSTALL/packaging/components.sh
 source $OHMYDEBN_INSTALL/packaging/remove.sh
 

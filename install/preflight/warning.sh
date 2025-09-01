@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -f ~/.local/state/ohmydebn ]; then
-  display "cat" "WARNING!
+  ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "WARNING!
 
 This script:
 - is intended for a clean new installation.
