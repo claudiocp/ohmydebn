@@ -4,19 +4,17 @@ if [ ! -f ~/.local/state/ohmydebn ]; then
   toilet -f mono12 "OhMyDebn" | tte rain
   echo
 
-  echo
   ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Configuring base OS"
-  echo
 
   if ! dpkg -s "cinnamon-desktop-environment" >/dev/null 2>&1; then
     echo
-    ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Installing Cinnamon desktop"
+    ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Installing Cinnamon desktop"
     sudo apt -y install cinnamon-desktop-environment
   fi
 
   if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
     echo
-    ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Downloading Cinnamon themes"
+    ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Downloading Cinnamon themes"
     MINTLIST="/etc/apt/sources.list.d/mint.list"
     MINTKEY="linuxmint-keyring_2022.06.21_all.deb"
     MINTURL="http://packages.linuxmint.com/pool/main/l/linuxmint-keyring/$MINTKEY"
