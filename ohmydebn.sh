@@ -19,7 +19,6 @@ source $OHMYDEBN_INSTALL/packaging/remove.sh
 
 # Config
 source $OHMYDEBN_INSTALL/config/alacritty.sh
-source $OHMYDEBN_INSTALL/config/alttab.sh
 source $OHMYDEBN_INSTALL/config/bat.sh
 source $OHMYDEBN_INSTALL/config/btop.sh
 source $OHMYDEBN_INSTALL/config/caskaydia.sh
