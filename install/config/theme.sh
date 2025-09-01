@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo; echo "<< Updating themes >>"
+~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Updating themes"
 
 if [ ! -d ~/.local/share/omarchy ]; then
   cd ~/.local/share/
@@ -26,7 +26,7 @@ for f in ~/.local/share/omarchy/themes/*; do
 done
 
 if [ ! -f ~/.local/state/ohmydebn ]; then
-  echo; echo "<< Setting default theme >>"
+  ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Setting default theme"
   mkdir -p ~/.config/ohmydebn/current
   ~/.local/share/ohmydebn/bin/ohmydebn-theme-set Ohmydebn
 fi
