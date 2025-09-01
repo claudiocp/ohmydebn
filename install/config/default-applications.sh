@@ -11,5 +11,5 @@ if [ ! -f ~/.local/state/ohmydebn ]; then
   xdg-mime default chromium.desktop x-scheme-handler/https
 
   display "cat" "Configuring ristretto as default image viewer"
-  xdg-mime default org.xfce.ristretto.desktop image/jpeg image/png image/gif image/bmp image/tiff
+  xdg-mime default org.xfce.ristretto.desktop image/bmp image/gif image/jpeg image/png image/tiff image/webp
 fi

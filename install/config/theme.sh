@@ -1,6 +1,7 @@
 #!/bin/bash
 
 display "cat" "Updating themes"
+
 if [ ! -d ~/.local/share/omarchy ]; then
   cd ~/.local/share/
   git clone https://github.com/basecamp/omarchy.git
@@ -23,3 +24,9 @@ for f in ~/.local/share/omarchy/themes/*; do
     ln -nfs "$f" ~/.config/ohmydebn/themes/
   fi
 done
+
+if [ ! -f ~/.local/state/ohmydebn ]; then
+  display "cat" "Setting theme"
+  mkdir -p ~/.config/ohmydebn/current
+  ~/.local/share/ohmydebn/bin/ohmydebn-theme-set Ohmydebn
+fi
