@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -d ~/.config/chromium ]; then
-  echo; echo "<< Configuring chromium >>"
+  ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Configuring chromium"
   cp -av ~/.local/share/ohmydebn/config/chromium ~/.config/
   echo
 fi

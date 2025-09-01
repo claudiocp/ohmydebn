@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -d ~/.config/rofi ]; then
-  echo; echo "<< Configuring rofi >>"
+  ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Configuring rofi"
   cp -av ~/.local/share/ohmydebn/config/rofi ~/.config/
   echo
 fi
