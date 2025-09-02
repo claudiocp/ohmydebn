@@ -222,6 +222,12 @@ To show the OhMyDebn logo in all of its glory, press `Ctrl + Shift + O`.
 
 ![OhMyDebn logo gui](images/ohmydebn-logo-gui.png)
 
+# OhMyDebn Demo
+
+To show an animated OhMyDebn logo demo, press `Ctrl + Alt + D`.
+
+![OhMyDebn animated logo demo](images/ohmydebn-demo.gif)
+
 # System summary via screenfetch
 
 To see a system summary, press `Ctrl + Shift + S` to launch screenfetch.
