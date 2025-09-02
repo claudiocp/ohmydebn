@@ -1,6 +1,1 @@
-listview {
-	lines: 30;
-	scrollbar: true;
-	fixed-height: false;
-}
 @theme "/home/douglas/.config/rofi/rounded-blue-dark.rasi"
