@@ -10,6 +10,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty \
   chromium \
   curl \
   eza \
+  ffmpeg \
   fzf \
   git \
   gimp \
