@@ -4,7 +4,7 @@ ROFI_CONFIG=~/.config/rofi
 
 # If we have the old config, then rename it so we can add the new config
 if [ -f $ROFI_CONFIG/catppuccin-default.rasi ]; then
-  mv $ROFI_CONFIG $ROFI_CONFIG-$(date +%Y%m%d-%H%M%S)
+  mv $ROFI_CONFIG $ROFI_CONFIG-backup-$(date +%Y%m%d-%H%M%S)
 fi
 
 if [ ! -d $ROFI_CONFIG ]; then
