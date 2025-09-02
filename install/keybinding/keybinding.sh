@@ -1,7 +1,8 @@
 #!/bin/bash
 
-KEYBINDING_CINNAMON=~/.local/share/ohmydebn/install/keybinding-cinnamon.txt
-KEYBINDING_CUSTOM=~/.local/share/ohmydebn/install/keybinding-custom.txt
+KEYBINDING_DIR=~/.local/share/ohmydebn/install/keybinding
+KEYBINDING_CINNAMON=$KEYBINDING_DIR/keybinding-cinnamon.txt
+KEYBINDING_CUSTOM=$KEYBINDING_DIR/keybinding-custom.txt
 
 function keybinding-cinnamon (
   echo $3
@@ -42,10 +43,10 @@ source $KEYBINDING_CUSTOM
 # Apply keybindings
 if pgrep -x cinnamon >/dev/null; then
   echo
-  echo "Restarting desktop to apply keybindings"
+  echo "Restarting desktop to apply hotkey configuration"
   sleep 1s
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
   sleep 1s
   echo
-  echo "You can see all keybindings by pressing Super + K"
+  echo "You can see all hotkeys by pressing Super + K"
 fi

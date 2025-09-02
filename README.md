@@ -86,7 +86,7 @@ Here are my requirements for a base OS:
 - can run on bare metal and virtualized
 - can be virtualized via Proxmox, Parallels, and other hypervisors
 - must be supported by Parallels Tools
-- must support x86 and ARM architectures
+- must support x86 and ARM architectures (please note that OhMyDebn does not yet support ARM but will in the future)
 
 Debian satisfies these requirements and is well known for stability, simplicity, and versatility.
 
@@ -106,7 +106,7 @@ Cinnamon satisfies these requirements and has some nice eye candy!
 # Why Debian Cinnamon?
 
 Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE)? Linux Mint and LMDE are great, but there are a few reasons why you might want to use Debian 13 Cinnamon instead:
-- Linux Mint is only available for x86 architecture. If you're on ARM, you need a distro compiled for ARM that can run Cinnamon (like Debian). Please note that this script has not yet been tested on ARM but it should be easy to make it work.
+- Linux Mint is only available for x86 architecture. If you're on ARM, you need a distro compiled for ARM that can run Cinnamon (like Debian). Please note that OhMyDebn does not yet support ARM but will in the future.
 - Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this script to turn it into OhMyDebn!
 - For fun and for science!
   
@@ -135,6 +135,7 @@ Here's a Dell laptop that Microsoft says won't run Windows 11. Proxmox and OhMyD
 # Requirements
 
 OhMyDebn requires the following:
+- x86_64 architecture (ARM support will be added in the future)
 - 2GB RAM minimum
 - 2 CPU cores minimum
 - Debian 13

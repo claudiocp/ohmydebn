@@ -1,19 +1,49 @@
 #!/bin/bash
 
-PROJECT="OhMyDebn"
-
+set -e
 clear
-
 cat <<EOF
-Welcome to $PROJECT!
+Welcome to OhMyDebn!
 
-$PROJECT is a debonair Debian + Cinnamon setup inspired by Omarchy.
+OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy.
 
 Debonair strides bold,
 Elegance in every step,
 Stars bow to its charm.
  -- AI, probably
 EOF
+
+# Check to see if we have an APT configuration
+if [ -f /etc/apt/sources.list.d/debian.sources ] || [ -f /etc/apt/sources.list.d/proxmox.sources ]; then
+  echo "Found an APT sources file in /etc/apt/sources.list.d/"
+else
+  # Some Debian installation methods have a broken APT configuration so try to work around that
+  SOURCESLIST=/etc/apt/sources.list
+  if ! grep -q "debian.org" $SOURCESLIST >/dev/null 2>&1; then
+    echo "$SOURCESLIST does not have any debian.org references."
+    if [ -f $SOURCESLIST ]; then
+      echo "Renaming $SOURCESLIST to $SOURCESLIST.orig"
+      sudo mv $SOURCESLIST $SOURCESLIST.orig
+    fi
+    DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
+    if [ ! -f $DEBIANSOURCES ]; then
+      echo "Creating $DEBIANSOURCES and adding the following:"
+      cat <<EOF | sudo tee -a $DEBIANSOURCES
+Types: deb
+URIs: https://deb.debian.org/debian
+Suites: trixie trixie-updates
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: https://security.debian.org/debian-security
+Suites: trixie-security
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF
+    fi
+  fi
+fi
 
 if ! dpkg -s "git" >/dev/null 2>&1; then
   echo
@@ -34,7 +64,7 @@ if [[ -n "$OHMYDEBN_REF" ]]; then
   echo -e "\eUsing branch: $OHMYDEBN_REF"
   cd ~/.local/share/ohmydebn
   git fetch origin "${OHMYDEBN_REF}" && git checkout "${OHMYDEBN_REF}"
-  cd - > /dev/null
+  cd - >/dev/null
 fi
 
 source ~/.local/share/ohmydebn/ohmydebn.sh "$@"

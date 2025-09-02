@@ -1,0 +1,12 @@
+#!/bin/bash
+
+BRANDING=~/.config/ohmydebn/branding
+mkdir -p $BRANDING
+
+NAME=$BRANDING/name.txt
+if [ ! -f $NAME ]; then
+  echo "OhMyDebn" >$NAME
+fi
+
+LOGO=~/.config/ohmydebn/branding/logo.txt
+cat $NAME | toilet -f mono12 >$LOGO

@@ -23,46 +23,6 @@ fi
 # Update theme symlinks
 ln -nsf "$THEME_PATH" "$CURRENT_THEME_DIR"
 
-# Update rofi theme
-ROFI_THEME_DIR="/usr/share/rofi/themes"
-case $THEME_NAME in
-	everforest|gruvbox)
-		ROFI_THEME="$ROFI_THEME_DIR/android_notification.rasi"
-		;;
-	kanagawa)
-		ROFI_THEME="$ROFI_THEME_DIR/DarkBlue.rasi"
-		;;
-	matte-black)
-		ROFI_THEME="$ROFI_THEME_DIR/fancy.rasi"
-		;;
-	nord)
-		ROFI_THEME="$ROFI_THEME_DIR/Arc-Dark.rasi"
-		;;
-	osaka-jade)
-		ROFI_THEME="$ROFI_THEME_DIR/lb.rasi"
-		;;
-	ristretto)
-		ROFI_THEME="$ROFI_THEME_DIR/gruvbox-dark-soft.rasi"
-		;;
-	rose-pine)
-		ROFI_THEME="$ROFI_THEME_DIR/Paper.rasi"
-		;;
-	tokyo-night)
-		ROFI_THEME="$ROFI_THEME_DIR/purple.rasi"
-		;;
-	*)
-		ROFI_THEME="catppuccin-default"
-		;;
-esac
-cat << EOF > ~/.config/rofi/config.rasi
-listview {
-	lines: 30;
-	scrollbar: true;
-	fixed-height: false;
-}
-@theme "$ROFI_THEME"
-EOF
-
 # Determine light or dark mode
 if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
   gsettings set org.x.apps.portal color-scheme "prefer-light"
@@ -70,20 +30,27 @@ else
   gsettings set org.x.apps.portal color-scheme "prefer-dark"
 fi
 
-# Start with default themes for gtk, icon, and cinnamon
+# Start with default themes for gtk, icon, cinnamon, and rofi
 GTK_THEME="Mint-Y-Dark-Blue"
 ICON_THEME="Mint-Y-Blue"
 CINNAMON_THEME="Mint-Y-Dark-Blue"
+ROFI_THEME="rounded-white.rasi"
+ROFI_DIR=~/.config/rofi
 
-# If the Ohmydebn theme specifies an icon theme then we override those defaults
+# If the theme specifies an icon theme then we override those defaults
 if [[ -f ~/.config/ohmydebn/current/theme/icons.theme ]]; then
   # check to see if there is an equivalent mint theme
   THEME=$(cat ~/.config/ohmydebn/current/theme/icons.theme)
   GENERIC_THEME=$(echo $THEME | sed s'|Yaru-||g')
   GENERIC_THEME_CASED=${GENERIC_THEME^}
   MINT_THEME="Mint-Y-$GENERIC_THEME_CASED"
-  if [ -d /usr/share/icons/$MINT_THEME ] && [ -d /usr/share/themes/$MINT_THEME ]; then
+  if [ -d /usr/share/icons/$MINT_THEME ] &&
+    [ -d /usr/share/themes/$MINT_THEME ] &&
+    [ -f $ROFI_DIR/rounded-$GENERIC_THEME-dark.rasi ]; then
+    # THEME = catppuccin, catppuccin-latte, kanagawa, matte-black, nord, ohmydebn, rose-pine
+    # GENERIC_THEME = purple, blue, red
     ICON_THEME="$MINT_THEME"
+    ROFI_THEME="$ROFI_DIR/rounded-$GENERIC_THEME-dark.rasi"
     if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
       GTK_THEME="$MINT_THEME"
       CINNAMON_THEME="$MINT_THEME"
@@ -95,7 +62,9 @@ if [[ -f ~/.config/ohmydebn/current/theme/icons.theme ]]; then
     # if we can't automatically convert to a mint theme, then try a few static mappings
     case $THEME in
     Yaru-sage | Yaru-olive)
+      # THEME = everforest, gruvbox, osaka-jade
       ICON_THEME="Mint-Y"
+      ROFI_THEME="$ROFI_DIR/rounded-green-dark.rasi"
       if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
         GTK_THEME="Mint-Y"
         CINNAMON_THEME="Mint-Y"
@@ -105,7 +74,9 @@ if [[ -f ~/.config/ohmydebn/current/theme/icons.theme ]]; then
       fi
       ;;
     Yaru-yellow)
+      # THEME = ristretto
       ICON_THEME="Mint-Y-Sand"
+      ROFI_THEME="$ROFI_DIR/rounded-yellow-dark.rasi"
       if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
         GTK_THEME="Mint-Y-Sand"
         CINNAMON_THEME="Mint-Y-Sand"
@@ -115,7 +86,9 @@ if [[ -f ~/.config/ohmydebn/current/theme/icons.theme ]]; then
       fi
       ;;
     Yaru-magenta)
+      # THEME = tokyo-night
       ICON_THEME="Mint-Y-Purple"
+      ROFI_THEME="$ROFI_DIR/rounded-purple-dark.rasi"
       if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
         GTK_THEME="Mint-Y-Purple"
         CINNAMON_THEME="Mint-Y-Purple"
@@ -133,8 +106,16 @@ gsettings set org.cinnamon.desktop.interface gtk-theme "$GTK_THEME"
 gsettings set org.cinnamon.desktop.interface icon-theme "$ICON_THEME"
 gsettings set org.cinnamon.theme name "$CINNAMON_THEME"
 
+# update rofi theme
+mkdir -p $ROFI_DIR
+cat <<EOF >$ROFI_DIR/config.rasi
+@theme "$ROFI_THEME"
+EOF
+
 # Trigger alacritty config reload
-touch "$HOME/.config/alacritty/alacritty.toml"
+ALACRITTY_CONFIG_DIR=~/.config/alacritty
+mkdir -p $ALACRITTY_CONFIG_DIR
+touch $ALACRITTY_CONFIG_DIR/alacritty.toml
 
 # Restart components to apply new theme
 pkill -SIGUSR2 btop
@@ -147,4 +128,4 @@ else
 fi
 
 # Set new background
-ohmydebn-theme-bg-next
+~/.local/share/ohmydebn/bin/ohmydebn-theme-bg-next
