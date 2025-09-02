@@ -9,6 +9,8 @@ for FILE in ~/.bashrc ~/.zshrc; do
   if ! grep ".local/share/ohmydebn/bin" $FILE >/dev/null 2>&1; then
     ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Updating PATH in $FILE"
     cat <<'EOF' >>$FILE
+
+# Update PATH to include OhMyDebn binaries
 if ! [[ "$PATH" =~ "$HOME/.local/share/ohmydebn/bin:" ]]; then
   export PATH="$HOME/.local/share/ohmydebn/bin:$PATH"
 fi
