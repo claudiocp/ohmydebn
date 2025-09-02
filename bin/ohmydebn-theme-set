@@ -109,11 +109,6 @@ gsettings set org.cinnamon.theme name "$CINNAMON_THEME"
 # update rofi theme
 mkdir -p $ROFI_DIR
 cat <<EOF >$ROFI_DIR/config.rasi
-listview {
-	lines: 30;
-	scrollbar: true;
-	fixed-height: false;
-}
 @theme "$ROFI_THEME"
 EOF
 
