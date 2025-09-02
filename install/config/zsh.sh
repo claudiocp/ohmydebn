@@ -5,7 +5,7 @@ if [ ! -f ~/.zshrc ]; then
   cp ~/.local/share/ohmydebn/config/.zshrc ~/
 fi
 
-for FILE in ~/.bashrc ~/.zshrc; do
+for FILE in ~/.bashrc ~/.xsessionrc ~/.zshrc; do
   if ! grep ".local/share/ohmydebn/bin" $FILE >/dev/null 2>&1; then
     ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Updating PATH in $FILE"
     cat <<'EOF' >>$FILE
