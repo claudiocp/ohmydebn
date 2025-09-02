@@ -64,12 +64,12 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 - Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/)
 - Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts
 - Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/)
-- Shell prompt: [Starship](https://starship.rs/) with modified [Catppuccin theme](https://github.com/catppuccin/starship)
+- Shell prompt: [Starship](https://starship.rs/)
 - Text editor: [neovim](https://neovim.io/) with [LazyVim](https://www.lazyvim.org/)
 - Performance monitoring: [btop](https://github.com/aristocratos/btop)
-- Application launcher: [Rofi](https://davatorium.github.io/rofi/current/rofi.1/) with [Catppuccin Mocha theme](https://github.com/catppuccin/rofi)
-- Audio visualizer: [Cava](https://github.com/karlstav/cava) with [Catppuccin Mocha theme](https://github.com/catppuccin/cava)
-- Shell cat command alternative: [bat](https://github.com/sharkdp/bat) with syntax highlighting and [Catppuccin Mocha theme](https://github.com/catppuccin/bat)
+- Application launcher: [Rofi](https://davatorium.github.io/rofi/current/rofi.1/)
+- Audio visualizer: [Cava](https://github.com/karlstav/cava)
+- Shell cat command alternative: [bat](https://github.com/sharkdp/bat) with syntax highlighting
 - Shell commands for directories: [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command and [eza](https://github.com/eza-community/eza) for beautiful directory listings
 - Web browser: [Chromium](https://www.chromium.org/Home/) with uBlock Origin Lite content blocker
 - Password management: [KeePassXC](https://keepassxc.org/)
