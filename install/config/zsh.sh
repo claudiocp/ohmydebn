@@ -1,7 +1,6 @@
 #!/bin/bash
 
-ZSH_CONFIG=~/.zshrc
-if [ ! -f $ZSH_CONFIG ]; then
+if [ ! -f ~/.zshrc ]; then
   ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Configuring Zsh"
   cp ~/.local/share/ohmydebn/config/.zshrc ~/
 fi
