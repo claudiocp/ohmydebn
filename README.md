@@ -106,7 +106,7 @@ Cinnamon satisfies these requirements and has some nice eye candy!
 # Why Debian Cinnamon?
 
 Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE)? Linux Mint and LMDE are great, but there are a few reasons why you might want to use Debian 13 Cinnamon instead:
-- Linux Mint is only available for x86 architecture. If you're on ARM, you need a distro compiled for ARM that can run Cinnamon (like Debian). Please note that OhMyDebn does not yet support ARM will in the future.
+- Linux Mint is only available for x86 architecture. If you're on ARM, you need a distro compiled for ARM that can run Cinnamon (like Debian). Please note that OhMyDebn does not yet support ARM but will in the future.
 - Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this script to turn it into OhMyDebn!
 - For fun and for science!
   
