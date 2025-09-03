@@ -3,6 +3,7 @@
 NVIM_CONFIG_DIR=~/.config/nvim
 if [ ! -d $NVIM_CONFIG_DIR ]; then
   ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Configuring neovim with lazyvim"
+  mkdir -p ~/.config
   git clone https://github.com/LazyVim/starter $NVIM_CONFIG_DIR
   rm -rf $NVIM_CONFIG_DIR/.git
 fi

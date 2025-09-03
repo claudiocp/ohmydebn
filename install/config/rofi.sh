@@ -9,6 +9,7 @@ fi
 
 if [ ! -d $ROFI_CONFIG ]; then
   ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Configuring rofi"
+  mkdir -p ~/.config
   cp -av ~/.local/share/ohmydebn/config/rofi ~/.config/
   echo
 fi
