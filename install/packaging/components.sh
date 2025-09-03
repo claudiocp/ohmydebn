@@ -33,6 +33,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty \
   shellcheck \
   starship \
   systemd-timesyncd \
+  ufw \
   vim \
   wget \
   xdotool \
