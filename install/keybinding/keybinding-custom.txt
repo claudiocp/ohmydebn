@@ -7,7 +7,7 @@ keybinding-custom 5 "Hotkeys" "ohmydebn-browser-chromeless https://github.com/do
 keybinding-custom 6 "Neovim" "/usr/bin/alacritty --title 'nvim' -e nvim" "['<Super>N']" "Press Super + N to launch Neovim text editor"
 keybinding-custom 7 "Rofi" "/usr/bin/rofi -dpi 1 -show drun" "['<Super>R', '<Super>space']" "Press Super + R to run the application launcher (rofi)"
 keybinding-custom 8 "btop" "/usr/bin/alacritty --title 'btop' -e btop" "['<Super>T']" "Press Super + T to launch btop"
-keybinding-custom 9 "X" "ohmydebn-browser-chromeless https://x.com" "['<Super>X']" "Press Super + X for X"
+keybinding-custom 9 "X" "ohmydebn-browser-chromeless https://x.com" "['<Super>X']" "Press Super + X for X.com"
 keybinding-custom 10 "cava audio visualizer" "/usr/bin/alacritty --title 'cava audio visualizer' -e cava" "['<Ctrl><Shift>A']" "Press Ctrl + Shift + A to show audio visualizer"
 keybinding-custom 11 "KeePassXC" "ohmydebn-keepass" "['<Ctrl><Shift>K']" "Press Ctrl + Shift + K for KeePassXC password manager"
 keybinding-custom 12 "OhMyDebn Logo" "ohmydebn-logo-gui" "['<Ctrl><Shift>O']" "Press Ctrl + Shift + O to show OhMyDebn logo"
