@@ -2,6 +2,8 @@
 
 set -e
 
+~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "OhMyDebn Update"
+
 ohmydebn-update-git
 
 bash ~/.local/share/ohmydebn/ohmydebn.sh --no-uninstall
