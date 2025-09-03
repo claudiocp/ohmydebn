@@ -20,9 +20,6 @@ function keybinding-custom (
   eval $GSETTINGS3
 )
 
-# Modify existing cinnamon keybindings
-source $KEYBINDING_CINNAMON
-
 # To create new custom keybindings, first specify how many custom keybindings we're going to load
 CUSTOM_KEYBINDING_TOTAL=$(cat $KEYBINDING_CUSTOM | wc -l)
 let CUSTOM_KEYBINDING_TOTAL--
@@ -37,8 +34,8 @@ for i in $(seq 0 $CUSTOM_KEYBINDING_TOTAL); do
 done
 eval $CUSTOM_LIST
 
-# Now we can iterate through the list of custom keybindings
-source $KEYBINDING_CUSTOM
+# Update all keybindings and sort the output for display
+(source $KEYBINDING_CINNAMON; source $KEYBINDING_CUSTOM) | grep -v "Removing" | sort
 
 # Apply keybindings
 if pgrep -x cinnamon >/dev/null; then
