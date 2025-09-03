@@ -1,8 +1,5 @@
 #!/bin/bash
 
+~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Updating git repo"
 OHMYDEBN_PATH=~/.local/share/ohmydebn
-
-echo -e "\e[32mUpdating OhMyDebn repo...\e[0m"
-echo
 git -C $OHMYDEBN_PATH pull
-echo

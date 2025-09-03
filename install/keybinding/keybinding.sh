@@ -1,12 +1,14 @@
 #!/bin/bash
 
+~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Updating hotkeys"
+
 KEYBINDING_DIR=~/.local/share/ohmydebn/install/keybinding
 KEYBINDING_CINNAMON=$KEYBINDING_DIR/keybinding-cinnamon.txt
 KEYBINDING_CUSTOM=$KEYBINDING_DIR/keybinding-custom.txt
 
 function keybinding-cinnamon (
-  echo $3
-  CMD="gsettings set org.cinnamon.desktop.keybindings.wm $1 \"$2\""
+  echo $4
+  CMD="gsettings set org.cinnamon.desktop.keybindings.$1 $2 \"$3\""
   eval $CMD
 )
 
@@ -19,9 +21,6 @@ function keybinding-custom (
   eval $GSETTINGS2
   eval $GSETTINGS3
 )
-
-# Modify existing cinnamon keybindings
-source $KEYBINDING_CINNAMON
 
 # To create new custom keybindings, first specify how many custom keybindings we're going to load
 CUSTOM_KEYBINDING_TOTAL=$(cat $KEYBINDING_CUSTOM | wc -l)
@@ -37,16 +36,13 @@ for i in $(seq 0 $CUSTOM_KEYBINDING_TOTAL); do
 done
 eval $CUSTOM_LIST
 
-# Now we can iterate through the list of custom keybindings
-source $KEYBINDING_CUSTOM
+# Update all keybindings and sort the output for display
+(source $KEYBINDING_CINNAMON; source $KEYBINDING_CUSTOM) | grep -v "Removing" | sort
 
 # Apply keybindings
 if pgrep -x cinnamon >/dev/null; then
-  echo
-  echo "Restarting desktop to apply hotkey configuration"
+  ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Restarting desktop to apply hotkey configuration"
   sleep 1s
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
-  sleep 1s
-  echo
   echo "You can see all hotkeys by pressing Super + K"
 fi

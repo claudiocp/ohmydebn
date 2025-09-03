@@ -8,6 +8,7 @@ fi
 
 if [ ! -d ~/.config/bat ]; then
   ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Configuring bat"
+  mkdir -p ~/.config
   cp -av ~/.local/share/ohmydebn/config/bat ~/.config/
 fi
 
