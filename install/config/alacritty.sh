@@ -10,7 +10,8 @@ fi
 
 if [ ! -d $ALACRITTY_DIR ]; then
   ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Configuring alacritty terminal emulator"
-  cp -av ~/.local/share/ohmydebn/config/alacritty ~/.config/
+  mkdir -p $ALACRITTY_DIR
+  cp -av ~/.local/share/ohmydebn/config/alacritty $ALACRITTY_DIR
 fi
 
 if [ ! -f ~/.local/state/ohmydebn ]; then
