@@ -1,5 +1,7 @@
 #!/bin/bash
 
+~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Updating hotkeys"
+
 KEYBINDING_DIR=~/.local/share/ohmydebn/install/keybinding
 KEYBINDING_CINNAMON=$KEYBINDING_DIR/keybinding-cinnamon.txt
 KEYBINDING_CUSTOM=$KEYBINDING_DIR/keybinding-custom.txt
@@ -39,11 +41,8 @@ eval $CUSTOM_LIST
 
 # Apply keybindings
 if pgrep -x cinnamon >/dev/null; then
-  echo
-  echo "Restarting desktop to apply hotkey configuration"
-  sleep 1s
+  ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Restarting desktop to apply hotkey configuration"
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
-  sleep 1s
   echo
   echo "You can see all hotkeys by pressing Super + K"
 fi
