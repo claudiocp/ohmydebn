@@ -403,11 +403,12 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | `Super + Return` | Terminal (Alacritty) |
 | `Super + B` | Browser (Chromium) |
 | `Super + F` | File Manager (Nemo) |
+| `Super + G` | Google search |
 | `Super + T` | btop |
 | `Super + N` | Neovim |
-| `Super + G` | GMail |
-| `Super + C` | Google Calendar |
-| `Super + X` | X |
+| `Super + E` | Email (GMail) |
+| `Super + C` | Calendar (Google Calendar) |
+| `Super + X` | X.com |
 | `Alt + F2` | Run dialog |
 | `Shift + Super + C` | Cinnamon calendar
 
