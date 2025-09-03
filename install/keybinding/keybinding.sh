@@ -42,7 +42,7 @@ eval $CUSTOM_LIST
 # Apply keybindings
 if pgrep -x cinnamon >/dev/null; then
   ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Restarting desktop to apply hotkey configuration"
+  sleep 1s
   /usr/bin/cinnamon --replace >/dev/null 2>&1 &
-  echo
   echo "You can see all hotkeys by pressing Super + K"
 fi
