@@ -5,8 +5,8 @@ KEYBINDING_CINNAMON=$KEYBINDING_DIR/keybinding-cinnamon.txt
 KEYBINDING_CUSTOM=$KEYBINDING_DIR/keybinding-custom.txt
 
 function keybinding-cinnamon (
-  echo $3
-  CMD="gsettings set org.cinnamon.desktop.keybindings.wm $1 \"$2\""
+  echo $4
+  CMD="gsettings set org.cinnamon.desktop.keybindings.$1 $2 \"$3\""
   eval $CMD
 )
 
