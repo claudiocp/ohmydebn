@@ -22,6 +22,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty \
   keepassxc \
   lazygit \
   libnotify-bin \
+  lshw \
   neovim \
   openvpn \
   pdftk-java \
