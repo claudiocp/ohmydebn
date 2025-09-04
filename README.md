@@ -78,6 +78,7 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 - System summary: [screenfetch](https://github.com/KittyKatt/screenFetch)
 - Window automation: [xdotool](https://github.com/jordansissel/xdotool)
 - Office Suite: [LibreOffice](https://www.libreoffice.org/)
+- Firewall: [ufw](https://help.ubuntu.com/community/UFW) with default deny for inbound traffic
 - Eye candy: dazzling terminal effects via [tte](https://github.com/ChrisBuilds/terminaltexteffects) for demoscene nostalgia
 
 # Why Debian?
