@@ -340,6 +340,10 @@ To start a text editor, press `Super + N`. This launches the beautiful and power
 
 The hotkeys section below includes more hotkeys for Neovim and a link to additional information.
 
+# Firewall
+
+OhMyDebn includes [ufw](https://help.ubuntu.com/community/UFW) and configures it to deny inbound traffic. For more information about ufw, please see https://help.ubuntu.com/community/UFW.
+
 # Hotkeys
 
 Pressing `Super + K` will open Chromium and navigate to this list of keyboard bindings.
