@@ -29,3 +29,11 @@ if [ ! -f ~/.local/state/ohmydebn ]; then
   done
 
 fi
+
+PANEL_STATE=~/.local/state/ohmydebn-panel
+if [ ! -f $PANEL_STATE ]; then
+  ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Configuring panel to be at top of screen"
+  gsettings set org.cinnamon panels-enabled-panels "['1:0:top']"
+  mkdir -p ~/.local/state
+  touch $PANEL_STATE
+fi
