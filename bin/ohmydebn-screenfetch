@@ -1,4 +1,4 @@
 #!/bin/bash
 
-screenfetch | tte slide
+/usr/bin/screenfetch | tte slide
 read input
