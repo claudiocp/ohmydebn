@@ -155,7 +155,7 @@ This script is totally unsupported. If it breaks your system, you get to keep bo
 
 # Installation
 
-For the quickest and easiest installation, the best option is to start with the Debian Live 13 Cinnamon ISO image. If for some reason that doesn't work for your use case, see the alternative installation options below.
+For the quickest and easiest installation, the best option is to start with the Debian Live 13 Cinnamon ISO image on x86_64 hardware. If for some reason that doesn't work for your use case, see the alternative installation options below.
 
 1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![debian-cinnamon screenshot](images/debian-cinnamon.png)
@@ -187,7 +187,7 @@ Once installation completes, you can enjoy your new OhMyDebn desktop!
 
 ## Debian 13 Minimal
 
-Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 minimal installation. Our installer will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot and enjoy your new OhMyDebn desktop!
+Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 netinst installer on x86_64 or ARM64 hardware. Our installer will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot and enjoy your new OhMyDebn desktop!
 
 ## Proxmox 9
 
@@ -326,7 +326,7 @@ It also includes [bat](https://github.com/sharkdp/bat), which is a `cat` clone w
 
 # Updating
 
-To update to the latest version of OhMyDebn, run `ohmydebn-update`. This will update the git repo, update config files, and update packages.
+To update to the latest version of OhMyDebn, run `ohmydebn-update`. This will update the git repo, config files, and packages.
 
 # Resetting
 
