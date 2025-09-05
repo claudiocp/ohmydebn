@@ -187,7 +187,7 @@ Once installation completes, you can enjoy your new OhMyDebn desktop!
 
 ## Debian 13 Minimal
 
-Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 netinst installer on x86_64 or ARM64 hardware. Our installer will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot and enjoy your new OhMyDebn desktop!
+Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 netinst installer on x86_64 or ARM64 hardware. Once the Debian netinst installer completes, reboot into your new installation and then start our installer as shown above. It will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot and enjoy your new OhMyDebn desktop!
 
 ## Proxmox 9
 
