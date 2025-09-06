@@ -159,9 +159,9 @@ For the quickest and easiest installation, the best option is to start with the 
 
 1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![debian-cinnamon screenshot](images/debian-cinnamon.png)
-2. In your Debian 13 Cinnamon desktop, download the script:
+2. In your Debian 13 Cinnamon desktop, download the installation script:
 ```
-curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/install.sh
+curl -LO https://ohmydebn.org/install.sh
 ```
 3. Once you have reviewed install.sh and the rest of the code in this repo, you can run the install script:
 ```
