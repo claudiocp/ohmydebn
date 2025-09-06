@@ -108,7 +108,7 @@ Cinnamon satisfies these requirements and has some nice eye candy!
 
 Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE)? Linux Mint and LMDE are great, but there are a few reasons why you might want to use Debian 13 Cinnamon instead:
 - Linux Mint is only available for x86 architecture. If you're on ARM, you need a distro compiled for ARM that can run Cinnamon (like Debian).
-- Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this script to turn it into OhMyDebn!
+- Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this repo to turn it into OhMyDebn!
 - For fun and for science!
   
 # Why is it called "OhMyDebn"?
@@ -146,12 +146,10 @@ OhMyDebn requires the following:
   
 # Warnings
 
-This script:
-- is intended for a clean new installation
-- may make changes to your APT configuration
-- will remove apps like FireFox, Thunderbird, and others (unless you use the `--no-uninstall` option)
-
-This script is totally unsupported. If it breaks your system, you get to keep both pieces!
+- OhMyDebn is intended for a clean new installation
+- OhMyDebn may make changes to your APT configuration
+- OhMyDebn will remove apps like FireFox, Thunderbird, and others (unless you use the `--no-uninstall` option)
+- OhMyDebn is totally unsupported. If it breaks your system, you get to keep both pieces!
 
 # Installation
 
@@ -169,7 +167,7 @@ bash install.sh
 ```
 ## Installation Options
 
-The install script supports the following option:
+The installation script supports the following option:
 
 - `--no-uninstall` - installs OhMyDebn without removing existing packages like Firefox, Thunderbird, etc.
 
