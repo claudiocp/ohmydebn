@@ -16,4 +16,6 @@ for i in ~/.config/alacritty ~/.config/bat ~/.config/btop ~/.config/cava ~/.conf
   fi
 done
 
+rm -rf ~/.local/state/ohmydebn*
+
 bash ~/.local/share/ohmydebn/ohmydebn.sh
