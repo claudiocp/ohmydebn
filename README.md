@@ -193,6 +193,8 @@ You can even run OhMyDebn on a Raspberry Pi! For best results, we recommend a Ra
 
 The default OS for Raspberry Pi is Raspberry Pi OS. It is based on Debian but Debian 13 support is still in testing. You can download a Debian 13 based image from https://downloads.raspberrypi.com/nightlies/. Once it is configured and connected to the Internet, you can run our installer as shown above. It will automatically update /etc/lightdm/lightdm.conf to log into our Cinnamon desktop. Once our installer is complete, reboot and enjoy your new OhMyDebn desktop!
 
+If you are running an older Raspberry Pi or the desktop otherwise feels sluggish, consider disabling desktop effects. Instructions can be found later in a separate section below.
+
 ## Proxmox 9
 
 Proxmox 9 is based on Debian 13 and will work with our installer as well.
@@ -347,6 +349,10 @@ The hotkeys section below includes more hotkeys for Neovim and a link to additio
 # Firewall
 
 OhMyDebn includes [ufw](https://help.ubuntu.com/community/UFW) and configures it to deny inbound traffic. For more information about ufw, please see https://help.ubuntu.com/community/UFW.
+
+# Desktop Effects
+
+Desktop and window effects are enabled by default. If you would like to disable them, go to System Settings, click Effects, and then click the slider next to `Desktop and window effects` to disable.
 
 # Hotkeys
 
