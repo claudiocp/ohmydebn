@@ -185,7 +185,13 @@ Once installation completes, you can enjoy your new OhMyDebn desktop!
 
 ## Debian 13 Minimal
 
-Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 netinst installer on x86_64 or ARM64 hardware. Once the Debian netinst installer completes, reboot into your new installation and then start our installer as shown above. It will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot and enjoy your new OhMyDebn desktop!
+Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 minimal netinst installer on x86_64 or ARM64 hardware. Once the Debian netinst installer completes, reboot into your new installation and then start our installer as shown above. It will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot and enjoy your new OhMyDebn desktop!
+
+## Raspberry Pi
+
+You can even run OhMyDebn on a Raspberry Pi! For best results, we recommend a Raspberry Pi 5 with 8GB RAM and SSD.
+
+The default OS for Raspberry Pi is Raspberry Pi OS. It is based on Debian but Debian 13 support is still in testing. You can download a Debian 13 based image from https://downloads.raspberrypi.com/nightlies/. Once it is configured and connected to the Internet, you can run our installer as shown above. It will automatically update /etc/lightdm/lightdm.conf to log into our Cinnamon desktop. Once our installer is complete, reboot and enjoy your new OhMyDebn desktop!
 
 ## Proxmox 9
 
