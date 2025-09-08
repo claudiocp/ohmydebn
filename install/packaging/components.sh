@@ -12,6 +12,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty \
   eza \
   ffmpeg \
   fzf \
+  galculator \
   git \
   gimp \
   golang \

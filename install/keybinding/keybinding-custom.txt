@@ -16,3 +16,5 @@ keybinding-custom 14 "Theme selector" "$HOME/.local/share/ohmydebn/bin/ohmydebn-
 keybinding-custom 15 "Background selector" "$HOME/.local/share/ohmydebn/bin/ohmydebn-theme-bg-next" "['<Ctrl><Super>B']" "Press Ctrl + Super + B to change to next background in the current theme"
 keybinding-custom 16 "Rofi window switcher" "$HOME/.local/share/ohmydebn/bin/ohmydebn-rofi-window-switcher" "['<Ctrl><Alt>Tab']" "Press Ctrl + Alt + Tab for an alt-tab switcher that shows more info"
 keybinding-custom 17 "OhMyDebn Demo" "$HOME/.local/share/ohmydebn/bin/ohmydebn-demo-gui" "['<Ctrl><Alt>D']" "Press Ctrl + Alt + D for a demo version of the OhMyDebn logo"
+keybinding-custom 18 "AI (Grok)" "$HOME/.local/share/ohmydebn/bin/ohmydebn-browser-chromeless https://x.com/i/grok" "['<Super>A']" "Press Super + A for AI (Grok)"
+keybinding-custom 19 "OhMyDebn website" "$HOME/.local/share/ohmydebn/bin/ohmydebn-browser-chromeless https://ohmydebn.org" "['<Super>O']" "Press Super + O for OhMyDebn website"

@@ -108,7 +108,7 @@ Cinnamon satisfies these requirements and has some nice eye candy!
 
 Why use Debian Cinnamon instead of Linux Mint or Linux Mint Debian Edition (LMDE)? Linux Mint and LMDE are great, but there are a few reasons why you might want to use Debian 13 Cinnamon instead:
 - Linux Mint is only available for x86 architecture. If you're on ARM, you need a distro compiled for ARM that can run Cinnamon (like Debian).
-- Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this script to turn it into OhMyDebn!
+- Suppose you want to take a Debian 13 derivative (like Proxmox 9) and add the Cinnamon desktop. You can then use this repo to turn it into OhMyDebn!
 - For fun and for science!
   
 # Why is it called "OhMyDebn"?
@@ -137,8 +137,8 @@ Here's a Dell laptop that Microsoft says won't run Windows 11. Proxmox and OhMyD
 
 OhMyDebn requires the following:
 - x86_64 or ARM architecture
-- 2GB RAM minimum
-- 2 CPU cores minimum
+- 2GB RAM MINIMUM (more is obviously better)
+- 2 CPU cores MINIMUM (more is obviously better)
 - Debian 13
 - non-root user account with sudo privileges
 - curl
@@ -146,12 +146,10 @@ OhMyDebn requires the following:
   
 # Warnings
 
-This script:
-- is intended for a clean new installation
-- may make changes to your APT configuration
-- will remove apps like FireFox, Thunderbird, and others (unless you use the `--no-uninstall` option)
-
-This script is totally unsupported. If it breaks your system, you get to keep both pieces!
+- OhMyDebn is intended for a clean new installation
+- OhMyDebn may make changes to your APT configuration
+- OhMyDebn will remove apps like FireFox, Thunderbird, and others (unless you use the `--no-uninstall` option)
+- OhMyDebn is totally unsupported. If it breaks your system, you get to keep both pieces!
 
 # Installation
 
@@ -159,9 +157,9 @@ For the quickest and easiest installation, the best option is to start with the 
 
 1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
 ![debian-cinnamon screenshot](images/debian-cinnamon.png)
-2. In your Debian 13 Cinnamon desktop, download the script:
+2. In your Debian 13 Cinnamon desktop, download the installation script:
 ```
-curl -O https://raw.githubusercontent.com/dougburks/ohmydebn/refs/heads/main/install.sh
+curl -LO https://ohmydebn.org/install.sh
 ```
 3. Once you have reviewed install.sh and the rest of the code in this repo, you can run the install script:
 ```
@@ -169,7 +167,7 @@ bash install.sh
 ```
 ## Installation Options
 
-The install script supports the following option:
+The installation script supports the following option:
 
 - `--no-uninstall` - installs OhMyDebn without removing existing packages like Firefox, Thunderbird, etc.
 
@@ -187,7 +185,15 @@ Once installation completes, you can enjoy your new OhMyDebn desktop!
 
 ## Debian 13 Minimal
 
-Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 netinst installer on x86_64 or ARM64 hardware. Once the Debian netinst installer completes, reboot into your new installation and then start our installer as shown above. It will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot and enjoy your new OhMyDebn desktop!
+Instead of starting from a Debian Live 13 Cinnamon ISO image, an alternative is to start from a Debian 13 minimal netinst installer on x86_64 or ARM64 hardware. Once the Debian netinst installer completes, reboot into your new installation and then start our installer as shown above. It will automatically install the necessary Cinnamon desktop packages and continue on with OhMyDebn installation. Once installation is complete, reboot and enjoy your new OhMyDebn desktop!
+
+## Raspberry Pi
+
+You can even run OhMyDebn on a Raspberry Pi! For best results, we recommend a Raspberry Pi 5 with SSD and at least 4GB RAM.
+
+The default OS for Raspberry Pi is Raspberry Pi OS. It is based on Debian but Debian 13 support is still in testing. You can download a Debian 13 based image from https://downloads.raspberrypi.com/nightlies/. Once it is configured and connected to the Internet, you can run our installer as shown above. It will automatically update /etc/lightdm/lightdm.conf to log into our Cinnamon desktop. Once our installer is complete, reboot and enjoy your new OhMyDebn desktop!
+
+If you are running an older Raspberry Pi or the desktop otherwise feels sluggish, consider disabling desktop effects. Instructions can be found later in a separate section below.
 
 ## Proxmox 9
 
@@ -343,6 +349,10 @@ The hotkeys section below includes more hotkeys for Neovim and a link to additio
 # Firewall
 
 OhMyDebn includes [ufw](https://help.ubuntu.com/community/UFW) and configures it to deny inbound traffic. For more information about ufw, please see https://help.ubuntu.com/community/UFW.
+
+# Desktop Effects
+
+Desktop and window effects are enabled by default. If you would like to disable them, go to System Settings, click Effects, and then click the slider next to `Desktop and window effects` to disable.
 
 # Hotkeys
 

@@ -6,6 +6,7 @@ if [ ! -f ~/.local/state/ohmydebn ]; then
     sudo apt -y purge brasero \
       firefox* \
       thunderbird \
+      gnome-calculator \
       gnome-chess \
       gnome-games \
       goldendict-ng \
