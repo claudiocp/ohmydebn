@@ -416,11 +416,13 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 |--------|----------|
 | `Super + Space` | Application Launcher (Rofi) |
 | `Super + Return` | Terminal (Alacritty) |
+| `Super + A` | AI (Grok) |
 | `Super + B` | Browser (Chromium) |
 | `Super + F` | File Manager (Nemo) |
 | `Super + G` | Google search |
 | `Super + T` | btop |
 | `Super + N` | Neovim |
+| `Super + O` | ohmydebn.org |
 | `Super + E` | Email (GMail) |
 | `Super + C` | Calendar (Google Calendar) |
 | `Super + X` | X.com |
