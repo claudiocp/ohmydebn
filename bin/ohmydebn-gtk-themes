@@ -38,8 +38,9 @@ mkdir -p ~/.icons
 cp -a ~/.local/share/*-Theme/icons/* ~/.icons
 
 echo; echo "Creating tarballs..."
-tar zcvf ~/ohmydebn-themes.tar.gz ~/.themes
-tar zcvf ~/ohmydebn-icons.tar.gz ~/.icons
+cd
+tar zcvf ~/ohmydebn-themes.tar.gz .themes
+tar zcvf ~/ohmydebn-icons.tar.gz .icons
 
 echo; echo "Final tarballs:"
 ls -alh ~/ohmydebn-*.tar.gz
