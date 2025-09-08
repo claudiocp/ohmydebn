@@ -37,12 +37,11 @@ fi
 mkdir -p ~/.icons
 cp -a ~/.local/share/*-Theme/icons/* ~/.icons
 
-echo; echo "Creating tarballs..."
+echo; echo "Creating tarball..."
 cd
-tar zcvf ~/ohmydebn-themes.tar.gz .themes
-tar zcvf ~/ohmydebn-icons.tar.gz .icons
+tar zcvf ~/ohmydebn-themes.tar.gz .icons .themes
 
-echo; echo "Final tarballs:"
+echo; echo "Finished tarball:"
 ls -alh ~/ohmydebn-*.tar.gz
 
 echo; echo "You may need to clean up old ~/.icons.* and ~/.themes.* directories to avoid running out of inodes!"
