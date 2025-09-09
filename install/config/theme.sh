@@ -33,7 +33,7 @@ if [ ! -f $THEME_STATE ]; then
   cd
   echo -n "Downloading themes..."
   wget https://github.com/dougburks/ohmydebn/releases/download/20250909/ohmydebn-themes.tar.gz
-  tar zxf ohmydebn-theme.tar.gz
+  tar zxf ohmydebn-themes.tar.gz
   echo "done"
   rm -f ohmydebn-themes.tar.gz
   touch $THEME_STATE
