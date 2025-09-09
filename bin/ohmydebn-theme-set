@@ -105,7 +105,7 @@ rose-pine)
   GTK_THEME="Rosepine-Light"
   ICON_THEME="Rose-Pine"
   CINNAMON_THEME="Rosepine-Light"
-  ROFI_THEME="$ROFI_DIR/rounded-red-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/rounded-pink-dark.rasi"
   ;;
 tokyo-night)
   GTK_THEME="Tokyonight-Dark"
