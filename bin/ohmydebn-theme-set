@@ -99,7 +99,7 @@ ristretto)
   GTK_THEME="Gruvbox-Dark"
   ICON_THEME="Mint-Y-Sand"
   CINNAMON_THEME="Gruvbox-Dark"
-  ROFI_THEME="$ROFI_DIR/rounded-yellow-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/rounded-orange-dark.rasi"
   ;;
 rose-pine)
   GTK_THEME="Rosepine-Light"
