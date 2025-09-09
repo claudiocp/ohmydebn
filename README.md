@@ -61,7 +61,7 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 
 - Base OS: [Debian](https://www.debian.org/) 13 for stability and compatibility
 - Desktop environment: [Cinnamon](https://github.com/linuxmint/Cinnamon) for a premium desktop experience
-- Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/)
+- Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/) and [Fausto Korpsvart](https://github.com/Fausto-Korpsvart)
 - Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts
 - Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/)
 - Shell prompt: [Starship](https://starship.rs/)
