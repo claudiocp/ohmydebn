@@ -31,8 +31,9 @@ done
 THEME_STATE=~/.local/state/ohmydebn-config/ohmydebn-themes-20250909
 if [ ! -f $THEME_STATE ]; then
   cd
-  echo -n "Downloading themes..."
+  echo "Downloading themes..."
   wget https://github.com/dougburks/ohmydebn/releases/download/20250909/ohmydebn-themes.tar.gz
+  echo -n "Installing themes..."
   tar zxf ohmydebn-themes.tar.gz
   echo "done"
   rm -f ohmydebn-themes.tar.gz
