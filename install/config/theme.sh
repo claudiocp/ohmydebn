@@ -2,6 +2,7 @@
 
 ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Updating themes"
 
+# Update omarchy repo
 if [ ! -d ~/.local/share/omarchy ]; then
   cd ~/.local/share/
   git clone https://github.com/basecamp/omarchy.git
@@ -10,6 +11,7 @@ else
   git pull
 fi
 cd - >/dev/null
+
 # Create symlinks for all themes
 mkdir -p ~/.config/ohmydebn/themes
 for f in ~/.local/share/ohmydebn/themes/*; do
@@ -25,6 +27,18 @@ for f in ~/.local/share/omarchy/themes/*; do
   fi
 done
 
+# Download theme support
+THEME_STATE=~/.local/state/ohmydebn-config/ohmydebn-themes-20250909
+if [ ! -f $THEME_STATE ]; then
+  cd
+  echo -n "Downloading themes..."
+  wget https://github.com/dougburks/ohmydebn/releases/download/20250909/ohmydebn-themes.tar.gz
+  tar zxf ohmydebn-theme.tar.gz
+  echo "done"
+  touch $THEME_STATE
+fi
+
+# Make sure default theme is set
 if [ ! -f ~/.local/state/ohmydebn ]; then
   ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Setting default theme"
   mkdir -p ~/.config/ohmydebn/current
