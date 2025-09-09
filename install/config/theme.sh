@@ -35,6 +35,7 @@ if [ ! -f $THEME_STATE ]; then
   wget https://github.com/dougburks/ohmydebn/releases/download/20250909/ohmydebn-themes.tar.gz
   tar zxf ohmydebn-theme.tar.gz
   echo "done"
+  rm -f ohmydebn-themes.tar.gz
   touch $THEME_STATE
 fi
 
