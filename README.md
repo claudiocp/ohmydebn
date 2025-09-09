@@ -61,7 +61,7 @@ I've been inspired by [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org
 
 - Base OS: [Debian](https://www.debian.org/) 13 for stability and compatibility
 - Desktop environment: [Cinnamon](https://github.com/linuxmint/Cinnamon) for a premium desktop experience
-- Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/)
+- Window themes: artfully polished themes from [Linux Mint](https://linuxmint.com/) and [Fausto Korpsvart](https://github.com/Fausto-Korpsvart)
 - Terminal emulator: [Alacritty](https://alacritty.org/) with Caskaydia Nerd Fonts
 - Shell: [Zsh](https://en.wikipedia.org/wiki/Z_shell) with [Oh My Zsh](https://ohmyz.sh/)
 - Shell prompt: [Starship](https://starship.rs/)
@@ -511,3 +511,14 @@ For the full list of all Neovim hotkeys configured by LazyVim, please see https:
 # Relationship to Security Onion
 
 OhMyDebn is not directly related to the [Security Onion](https://github.com/Security-Onion-Solutions/securityonion) project. OhMyDebn is sponsored by [Security Onion Solutions](https://securityonion.com) (SOS); however, SOS does not provide any technical support for it. OhMyDebn is intended to provide a general purpose desktop environment so, of course, you could use the included Chromium web browser to connect to your [Security Onion Console](https://docs.securityonion.net/en/2.4/soc.html)!
+
+# Acknowledgements
+
+Thanks to the following!
+
+- My dad for introducing me to computers
+- [Linus Torvalds](https://github.com/torvalds) for the Linux kernel and git
+- [Debian](https://debian.org) for an amazingly versatile Linux distribution
+- [Linux Mint](https://linuxmint.com/) for the Cinnamon desktop environment and Mint themes
+- [Fausto Korpsvart](https://github.com/Fausto-Korpsvart) for beautiful themes specific to our color schemes
+- [DHH](https://dhh.dk/) and his [Omakub](https://omakub.org/) and [Omarchy](https://omarchy.org/) projects for inspiration
