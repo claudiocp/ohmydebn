@@ -51,7 +51,7 @@ catppuccin-latte)
   GTK_THEME="Catppuccin-Light"
   ICON_THEME="Catppuccin-Latte"
   CINNAMON_THEME="Catppuccin-Light"
-  ROFI_THEME="$ROFI_DIR/rounded-purple-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/rounded-pink-dark.rasi"
   ;;
 everforest)
   GTK_THEME="Everforest-Dark"
