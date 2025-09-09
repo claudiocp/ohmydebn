@@ -73,7 +73,7 @@ kanagawa)
   ;;
 matte-black)
   GTK_THEME="Gruvbox-Yellow-Dark"
-  ICON_THEME="Mint-Y-Red"
+  ICON_THEME="Mint-Y-Sand"
   CINNAMON_THEME="Gruvbox-Yellow-Dark"
   ROFI_THEME="$ROFI_DIR/rounded-red-dark.rasi"
   ;;
