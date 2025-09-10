@@ -1,8 +1,11 @@
 #!/bin/bash
 
-MENU=~/.local/share/applications/ohmydebn-menu.desktop
+DIR=~/.local/share/applications
+mkdir -p $DIR
+MENU=$DIR/ohmydebn-menu.desktop
 
 if [ ! -f $MENU ]; then
+  mkdir -p ~/.local/share/appli
   cat <<EOF >>$MENU
 [Desktop Entry]
 Version=1.0
