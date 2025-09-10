@@ -205,7 +205,7 @@ show_main_menu() {
 
 go_to_menu() {
   case "${1,,}" in
-  *apps*) /usr/bin/rofi -dpi 1 -show drun -p "Launch…" ;;
+  *apps*) /usr/bin/rofi -dpi 1 -show drun -show-icons -p "Launch…" ;;
   *learn*) show_learn_menu ;;
   *style*) show_style_menu ;;
   *theme*) ohmydebn-theme-set-gui ;;
