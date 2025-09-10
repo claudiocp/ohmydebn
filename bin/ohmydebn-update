@@ -6,4 +6,4 @@ set -e
 
 ohmydebn-update-git
 
-setsid bash ~/.local/share/ohmydebn/ohmydebn.sh --no-uninstall
+bash ~/.local/share/ohmydebn/ohmydebn.sh --no-uninstall
