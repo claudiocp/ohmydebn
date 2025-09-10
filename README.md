@@ -211,9 +211,15 @@ In order to install on Proxmox 9, you will need to take care of a few prerequisi
 6. Start the installation as shown above.
 7. Once the installation completes, reboot (`sudo reboot`), login as your non-root user, and enjoy your new OhMyDebn desktop!
 
+# OhMyDebn Menu
+
+The OhMyDebn menu allows you to launch apps, learn about OhMyDebn, and configure and control the system. You can activate this menu by pressing `Super + Alt + Space`.
+
+![OhMyDebn Menu](images/ohmydebn-menu.png)
+
 # Launch applications via Rofi
 
-To run applications, you can open the traditional program menu or just press `Super + Space` to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
+To run applications, you can select `Apps` from the OhMyDebn menu or just press `Super + Space` to bring up the Rofi application launcher directly. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
 
 ![OhMyDebn Rofi](images/ohmydebn-rofi.png)
 
