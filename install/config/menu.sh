@@ -13,7 +13,7 @@ Comment=OhMyDebn Menu
 Exec=$HOME/.local/share/ohmydebn/bin/ohmydebn-menu
 Terminal=false
 Type=Application
-Icon=stock_smiley_1
+Icon=stock_smiley-1
 StartupNotify=true
 EOF
 fi
