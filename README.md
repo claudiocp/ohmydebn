@@ -19,6 +19,7 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 - [Installation](#installation)
 - [After Installation](#after-installation)
 - [Alternative Installations](#alternative-installations)
+- [OhMyDebn Menu](#ohmydebn-menu)
 - [Launch Applications via Rofi](#launch-applications-via-rofi)
 - [Web browser](#web-browser)
 - [OhMyDebn Logo](#ohmydebn-logo)
@@ -26,14 +27,15 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 - [System monitoring via btop](#system-monitoring-via-btop)
 - [Audio visualizer via Cava](#audio-visualizer-via-cava)
 - [Desktop Themes](#desktop-themes)
-- [Installing and Removing Themes](#installing-and-removing-themes)
-- [Backgrounds](#backgrounds)
 - [Terminal](#terminal)
 - [Updating](#updating)
 - [Resetting](#resetting)
 - [Text editor](#text-editor)
+- [Firewall](#firewall)
+- [Desktop Effects](desktop-effects)
 - [Hotkeys](#hotkeys)
 - [Relationship to Security Onion](#relationship-to-security-onion)
+- [Acknowledgements](#Acknowledgements)
 
 # Debonair Haiku
 
