@@ -8,7 +8,7 @@ if [ ! -f $MENU ]; then
 Version=1.0
 Name=OhMyDebn Menu
 Comment=OhMyDebn Menu
-Exec=~/.local/share/ohmydebn/bin/ohmydebn-menu
+Exec=$HOME/.local/share/ohmydebn/bin/ohmydebn-menu
 Terminal=false
 Type=Application
 Icon=stock_smiley_1
