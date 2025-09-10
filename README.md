@@ -33,7 +33,7 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 - [Resetting](#resetting)
 - [Text editor](#text-editor)
 - [Firewall](#firewall)
-- [Desktop Effects](desktop-effects)
+- [Desktop Effects](#desktop-effects)
 - [Hotkeys](#hotkeys)
 - [Relationship to Security Onion](#relationship-to-security-onion)
 - [Acknowledgements](#Acknowledgements)
