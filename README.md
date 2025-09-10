@@ -23,6 +23,7 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 - [Launch Applications via Rofi](#launch-applications-via-rofi)
 - [Web browser](#web-browser)
 - [OhMyDebn Logo](#ohmydebn-logo)
+- [OhMyDebn Demo](#ohmydebn-demo)
 - [System summary via screenfetch](#system-summary-via-screenfetch)
 - [System monitoring via btop](#system-monitoring-via-btop)
 - [Audio visualizer via Cava](#audio-visualizer-via-cava)
