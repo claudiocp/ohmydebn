@@ -98,8 +98,8 @@ show_screenrecord_menu() {
 }
 
 show_install_menu() {
-  #case $(menu "Install" "󰣇  Package\n  Web App\n  TUI\n  Service\n  Style") in
-  case $(menu "Install" "  Web App\n  TUI\n  Style") in
+  #case $(menu "Install" "  Package\n  Web App\n  TUI\n  Service\n  Style") in
+  case $(menu "Install" "  Package\n  Web App\n  TUI\n  Style") in
   *Package*) terminal ohmydebn-pkg-install ;;
   *Web*) present_terminal ohmydebn-webapp-install ;;
   *TUI*) present_terminal ohmydebn-tui-install ;;
@@ -163,7 +163,7 @@ show_install_elixir_menu() {
 }
 
 show_remove_menu() {
-  case $(menu "Remove" "  Web App\n  TUI\n󰸌  Theme") in
+  case $(menu "Remove" "  Package\n  Web App\n  TUI\n󰸌  Theme") in
   *Package*) terminal ohmydebn-pkg-remove ;;
   *Web*) present_terminal ohmydebn-webapp-remove ;;
   *TUI*) present_terminal ohmydebn-tui-remove ;;
@@ -173,7 +173,7 @@ show_remove_menu() {
 }
 
 show_update_menu() {
-  case $(menu "Update" " OhMyDebn\n  Password\n  Timezone") in
+  case $(menu "Update" "  OhMyDebn\n  Password\n  Timezone") in
   *OhMyDebn*) present_terminal ohmydebn-update ;;
   *Password*) show_update_password_menu ;;
   *Timezone*) cinnamon-settings calendar ;;
