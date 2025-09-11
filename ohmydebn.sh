@@ -30,6 +30,7 @@ source $OHMYDEBN_INSTALL/config/gedit.sh
 source $OHMYDEBN_INSTALL/config/git.sh
 source $OHMYDEBN_INSTALL/config/keepassxc.sh
 source $OHMYDEBN_INSTALL/config/logo.sh
+source $OHMYDEBN_INSTALL/config/menu.sh
 source $OHMYDEBN_INSTALL/config/mimetypes.sh
 source $OHMYDEBN_INSTALL/config/nvim.sh
 source $OHMYDEBN_INSTALL/config/ohmyzsh.sh

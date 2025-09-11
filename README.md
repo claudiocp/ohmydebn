@@ -19,21 +19,24 @@ OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beauti
 - [Installation](#installation)
 - [After Installation](#after-installation)
 - [Alternative Installations](#alternative-installations)
+- [OhMyDebn Menu](#ohmydebn-menu)
 - [Launch Applications via Rofi](#launch-applications-via-rofi)
 - [Web browser](#web-browser)
 - [OhMyDebn Logo](#ohmydebn-logo)
+- [OhMyDebn Demo](#ohmydebn-demo)
 - [System summary via screenfetch](#system-summary-via-screenfetch)
 - [System monitoring via btop](#system-monitoring-via-btop)
 - [Audio visualizer via Cava](#audio-visualizer-via-cava)
 - [Desktop Themes](#desktop-themes)
-- [Installing and Removing Themes](#installing-and-removing-themes)
-- [Backgrounds](#backgrounds)
 - [Terminal](#terminal)
 - [Updating](#updating)
 - [Resetting](#resetting)
 - [Text editor](#text-editor)
+- [Firewall](#firewall)
+- [Desktop Effects](#desktop-effects)
 - [Hotkeys](#hotkeys)
 - [Relationship to Security Onion](#relationship-to-security-onion)
+- [Acknowledgements](#Acknowledgements)
 
 # Debonair Haiku
 
@@ -211,9 +214,15 @@ In order to install on Proxmox 9, you will need to take care of a few prerequisi
 6. Start the installation as shown above.
 7. Once the installation completes, reboot (`sudo reboot`), login as your non-root user, and enjoy your new OhMyDebn desktop!
 
+# OhMyDebn Menu
+
+The OhMyDebn menu allows you to launch apps, learn about OhMyDebn, and configure and control the system. You can activate this menu by pressing `Super + Alt + Space`.
+
+![OhMyDebn Menu](images/ohmydebn-menu.png)
+
 # Launch applications via Rofi
 
-To run applications, you can open the traditional program menu or just press `Super + Space` to bring up the Rofi application launcher. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
+To run applications, you can select `Apps` from the OhMyDebn menu or just press `Super + Space` to bring up the Rofi application launcher directly. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
 
 ![OhMyDebn Rofi](images/ohmydebn-rofi.png)
 
@@ -362,6 +371,7 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 
 | Hotkey | Function |
 |--------|----------|
+| `Super + Alt + Space` | OhMyDebn menu |
 | `Ctrl + Shift + O` | OhMyDebn logo |
 | `Ctrl + Shift + S` | screenfetch system summary |
 | `Ctrl + Shift + A` | audio visualizer (Cava) |

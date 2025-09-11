@@ -13,6 +13,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty \
   ffmpeg \
   fzf \
   galculator \
+  gcolor3 \
   git \
   gimp \
   golang \
