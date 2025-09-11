@@ -41,13 +41,13 @@ ROFI_THEME="rounded-white.rasi"
 
 # Override those settings for our default OhMyDebn/Omarchy themes
 case $THEME_NAME in
-Ash)
+ash)
   GTK_THEME="Mint-Y-Dark-Grey"
   ICON_THEME="Mint-Y-Grey"
   CINNAMON_THEME="Mint-Y-Dark-Grey"
   ROFI_THEME="$ROFI_DIR/rounded-gray-dark.rasi"
   ;;
-ccatppuccin)
+catppuccin)
   GTK_THEME="Catppuccin-Dark"
   ICON_THEME="Catppuccin-Mocha"
   CINNAMON_THEME="Catppuccin-Dark"
