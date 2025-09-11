@@ -16,6 +16,10 @@ for THEME in Catppuccin-GTK-Theme Everforest-GTK-Theme Gruvbox-GTK-Theme Kanagaw
   else
     git clone https://github.com/Fausto-Korpsvart/$THEME ~/.local/share/$THEME
   fi
+  VARIABLES=~/.local/share/$THEME/themes/src/sass/_variables.scss
+  sed -i 's|$window-radius: 12px|$window-radius: 0|g' $VARIABLES
+  echo "Updated $VARIABLES:"
+  grep window-radius $VARIABLES
 done
 
 echo
