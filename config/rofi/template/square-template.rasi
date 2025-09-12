@@ -1,4 +1,4 @@
-/* ROUNDED THEME FOR ROFI */
+/* BASED ON ROUNDED THEME FOR ROFI */
 /* Original Author: Newman Sanchez (https://github.com/newmanls) */
 
 * {
@@ -18,7 +18,7 @@ window {
     width:          480;
     border:         2px;
     border-color:   @bg3;
-    border-radius:  24px;
+    border-radius:  0;
 
     background-color:   @bg0;
 }

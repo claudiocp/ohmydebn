@@ -37,7 +37,7 @@ ROFI_DIR=~/.config/rofi
 GTK_THEME="Mint-Y-Dark-Blue"
 ICON_THEME="Mint-Y-Blue"
 CINNAMON_THEME="Mint-Y-Dark-Blue"
-ROFI_THEME="rounded-white.rasi"
+ROFI_THEME="square-white.rasi"
 
 # Override those settings for our default OhMyDebn/Omarchy themes
 case $THEME_NAME in
@@ -45,79 +45,79 @@ ash)
   GTK_THEME="Mint-Y-Dark-Grey"
   ICON_THEME="Mint-Y-Grey"
   CINNAMON_THEME="Mint-Y-Dark-Grey"
-  ROFI_THEME="$ROFI_DIR/rounded-gray-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-gray-dark.rasi"
   ;;
 catppuccin)
   GTK_THEME="Catppuccin-Dark"
   ICON_THEME="Catppuccin-Mocha"
   CINNAMON_THEME="Catppuccin-Dark"
-  ROFI_THEME="$ROFI_DIR/rounded-purple-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-purple-dark.rasi"
   ;;
 catppuccin-latte)
   GTK_THEME="Catppuccin-Light"
   ICON_THEME="Catppuccin-Latte"
   CINNAMON_THEME="Catppuccin-Light"
-  ROFI_THEME="$ROFI_DIR/rounded-pink-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-pink-dark.rasi"
   ;;
 everforest)
   GTK_THEME="Everforest-Dark"
   ICON_THEME="Everforest-Dark"
   CINNAMON_THEME="Everforest-Dark"
-  ROFI_THEME="$ROFI_DIR/rounded-green-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-green-dark.rasi"
   ;;
 gruvbox)
   GTK_THEME="Gruvbox-Dark"
   ICON_THEME="gruvbox_dark"
   CINNAMON_THEME="Gruvbox-Dark"
-  ROFI_THEME="$ROFI_DIR/rounded-green-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-green-dark.rasi"
   ;;
 kanagawa)
   GTK_THEME="Kanagawa-Dark"
   ICON_THEME="Kanagawa"
   CINNAMON_THEME="Kanagawa-Dark"
-  ROFI_THEME="$ROFI_DIR/rounded-blue-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-blue-dark.rasi"
   ;;
 matte-black)
   GTK_THEME="Gruvbox-Yellow-Dark"
   ICON_THEME="Mint-Y-Sand"
   CINNAMON_THEME="Gruvbox-Yellow-Dark"
-  ROFI_THEME="$ROFI_DIR/rounded-orange-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-orange-dark.rasi"
   ;;
 nord)
   GTK_THEME="Catppuccin-Dark-Macchiato"
   ICON_THEME="Catppuccin-Macchiato"
   CINNAMON_THEME="Catppuccin-Dark-Macchiato"
-  ROFI_THEME="$ROFI_DIR/rounded-blue-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-blue-dark.rasi"
   ;;
 ohmydebn)
   GTK_THEME="Catppuccin-Dark"
   ICON_THEME="Catppuccin-Mocha-Alt2"
   CINNAMON_THEME="Catppuccin-Dark"
-  ROFI_THEME="$ROFI_DIR/rounded-blue-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-blue-dark.rasi"
   ;;
 osaka-jade)
   GTK_THEME="Osaka-Teal-Dark"
   ICON_THEME="Osaka_Dark"
   CINNAMON_THEME="Osaka-Teal-Dark"
-  ROFI_THEME="$ROFI_DIR/rounded-green-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-green-dark.rasi"
   ;;
 ristretto)
   GTK_THEME="Gruvbox-Dark"
   ICON_THEME="Mint-Y-Sand"
   CINNAMON_THEME="Gruvbox-Dark"
-  ROFI_THEME="$ROFI_DIR/rounded-orange-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-orange-dark.rasi"
   ;;
 rose-pine)
   GTK_THEME="Rosepine-Light"
   ICON_THEME="Rose-Pine"
   CINNAMON_THEME="Rosepine-Light"
-  ROFI_THEME="$ROFI_DIR/rounded-pink-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-pink-dark.rasi"
   ;;
 tokyo-night)
   GTK_THEME="Tokyonight-Dark"
   ICON_THEME="Tokyonight-Dark"
   CINNAMON_THEME="Tokyonight-Dark"
-  ROFI_THEME="$ROFI_DIR/rounded-purple-dark.rasi"
+  ROFI_THEME="$ROFI_DIR/square-purple-dark.rasi"
   ;;
 *)
   # If the user has installed extra themes, then check to see if the theme specifies an icon theme
@@ -130,10 +130,10 @@ tokyo-night)
     MINT_THEME="Mint-Y-$GENERIC_THEME_CASED"
     if [ -d /usr/share/icons/$MINT_THEME ] &&
       [ -d /usr/share/themes/$MINT_THEME ] &&
-      [ -f $ROFI_DIR/rounded-$GENERIC_THEME-dark.rasi ]; then
+      [ -f $ROFI_DIR/square-$GENERIC_THEME-dark.rasi ]; then
       # GENERIC_THEME = purple, blue, red
       ICON_THEME="$MINT_THEME"
-      ROFI_THEME="$ROFI_DIR/rounded-$GENERIC_THEME-dark.rasi"
+      ROFI_THEME="$ROFI_DIR/square-$GENERIC_THEME-dark.rasi"
       if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
         GTK_THEME="$MINT_THEME"
         CINNAMON_THEME="$MINT_THEME"
@@ -146,7 +146,7 @@ tokyo-night)
       case $THEME in
       Yaru-sage | Yaru-olive)
         ICON_THEME="Mint-Y"
-        ROFI_THEME="$ROFI_DIR/rounded-green-dark.rasi"
+        ROFI_THEME="$ROFI_DIR/square-green-dark.rasi"
         if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
           GTK_THEME="Mint-Y"
           CINNAMON_THEME="Mint-Y"
@@ -157,7 +157,7 @@ tokyo-night)
         ;;
       Yaru-yellow)
         ICON_THEME="Mint-Y-Sand"
-        ROFI_THEME="$ROFI_DIR/rounded-yellow-dark.rasi"
+        ROFI_THEME="$ROFI_DIR/square-yellow-dark.rasi"
         if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
           GTK_THEME="Mint-Y-Sand"
           CINNAMON_THEME="Mint-Y-Sand"
@@ -168,7 +168,7 @@ tokyo-night)
         ;;
       Yaru-magenta)
         ICON_THEME="Mint-Y-Purple"
-        ROFI_THEME="$ROFI_DIR/rounded-purple-dark.rasi"
+        ROFI_THEME="$ROFI_DIR/square-purple-dark.rasi"
         if [ -f ~/.config/ohmydebn/current/theme/light.mode ]; then
           GTK_THEME="Mint-Y-Purple"
           CINNAMON_THEME="Mint-Y-Purple"
