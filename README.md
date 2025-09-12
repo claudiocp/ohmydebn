@@ -2,7 +2,7 @@
 
 OhMyDebn is a debonair Debian + Cinnamon setup inspired by Omarchy. It is beautiful yet powerful and productive. Command lines and hotkeys and beauty, oh my!
 
-![OhMyDebn screenshot](images/ohmydebn.png)
+![OhMyDebn screenshot](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn.png)
 
 # Table of Contents
 
@@ -126,15 +126,15 @@ There are several meanings for the name:
 
 Here's my OhMyDebn battle station! It's a MacBook Pro running MacOS and Parallels with 3 VMs: one VM is my daily driver where I do most of my work and the other two are test VMs.
 
-![OhMyDebn Battle Station](images/ohmydebn-battle-station.png)
+![OhMyDebn Battle Station](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-battle-station.png)
 
 Here's an old MacBook from 2014. Apple says it's EOL but OhMyDebn breathes new life into it!
 
-![OhMyDebn MacBook 2014](images/ohmydebn-macbook-2014.png)
+![OhMyDebn MacBook 2014](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-macbook-2014.png)
 
 Here's a Dell laptop that Microsoft says won't run Windows 11. Proxmox and OhMyDebn turned it into a portable virtualization powerhouse! 
 
-![OhMyDebn Dell laptop](images/ohmydebn-dell-laptop.png)
+![OhMyDebn Dell laptop](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-dell-laptop.png)
 
 # Requirements
 
@@ -159,7 +159,7 @@ OhMyDebn requires the following:
 For the quickest and easiest installation, the best option is to start with the Debian Live 13 Cinnamon ISO image on x86_64 hardware. If for some reason that doesn't work for your use case, see the alternative installation options below.
 
 1. Download the Debian Live 13 Cinnamon ISO image from https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/ and install it. Reboot into your newly installed Debian 13 Cinnamon and the default desktop should look like this:
-![debian-cinnamon screenshot](images/debian-cinnamon.png)
+![debian-cinnamon screenshot](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/debian-cinnamon.png)
 2. In your Debian 13 Cinnamon desktop, download the installation script:
 ```
 curl -LO https://ohmydebn.org/install.sh
@@ -182,7 +182,7 @@ bash install.sh --no-uninstall
 
 Once installation completes, you can enjoy your new OhMyDebn desktop!
 
-![OhMyDebn screenshot](images/ohmydebn.png)
+![OhMyDebn screenshot](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn.png)
 
 # Alternative installations
 
@@ -218,111 +218,111 @@ In order to install on Proxmox 9, you will need to take care of a few prerequisi
 
 The OhMyDebn menu allows you to launch apps, learn about OhMyDebn, and configure and control the system. You can activate this menu by pressing `Super + Alt + Space`.
 
-![OhMyDebn Menu](images/ohmydebn-menu.png)
+![OhMyDebn Menu](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-menu.png)
 
 # Launch applications via Rofi
 
 To run applications, you can select `Apps` from the OhMyDebn menu or just press `Super + Space` to bring up the Rofi application launcher directly. You can then use arrow keys to select which application you'd like to run or start typing the first few letters of the application name.
 
-![OhMyDebn Rofi](images/ohmydebn-rofi.png)
+![OhMyDebn Rofi](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-rofi.png)
 
 # Web browser
 
 To start a web browser, you can open it from the traditional program menu, from the Rofi application launcher, or just press `Super + B`. This launches [Chromium](https://www.chromium.org/Home/) with the uBlock Origin Lite content blocker already installed for you.
 
-![OhMyDebn chromium web browser with uBlock Origin Lite content blocker](images/ohmydebn-chromium-ublock.png)
+![OhMyDebn chromium web browser with uBlock Origin Lite content blocker](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-chromium-ublock.png)
 
 # OhMyDebn Logo
 
 To show the OhMyDebn logo in all of its glory, press `Ctrl + Shift + O`.
 
-![OhMyDebn logo gui](images/ohmydebn-logo-gui.png)
+![OhMyDebn logo gui](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-logo-gui.png)
 
 # OhMyDebn Demo
 
 To show an animated OhMyDebn logo demo, press `Ctrl + Alt + D`.
 
-![OhMyDebn animated logo demo](images/ohmydebn-demo.gif)
+![OhMyDebn animated logo demo](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-demo.gif)
 
 # System summary via screenfetch
 
 To see a system summary, press `Ctrl + Shift + S` to launch screenfetch.
 
-![OhMyDebn system summary via screenfetch](images/ohmydebn-screenfetch-gui.png)
+![OhMyDebn system summary via screenfetch](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-screenfetch-gui.png)
 
 # System monitoring via btop
 
 To monitor your system performance, press `Super + T` to launch btop.
 
-![OhMyDebn btop](images/ohmydebn-btop.png)
+![OhMyDebn btop](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-btop.png)
 
 # Audio visualizer via Cava
 
 To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
-![OhMyDebn Cava audio visualizer](images/ohmydebn-cava-audio.png)
+![OhMyDebn Cava audio visualizer](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-cava-audio.png)
 
 # Desktop Themes
 
 You can change the desktop theme by pressing `Ctrl + Super + T`. This will bring up a list of installed themes including the default Ohmydebn theme and several themes from Omarchy. There are also three options at the end of the list titled `Next Background`, `Install New Theme`, and `Remove Theme`.
 
-![OhMyDebn desktop themes](images/ohmydebn-theme-set-gui.png)
+![OhMyDebn desktop themes](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-set-gui.png)
 
 Some themes include multiple background options. If the theme you select has multiple backgrounds, you can switch to the next background by selecting the `Next Background` option from the menu. Alternatively, you can press `Ctrl + Super + B` at any time.
 
 The `Install New Theme` option allows you to install new themes from the Omarchy repo.
 
-![OhMyDebn theme install](images/ohmydebn-theme-install.png)
+![OhMyDebn theme install](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-install.png)
 
 The `Remove Theme` option allows you to remove any extra themes that you've installed.
 
-![OhMyDebn theme remove](images/ohmydebn-theme-remove.png)
+![OhMyDebn theme remove](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-remove.png)
 
 Here are some screenshots of the default Ohmydebn theme and several themes from Omarchy.
 
 Catppuccin theme:
 
-![OhMyDebn with catppuccin theme](images/ohmydebn-theme-catppuccin.png)
+![OhMyDebn with catppuccin theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-catppuccin.png)
 
 Catppuccin Latte theme:
 
-![OhMyDebn with catppuccin latte theme](images/ohmydebn-theme-catppuccin-latte.png)
+![OhMyDebn with catppuccin latte theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-catppuccin-latte.png)
 
 Everforest theme:
 
-![OhMyDebn with everforest theme](images/ohmydebn-theme-everforest.png)
+![OhMyDebn with everforest theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-everforest.png)
 
 Gruvbox theme:
 
-![OhMyDebn with gruvbox theme](images/ohmydebn-theme-gruvbox.png)
+![OhMyDebn with gruvbox theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-gruvbox.png)
 
 Kanagawa theme:
 
-![OhMyDebn with kanagawa theme](images/ohmydebn-theme-kanagawa.png)
+![OhMyDebn with kanagawa theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-kanagawa.png)
 
 Matte Black theme:
 
-![OhMyDebn with matte black theme](images/ohmydebn-theme-matte-black.png)
+![OhMyDebn with matte black theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-matte-black.png)
 
 Nord theme:
 
-![OhMyDebn with nord theme](images/ohmydebn-theme-nord.png)
+![OhMyDebn with nord theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-nord.png)
 
 Osaka Jade theme:
 
-![OhMyDebn with osaka jade theme](images/ohmydebn-theme-osaka-jade.png)
+![OhMyDebn with osaka jade theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-osaka-jade.png)
 
 Ristretto theme:
 
-![OhMyDebn with ristretto theme](images/ohmydebn-theme-ristretto.png)
+![OhMyDebn with ristretto theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-ristretto.png)
 
 Rose Pine theme:
 
-![OhMyDebn with rose pine theme](images/ohmydebn-theme-rose-pine.png)
+![OhMyDebn with rose pine theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-rose-pine.png)
 
 Tokyo Night theme:
 
-![OhMyDebn with tokyo night theme](images/ohmydebn-theme-tokyo-night.png)
+![OhMyDebn with tokyo night theme](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-theme-tokyo-night.png)
 
 # Terminal
 
@@ -333,11 +333,11 @@ To start a terminal session, press `Super + Enter`. This launches a beautiful an
 - [Zoxide](https://github.com/ajeetdsouza/zoxide) for a smarter `cd` command
 - [eza](https://github.com/eza-community/eza) for beautiful directory listings via `ls` and `lt`
 
-![OhMyDebn terminal screenshot](images/ohmydebn-terminal.png)
+![OhMyDebn terminal screenshot](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-terminal.png)
 
 It also includes [bat](https://github.com/sharkdp/bat), which is a `cat` clone with syntax highlighting and git integration. It is configured with the beautiful [Catppuccin theme](https://github.com/catppuccin/bat).
 
-![OhMyDebn bat screenshot](images/ohmydebn-bat.png)
+![OhMyDebn bat screenshot](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-bat.png)
 
 # Updating
 
@@ -351,7 +351,7 @@ To reset your config files to OhMyDebn defaults, run `ohmydebn-reset-config`. Th
 
 To start a text editor, press `Super + N`. This launches the beautiful and powerful combination of Neovim with LazyVim. The first time it loads, it will install several plugins. Once that is done, you can press the `Q` key until you get to the main menu. You can then press the space bar and then the `E` key to open Explorer.
 
-![OhMyDebn Neovim screenshot](images/ohmydebn-neovim.png)
+![OhMyDebn Neovim screenshot](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-neovim.png)
 
 The hotkeys section below includes more hotkeys for Neovim and a link to additional information.
 

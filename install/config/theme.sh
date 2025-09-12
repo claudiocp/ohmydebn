@@ -28,11 +28,11 @@ for f in ~/.local/share/omarchy/themes/*; do
 done
 
 # Download theme support
-THEME_STATE=~/.local/state/ohmydebn-config/ohmydebn-themes-20250909
+THEME_STATE=~/.local/state/ohmydebn-config/ohmydebn-themes-20250911
 if [ ! -f $THEME_STATE ]; then
   cd
   echo "Downloading themes..."
-  wget https://github.com/dougburks/ohmydebn/releases/download/20250909/ohmydebn-themes.tar.gz
+  wget https://github.com/dougburks/ohmydebn-themes/releases/download/20250911/ohmydebn-themes.tar.gz
   echo -n "Installing themes..."
   tar zxf ohmydebn-themes.tar.gz
   echo "done"

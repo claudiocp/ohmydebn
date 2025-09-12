@@ -1,5 +1,5 @@
 /* ROUNDED THEME FOR ROFI */
-/* Author: Newman Sanchez (https://github.com/newmanls) */
+/* Original Author: Newman Sanchez (https://github.com/newmanls) */
 
 * {
     font:   "Roboto 12";
@@ -16,6 +16,8 @@ window {
     location:       north;
     y-offset:       calc(25% - 176px);
     width:          480;
+    border:         2px;
+    border-color:   @bg3;
     border-radius:  24px;
 
     background-color:   @bg0;
