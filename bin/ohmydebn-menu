@@ -33,7 +33,7 @@ menu() {
     fi
   fi
 
-  echo -e "$options" | /usr/bin/rofi -dpi 1 -dmenu -p "$prompt…" "${args[@]}"
+  echo -e "$options" | /usr/bin/rofi -dpi 1 -dmenu -i -p "$prompt…" "${args[@]}"
 }
 
 terminal() {
@@ -46,6 +46,22 @@ present_terminal() {
 
 install() {
   present_terminal "echo 'Installing $1...'; sudo apt -y install $2"
+}
+
+install_from_url() {
+  TEMP=$(mktemp)
+  present_terminal "echo 'Installing $1...'; curl -L \"$2\" -o $TEMP && sudo dpkg -i $TEMP && rm -f $TEMP"
+}
+
+install_vscode() {
+  ARCH=$(uname -m)
+  if [ "$ARCH" == "x86_64" ]; then
+    install_from_url "VSCode" "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+  elif [ "$ARCH" == "aarch64" ]; then
+    install_from_url "VSCode" "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-arm64"
+  else
+    present_terminal "echo 'x86_64 and aarch64 are the only supported architectures!'"
+  fi
 }
 
 install_and_launch() {
@@ -99,13 +115,27 @@ show_screenrecord_menu() {
 
 show_install_menu() {
   #case $(menu "Install" "  Package\n  Web App\n  TUI\n  Service\n  Style") in
-  case $(menu "Install" "  Package\n  Web App\n  TUI\n  Style") in
+  case $(menu "Install" "  Package\n  Web App\n  TUI\n  Style\n  Editor") in
   *Package*) terminal ohmydebn-pkg-install ;;
   *Web*) present_terminal ohmydebn-webapp-install ;;
   *TUI*) present_terminal ohmydebn-tui-install ;;
   *Style*) show_install_style_menu ;;
   *Development*) show_install_development_menu ;;
+  *Editor*) show_install_editor_menu ;;
   *) show_main_menu ;;
+  esac
+}
+
+show_install_editor_menu() {
+  #case $(menu "Install" "  VSCode\n  Cursor\n  Zed\n  Sublime Text\n  Helix\n  Emacs") in
+  case $(menu "Install" "  VSCode\n  Emacs") in
+  *VSCode*) install_vscode ;;
+  *Cursor*) install_and_launch "Cursor" "cursor-bin" "cursor" ;;
+  *Zed*) install_and_launch "Zed" "zed" "dev.zed.Zed" ;;
+  *Sublime*) aur_install_and_launch "Sublime Text" "sublime-text-4" "sublime_text" ;;
+  *Helix*) install "Helix" "helix" ;;
+  *Emacs*) install "Emacs" "emacs" ;;
+  *) show_install_menu ;;
   esac
 }
 
