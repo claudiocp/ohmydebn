@@ -55,12 +55,13 @@ install_from_url() {
 
 install_vscode() {
   ARCH=$(uname -m)
-  if [ "$ARCH" == "aarch64" ]; then
-    ARCH="arm64"
+  if [ "$ARCH" == "x86_64" ]; then
+    install_from_url "VSCode" "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+  elif [ "$ARCH" == "aarch64" ]; then
+    install_from_url "VSCode" "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-arm64"
   else
-    ARCH="x64"
+    present_terminal "echo 'x86_64 and aarch64 are the only supported architectures!'"
   fi
-  install_from_url "VSCode" "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-$ARCH"
 }
 
 install_and_launch() {
