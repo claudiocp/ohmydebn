@@ -33,7 +33,7 @@ menu() {
     fi
   fi
 
-  echo -e "$options" | /usr/bin/rofi -dpi 1 -dmenu -p "$prompt…" "${args[@]}"
+  echo -e "$options" | /usr/bin/rofi -dpi 1 -dmenu -i -p "$prompt…" "${args[@]}"
 }
 
 terminal() {
