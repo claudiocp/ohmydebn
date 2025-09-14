@@ -49,6 +49,7 @@ if ! dpkg -s "git" >/dev/null 2>&1; then
   echo
   echo "We need to install git so that we can clone the repo and continue the install."
   echo
+  sudo apt update
   sudo apt -y install git
 fi
 
