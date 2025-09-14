@@ -55,5 +55,6 @@ if [ ! -f $EXTENSIONS_STATE ]; then
   mkdir -p $SPICE_DIR
   cp -av ~/.local/share/ohmydebn/config/cinnamon/spices/gTile@OhMyDebn/* $SPICE_DIR
   gsettings set org.cinnamon enabled-extensions "['gTile@OhMyDebn']"
+  mkdir -p ~/.local/state/ohmydebn-config
   touch $EXTENSIONS_STATE
 fi
