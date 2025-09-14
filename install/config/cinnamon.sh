@@ -42,3 +42,13 @@ if [ ! -f $SPICE_STATE ]; then
   done
   touch $SPICE_STATE
 fi
+
+EXTENSIONS_STATE=~/.local/state/ohmydebn-config/cinnamon-extensions-20250914
+if [ ! - f $EXTENSIONS_STATE ]; then
+  cd ~/.local/share/cinnamon/extensions/
+  wget https://github.com/dougburks/gTile/releases/download/2.2.1/gTile.tar.gz
+  tar zxvf gTile.tar.gz
+  cd -
+  gsettings set org.cinnamon enabled-extensions "['gTile@OhMyDebn']"
+  touch $EXTENSIONS_STATE
+fi
