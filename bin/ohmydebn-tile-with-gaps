@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# Based on original work by:
+# @author Steve Simpson     See gist: https://gist.github.com/culyun/a7347a58168a75ba8c06f1ddd67cf06d
+# @author Kay Stenschke     Extended original script for multi-screen offset detection
+# Updated by Doug Burks to introduce gaps for tiling window manager aesthetic
+# This command uses wmctrl which works correctly with apps that use server side decoration (example: alacritty).
+# However, wmctrl does not work correctly for apps that use client side decoration (examples: chromium and gedit).
+# You can manually work around by configuring apps to use server side decoration.
+# For example, in Chromium you can go to Settings and enable the option to "Use system title bar and borders"
+# Leaving this script as-is in case we want to revisit at some point but it seems better to use another approach like gTile.
+
+GAP=10
+GAPANDHALF=15
+HALFGAP=5
+TOP_PANEL=$(gsettings get org.cinnamon panels-height | cut -d: -f2 | cut -d\' -f1)
+WINDOW_TITLE_HEIGHT=$(xwininfo -id $(xdotool getactivewindow) | grep "Relative upper-left Y:" | awk '{print $4}')
+XWININFO=$(xwininfo -id $(xdotool getactivewindow))
+
+# Max Resolution X and Y
+MAX_X=$(xrandr --q1 | grep "*" | awk '{print $2}')
+MAX_Y=$(xrandr --q1 | grep "*" | awk '{print $4}')
+
+wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
+
+case "$1" in
+'left')
+  START_X=$GAP
+  START_Y=$(($TOP_PANEL + $GAP))
+  WIDTH=$(((($MAX_X / 2) - $GAPANDHALF)))
+  HEIGHT=$(($MAX_Y - $TOP_PANEL - $GAP - $GAP - $WINDOW_TITLE_HEIGHT))
+  ;;
+'top-left')
+  START_X=$GAP
+  START_Y=$(($TOP_PANEL + $GAP))
+  WIDTH=$(((($MAX_X / 2) - $GAPANDHALF)))
+  HEIGHT=$((($MAX_Y / 2) - $TOP_PANEL - $GAP - $GAP - $WINDOW_TITLE_HEIGHT))
+  ;;
+'top')
+  START_X=$GAP
+  START_Y=$(($TOP_PANEL + $GAP))
+  WIDTH=$((($MAX_X - $GAP - $GAP)))
+  HEIGHT=$((($MAX_Y / 2) - $TOP_PANEL - $GAP - $GAP - $WINDOW_TITLE_HEIGHT))
+  ;;
+'full')
+  START_X=$GAP
+  START_Y=$(($TOP_PANEL + $GAP))
+  WIDTH=$((($MAX_X - $GAP - $GAP)))
+  HEIGHT=$(($MAX_Y - $TOP_PANEL - $GAP - $GAP - $WINDOW_TITLE_HEIGHT))
+  ;;
+'bottom')
+  START_X=$GAP
+  START_Y=$((((MAX_Y / 2) + $TOP_PANEL + $GAP)))
+  WIDTH=$((($MAX_X - $GAP - $GAP)))
+  HEIGHT=$((($MAX_Y / 2) - $TOP_PANEL - $GAP - $GAP - $WINDOW_TITLE_HEIGHT))
+  ;;
+'right')
+  START_X=$(((($MAX_X / 2) + $HALFGAP)))
+  START_Y=$(($TOP_PANEL + $GAP))
+  WIDTH=$(((($MAX_X / 2) - $GAPANDHALF)))
+  HEIGHT=$(($MAX_Y - $TOP_PANEL - $GAP - $GAP - $WINDOW_TITLE_HEIGHT))
+  ;;
+'top-right')
+  START_X=$(((($MAX_X / 2) + $HALFGAP)))
+  START_Y=$(($TOP_PANEL + $GAP))
+  WIDTH=$(((($MAX_X / 2) - $GAPANDHALF)))
+  HEIGHT=$((($MAX_Y / 2) - $TOP_PANEL - $GAP - $GAP - $WINDOW_TITLE_HEIGHT))
+  ;;
+'bottom-left')
+  START_X=$GAP
+  START_Y=$((((MAX_Y / 2) + $TOP_PANEL + $GAP)))
+  WIDTH=$(((($MAX_X / 2) - $GAPANDHALF)))
+  HEIGHT=$((($MAX_Y / 2) - $TOP_PANEL - $GAP - $GAP - $WINDOW_TITLE_HEIGHT))
+  ;;
+'bottom-right')
+  START_X=$(((($MAX_X / 2) + $HALFGAP)))
+  START_Y=$((((MAX_Y / 2) + $TOP_PANEL + $GAP)))
+  WIDTH=$(((($MAX_X / 2) - $GAPANDHALF)))
+  HEIGHT=$((($MAX_Y / 2) - $TOP_PANEL - $GAP - $GAP - $WINDOW_TITLE_HEIGHT))
+  ;;
+*)
+  echo "Usage: $0 {left|right|top|bot|top-right|top-left|bottom-right|bottom-left}"
+  exit 1
+  ;;
+esac
+
+wmctrl -r :ACTIVE: -e "1,$START_X,$START_Y,$WIDTH,$HEIGHT"
