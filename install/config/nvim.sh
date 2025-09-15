@@ -48,7 +48,7 @@ fi
 
 # 20250915 A new version of LazyVim has been released that requires Neovim >= 0.11.0.
 # Debian stable repo does not include this new version yet.
-# In the meantime, pin LazyVim to v14
+# In the meantime, pin LazyVim to v14 as described at:
 # https://github.com/LazyVim/LazyVim/issues/6421
 CORE=$NVIM_CONFIG_DIR/lua/plugins/core.lua
 if [ ! -f $CORE ]; then
