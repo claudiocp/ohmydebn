@@ -261,6 +261,22 @@ To monitor your system performance, press `Super + T` to launch btop.
 To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 ![OhMyDebn Cava audio visualizer](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-cava-audio.png)
+# Window tiling
+
+The Cinnamon desktop environment includes basic window tiling based on a 2x2 grid:
+- Press `Super + Left` to make the active window tile to the left half of the screen.
+- Press `Super + Right` to make the active window tile to the right half of the screen.
+- Press `Super + Up` to make the active window tile to the top half of the screen.
+- Press `Super + Down` to make the active window tile to the bottom half of the screen.
+- You can tile to a corner by combining these options. For example, to tile to the upper right corner, hold the `Super` key and then press the Up arrow and then the Right arrow.
+
+For more advanced window tiling options, we've included a custom version of the gTile extension:
+- Pressing `Ctrl-Shift-G` will display the gTile overlay and give you several options for tiling the active window.
+- The default grid options are 2x2, 3x2, 4x4, or 6x6. You can select a different grid option with the mouse or by pressing `1`, `2`, `3`, or `4`. You can modify these default grid options by going to the gTile extension settings.
+- Select the starting tile by pressing the letter associated with that tile and then select the ending tile by pressing the letter associated with that tile. For example, to tile the window to the left half of the screen in a 4x4 grid, press `a` and then `m`.
+- To set the window to a single tile, press the letter twice. For example, to tile to the upper left corner, press `a` twice.
+
+![OhMyDebn gTile window tiling](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-gtile.png)
 
 # Desktop Themes
 
@@ -372,6 +388,7 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | Hotkey | Function |
 |--------|----------|
 | `Super + Alt + Space` | OhMyDebn menu |
+| `Ctrl + Shift + G` | gTile window tiling |
 | `Ctrl + Shift + O` | OhMyDebn logo |
 | `Ctrl + Shift + S` | screenfetch system summary |
 | `Ctrl + Shift + A` | audio visualizer (Cava) |
@@ -396,6 +413,7 @@ Pressing `Super + K` will open Chromium and navigate to this list of keyboard bi
 | `Super + PageUp` | Maximize window |
 | `Super + PageDown` | Minimize window |
 | `Ctrl + Alt + Down` | Window selection |
+| `Ctrl + Shift + G` | gTile window tiling |
 
 ## Workspaces
 
