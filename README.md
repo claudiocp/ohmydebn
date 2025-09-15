@@ -262,7 +262,7 @@ To monitor your system performance, press `Super + T` to launch btop.
 To visualize your system audio, press `Ctrl + Shift + A` to launch Cava.
 
 ![OhMyDebn Cava audio visualizer](https://raw.githubusercontent.com/dougburks/ohmydebn-docs/refs/heads/main/images/ohmydebn-cava-audio.png)
-# Window tiling
+# Window Tiling
 
 The Cinnamon desktop environment includes basic window tiling based on a 2x2 grid:
 - Press `Super + Left` to make the active window tile to the left half of the screen.
