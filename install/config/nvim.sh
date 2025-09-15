@@ -55,5 +55,13 @@ if [ ! -f $CORE ]; then
   ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Creating $CORE"
   mkdir -p $NVIM_CONFIG_DIR/lua/plugins
   cp -av ~/.local/share/ohmydebn/config/nvim/lua/plugins/core.lua $CORE
-  rm -rf ~/.local/share/nvim/lazy/LazyVim
+  TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+  LAZYVIM=~/.local/share/nvim/lazy/LazyVim
+  if [ -d $LAZYVIM ]; then
+    mv $LAZYVIM $LAZYVIM-backup-$TIMESTAMP
+  fi
+  LAZYLOCK=$NVIM_CONFIG_DIR/lazy-lock.json
+  if [ -f $LAZYLOCK ]; then
+    mv $LAZYLOCK $LAZYLOCK-backup-$TIMESTAMP
+  fi
 fi
