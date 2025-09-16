@@ -85,6 +85,26 @@ if ! dpkg -s "git" >/dev/null 2>&1; then
   sudo apt -y install git
 fi
 
+# Install and update GPG keys for repositories
+echo
+echo "Installing and updating GPG keys..."
+
+if [ "$OS" = "debian" ]; then
+  echo "Installing Debian GPG keys..."
+  sudo apt -y install debian-archive-keyring
+  # Try modern method first, fallback to legacy if needed
+  if command -v apt-key >/dev/null 2>&1; then
+    sudo apt-key update
+  else
+    echo "apt-key not available, using alternative method..."
+    sudo apt update --allow-releaseinfo-change
+  fi
+elif [ "$OS" = "linuxmint" ]; then
+  echo "Installing Ubuntu/Linux Mint GPG keys..."
+  sudo apt -y install ubuntu-keyring
+  sudo apt update --allow-releaseinfo-change
+fi
+
 # Use custom repo if specified, otherwise default to claudiocp/ohmydebn
 OHMYDEBN_REPO="${OHMYDEBN_REPO:-claudiocp/ohmydebn}"
 
