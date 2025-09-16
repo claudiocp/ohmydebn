@@ -3,7 +3,7 @@
 mkdir -p ~/.config
 ROFI_CONFIG=~/.config/rofi
 
-ROFI_STATE=~/.local/state/ohmydebn-config/rofi-20250911
+ROFI_STATE=~/.local/state/ohmydebn-config/rofi-20250915
 if [ ! -f $ROFI_STATE ]; then
 
   ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Configuring rofi"
