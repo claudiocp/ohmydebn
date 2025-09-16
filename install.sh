@@ -13,22 +13,53 @@ Stars bow to its charm.
  -- AI, probably
 EOF
 
+# Detect Linux distribution
+if [ -f /etc/os-release ]; then
+  . /etc/os-release
+  OS=$ID
+  VERSION=$VERSION_ID
+else
+  echo "Cannot detect OS. Exiting."
+  exit 1
+fi
+
 # Check to see if we have an APT configuration
-if [ -f /etc/apt/sources.list.d/debian.sources ] || [ -f /etc/apt/sources.list.d/proxmox.sources ]; then
+if [ -f /etc/apt/sources.list.d/debian.sources ] || [ -f /etc/apt/sources.list.d/proxmox.sources ] || [ -f /etc/apt/sources.list.d/official-package-repositories.list ]; then
   echo "Found an APT sources file in /etc/apt/sources.list.d/"
 else
   # Some Debian installation methods have a broken APT configuration so try to work around that
   SOURCESLIST=/etc/apt/sources.list
-  if ! grep -q "debian.org" $SOURCESLIST >/dev/null 2>&1; then
-    echo "$SOURCESLIST does not have any debian.org references."
+  if ! grep -q "debian.org\|linuxmint.com" $SOURCESLIST >/dev/null 2>&1; then
+    echo "$SOURCESLIST does not have any debian.org or linuxmint.com references."
     if [ -f $SOURCESLIST ]; then
       echo "Renaming $SOURCESLIST to $SOURCESLIST.orig"
       sudo mv $SOURCESLIST $SOURCESLIST.orig
     fi
-    DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
-    if [ ! -f $DEBIANSOURCES ]; then
-      echo "Creating $DEBIANSOURCES and adding the following:"
-      cat <<EOF | sudo tee -a $DEBIANSOURCES
+    
+    if [ "$OS" = "linuxmint" ]; then
+      # Configure Linux Mint repositories
+      MINT_SOURCES=/etc/apt/sources.list.d/linuxmint.sources
+      if [ ! -f $MINT_SOURCES ]; then
+        echo "Creating $MINT_SOURCES and adding the following:"
+        cat <<EOF | sudo tee -a $MINT_SOURCES
+Types: deb
+URIs: http://packages.linuxmint.com
+Suites: $UBUNTU_CODENAME
+Components: main upstream import backport
+
+Types: deb
+URIs: http://archive.ubuntu.com/ubuntu
+Suites: $UBUNTU_CODENAME $UBUNTU_CODENAME-security $UBUNTU_CODENAME-updates $UBUNTU_CODENAME-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+EOF
+      fi
+    else
+      # Configure Debian repositories (original behavior)
+      DEBIANSOURCES=/etc/apt/sources.list.d/debian.sources
+      if [ ! -f $DEBIANSOURCES ]; then
+        echo "Creating $DEBIANSOURCES and adding the following:"
+        cat <<EOF | sudo tee -a $DEBIANSOURCES
 Types: deb
 URIs: https://deb.debian.org/debian
 Suites: trixie trixie-updates
@@ -41,6 +72,7 @@ Suites: trixie-security
 Components: main non-free-firmware
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 EOF
+      fi
     fi
   fi
 fi

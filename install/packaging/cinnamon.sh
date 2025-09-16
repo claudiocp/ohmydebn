@@ -11,7 +11,15 @@ if [ ! -f ~/.local/state/ohmydebn ]; then
     sudo apt -y install cinnamon-desktop-environment
   fi
 
-  if [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
+  # Check if we're on Linux Mint or if mint themes are not installed
+  if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS=$ID
+  else
+    OS="debian"
+  fi
+
+  if [ "$OS" != "linuxmint" ] && [ $(dpkg -l | grep "^ii  mint-" | wc -l) -eq 0 ]; then
     ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Downloading Cinnamon themes"
     ARCH=$(uname -m)
     if [ "$ARCH" != "x86_64" ]; then
@@ -35,5 +43,7 @@ if [ ! -f ~/.local/state/ohmydebn ]; then
     sudo apt update
     echo
     sudo apt -y purge linuxmint-keyring
+  elif [ "$OS" = "linuxmint" ]; then
+    ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Linux Mint detected - themes should already be available"
   fi
 fi

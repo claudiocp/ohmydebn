@@ -1,9 +1,18 @@
 #!/bin/bash
 
 ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Installing new apps if unnecessary"
-sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty \
+
+# Detect OS to adjust package list
+if [ -f /etc/os-release ]; then
+  . /etc/os-release
+  OS=$ID
+else
+  OS="debian"
+fi
+
+# Base packages common to both Debian and Linux Mint
+BASE_PACKAGES="alacritty \
   bat \
-  bibata-cursor-theme \
   binutils \
   btop \
   cava \
@@ -40,10 +49,21 @@ sudo DEBIAN_FRONTEND=noninteractive apt -y install alacritty \
   vim \
   wget \
   xdotool \
-  yaru-theme-gtk \
-  yaru-theme-icon \
   yq \
   zoxide \
   zsh \
   zsh-autosuggestions \
-  zsh-syntax-highlighting
+  zsh-syntax-highlighting"
+
+# OS-specific packages
+if [ "$OS" = "linuxmint" ]; then
+  # Linux Mint specific packages
+  MINT_PACKAGES="bibata-cursor-theme"
+  PACKAGES="$BASE_PACKAGES $MINT_PACKAGES"
+else
+  # Debian specific packages
+  DEBIAN_PACKAGES="bibata-cursor-theme yaru-theme-gtk yaru-theme-icon"
+  PACKAGES="$BASE_PACKAGES $DEBIAN_PACKAGES"
+fi
+
+sudo DEBIAN_FRONTEND=noninteractive apt -y install $PACKAGES
