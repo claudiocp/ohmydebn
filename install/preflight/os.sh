@@ -6,14 +6,12 @@ if [ -f /etc/os-release ]; then
   OS=$ID
   VERSION=$VERSION_ID
 else
-  ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Cannot detect OS. Exiting!"
+  ~/.local/share/ohmymint/bin/ohmymint-headline "cat" "Cannot detect OS. Exiting!"
   exit 1
 fi
 
-# Check for supported distributions
-if [ "$OS" = "debian" ] && grep -q "13 (trixie)" /etc/os-release; then
-  echo "Detected Debian 13 (trixie) - Supported"
-elif [ "$OS" = "linuxmint" ]; then
+# Check for supported distributions - only Linux Mint
+if [ "$OS" = "linuxmint" ]; then
   echo "Detected Linux Mint - Supported"
   # Check if it's a supported Ubuntu base
   if [ -n "$UBUNTU_CODENAME" ]; then
@@ -22,15 +20,15 @@ elif [ "$OS" = "linuxmint" ]; then
         echo "Detected Ubuntu base: $UBUNTU_CODENAME - Supported"
         ;;
       *)
-        ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Linux Mint with unsupported Ubuntu base ($UBUNTU_CODENAME). Exiting!"
+        ~/.local/share/ohmymint/bin/ohmymint-headline "cat" "Linux Mint with unsupported Ubuntu base ($UBUNTU_CODENAME). Exiting!"
         exit 1
         ;;
     esac
   else
-    ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Cannot detect Ubuntu base for Linux Mint. Exiting!"
+    ~/.local/share/ohmymint/bin/ohmymint-headline "cat" "Cannot detect Ubuntu base for Linux Mint. Exiting!"
     exit 1
   fi
 else
-  ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "OhMyDebn is designed for Debian 13 Cinnamon or Linux Mint. Exiting!"
+  ~/.local/share/ohmymint/bin/ohmymint-headline "cat" "OhMyMint is designed for Linux Mint only. Exiting!"
   exit 1
 fi

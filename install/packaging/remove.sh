@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ ! -f ~/.local/state/ohmydebn ]; then
+if [ ! -f ~/.local/state/ohmymint ]; then
   if [ "$NO_UNINSTALL" = false ]; then
-    ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Removing any unnecessary packages"
+    ~/.local/share/ohmymint/bin/ohmymint-headline "tte rain" "Removing any unnecessary packages"
     sudo apt -y purge brasero \
       firefox* \
       thunderbird \

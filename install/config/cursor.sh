@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -f ~/.local/state/ohmydebn ]; then
-  ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Setting cursor theme"
+if [ ! -f ~/.local/state/ohmymint ]; then
+  ~/.local/share/ohmymint/bin/ohmymint-headline "cat" "Setting cursor theme"
   gsettings set org.cinnamon.desktop.interface cursor-theme "'Bibata-Modern-Classic'"
 fi

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Updating themes"
+~/.local/share/ohmymint/bin/ohmymint-headline "cat" "Updating themes"
 
 # Update omarchy repo
 if [ ! -d ~/.local/share/omarchy ]; then
@@ -13,36 +13,36 @@ fi
 cd - >/dev/null
 
 # Create symlinks for all themes
-mkdir -p ~/.config/ohmydebn/themes
-for f in ~/.local/share/ohmydebn/themes/*; do
+mkdir -p ~/.config/ohmymint/themes
+for f in ~/.local/share/ohmymint/themes/*; do
   THEME=$(basename $f)
-  if [ ! -L ~/.config/ohmydebn/themes/$THEME ]; then
-    ln -nfs "$f" ~/.config/ohmydebn/themes/
+  if [ ! -L ~/.config/ohmymint/themes/$THEME ]; then
+    ln -nfs "$f" ~/.config/ohmymint/themes/
   fi
 done
 for f in ~/.local/share/omarchy/themes/*; do
   THEME=$(basename $f)
   if [ ! -L ~/.config/omarchy/themes/$THEME ]; then
-    ln -nfs "$f" ~/.config/ohmydebn/themes/
+    ln -nfs "$f" ~/.config/ohmymint/themes/
   fi
 done
 
 # Download theme support
-THEME_STATE=~/.local/state/ohmydebn-config/ohmydebn-themes-20250911
+THEME_STATE=~/.local/state/ohmymint-config/ohmymint-themes-20250911
 if [ ! -f $THEME_STATE ]; then
   cd
   echo "Downloading themes..."
-  wget https://github.com/dougburks/ohmydebn-themes/releases/download/20250911/ohmydebn-themes.tar.gz
+  wget https://github.com/dougburks/ohmymint-themes/releases/download/20250911/ohmymint-themes.tar.gz
   echo -n "Installing themes..."
-  tar zxf ohmydebn-themes.tar.gz
+  tar zxf ohmymint-themes.tar.gz
   echo "done"
-  rm -f ohmydebn-themes.tar.gz
+  rm -f ohmymint-themes.tar.gz
   touch $THEME_STATE
 fi
 
 # Make sure default theme is set
-if [ ! -f ~/.local/state/ohmydebn ]; then
-  ~/.local/share/ohmydebn/bin/ohmydebn-headline "cat" "Setting default theme"
-  mkdir -p ~/.config/ohmydebn/current
-  ~/.local/share/ohmydebn/bin/ohmydebn-theme-set Ohmydebn
+if [ ! -f ~/.local/state/ohmymint ]; then
+  ~/.local/share/ohmymint/bin/ohmymint-headline "cat" "Setting default theme"
+  mkdir -p ~/.config/ohmymint/current
+  ~/.local/share/ohmymint/bin/ohmymint-theme-set Ohmydebn
 fi

@@ -1,15 +1,15 @@
 #!/bin/bash
 
-if [ -f ~/.local/state/ohmydebn ]; then
-  ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "OhMyDebn update complete!"
+if [ -f ~/.local/state/ohmymint ]; then
+  ~/.local/share/ohmymint/bin/ohmymint-headline "tte rain" "OhMyMint update complete!"
 else
   echo
-  ~/.local/share/ohmydebn/bin/ohmydebn-headline "tte rain" "Installation complete!"
+  ~/.local/share/ohmymint/bin/ohmymint-headline "tte rain" "Installation complete!"
   echo
   toilet -f mono12 "Welcome" | tte rain
   toilet -f mono12 "   to" | tte rain
-  toilet -f mono12 "OhMyDebn" | tte rain
+  toilet -f mono12 "OhMyMint" | tte rain
   # Create a state file signifying that installation is complete
   mkdir -p ~/.local/state
-  touch ~/.local/state/ohmydebn
+  touch ~/.local/state/ohmymint
 fi

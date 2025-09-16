@@ -95,4 +95,4 @@ if [[ -n "$OHMYMINT_REF" ]]; then
   cd - >/dev/null
 fi
 
-source ~/.local/share/ohmymint/ohmydebn.sh "$@"
+source ~/.local/share/ohmymint/ohmymint.sh "$@"

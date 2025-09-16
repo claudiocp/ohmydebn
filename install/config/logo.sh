@@ -1,3 +1,3 @@
 #!/bin/bash
 
-~/.local/share/ohmydebn/bin/ohmydebn-logo-generate
+~/.local/share/ohmymint/bin/ohmymint-logo-generate
