@@ -85,8 +85,8 @@ if ! dpkg -s "git" >/dev/null 2>&1; then
   sudo apt -y install git
 fi
 
-# Use custom repo if specified, otherwise default to dougburks/ohmydebn
-OHMYDEBN_REPO="${OHMYDEBN_REPO:-dougburks/ohmydebn}"
+# Use custom repo if specified, otherwise default to claudiocp/ohmydebn
+OHMYDEBN_REPO="${OHMYDEBN_REPO:-claudiocp/ohmydebn}"
 
 echo -e "\nCloning OhMyDebn from: https://github.com/${OHMYDEBN_REPO}.git"
 rm -rf ~/.local/share/ohmydebn/
